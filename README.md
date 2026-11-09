@@ -87,6 +87,13 @@ never executes downloaded code or blindly extracts archive paths. See `data/NOTI
    fail deterministic validation; unsupported or missing audit verdicts are withheld. This is a
    conservative model-assisted check, not a guarantee of correctness; source drawers permit review.
 
+Questions are tagged with an explicit answer goal. After citation checks, a separate Answer review
+checks direct responsiveness, preserved constraints and every explicit requested part. Practical advice
+must retain a supported proposed adaptation. A missing part triggers one bounded Writer rewrite
+with audit and coverage feedback; a remaining incomplete answer is marked `partial`.
+Uncited assertions that an entire WABC manual lacks guidance are rejected deterministically.
+Zone-attack searches require zone/offense content and bridge British/American spelling.
+
 The initial dispatch, follow-up plans and every sub-agent data call appear in `tool_calls` with
 `agent`, `name`, `args`, `result`. Contexts show actual model messages, not private reasoning.
 
@@ -127,6 +134,8 @@ and per-worker tool caps. Live same-model comparisons are generated, not invente
 ```bash
 uv run scripts/compare_models.py
 ```
+
+The screenshot-driven zone-attack regression is saved in `data/zone-regression.json`; it uses a reconstructed, fully specified scenario rather than claiming to reproduce the unavailable original prompt.
 
 The final interface, clarification questions and reports are English. Transient model rate limits return an actionable 429 response; citation audits run in bounded batches so malformed audit output cannot abort unrelated supported claims.
 

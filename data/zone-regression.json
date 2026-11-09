@@ -1,0 +1,623 @@
+{
+  "question": "We are an adult amateur five-on-five team with inconsistent perimeter shooting, a capable passing forward and two players who can cut and finish. We practice once a week for 60 minutes. How should we attack a 2-3 zone? Give one simple proposed action with execution steps, a short practice plan, and one failure condition. Use WABC principles; an NBA example is optional. Keep it concise.",
+  "note": "Regression scenario based on the screenshot topic; the original full prompt was unavailable.",
+  "model": "vertex_ai/gemini-3.5-flash",
+  "response": "# Attacking a 2-3 Zone with Limited Practice and Inconsistent Shooting\n\n## Proposed Action: 1-3-1 High-Post Hub & Baseline Cut\n\n**Proposed adaptation** We propose a 1-3-1 alignment to leverage your passing forward and cutters. The point guard uses pass fakes or dribble penetration to freeze the top zone defenders before entering the ball to the passing forward at the high post. As defenders collapse on the high post, the baseline cutter exploits their ball-watching by cutting hard behind the defense to receive a quick pass for an interior finish. [1](/evidence/wabc-l2-p331-1) [2](/evidence/wabc-l3-p217-1)\n\n## Proposed 60-Minute Practice Plan\n\n**Proposed adaptation** To maximize your weekly practice, we propose this 60-minute schedule: 0-15 minutes practicing pass fakes and dribble penetration to freeze defenders; 15-35 minutes playing a 3-on-3 breakdown drill focusing on high-post entries and baseline cuts; and 35-60 minutes of 5-on-5 scrimmage against a 2-3 zone, enforcing a rule where the ball must touch the high post or paint before shooting to prevent settling for low-percentage perimeter shots. [1](/evidence/wabc-l2-p331-1) [3](/evidence/wabc-l2-p332-1) [2](/evidence/wabc-l3-p217-1)\n\n## Failure Condition: Static Perimeter Settling\n\nZone defenses are designed to protect the basket and force lower-percentage perimeter shots. A key failure condition is static play, where players fail to use ball reversals, pass fakes, or dribble penetration to freeze defenders, resulting in players standing still and settling for contested outside shots rather than exploiting the high post and baseline cuts. [1](/evidence/wabc-l2-p331-1) [3](/evidence/wabc-l2-p332-1) [2](/evidence/wabc-l3-p217-1)\n\n## Sources\n\n1. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331) \u2014 PDF page 331\n2. [WABC Level 3 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=217) \u2014 PDF page 217\n3. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=332) \u2014 PDF page 332",
+  "research": {
+    "status": "complete",
+    "rounds": 2,
+    "researchers": 2,
+    "citations": [
+      {
+        "number": 1,
+        "source_id": "wabc-l2-p331-1",
+        "title": "WABC Level 2 Coaches Manual",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+        "locator": "PDF page 331",
+        "evidence_url": "/evidence/wabc-l2-p331-1"
+      },
+      {
+        "number": 2,
+        "source_id": "wabc-l3-p217-1",
+        "title": "WABC Level 3 Coaches Manual",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=217",
+        "locator": "PDF page 217",
+        "evidence_url": "/evidence/wabc-l3-p217-1"
+      },
+      {
+        "number": 3,
+        "source_id": "wabc-l2-p332-1",
+        "title": "WABC Level 2 Coaches Manual",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=332",
+        "locator": "PDF page 332",
+        "evidence_url": "/evidence/wabc-l2-p332-1"
+      }
+    ],
+    "withheld_claims": 3,
+    "answer_goal": "practical_advice",
+    "missing_requirements": []
+  },
+  "tool_calls": [
+    {
+      "id": 1,
+      "agent": "Lead",
+      "name": "plan_research",
+      "args": {
+        "round": 1
+      },
+      "result": {
+        "answer_goal": "practical_advice",
+        "clarification": "",
+        "tasks": [
+          {
+            "task": "Search WABC Level 1, 2, and 3 manuals for principles on attacking a 2-3 zone defense, focusing on high-post/short-corner positioning, ball movement, player cutting, and strategies when perimeter shooting is inconsistent.",
+            "focus": "coaching principles"
+          },
+          {
+            "task": "Develop a practical zone offense proposal including a simple action with execution steps, a 60-minute practice plan, and a failure condition, adapting WABC principles to the team's specific constraints (passing forward, two cutters, inconsistent shooting, and limited practice time).",
+            "focus": "amateur adaptation"
+          }
+        ],
+        "gaps": [],
+        "done": false
+      },
+      "at": 1794263159.446358
+    },
+    {
+      "id": 2,
+      "agent": "Researcher 2 \u00b7 amateur adaptation",
+      "name": "search_sources",
+      "args": {
+        "query": "zone offence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 331",
+            "text": "329\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.3. Screening the zone\nCombination of Screens and Dribble cont...\n\u2022  4 and 1 screen the back of the zone, as 3 relocates to the wing to receive pass.\nThis pass (a \u201cskip\u201d pass) is difficult for many players to throw accurately.  These\nscreens could be just as effective if 2 dribbled towards the key.\nAttacking Zones\nTeams playing against a zone should also consider:\n\u2022  \u201cBall Reversal\u201d \u2013 can move the zone \u201cout of shape\u201d.  It is often most effective, where\n\u2022 Screens are used on the back of the zone;\n\u2022 Dribble penetration is used to \u201cfreeze\u201d defenders;\n\u2022  Having a player opposite the ball on the 3 point line will often present a scoring option\n\u2022  Before passing the ball back to a player on the same side as the ball, the ball should cross\nthe split line (either by dribble or pass).  This will help to move the zone \u201cout of shape\u201d\n\u2022  In order to get a shot for a particular player, take the ball away from them, and then\nbring it back to them.\n\u2022  Dribbling the ball can drag defenders, passing the ball back will often find a free player\n\u2022  Use pass fakes to move zone defenders (who may move in anticipation) and then\nattack the gap created.\n2 1\n3\n4\nx1 x2\nx3\nx5\nx4",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p331-1",
+            "evidence_url": "/evidence/wabc-l2-p331-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 365",
+            "text": "363\nCoaches manual\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.1. Attacking full court zone pressure -  General principles\n2.4. Offence Against Full\nCourt Pressure\n2.4.1   Attacking Full Court Zone\nPressure - General Principles\nTeams may play full court defence using either \u201cman to\nman\u201d defence or a \u201ctrap\u201d (defence) where defenders are\nnot guarding a particular player but defend an assigned\narea of the court.\nRetreat Dribble\nOne of the most effective tools that an offensive player can use to beat any pressure is\nto use a retreat dribble (i.e. go backwards).\nThis can give the dribbler space to see an open teammate.  It also gives the player the\nopportunity to see the pass.\nRetreating also creates the situation where the defender must now \u201cclose out\u201d \u2013\nmoving forward to get to the player.  This is a difficult skill, and often creates the\nopportunity for the dribbler to get past them.\nParticular if the dribbler goes backwards at an angle, rather than straight back,\nit means the defender is now on their side, which can also be an advantage to\nthe dribbler.\n1\n4\nx1\n1\nx1",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=365",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p365-1",
+            "evidence_url": "/evidence/wabc-l1-p365-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 368",
+            "text": "366\nCoaches manual\n2.4.2   Attacking Full Court Zone\nPressure - Purposeful\nMovement\nPurposeful Movement\nIn playing against full court pressure, the offensive players can adopt the\nfollowing positions:\nOpposite: level with the ball, on the other side of the court\nDiagonal: ahead of the ball (1 pass away) on the other side of the court\nSame Side: one pass away from the ball on the same side of the court\nLong: ahead of the ball, approximately two passes away, generally on the opposite\nside of the court.\nThe player with the ball (1) has 3 passing options (4, 2 and 3) however it is important\nthat those players do not stand still.  They must be in a \u201cgap\u201d where they can receive\na pass.\n1 4\n2\nDiagonal3\n5\nOpposite\nLong\nSame\nSide\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.2. Attacking full court zone pressure -  Purposeful movement",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=368",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p368-1",
+            "evidence_url": "/evidence/wabc-l1-p368-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263161.657834
+    },
+    {
+      "id": 3,
+      "agent": "Researcher 1 \u00b7 coaching principles",
+      "name": "search_sources",
+      "args": {
+        "query": "zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 332",
+            "text": "330\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\n2.4.4 Proving an Opponent is Playing\nZone Defence\nFIBA recommends that zone defence\nis not allowed until players reach the\nage of 15.  Zone defence certainly is\nan important aspect of basketball and\nyoung players need to be instructed in\nhow to play zone defence.\nHowever, to ensure the development\nof good offensive and defensive\nfundamentals, young players should first\nbe instructed in the principles of \u201cman to\nman\u201d defence.\nZone defence is a form of team defence\nwhere each player becomes responsible\nfor defending both an area of the court,\nand any opponent who may be in that\narea. When five players work together\nin a zone it can become a very\nformidable defence.\nZone defences are primarily designed\nto protect the area near the basket. This\nessentially means that the offensive\nteam will be forced to take lower\npercentage, perimeter shots\u201d. There\nare a number of common zone defence\nalignments, such as:\nIn a zone defence one player may be responsible for guarding a number of players,\nor may not have anyone in their area at all.  For example, the following defensive\nassignments would probably apply, if the defence were in zone:\n\u2022 x1 would guard 1 or 2 if they receive the ball\n\u2022 x3 would guard 3 if they receive the ball\n\u2022 x2 would guard 4 or 5 if they receive the ball\n\u2022 x4 and x5 have no particular defensive responsibility\n2-3 or 2-1-2 1-2-2 or 3-2\nx1 x2\nx4 x5 x3\n3\n2\n15\n4 x1x2\nx3x4\nx5\nx1\nx2 x3\nx4 x5\nx1\nx2\nx3 x4x5\n1-3-1",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=332",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p332-1",
+            "evidence_url": "/evidence/wabc-l2-p332-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 304",
+            "text": "1. Defensive tactics and strategies  1.3. Zone defences 1.3.1. Why zone is not recommended for players under 15\n302\nCoaches Manual\nWhilst the \u201cno zone\u201d rule focuses\non the defence, it was introduced to\nenhance the development of both\noffensive and defensive skills. Indeed,\nit is up to the offence, through ball and\nplayer movement, to prove that it is\na zone defence.\nIt is important to remember that the \u201cno\nzone\u201d rule applies only in the half court\nand zone presses and trapping defences\nare allowed, if they fall back to man to\nman principles in the quarter court.\nWhere a \u201cno zone\u201d rule is applied it is\nrecommended that it is not for referees\nto adjudicate whether or not a zone\ndefence is being played.  Instead, an\nindependent official (or \u201czone buster\u201d)\nis appointed to each game. This person\nneeds a reasonably high level of\nknowledge as it can at times be difficult\nto determine whether or not a team is\nplaying zone defence.",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=304",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p304-1",
+            "evidence_url": "/evidence/wabc-l1-p304-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 132",
+            "text": "Coaches manual\n130\nFollow-up\n1. What are the relative strengths and weaknesses of a 1-2-2 Match Up Zone defence?\n2.  Reflect upon a team that you have coached.  What offence (or offensive principles) would they have\nused against a 1-1-3 Match Up Zone defence?\n3. When would you introduce a zone defence with your team?  Explain your answer.\n1. Defensive tactics & strategies  1.3 Zone defences Follow-up",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=132",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p132-1",
+            "evidence_url": "/evidence/wabc-l3-p132-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263161.896673
+    },
+    {
+      "id": 4,
+      "agent": "Researcher 1 \u00b7 coaching principles",
+      "name": "search_sources",
+      "args": {
+        "query": "offence against zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 331",
+            "text": "329\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.3. Screening the zone\nCombination of Screens and Dribble cont...\n\u2022  4 and 1 screen the back of the zone, as 3 relocates to the wing to receive pass.\nThis pass (a \u201cskip\u201d pass) is difficult for many players to throw accurately.  These\nscreens could be just as effective if 2 dribbled towards the key.\nAttacking Zones\nTeams playing against a zone should also consider:\n\u2022  \u201cBall Reversal\u201d \u2013 can move the zone \u201cout of shape\u201d.  It is often most effective, where\n\u2022 Screens are used on the back of the zone;\n\u2022 Dribble penetration is used to \u201cfreeze\u201d defenders;\n\u2022  Having a player opposite the ball on the 3 point line will often present a scoring option\n\u2022  Before passing the ball back to a player on the same side as the ball, the ball should cross\nthe split line (either by dribble or pass).  This will help to move the zone \u201cout of shape\u201d\n\u2022  In order to get a shot for a particular player, take the ball away from them, and then\nbring it back to them.\n\u2022  Dribbling the ball can drag defenders, passing the ball back will often find a free player\n\u2022  Use pass fakes to move zone defenders (who may move in anticipation) and then\nattack the gap created.\n2 1\n3\n4\nx1 x2\nx3\nx5\nx4",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p331-1",
+            "evidence_url": "/evidence/wabc-l2-p331-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 365",
+            "text": "363\nCoaches manual\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.1. Attacking full court zone pressure -  General principles\n2.4. Offence Against Full\nCourt Pressure\n2.4.1   Attacking Full Court Zone\nPressure - General Principles\nTeams may play full court defence using either \u201cman to\nman\u201d defence or a \u201ctrap\u201d (defence) where defenders are\nnot guarding a particular player but defend an assigned\narea of the court.\nRetreat Dribble\nOne of the most effective tools that an offensive player can use to beat any pressure is\nto use a retreat dribble (i.e. go backwards).\nThis can give the dribbler space to see an open teammate.  It also gives the player the\nopportunity to see the pass.\nRetreating also creates the situation where the defender must now \u201cclose out\u201d \u2013\nmoving forward to get to the player.  This is a difficult skill, and often creates the\nopportunity for the dribbler to get past them.\nParticular if the dribbler goes backwards at an angle, rather than straight back,\nit means the defender is now on their side, which can also be an advantage to\nthe dribbler.\n1\n4\nx1\n1\nx1",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=365",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p365-1",
+            "evidence_url": "/evidence/wabc-l1-p365-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 223",
+            "text": "221\nCoaches manual\nFollow-up\n1.  Have you instructed teams to use dribble or on ball screens against a zone defence?\nDo you think that your team could use it effectively?  Discuss your view with a coaching colleague.\n2. How does your team currently play against a zone defence?\n3.  Do you think a zone defence would be effective against the teams that you play?  What offence do you\nthink they would use?\n4.  Some coaches prefer to have separate offences for playing against \u201cman to man\u201d and zone offences\nwhilst others have one offence to use against both.  Which approach do you prefer?\n2. Offensive Tactics and Strategies 2.4 Offence Against Zone Defence Follow-up",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=223",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p223-1",
+            "evidence_url": "/evidence/wabc-l3-p223-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263163.2525702
+    },
+    {
+      "id": 5,
+      "agent": "Researcher 2 \u00b7 amateur adaptation",
+      "name": "search_sources",
+      "args": {
+        "query": "Offence against zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 331",
+            "text": "329\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.3. Screening the zone\nCombination of Screens and Dribble cont...\n\u2022  4 and 1 screen the back of the zone, as 3 relocates to the wing to receive pass.\nThis pass (a \u201cskip\u201d pass) is difficult for many players to throw accurately.  These\nscreens could be just as effective if 2 dribbled towards the key.\nAttacking Zones\nTeams playing against a zone should also consider:\n\u2022  \u201cBall Reversal\u201d \u2013 can move the zone \u201cout of shape\u201d.  It is often most effective, where\n\u2022 Screens are used on the back of the zone;\n\u2022 Dribble penetration is used to \u201cfreeze\u201d defenders;\n\u2022  Having a player opposite the ball on the 3 point line will often present a scoring option\n\u2022  Before passing the ball back to a player on the same side as the ball, the ball should cross\nthe split line (either by dribble or pass).  This will help to move the zone \u201cout of shape\u201d\n\u2022  In order to get a shot for a particular player, take the ball away from them, and then\nbring it back to them.\n\u2022  Dribbling the ball can drag defenders, passing the ball back will often find a free player\n\u2022  Use pass fakes to move zone defenders (who may move in anticipation) and then\nattack the gap created.\n2 1\n3\n4\nx1 x2\nx3\nx5\nx4",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p331-1",
+            "evidence_url": "/evidence/wabc-l2-p331-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 365",
+            "text": "363\nCoaches manual\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.1. Attacking full court zone pressure -  General principles\n2.4. Offence Against Full\nCourt Pressure\n2.4.1   Attacking Full Court Zone\nPressure - General Principles\nTeams may play full court defence using either \u201cman to\nman\u201d defence or a \u201ctrap\u201d (defence) where defenders are\nnot guarding a particular player but defend an assigned\narea of the court.\nRetreat Dribble\nOne of the most effective tools that an offensive player can use to beat any pressure is\nto use a retreat dribble (i.e. go backwards).\nThis can give the dribbler space to see an open teammate.  It also gives the player the\nopportunity to see the pass.\nRetreating also creates the situation where the defender must now \u201cclose out\u201d \u2013\nmoving forward to get to the player.  This is a difficult skill, and often creates the\nopportunity for the dribbler to get past them.\nParticular if the dribbler goes backwards at an angle, rather than straight back,\nit means the defender is now on their side, which can also be an advantage to\nthe dribbler.\n1\n4\nx1\n1\nx1",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=365",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p365-1",
+            "evidence_url": "/evidence/wabc-l1-p365-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 223",
+            "text": "221\nCoaches manual\nFollow-up\n1.  Have you instructed teams to use dribble or on ball screens against a zone defence?\nDo you think that your team could use it effectively?  Discuss your view with a coaching colleague.\n2. How does your team currently play against a zone defence?\n3.  Do you think a zone defence would be effective against the teams that you play?  What offence do you\nthink they would use?\n4.  Some coaches prefer to have separate offences for playing against \u201cman to man\u201d and zone offences\nwhilst others have one offence to use against both.  Which approach do you prefer?\n2. Offensive Tactics and Strategies 2.4 Offence Against Zone Defence Follow-up",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=223",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p223-1",
+            "evidence_url": "/evidence/wabc-l3-p223-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263163.621108
+    },
+    {
+      "id": 6,
+      "agent": "Researcher 2 \u00b7 amateur adaptation",
+      "name": "search_sources",
+      "args": {
+        "query": "zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 332",
+            "text": "330\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\n2.4.4 Proving an Opponent is Playing\nZone Defence\nFIBA recommends that zone defence\nis not allowed until players reach the\nage of 15.  Zone defence certainly is\nan important aspect of basketball and\nyoung players need to be instructed in\nhow to play zone defence.\nHowever, to ensure the development\nof good offensive and defensive\nfundamentals, young players should first\nbe instructed in the principles of \u201cman to\nman\u201d defence.\nZone defence is a form of team defence\nwhere each player becomes responsible\nfor defending both an area of the court,\nand any opponent who may be in that\narea. When five players work together\nin a zone it can become a very\nformidable defence.\nZone defences are primarily designed\nto protect the area near the basket. This\nessentially means that the offensive\nteam will be forced to take lower\npercentage, perimeter shots\u201d. There\nare a number of common zone defence\nalignments, such as:\nIn a zone defence one player may be responsible for guarding a number of players,\nor may not have anyone in their area at all.  For example, the following defensive\nassignments would probably apply, if the defence were in zone:\n\u2022 x1 would guard 1 or 2 if they receive the ball\n\u2022 x3 would guard 3 if they receive the ball\n\u2022 x2 would guard 4 or 5 if they receive the ball\n\u2022 x4 and x5 have no particular defensive responsibility\n2-3 or 2-1-2 1-2-2 or 3-2\nx1 x2\nx4 x5 x3\n3\n2\n15\n4 x1x2\nx3x4\nx5\nx1\nx2 x3\nx4 x5\nx1\nx2\nx3 x4x5\n1-3-1",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=332",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p332-1",
+            "evidence_url": "/evidence/wabc-l2-p332-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 304",
+            "text": "1. Defensive tactics and strategies  1.3. Zone defences 1.3.1. Why zone is not recommended for players under 15\n302\nCoaches Manual\nWhilst the \u201cno zone\u201d rule focuses\non the defence, it was introduced to\nenhance the development of both\noffensive and defensive skills. Indeed,\nit is up to the offence, through ball and\nplayer movement, to prove that it is\na zone defence.\nIt is important to remember that the \u201cno\nzone\u201d rule applies only in the half court\nand zone presses and trapping defences\nare allowed, if they fall back to man to\nman principles in the quarter court.\nWhere a \u201cno zone\u201d rule is applied it is\nrecommended that it is not for referees\nto adjudicate whether or not a zone\ndefence is being played.  Instead, an\nindependent official (or \u201czone buster\u201d)\nis appointed to each game. This person\nneeds a reasonably high level of\nknowledge as it can at times be difficult\nto determine whether or not a team is\nplaying zone defence.",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=304",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p304-1",
+            "evidence_url": "/evidence/wabc-l1-p304-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 132",
+            "text": "Coaches manual\n130\nFollow-up\n1. What are the relative strengths and weaknesses of a 1-2-2 Match Up Zone defence?\n2.  Reflect upon a team that you have coached.  What offence (or offensive principles) would they have\nused against a 1-1-3 Match Up Zone defence?\n3. When would you introduce a zone defence with your team?  Explain your answer.\n1. Defensive tactics & strategies  1.3 Zone defences Follow-up",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=132",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p132-1",
+            "evidence_url": "/evidence/wabc-l3-p132-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263164.967149
+    },
+    {
+      "id": 7,
+      "agent": "Researcher 1 \u00b7 coaching principles",
+      "name": "search_sources",
+      "args": {
+        "query": "high post zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 217",
+            "text": "215\nCoaches manual\n2.4.3   1-3-1 Alignment against\nZone Defence\nMany teams when facing a zone defence resort to shooting from the outside and this\nis a significant part of the reason why FIBA recommends that children do not play zone\ndefence until the age of 14.\nHowever, a well constructed offence against a zone should create:\n\u2022 Opportunities for penetration off the dribble;\n\u2022 Shots inside the key and both high and low post play;\n\u2022 Opportunities to shoot from the perimeter.\nBelow is a 1-3-1 offensive alignment that can achieve this.\nInitial Alignment\nThe 1-3-1 alignment is commonly seen.  Against a zone it is particularly important for a\nplayer to be in a baseline position \u2013 behind the zone defenders.\nIf defenders \u201cball watch\u201d it will often provide an opportunity for 4 to cut.\nOn Ball Screen\nThe high post can set a screen for 1.\nAs 1 dribbles, 4 moves to the opposite corner and the strong side wing player also\nsinks to the corner.\nThe high post player steps into the key, but allow 1 room to penetrate.\n1\n2 5 3\n4\nx1\nx2\nx3 x4\nx5\n1\n2 5 3\n4\nx1\nx2\nx3 x4\nx5\n2. Offensive Tactics and Strategies 2.4 Offence Against Zone Defence 2.4.3 1-3-1 Alignment against Zone Defence",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=217",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p217-1",
+            "evidence_url": "/evidence/wabc-l3-p217-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 105",
+            "text": "1. Defensive tactics & strategies  1.3 Zone defences 1.3.1. 1-2-2 Match up defence\nCoaches manual\n103\n1.3  Zone defenSes\n1.3.1  1-2-2 match up defence\nA \u201cMatch Up\u201d zone combines elements of \u201cman to man\u201d\ndefence (on ball) and zone defence (away from the ball)\nand has sometimes been described as a switching\n\u201cman to man\u201d defence.\n1-2-2 Match Up defence\nThe 1-2-2 match up defence can be demonstrated, and practiced, against 7 players.\nInitial Alignment and Slides\nUsing seven offensive players (5 perimeter, high and low posts)\nwill show all the coverage that is required.\nDefenders start:\n\u2022 x1 takes the ball;\n\u2022  x2 and x3 occupy the high post area\n\u2013 keeping arms in front of the post\nplayer to stop any pass;\n\u2022 x4 and x5 are in the low post areas.\nOn a pass to the wing:\n\u2022 the closest guard (x2) takes the ball\n\u2022 x1 drops back to guard the high post\n\u2022 the closest forward (x4) steps out\n\u2022 the other forward steps across\n\u2022  the other guard rotates down into the\nfront line\nx1\nx2x3\nx4x5\n1\n2\n3\n4\n5\n6\n7\nOne advantage of a match up\nzone defence is that it may confuse\nopponents about what defence your\nteam is playing.  This can be particularly\neffective against opponents that have\none offence to play against zone\ndefence and a separate offence to\nplay against man to man.\nThere are various alignments that can\nbe used in zones and most have options\nfor trapping and \u201cdenial\u201d pressure if\nyou want to utilize them.  In determining\nwhich zone defence to use you\nshould consider:\n\u2022  Your physical talent: some zones will\nallow you to keep \u201cbigs\u201d near the basket,\nothers have a lot of interaction between\nperimeter and post players;\n\u2022  Your opponent\u2019s shooting: some zones\nprovide better coverage of perimeter\nshooters than others (e.g. a 1-3-1 provides\nbetter coverage than a 1-1-3);",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=105",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p105-1",
+            "evidence_url": "/evidence/wabc-l3-p105-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 127",
+            "text": "Coaches manual\n125\n1-1-3 Against Two High Posts\nWhere there are two high post players, the up guard attempts to influence the ball to\none side and the back guard denies the high post on that side.\nThe frontline player (x3) hedges towards the other high post.\nx1\nx2\nx3 x5 x4\n1\n2 34 5\n1. Defensive tactics & strategies  1.3 Zone defences 1.3.2. 1-1-3 Match up defence",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=127",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p127-1",
+            "evidence_url": "/evidence/wabc-l3-p127-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263165.127102
+    },
+    {
+      "id": 8,
+      "agent": "Researcher 1 \u00b7 coaching principles",
+      "name": "search_sources",
+      "args": {
+        "query": "2.4. Offence against zone defence",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 331",
+            "text": "329\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.3. Screening the zone\nCombination of Screens and Dribble cont...\n\u2022  4 and 1 screen the back of the zone, as 3 relocates to the wing to receive pass.\nThis pass (a \u201cskip\u201d pass) is difficult for many players to throw accurately.  These\nscreens could be just as effective if 2 dribbled towards the key.\nAttacking Zones\nTeams playing against a zone should also consider:\n\u2022  \u201cBall Reversal\u201d \u2013 can move the zone \u201cout of shape\u201d.  It is often most effective, where\n\u2022 Screens are used on the back of the zone;\n\u2022 Dribble penetration is used to \u201cfreeze\u201d defenders;\n\u2022  Having a player opposite the ball on the 3 point line will often present a scoring option\n\u2022  Before passing the ball back to a player on the same side as the ball, the ball should cross\nthe split line (either by dribble or pass).  This will help to move the zone \u201cout of shape\u201d\n\u2022  In order to get a shot for a particular player, take the ball away from them, and then\nbring it back to them.\n\u2022  Dribbling the ball can drag defenders, passing the ball back will often find a free player\n\u2022  Use pass fakes to move zone defenders (who may move in anticipation) and then\nattack the gap created.\n2 1\n3\n4\nx1 x2\nx3\nx5\nx4",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p331-1",
+            "evidence_url": "/evidence/wabc-l2-p331-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 365",
+            "text": "363\nCoaches manual\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.1. Attacking full court zone pressure -  General principles\n2.4. Offence Against Full\nCourt Pressure\n2.4.1   Attacking Full Court Zone\nPressure - General Principles\nTeams may play full court defence using either \u201cman to\nman\u201d defence or a \u201ctrap\u201d (defence) where defenders are\nnot guarding a particular player but defend an assigned\narea of the court.\nRetreat Dribble\nOne of the most effective tools that an offensive player can use to beat any pressure is\nto use a retreat dribble (i.e. go backwards).\nThis can give the dribbler space to see an open teammate.  It also gives the player the\nopportunity to see the pass.\nRetreating also creates the situation where the defender must now \u201cclose out\u201d \u2013\nmoving forward to get to the player.  This is a difficult skill, and often creates the\nopportunity for the dribbler to get past them.\nParticular if the dribbler goes backwards at an angle, rather than straight back,\nit means the defender is now on their side, which can also be an advantage to\nthe dribbler.\n1\n4\nx1\n1\nx1",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=365",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p365-1",
+            "evidence_url": "/evidence/wabc-l1-p365-1"
+          },
+          {
+            "document_id": "wabc-l3",
+            "locator": "PDF page 223",
+            "text": "221\nCoaches manual\nFollow-up\n1.  Have you instructed teams to use dribble or on ball screens against a zone defence?\nDo you think that your team could use it effectively?  Discuss your view with a coaching colleague.\n2. How does your team currently play against a zone defence?\n3.  Do you think a zone defence would be effective against the teams that you play?  What offence do you\nthink they would use?\n4.  Some coaches prefer to have separate offences for playing against \u201cman to man\u201d and zone offences\nwhilst others have one offence to use against both.  Which approach do you prefer?\n2. Offensive Tactics and Strategies 2.4 Offence Against Zone Defence Follow-up",
+            "title": "WABC Level 3 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf#page=223",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l3-p223-1",
+            "evidence_url": "/evidence/wabc-l3-p223-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263166.711605
+    },
+    {
+      "id": 9,
+      "agent": "Researcher 2 \u00b7 amateur adaptation",
+      "name": "search_sources",
+      "args": {
+        "query": "Offence against zone",
+        "team": "",
+        "kind": "coaching_manual"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "wabc-l2",
+            "locator": "PDF page 331",
+            "text": "329\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.3. Screening the zone\nCombination of Screens and Dribble cont...\n\u2022  4 and 1 screen the back of the zone, as 3 relocates to the wing to receive pass.\nThis pass (a \u201cskip\u201d pass) is difficult for many players to throw accurately.  These\nscreens could be just as effective if 2 dribbled towards the key.\nAttacking Zones\nTeams playing against a zone should also consider:\n\u2022  \u201cBall Reversal\u201d \u2013 can move the zone \u201cout of shape\u201d.  It is often most effective, where\n\u2022 Screens are used on the back of the zone;\n\u2022 Dribble penetration is used to \u201cfreeze\u201d defenders;\n\u2022  Having a player opposite the ball on the 3 point line will often present a scoring option\n\u2022  Before passing the ball back to a player on the same side as the ball, the ball should cross\nthe split line (either by dribble or pass).  This will help to move the zone \u201cout of shape\u201d\n\u2022  In order to get a shot for a particular player, take the ball away from them, and then\nbring it back to them.\n\u2022  Dribbling the ball can drag defenders, passing the ball back will often find a free player\n\u2022  Use pass fakes to move zone defenders (who may move in anticipation) and then\nattack the gap created.\n2 1\n3\n4\nx1 x2\nx3\nx5\nx4",
+            "title": "WABC Level 2 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=331",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l2-p331-1",
+            "evidence_url": "/evidence/wabc-l2-p331-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 365",
+            "text": "363\nCoaches manual\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.1. Attacking full court zone pressure -  General principles\n2.4. Offence Against Full\nCourt Pressure\n2.4.1   Attacking Full Court Zone\nPressure - General Principles\nTeams may play full court defence using either \u201cman to\nman\u201d defence or a \u201ctrap\u201d (defence) where defenders are\nnot guarding a particular player but defend an assigned\narea of the court.\nRetreat Dribble\nOne of the most effective tools that an offensive player can use to beat any pressure is\nto use a retreat dribble (i.e. go backwards).\nThis can give the dribbler space to see an open teammate.  It also gives the player the\nopportunity to see the pass.\nRetreating also creates the situation where the defender must now \u201cclose out\u201d \u2013\nmoving forward to get to the player.  This is a difficult skill, and often creates the\nopportunity for the dribbler to get past them.\nParticular if the dribbler goes backwards at an angle, rather than straight back,\nit means the defender is now on their side, which can also be an advantage to\nthe dribbler.\n1\n4\nx1\n1\nx1",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=365",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p365-1",
+            "evidence_url": "/evidence/wabc-l1-p365-1"
+          },
+          {
+            "document_id": "wabc-l1",
+            "locator": "PDF page 368",
+            "text": "366\nCoaches manual\n2.4.2   Attacking Full Court Zone\nPressure - Purposeful\nMovement\nPurposeful Movement\nIn playing against full court pressure, the offensive players can adopt the\nfollowing positions:\nOpposite: level with the ball, on the other side of the court\nDiagonal: ahead of the ball (1 pass away) on the other side of the court\nSame Side: one pass away from the ball on the same side of the court\nLong: ahead of the ball, approximately two passes away, generally on the opposite\nside of the court.\nThe player with the ball (1) has 3 passing options (4, 2 and 3) however it is important\nthat those players do not stand still.  They must be in a \u201cgap\u201d where they can receive\na pass.\n1 4\n2\nDiagonal3\n5\nOpposite\nLong\nSame\nSide\n2. Offensive tactics and strategies  2.4. Offence against full court pressure 2.4.2. Attacking full court zone pressure -  Purposeful movement",
+            "title": "WABC Level 1 Coaches Manual",
+            "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf#page=368",
+            "kind": "coaching_manual",
+            "team": "",
+            "season": "",
+            "game_id": "",
+            "source_id": "wabc-l1-p368-1",
+            "evidence_url": "/evidence/wabc-l1-p368-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794263166.712812
+    },
+    {
+      "id": 10,
+      "agent": "Researcher 1 \u00b7 coaching principles",
+      "name": "finish_research",
+      "args": {
+        "exploration_turn_cap": 4
+      },
+      "result": {
+        "retrieved_ids": [
+          "wabc-l1-p304-1",
+          "wabc-l1-p365-1",
+          "wabc-l2-p331-1",
+          "wabc-l2-p332-1",
+          "wabc-l3-p105-1",
+          "wabc-l3-p127-1",
+          "wabc-l3-p132-1",
+          "wabc-l3-p217-1",
+          "wabc-l3-p223-1"
+        ],
+        "reason": "Exploration cap reached; synthesize available evidence."
+      },
+      "at": 1794263166.712866
+    },
+    {
+      "id": 11,
+      "agent": "Researcher 2 \u00b7 amateur adaptation",
+      "name": "finish_research",
+      "args": {
+        "exploration_turn_cap": 4
+      },
+      "result": {
+        "retrieved_ids": [
+          "wabc-l1-p304-1",
+          "wabc-l1-p365-1",
+          "wabc-l1-p368-1",
+          "wabc-l2-p331-1",
+          "wabc-l2-p332-1",
+          "wabc-l3-p132-1",
+          "wabc-l3-p223-1"
+        ],
+        "reason": "Exploration cap reached; synthesize available evidence."
+      },
+      "at": 1794263166.7157319
+    },
+    {
+      "id": 12,
+      "agent": "Lead",
+      "name": "plan_research",
+      "args": {
+        "round": 2
+      },
+      "result": {
+        "answer_goal": "practical_advice",
+        "clarification": "",
+        "tasks": [],
+        "gaps": [],
+        "done": true
+      },
+      "at": 1794263183.288695
+    },
+    {
+      "id": 13,
+      "agent": "Answer review",
+      "name": "check_answer_coverage",
+      "args": {},
+      "result": {
+        "adequate": false,
+        "missing_requirements": [
+          "A short practice plan suitable for a 60-minute weekly practice"
+        ]
+      },
+      "at": 1794263210.7890089
+    },
+    {
+      "id": 14,
+      "agent": "Writer",
+      "name": "repair_answer",
+      "args": {
+        "answer_goal": "practical_advice"
+      },
+      "result": {
+        "reason": "The audited draft did not cover the requested answer. One bounded rewrite is allowed.",
+        "missing_requirements": [
+          "A short practice plan suitable for a 60-minute weekly practice"
+        ]
+      },
+      "at": 1794263210.7891672
+    },
+    {
+      "id": 15,
+      "agent": "Answer review",
+      "name": "check_answer_coverage",
+      "args": {},
+      "result": {
+        "adequate": true,
+        "missing_requirements": []
+      },
+      "at": 1794263236.2984982
+    },
+    {
+      "id": 16,
+      "agent": "Evidence audit",
+      "name": "check_citations",
+      "args": {},
+      "result": {
+        "accepted": 3,
+        "withheld": [
+          "Selective retrieval cannot establish that an entire manual lacks guidance.",
+          "The specific 60-minute practice plan, including the 3-on-3 breakdown and 5-on-5 scrimmage rules, is not found in the cited WABC sources.",
+          "Selective retrieval cannot establish that an entire manual lacks guidance."
+        ],
+        "answers_requested_goal": true
+      },
+      "at": 1794263236.298646
+    }
+  ],
+  "seconds": 85.03
+}

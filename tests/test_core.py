@@ -141,6 +141,7 @@ def test_unretrieved_citation_and_unverified_limit_are_withheld(monkeypatch):
         if agent.name=='Writer':return research.Report(title='Brief',claims=[
             research.Claim(heading='Supported',text='A supported case.',kind='observation',source_ids=['mia-nyk-3']),
             research.Claim(heading='Invented',text='This must never display.',kind='observation',source_ids=['not-read'])],limitations=['The available quarter is missing.'])
+        if agent.name=='Answer review': return research.AnswerReview(adequate=True,missing_requirements=[])
         payload=json.loads(prompt)
         assert all('not-read' not in c['source_ids'] for c in payload['claims'])
         return research.Audit(verdicts=[research.Verdict(claim_index=0,supported=True,reason='supported'),research.Verdict(claim_index=1,supported=False,reason='The quarter exists; unqueried is not absent.')])
@@ -231,3 +232,46 @@ def test_extended_catalog_and_full_manuals():
         assert store.search(f'wabc-l{level}')['results']
     assert len(c['acb']['teams'])>10
     assert client.get('/manifest').json()['acb_aggregate_game_count']==293
+
+def test_zone_attack_search_prioritizes_zone_offence_pages():
+    result=store.search('How can our team attack a 2-3 zone with inconsistent perimeter shooting?',kind='coaching_manual',limit=3)
+    texts=[store.read_passage(r['id'])['text'].lower() for r in result['results']]
+    assert texts and all('zone' in t for t in texts)
+    assert any('offence against zone' in t or 'offenceagainstzone' in t.replace(' ','') for t in texts)
+
+def test_uncited_manual_absence_cannot_pass_a_permissive_model_audit(monkeypatch):
+    async def fake_call(agent,prompt,state,turns=1,context=None):
+        items=json.loads(prompt)['claims']
+        return research.Audit(verdicts=[research.Verdict(claim_index=x['index'],supported=True,reason='accepted') for x in items])
+    monkeypatch.setattr(research,'call',fake_call)
+    report=research.Report(title='Zone attack',claims=[],limitations=['The WABC manuals do not provide specific adjustments for poor shooters against a zone.'])
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    accepted,limits,rejected=asyncio.run(research.validate_report(report,'zone attack',store.catalog(),state))
+    assert not accepted and not limits and 'entire manual' in rejected[0]
+
+@pytest.mark.parametrize('repair_succeeds',[True,False,'unavailable','missing_plan'])
+def test_advice_requires_audited_recommendation_and_only_one_rewrite(monkeypatch,repair_succeeds):
+    ev=store.read_passage('wabc-l2-p325-1');calls={'writer':0}
+    async def fake_worker(task,question,state,catalog):
+        state.researchers+=1;state.register(ev)
+        notes={'findings':'Short-corner principles','source_ids':[ev['source_id']],'gaps':[]}
+        state.findings.append(notes);return notes
+    async def fake_call(agent,prompt,state,turns=1,context=None):
+        if agent.name=='Lead':
+            return research.Plan(answer_goal='practical_advice',tasks=[research.Task(task='principles',focus='coaching principles'),research.Task(task='proposal',focus='amateur adaptation')]) if state.rounds==1 else research.Plan(done=True)
+        if agent.name=='Writer':
+            calls['writer']+=1
+            if repair_succeeds=='unavailable' and calls['writer']==2: raise research.ModelBehaviorError('repair format failed')
+            kind='adaptation' if repair_succeeds=='missing_plan' or (repair_succeeds is True and calls['writer']==2) else 'observation'
+            return research.Report(title='Zone attack',claims=[research.Claim(heading='Short corner',text='Use the short corner to stretch the zone.',kind=kind,source_ids=[ev['source_id']])],limitations=[])
+        data=json.loads(prompt)
+        if agent.name=='Answer review':
+            adequate=repair_succeeds!='missing_plan' and any(x['kind']=='adaptation' for x in data['audited_answer'])
+            return research.AnswerReview(adequate=adequate,missing_requirements=[] if adequate else ['A practical plan for your stated constraints is missing.'])
+        return research.Audit(verdicts=[research.Verdict(claim_index=x['index'],supported=True,reason='supported') for x in data['claims']])
+    monkeypatch.setattr(research,'worker',fake_worker);monkeypatch.setattr(research,'call',fake_call)
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    answer,meta=asyncio.run(research.deep_research('How should we attack a zone with inconsistent shooting?',state))
+    assert calls['writer']==2
+    assert meta['status']==('complete' if repair_succeeds is True else 'partial')
+    assert ('did not establish every requested part' in answer)==(repair_succeeds is not True)

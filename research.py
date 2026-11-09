@@ -2,6 +2,7 @@
 import asyncio
 import json
 import os
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Literal
@@ -29,6 +30,7 @@ class Task(BaseModel):
     task: str
     focus: Literal['NBA evidence','ACB data','coaching principles','amateur adaptation','evidence gap']
 class Plan(BaseModel):
+    answer_goal: Literal['explanation','data','practical_advice'] = 'explanation'
     clarification: str = ''
     tasks: list[Task] = Field(default_factory=list)
     gaps: list[str] = Field(default_factory=list)
@@ -46,6 +48,10 @@ class Report(BaseModel):
     title: str
     claims: list[Claim]
     limitations: list[str]
+class AnswerReview(BaseModel):
+    adequate: bool
+    missing_requirements: list[str]
+
 class Verdict(BaseModel):
     claim_index: int
     supported: bool
@@ -158,11 +164,12 @@ win-rate benefit. Do not assert amateur league rules unless the user or retrieve
 
 lead=Agent(name='Lead',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Plan,
  instructions=COMMON+'''
-You plan and audit research; you do not write the final answer. On the FIRST round:
+You plan and audit research; you do not write the final answer. Set answer_goal=practical_advice for requests about what to run, how to attack/defend or a practice plan; data for requested statistics; explanation otherwise. Preserve all user constraints exactly: inconsistent shooting is not zero shooters. On the FIRST round:
 - Clarify truly vague questions before dispatch: unknown research goal, ambiguous team/game/season,
   or an amateur prescription missing personnel, skill/shooting and practice constraints. Ask up to
   three concrete questions in clarification, with no tasks. Do NOT clarify well-specified questions,
   general sourced learning questions, or supplied defaults (Warriors=2021-22, Heat=2022-23).
+- For practical advice, assign at least one Researcher to retrieve relevant coaching principles and another to develop a clearly labeled proposal from those principles and the actual constraints. A historical example alone cannot answer a practical request.
 - Otherwise create 2 or 3 distinct tasks in this single plan. Choose relevant sources: ACB data
   and coaching principles for general tactics; NBA case evidence for NBA-specific questions.
   Add amateur adaptation only if relevant. Do not force NBA cases into unrelated questions. Give explicit scope/game IDs
@@ -175,7 +182,7 @@ and seven researchers total, enforced in code. Do not dispatch unrelated work to
 researcher=Agent(name='Researcher',model=LitellmModel(model=RESEARCH_MODEL_NAME),model_settings=SETTINGS,
  output_type=Notes, tools=[list_catalog,search_sources,read_source,get_game_events,summarize_game,count_acb_actions,get_acb_actions,get_acb_season],
  instructions=COMMON+'''
-Investigate ONLY your assigned question in a FRESH context. Use search_sources and read_source;
+Investigate ONLY your assigned question in a FRESH context. For a zone-attack question, search coaching_manual with short keywords such as zone offence, not only the user's long sentence about poor shooting. When a relevant passage names a chapter, refine or read nearby passage IDs before concluding no guidance was retrieved. Never infer that a whole manual lacks guidance from keyword results. Use search_sources and read_source;
 read at least two relevant passages when possible. search_sources already returns full citable passages; do NOT keep searching instead of writing notes. For a task naming gsw-g4, search that exact document ID first. For game-number
 NBA claims use summarize_game/get_game_events. For ACB action frequencies query count_acb_actions, never count the limited examples returned by get_acb_actions. For season metrics query get_acb_season and retrieve data_dictionary definitions. Preserve denominators, units, direct filters and sample scopes. Never present rates as percentages without checking units. No causal or best-player conclusions from unadjusted rankings. Read the actual tool output before citing its source_id. Stop after 2-4 tool calls if the assigned question is answered. Do not invent extra gaps unrelated to the question.
 At most 10 tool calls and 6 model turns. Return concise findings with exact source IDs next to
@@ -185,24 +192,37 @@ search is NOT proof the action never occurred. No unverified external URLs or me
 ''')
 writer=Agent(name='Writer',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Report,
  instructions=COMMON+'''
-Write a concise useful basketball research brief, using ONLY provided findings and evidence.
+Write a concise useful basketball research brief, using ONLY provided findings and evidence. Answer the original question directly. For answer_goal=practical_advice, lead with an adaptation giving execution steps grounded in retrieved principles and user constraints. A professional example is supplementary. The exact user scenario need not appear verbatim in a manual: explicitly label your application of cited principles as a proposal, without promising efficacy. Preserve the user's constraint strength (inconsistent shooting does not mean no shooters).
 Default to 2-3 focused claims totaling about 150-220 words; expand only when the user explicitly requests detail. Lead with the answer, then execution or evidence. No uncited factual introduction. Each observation needs exact source_ids. Include at most one short, material limitation in limitations; avoid repeating caveats or source metadata in each claim.
-Use adaptations only for requested amateur advice; clearly call them proposals, explain personnel
+For a requested practice plan, propose your own allocation of training time grounded in cited principles; label the schedule as your proposal rather than a manual prescription. Use adaptations only for requested amateur advice; clearly call them proposals, explain personnel
 requirements, simplify execution and provide failure conditions. An adaptation's source IDs support
 its underlying principles, not proven success. No raw Markdown links: the server renders citations.
-Every factual sentence in a claim must be supported by that claim's evidence. Split unrelated claims. Keep each observation to one main factual point. Preserve exact court locations: do not turn an unspecified post touch into a high-post touch. Do not invent league rule differences.
+Put source IDs only in source_ids, never in the claim text; the server renders citation links. Every factual sentence in a claim must be supported by that claim's evidence. Split unrelated claims. Keep each observation to one main factual point. Preserve exact court locations: do not turn an unspecified post touch into a high-post touch. Do not invent league rule differences.
 If insufficient evidence, state the specific gap. State limitations, including selected-case scope. Missing tool retrieval is not evidence of missing data. If a specific quarter was not queried, say this run did not retrieve it, never that the database lacks it.
 Do not copy long source passages. Do not invent diagrams or suggest that text retrieval analyzed video.
 ''')
 verifier=Agent(name='Evidence audit',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Audit,
  instructions=COMMON+'''
 For EVERY indexed claim return one verdict. Preserve the supplied claim_index exactly. Keep each reason to one sentence of at most 25 words. The catalog contains complete PBP periods for each listed game. Reject claims that a listed game or quarter is absent merely because it was not retrieved. Distinguish not retrieved this run from not in dataset. Audit limitation statements as strictly as factual statements. Use ONLY the attached source text. Mark unsupported
-if any factual part is ungrounded, if a statistic/clock differs, if a source is misattributed,
+if a claim asserts that a whole manual lacks guidance based only on missing retrieval, if user constraints are strengthened or changed, or if any factual part is ungrounded, if a statistic/clock differs, if a source is misattributed,
 if a case is generalized to a whole season, or if a diagram/video is claimed to have been read.
 An explicitly labeled proposed adaptation may combine cited principles with user constraints;
 it needn't appear verbatim, but must not promise efficacy or falsely attribute it to a coach.
 Limitation claims can use the corpus scope and tool limitations. Be conservative. Check precise locations and roles, not just broad topical relevance. A source saying post does not prove high post. Reject uncited amateur rule assertions. Explain rejection.
 ''')
+
+answer_reviewer=Agent(name='Answer review',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=AnswerReview,
+ instructions="""Check whether the audited answer actually answers the ORIGINAL user's request. This is a coverage check, not another factual audit. Treat accepted claims as already evidence-checked. Set adequate=false if an explicit requested part is missing (for example execution steps, a practice plan, a count, or a failure condition), if only a historical anecdote remains instead of advice, or if the answer changes user constraints. Inconsistent shooting is not zero shooters. Judge only explicit requirements and essential direct responsiveness; do not invent extra research requirements. A clearly labeled proposed adaptation need not be empirically proven to meet the request. List missing requirements briefly in English; empty list when adequate.""")
+
+async def review_answer(question,accepted,state,title=''):
+    if not accepted: return AnswerReview(adequate=False,missing_requirements=['No supported answer survived the evidence checks.'])
+    try:
+        result=await call(answer_reviewer,json.dumps({'question':question,'title':title,'audited_answer':[c.model_dump() for c in accepted]},ensure_ascii=False),state)
+    except Exception as exc:
+        result=AnswerReview(adequate=False,missing_requirements=['Answer coverage could not be verified in this run.'])
+        state.trace('Answer review','review_unavailable',{}, {'reason':type(exc).__name__})
+    state.trace('Answer review','check_answer_coverage',{},result.model_dump())
+    return result
 
 async def call(agent,prompt,state,turns=1,context=None):
     try:
@@ -269,12 +289,14 @@ async def worker(task:Task,question:str,state:RunState,catalog:dict):
 
 async def deep_research(question:str,state:RunState):
     catalog=store.catalog()
+    answer_goal='explanation'
     for round_no in range(MAX_ROUNDS):
         state.rounds=round_no+1
         prompt=json.dumps({'question':question,'catalog':catalog,'round':state.rounds,
             'remaining_researchers':MAX_RESEARCHERS-state.researchers,'findings':state.findings},ensure_ascii=False)
         plan=await call(lead,prompt,state)
         state.trace('Lead','plan_research',{'round':state.rounds},plan.model_dump())
+        if round_no==0: answer_goal=plan.answer_goal
         if plan.clarification and round_no==0:
             return plan.clarification, {'status':'clarification','rounds':0,'researchers':0,'citations':[]}
         if plan.done and round_no>0: break
@@ -289,34 +311,63 @@ async def deep_research(question:str,state:RunState):
     if not state.evidence:
         return 'Insufficient retrieved evidence. Narrow the question to the teams, seasons or tactics covered by this corpus.', {
             'status':'insufficient_evidence','rounds':state.rounds,'researchers':state.researchers,'citations':[]}
-    payload={'question':question,'findings':state.findings,'evidence':state.evidence}
+    payload={'question':question,'answer_goal':answer_goal,'findings':state.findings,'evidence':state.evidence}
     report=await call(writer,json.dumps(payload,ensure_ascii=False),state)
-    # Only known, actually retrieved source IDs can enter the audit or rendered report.
+    accepted,accepted_limits,rejected=await validate_report(report,question,catalog,state)
+    review=await review_answer(question,accepted,state,report.title)
+    if not review.adequate or (answer_goal=='practical_advice' and not any(c.kind=='adaptation' for c in accepted)):
+        state.trace('Writer','repair_answer',{'answer_goal':answer_goal},
+            {'reason':'The audited draft did not cover the requested answer. One bounded rewrite is allowed.','missing_requirements':review.missing_requirements})
+        try:
+            repaired=await call(writer,json.dumps({**payload,'previous_draft':report.model_dump(),
+                'audit_feedback':rejected,'missing_requirements':review.missing_requirements,'revision_instruction':'Address the missing explicit requirements using the retrieved evidence. For practical advice, give a proposed adaptation grounded in coaching principles. A short practice plan can be your proposed allocation of training time; do not falsely attribute its exact minutes to the manual or promise effectiveness. Do not substitute an NBA anecdote or assert the manuals have no guidance. If evidence cannot support a requested part, identify what this run could not establish.'},ensure_ascii=False),state)
+            revised,revised_limits,revised_rejected=await validate_report(repaired,question,catalog,state)
+            rejected+=revised_rejected
+            revised_review=await review_answer(question,revised,state,repaired.title)
+            if revised_review.adequate or not accepted or (any(c.kind=='adaptation' for c in revised) and not any(c.kind=='adaptation' for c in accepted)):
+                report,accepted,accepted_limits,review=repaired,revised,revised_limits,revised_review
+        except Exception as exc:
+            state.trace('Writer','repair_unavailable',{}, {'reason':type(exc).__name__,'result':'Keep the audited partial answer.'})
+    complete=bool(accepted) and review.adequate and (answer_goal!='practical_advice' or any(c.kind=='adaptation' for c in accepted))
+    state.trace('Evidence audit','check_citations',{}, {'accepted':len(accepted),'withheld':rejected,'answers_requested_goal':complete})
+    text,citations=render_report(report.title,accepted,accepted_limits,rejected,state.evidence)
+    if accepted and not complete:
+        text='This run did not establish every requested part: '+ ' '.join(review.missing_requirements or ['A practical plan for your stated constraints is missing.'])+'\n\n'+text
+    return text,{'status':'complete' if complete else ('partial' if accepted else 'insufficient_evidence'),'rounds':state.rounds,
+                 'researchers':state.researchers,'citations':citations,'withheld_claims':len(rejected),'answer_goal':answer_goal,'missing_requirements':review.missing_requirements}
+
+
+def unsupported_manual_absence(claim):
+    """An uncited global document-absence claim cannot follow from selective retrieval."""
+    return (not claim.source_ids and bool(re.search(r'\b(manuals?|wabc)\b',claim.text,re.I)) and
+            bool(re.search(r"\b(?:do not|does not|don't|doesn't|never)\s+(?:explicitly\s+)?(?:provide|cover|contain|address|offer|include|specify|describe)|\bno (?:specific|specialized)\b",claim.text,re.I)))
+
+async def validate_report(report,question,catalog,state):
     valid=[]; rejected=[]
-    for claim in report.claims:
+    candidates=[*report.claims,*[Claim(heading='Report limitation',text=x,kind='limitation',source_ids=[]) for x in report.limitations]]
+    footer_ids=set(id(c) for c in candidates[len(report.claims):])
+    for claim in candidates:
         ids=list(dict.fromkeys(claim.source_ids))
-        if any(sid not in state.evidence for sid in ids) or (claim.kind!='limitation' and not ids):
+        if unsupported_manual_absence(claim):
+            rejected.append('Selective retrieval cannot establish that an entire manual lacks guidance.')
+        elif any(sid not in state.evidence for sid in ids) or (claim.kind!='limitation' and not ids):
             rejected.append('A draft claim was withheld because its citation was missing or not retrieved.')
         else:
-            claim.source_ids=ids; valid.append(claim)
-    footer_start=len(valid)
-    valid += [Claim(heading='Report limitation',text=item,kind='limitation',source_ids=[]) for item in report.limitations]
+            claim.source_ids=ids;valid.append(claim)
     audit_payload={'question':question,'scope':catalog['scope'],'catalog':catalog,'claims':[
         {'index':i,**c.model_dump(),'evidence':{sid:state.evidence[sid] for sid in c.source_ids}}
         for i,c in enumerate(valid)]}
     audit=await audit_claims(audit_payload,state)
     verdicts={v.claim_index:v for v in audit.verdicts}
-    accepted=[]; accepted_limits=[]
+    accepted=[];accepted_limits=[]
     for i,claim in enumerate(valid):
         verdict=verdicts.get(i)
         if verdict and verdict.supported:
-            if i>=footer_start: accepted_limits.append(claim.text)
+            if id(claim) in footer_ids: accepted_limits.append(claim.text)
             else: accepted.append(claim)
         else: rejected.append(verdict.reason if verdict else 'Evidence audit returned no verdict for a draft claim.')
-    state.trace('Evidence audit','check_citations',{}, {'accepted':len(accepted),'withheld':rejected})
-    text,citations=render_report(report.title,accepted,accepted_limits,rejected,state.evidence)
-    return text,{'status':'complete' if accepted else 'insufficient_evidence','rounds':state.rounds,
-                 'researchers':state.researchers,'citations':citations,'withheld_claims':len(rejected)}
+    return accepted,accepted_limits,rejected
+
 
 def clean(text):
     # Model-generated external links cannot bypass the source registry.

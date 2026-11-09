@@ -34,10 +34,17 @@ def search(query: str, team: str = '', limit: int = 6, kind: str = ''):
     expanded = query.lower()
     for key, value in ALIASES.items():
         if key in expanded: expanded += ' ' + value
-    words = list(dict.fromkeys(re.findall(r'[a-zA-Z]{3,}', expanded)))[:14]
+    stopwords = {'the','and','for','with','without','how','can','does','what','our','that','this','have','has','are','from','into','against','team','teams','use','using'}
+    words = [w for w in dict.fromkeys(re.findall(r'[a-zA-Z]{3,}', expanded)) if w not in stopwords][:14]
+    # Manuals use British spelling. Keep both variants for real text retrieval.
+    for american,british in [('offense','offence'),('defense','defence')]:
+        if american in words and british not in words: words.append(british)
     if not words:
         return {'error': 'Use English basketball keywords, e.g. zone, handoff, screen, cut.'}
     match = ' OR '.join('"' + w + '"' for w in words)
+    # Zone-attack searches must retrieve zone-attack material, not generic shooting pages.
+    if 'zone' in words and set(words) & {'attack','attacking','beat','beating','offense','offence','offensive'}:
+        match = '"zone" AND ("offence" OR "offense" OR "offensive" OR "attack" OR "attacking") AND ('+match+')'
     with connect() as conn:
         rows = conn.execute('''SELECT p.id,p.locator,d.title,d.team,d.season,d.kind,
             snippet(passage_fts,1,'','', ' … ',32) AS preview
