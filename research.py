@@ -129,7 +129,7 @@ Never fabricate a clip timestamp, tactical label, frequency, statistic, or quota
 outcomes and events, not complete off-ball movement or defensive coverages. The corpus is selected,
 not exhaustive. All periods of every listed game are in the event database. Distinguish not yet
 retrieved from genuinely unavailable. Never claim an unqueried quarter or event is missing. Never infer a team's most-used action from selected examples. No tested amateur
-win-rate benefit. Do not treat NBA and amateur rules/personnel as interchangeable.'''
+win-rate benefit. Do not assert amateur league rules unless the user or retrieved evidence specifies them. A post touch does not establish a HIGH-post touch; preserve court-location uncertainty. Do not treat NBA and amateur rules/personnel as interchangeable.'''
 
 lead=Agent(name='Lead',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Plan,
  instructions=COMMON+'''
@@ -164,7 +164,7 @@ Return 4-6 focused claims; no uncited factual introduction. Keep each claim unde
 Use adaptations only for requested amateur advice; clearly call them proposals, explain personnel
 requirements, simplify execution and provide failure conditions. An adaptation's source IDs support
 its underlying principles, not proven success. No raw Markdown links: the server renders citations.
-Every factual sentence in a claim must be supported by that claim's evidence. Split unrelated claims.
+Every factual sentence in a claim must be supported by that claim's evidence. Split unrelated claims. Keep each observation to one main factual point. Preserve exact court locations: do not turn an unspecified post touch into a high-post touch. Do not invent league rule differences.
 If insufficient evidence, state the specific gap. State limitations, including selected-case scope. Missing tool retrieval is not evidence of missing data. If a specific quarter was not queried, say this run did not retrieve it, never that the database lacks it.
 Do not copy long source passages. Do not invent diagrams or suggest that text retrieval analyzed video.
 ''')
@@ -175,7 +175,7 @@ if any factual part is ungrounded, if a statistic/clock differs, if a source is 
 if a case is generalized to a whole season, or if a diagram/video is claimed to have been read.
 An explicitly labeled proposed adaptation may combine cited principles with user constraints;
 it needn't appear verbatim, but must not promise efficacy or falsely attribute it to a coach.
-Limitation claims can use the corpus scope and tool limitations. Be conservative. Explain rejection.
+Limitation claims can use the corpus scope and tool limitations. Be conservative. Check precise locations and roles, not just broad topical relevance. A source saying post does not prove high post. Reject uncited amateur rule assertions. Explain rejection.
 ''')
 
 async def call(agent,prompt,state,turns=1,context=None):

@@ -3,7 +3,7 @@
     "question": "在 2022 年总决赛 G4（game_id=0042100404），勇士全场投篮、三分球和失误分别是多少？结合官方 G4 解析，解释一个可核实的进攻调整，注明比赛事件不能证明的内容。",
     "model": "vertex_ai/gemini-3.5-flash",
     "baseline_no_system_no_tools": "在 2022 年 NBA 总决赛第四场（Game 4，Game ID: 0042100404）中，金州勇士队在客场以 107-97 击败了波士顿凯尔特人队，将大比分扳为 2-2 平。\n\n以下是该场比赛中勇士队的具体数据、官方解析中的关键进攻调整，以及数据和事件本身无法证明的局限性。\n\n---\n\n### 一、 勇士队全场",
-    "agent_answer": "# 2022年总决赛G4勇士队数据及进攻调整分析简报\n\n## 勇士队在2022年总决赛G4的投篮与失误数据\n\n**Evidence / 证据**\n\n在2022年总决赛G4（game_id=0042100404）中，金州勇士队全场投篮为91投40中（40/91），三分球为43投15中（15/43），全队共出现了16次失误。 [1](/evidence/summary-0042100404-GSW-0)\n\n## 战术分析与数据获取的局限性\n\n**Limit / 边界**\n\n由于未检索到官方解析文档（gsw-g4）的完整内容（如第4段及之后的内容），无法全面获取和分析勇士队在G4中做出的其他系统性进攻战术调整（如具体的挡拆变化或空间拉开策略）。 [2](/evidence/gsw-g4-1) [3](/evidence/gsw-g4-2) [4](/evidence/gsw-g4-3)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2022年总决赛G4的特定片段数据，无法代表整个系列赛或勇士队在其他季后赛场次中的整体战术表现。\n- 由于缺乏完整的官方解析文本，无法对勇士队在G4中的所有进攻调整进行详尽的系统性梳理。\n\n\n3 draft claim(s) withheld after citation checks. / 已隐藏未通过证据核查的草稿结论。\n\n## Sources / 来源\n\n1. [GSW game 0042100404, period all: event summary](https://www.nba.com/game/0042100404/play-by-play) — game_id=0042100404, team=GSW, period=0\n2. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 1\n3. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 2\n4. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 3",
+    "agent_answer": "# 2022年总决赛G4勇士队数据及进攻调整分析简报\n\n## 勇士队在2022年总决赛G4的投篮与失误数据\n\n**Evidence / 证据**\n\n在2022年总决赛G4（game_id=0042100404）中，金州勇士队全场投篮为91投40中（40/91），三分球为43投15中（15/43），全队共出现了16次失误。 [1](/evidence/summary-0042100404-GSW-0)\n\n## 战术分析与数据获取的局限性\n\n**Limit / 边界**\n\n由于未检索到官方解析文档（gsw-g4）的完整内容（如第4段及之后的内容），无法全面获取和分析勇士队在G4中做出的其他系统性进攻战术调整（如具体的挡拆变化或空间拉开策略）。 [2](/evidence/gsw-g4-1) [3](/evidence/gsw-g4-2) [4](/evidence/gsw-g4-3)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2022年总决赛G4的特定片段数据，无法代表整个系列赛或勇士队在其他季后赛场次中的整体战术表现。\n- 由于缺乏完整的官方解析文本，无法对勇士队在G4中的所有进攻调整进行详尽的系统性梳理。\n\n## Sources / 来源\n\n1. [GSW game 0042100404, period all: event summary](https://www.nba.com/game/0042100404/play-by-play) — game_id=0042100404, team=GSW, period=0\n2. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 1\n3. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 2\n4. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 3",
     "research": {
       "status": "complete",
       "rounds": 3,
@@ -1009,9 +1009,46 @@
           ]
         },
         "at": 1794243721.482527
+      },
+      {
+        "id": 1,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "final_comparison_audit": true,
+          "accepted": 2,
+          "withheld": []
+        },
+        "at": 1794244234.626101
       }
     ],
-    "seconds": 107.87
+    "seconds": 117.39,
+    "pre_final_audit_answer": "# 2022年总决赛G4勇士队数据及进攻调整分析简报\n\n## 勇士队在2022年总决赛G4的投篮与失误数据\n\n**Evidence / 证据**\n\n在2022年总决赛G4（game_id=0042100404）中，金州勇士队全场投篮为91投40中（40/91），三分球为43投15中（15/43），全队共出现了16次失误。 [1](/evidence/summary-0042100404-GSW-0)\n\n## 战术分析与数据获取的局限性\n\n**Limit / 边界**\n\n由于未检索到官方解析文档（gsw-g4）的完整内容（如第4段及之后的内容），无法全面获取和分析勇士队在G4中做出的其他系统性进攻战术调整（如具体的挡拆变化或空间拉开策略）。 [2](/evidence/gsw-g4-1) [3](/evidence/gsw-g4-2) [4](/evidence/gsw-g4-3)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2022年总决赛G4的特定片段数据，无法代表整个系列赛或勇士队在其他季后赛场次中的整体战术表现。\n- 由于缺乏完整的官方解析文本，无法对勇士队在G4中的所有进攻调整进行详尽的系统性梳理。\n\n\n3 draft claim(s) withheld after citation checks. / 已隐藏未通过证据核查的草稿结论。\n\n## Sources / 来源\n\n1. [GSW game 0042100404, period all: event summary](https://www.nba.com/game/0042100404/play-by-play) — game_id=0042100404, team=GSW, period=0\n2. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 1\n3. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 2\n4. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 3",
+    "final_audit": {
+      "verdicts": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "reason": "根据计算汇总数据（summary-0042100404-GSW-0），勇士队在0042100404场次中全场投篮为40/91，三分球为15/43，失误为16次，与声明完全一致。"
+        },
+        {
+          "claim_index": 1,
+          "supported": true,
+          "reason": "该声明准确地指出了由于检索到的官方解析文档（gsw-g4）内容不完整（仅包含前3个片段，且在第2点‘The Thompson stops’处中断），因此无法全面分析勇士队在G4中的其他系统性进攻战术调整，符合客观事实与局限性声明要求。"
+        },
+        {
+          "claim_index": 2,
+          "supported": true,
+          "reason": "该声明属于合理的局限性说明，指出分析仅基于G4的特定片段数据，无法推广到整个系列赛或其他场次，符合保守评估的原则。"
+        },
+        {
+          "claim_index": 3,
+          "supported": true,
+          "reason": "该声明属于合理的局限性说明，准确反映了因官方解析文本不完整而无法对所有进攻调整进行详尽梳理的客观限制。"
+        }
+      ]
+    }
   },
   {
     "question": "根据 2023 年热火对尼克斯的官方比赛解析，尼克斯 top-block 射手时，热火有哪些反跑和假手递手应对？用资料中的具体案例解释，不推断赛季使用频率。",
@@ -2004,8 +2041,952 @@
           "withheld": []
         },
         "at": 1794243810.0698571
+      },
+      {
+        "id": 1,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "final_comparison_audit": true,
+          "accepted": 4,
+          "withheld": []
+        },
+        "at": 1794244235.929624
       }
     ],
-    "seconds": 88.58
+    "seconds": 99.4,
+    "pre_final_audit_answer": "# 2023年热火对阵尼克斯季后赛反跑与假手递手应对策略研究简报\n\n## 麦克斯·斯特鲁斯的后门反跑应对\n\n**Evidence / 证据**\n\n在2023年季后赛热火对阵尼克斯的第二场比赛（Game 2）第三节的第一次进攻中，尼克斯对热火射手进行 top-block（阻绝防守以阻止其绕过下掩护）。热火的第一个应对策略是后门反跑，麦克斯·斯特鲁斯（Max Strus）直接切入后门，在第三节11:43接阿德巴约（Bam Adebayo）助攻完成3英尺切入上篮得分。 [1](/evidence/mia-nyk-3) [2](/evidence/event-0042200202-344)\n\n## 角色反转与掩护人外弹应对\n\n**Evidence / 证据**\n\n为了防范热火的后门切入，掩护人的防守者通常会选择在内线收缩。在第二场比赛第二节的最后一次进攻中，杰伦·布伦森（Jalen Brunson）对斯特鲁斯进行 top-block，而凯文·乐福（Kevin Love）的防守者乔什·哈特（Josh Hart）为了防止斯特鲁斯切后门而选择收缩。热火随即进行“角色反转”，由原本的射手斯特鲁斯担任掩护人，而让具有投篮能力的乐福外弹出三分线。在第二节0:06，乐福接阿德巴约助攻外弹命中25英尺空位三分。 [1](/evidence/mia-nyk-3) [3](/evidence/event-0042200202-331)\n\n## 阿德巴约的假手递手应对\n\n**Evidence / 证据**\n\n在斯特鲁斯反跑切后门之后的几个回合中，热火利用防守者对射手接球投三分的警惕进行了假手递手应对。当时布伦森在后面追防未触球的射手，而米切尔·罗宾逊（Mitchell Robinson）扑得太高以防范三分球，阿德巴约虚晃手递手后直接突破，在第三节9:35完成扣篮得分。 [1](/evidence/mia-nyk-3) [4](/evidence/event-0042200202-362)\n\n## 斯特鲁斯拒绝掩护直接突袭\n\n**Evidence / 证据**\n\n在阿德巴约假手递手扣篮的紧接着下一个回合中，热火采用了拒绝掩护的应对策略。斯特鲁斯直接拒绝掩护，在两名防守队员反应过来并恢复防守位置之前直插篮下，在第三节9:06完成1英尺突破上篮得分。 [1](/evidence/mia-nyk-3) [5](/evidence/event-0042200202-365)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2023年季后赛热火对阵尼克斯第二场比赛（Game 2）的特定案例，无法推断这些战术在整个系列赛或赛季中的具体使用频率。\n- 官方解析未指明阿德巴约假手递手扣篮回合中，具体是哪位热火射手充当了无球跑动吸引防守的诱饵。\n\n## Sources / 来源\n\n1. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3\n2. [0042200202, Q3 11:43, event 344](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=344\n3. [0042200202, Q2 0:06, event 331](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=331\n4. [0042200202, Q3 9:35, event 362](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=362\n5. [0042200202, Q3 9:06, event 365](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=365",
+    "final_audit": {
+      "verdicts": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "reason": "资料显示，在热火对阵尼克斯的第二场比赛第三节的第一次进攻中，尼克斯对热火射手进行 top-block，热火的第一个应对策略是后门反跑，斯特鲁斯在第三节11:43接阿德巴约助攻完成3英尺切入上篮得分，这与文字和PBP事件完全吻合。"
+        },
+        {
+          "claim_index": 1,
+          "supported": true,
+          "reason": "资料显示，在第二场比赛第二节的最后一次进攻中，布伦森 top-block 斯特鲁斯，哈特为了防后门而对乐福进行收缩防守，热火通过角色反转让斯特鲁斯掩护、乐福外弹，乐福在第二节0:06接阿德巴约助攻命中25英尺三分，这与文字和PBP事件完全吻合。"
+        },
+        {
+          "claim_index": 2,
+          "supported": true,
+          "reason": "资料显示，在斯特鲁斯反跑切后门之后的几个回合中，阿德巴约利用假手递手（布伦森追防未触球的射手，罗宾逊扑得太高防三分）直接突破，在第三节9:35完成扣篮得分，这与文字和PBP事件完全吻合。"
+        },
+        {
+          "claim_index": 3,
+          "supported": true,
+          "reason": "资料显示，在阿德巴约扣篮的紧接着下一个回合中，斯特鲁斯拒绝掩护直接突袭篮下，在两名防守队员恢复防守之前，于第三节9:06完成1英尺突破上篮得分，这与文字和PBP事件完全吻合。"
+        },
+        {
+          "claim_index": 4,
+          "supported": true,
+          "reason": "该限制性陈述符合客观事实，资料仅提供了第二场比赛的特定案例，无法推断这些战术在整个系列赛或赛季中的具体使用频率。"
+        },
+        {
+          "claim_index": 5,
+          "supported": true,
+          "reason": "该限制性陈述符合客观事实，官方解析原文仅使用了“the shooter (who never touched the ball)”，并未指明该回合中充当诱饵的射手具体是谁。"
+        }
+      ]
+    }
+  },
+  {
+    "question": "我们是成年业余五人制球队，每周训练一次 60 分钟，没有高大中锋，有两个稳定空位投手和一个能传球的内线，主要面对人盯人。结合勇士和热火资料，提出一个可以先练的简化配合，明确标为改编建议，给执行步骤、失败条件和来源。",
+    "model": "vertex_ai/gemini-3.5-flash",
+    "baseline_no_system_no_tools": "针对你们“每周60分钟训练、无高大中锋、有传球内线和双投手、面对人盯人”的特点，最适合你们的是融合了**勇士队“高位策应分流（Post Split）”**与**热火队“高位手递手/延迟进攻（Delay Series）”**的简化版战术。\n\n这套配合不需要身体对抗优势，完全利用空间、传球视眼和投篮威慑力来撕开人盯人防守。\n\n以下是专为你们定制的简化配合方案：\n\n---\n\n### 🏆 改编建议：高位“引力”手递手与反切 (Elbow Delay & Split)\n\n**核心逻辑：** 避开篮下肉搏，将对方防守人拉出禁区。利用能传球的内线做轴，两位投手做交叉掩护，创造空位三分或空切上篮机会。\n\n#### 📋 场上初始站位 (1-4 站位)\n*   **4号位/5号位（传球内线）**：站在罚球线右侧肘区（Elbow）。\n*   **1号位（控卫）**：弧顶持球。\n*   **2号位（投手A）**：右侧翼（Wing）或底角。\n*   **3号位（投手B）**：左侧翼或底角（拉开空间）。\n*   **其他球员**：弱侧（左侧）底角拉开，带走防守人。\n\n---\n\n### 🔄 执行步骤（只需3步，极易上手）\n\n```\n      [ 篮 筐 ]\n    3           \n              5 (内线持球)\n              ↑ (传球)\n1 (持球) ───→ 1 (传球后跑向2)\n              ↓ (掩护)\n            2 (投手A，借掩护切出或反切)\n```\n\n##### 第一步：落位与喂球\n*   1号位在弧顶将球传给站在罚球线肘区的传球内线（5号位）。\n*   5号位接球后，背对篮筐（或侧身），双手持球于胸前，做好传球准备。\n\n##### 第二步：勇士标志性“分流”掩护 (Split Screen)\n*   传球后，1号位**绝对不能原地站立**，他必须立刻跑向右侧翼的2号位（投手A），给2号位做一个**无球下掩护（Down Screen）**（用身体挡住2号位的防守人）。\n*   此时，2号位（投手A）借助1号位的掩护，迅速向5号位（传球内线）移动。\n\n##### 第三步：二选一终结（热火/勇士核心读秒）\n传球内线（5号位）观察2号位防守人的位置，进行简单判断：\n\n*   **选择 A（手递手三分 - 热火式）：** 如果2号位的防守人被1号位挡住，2号位直接冲向5号位。5号位将球**手递手（DHO）**递给2号位，顺势用身体再做一次墙。2号位接球直接起跳投三分。\n*   **选择 B（反切空上 - 勇士式）：** 如果2号位的防守人为了防三分，极其激进地绕过掩护去堵截2号位。2号位心领神会，**立刻反跑（Backdoor Cut）**直插篮下。5号位心领神会，一个击地传球送入禁区，2号位轻松上篮。\n\n*注：如果1/2号位的掩护换防了，1号位（掩护者）在2号位切出后，立刻转身往篮下切（Slip），5号位也可以传给1号位上篮。*\n\n---\n\n### ❌ 失败条件（出现以下情况，立刻终止配合，启动备用方案）\n\n为了避免在30秒进攻时间（或业余比赛节奏）中死磕战术，一旦出现以下三种情况，必须立即“Reset（重置）”：\n\n1.  **传球路线被断（第一步失败）：** 对方防守极凶，5号位在罚球线根本接不到1号位的球。\n    *   *解除条件：* 5号位立刻放弃接球，直接下顺给持球的1号位做高位挡拆（Pick & Roll）。\n2.  **掩护人被推挤死（第二步失败）：** 1号位去给2号位掩护时，两人撞在一起，或者防守人直接用小动作把掩护推开。\n    *   *解除条件：* 5号位（传球内线）不要死等，立刻运球朝向弱侧的3号位（另一个投手B），做一次简单的手递手配合。\n3.  **内线持球超过3秒（终结失败）：** 5号位拿球后，1、2号位跑位结束，但防守跟得很紧，没有出手机会。\n    *   *解除条件：* 5号位直接将球传回给弧顶的1号位，5号位顺势下顺，转为最基础的局部多打少或个人单打。\n\n---\n\n### 📚 战术来源与灵感\n\n1.  **金州勇士队（Golden State Warriors）- \"Post Split Action\"**：\n    *   科尔体系的核心。当追梦格林（Draymond Green）或博古特在高位持球时",
+    "agent_answer": "# 业余五人制球队高位战术改编与研究简报\n\n## 简化版高位手递手与反切配合\n\n**Proposed adaptation / 改编建议**\n\n【改编建议】针对无高大中锋、有两名投手和一名传球内线的业余队，建议采用高位手递手与反切配合。执行步骤：1. 传球内线（5号位）在高位接球作为压力释放点；2. 侧翼投手向5号位跑动，5号位背对防守者持球以身体宽度做墙；3. 若防守正常跟随，投手接手递手球直接投篮或突破；若防守者采取前顶防守（Top-blocking）阻截，投手立即反切（Backdoor Cut）直插篮下接5号位传球。失败条件：1. 5号位未用身体背对防守者，无法形成有效掩护；2. 5号位与投手没有贴身交接球，而是采用中距离短传，易被抢断；3. 投手反切时防守收缩，而进攻方未能及时通过外弹拉开空间。 [1](/evidence/wabc-l2-p281-1) [2](/evidence/wabc-l2-p282-1) [3](/evidence/wabc-l2-p284-1) [4](/evidence/wabc-l2-p289-1) [5](/evidence/mia-nyk-3)\n\n## Limitations / 数据边界\n\n- 由于缺乏业余球队实际防守轮转速度的数据，无法确定防守方是否会采用换防（Switching）来应对此简化配合\n- 未获取热火队在高位策应配合中的具体跑位成功率统计\n- 未检索到当防守方不采取标准人盯人而是混合联防时，该高位配合的具体演变方案\n- 缺乏业余球队在每周仅60分钟训练时间下执行该配合的实际成功率统计\n\n\n2 draft claim(s) withheld after citation checks. / 已隐藏未通过证据核查的草稿结论。\n\n## Sources / 来源\n\n1. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281) — PDF page 281\n2. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282) — PDF page 282\n3. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284) — PDF page 284\n4. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=289) — PDF page 289\n5. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3",
+    "research": {
+      "status": "complete",
+      "rounds": 2,
+      "researchers": 3,
+      "citations": [
+        {
+          "number": 1,
+          "source_id": "wabc-l2-p281-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281",
+          "locator": "PDF page 281",
+          "evidence_url": "/evidence/wabc-l2-p281-1"
+        },
+        {
+          "number": 2,
+          "source_id": "wabc-l2-p282-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+          "locator": "PDF page 282",
+          "evidence_url": "/evidence/wabc-l2-p282-1"
+        },
+        {
+          "number": 3,
+          "source_id": "wabc-l2-p284-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284",
+          "locator": "PDF page 284",
+          "evidence_url": "/evidence/wabc-l2-p284-1"
+        },
+        {
+          "number": 4,
+          "source_id": "wabc-l2-p289-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=289",
+          "locator": "PDF page 289",
+          "evidence_url": "/evidence/wabc-l2-p289-1"
+        },
+        {
+          "number": 5,
+          "source_id": "mia-nyk-3",
+          "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+          "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+          "locator": "extracted passage 3",
+          "evidence_url": "/evidence/mia-nyk-3"
+        }
+      ],
+      "withheld_claims": 3
+    },
+    "tool_calls": [
+      {
+        "id": 1,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 1
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "Analyze GSW 2021-22 and MIA 2022-23 film study documents (such as gsw-g1, gsw-g5, mia-nyk, mia-g2) to identify tactical actions involving a passing big man (e.g., Draymond Green, Bam Adebayo) facilitating for shooters (e.g., DHO, split cuts, high-post passing) against man-to-man defense.",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "Search the WABC Level 2 Coaches Manual (wabc-l2) for coaching principles, teaching methodologies, and tactical guidelines regarding high-post offense, handoffs (DHO), cuts, and attacking man-to-man defense.",
+              "focus": "coaching principles"
+            },
+            {
+              "task": "Develop a simplified adaptation of the identified NBA actions (GSW/MIA) tailored to the amateur team's constraints (60-minute weekly practice, no tall center, two spot-up shooters, one passing big), defining execution steps, failure conditions, and coaching cues.",
+              "focus": "amateur adaptation"
+            }
+          ],
+          "gaps": [],
+          "done": false
+        },
+        "at": 1794244042.714732
+      },
+      {
+        "id": 2,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "DHO handoff Bam Adebayo Draymond Green split cut",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            },
+            {
+              "document_id": "gsw-g2",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nDraymond Green was a beast on defense in Game 2, but he wasn't the only Warriors player who made a big impact against the Celtics.\nJohn Schuhmann\nFinals Film Room: How did the Warriors' defense throw Boston off balance?\n• Complete coverage: 2022 NBA Finals\nBOSTON — It was noted in this space after Game 1 of the NBA Finals that, since Draymond Green returned from a two-month absence, the Golden State Warriors’ defense hadn’t reached the level it was playing at before Green was lost to a back issue. Games 4 and 5 of the conference finals, along with Game 1 of this series, were the worst three-game stretch of defense ( 123.8 points allowed per 100 possessions ) that the Warriors have had with Green in uniform this season.\nAnd then came Game 2, when the Warriors held the Boston Celtics to just 88 points on 98 possessions (89.8 per 100), Golden State’s best defensive performance since mid-January. The Celtics actually had 30 points on their first 24 possessions of the game, but from late in the first quarter until they took their starters out of the game early in the fourth, they scored just 34 points on a stretch of 52 possessions (*65.4 per 100).\n* In the regular season (1,230 games x 2 teams x 2 halves), there were only 11 instances where a team had a less efficient first or second half than that. In these playoffs, the only time a team has scored less than 65.4 per 100 in a half was the Suns ( 58.7 per 100 ) in the first half of Game 7 vs. Dallas.\nDraymond Green seemingly set the tone when he forced a jump ball on the first possession of the game, and he was a menace defensively for nearly all of his 35 minutes on the floor in Game 2. But defensive numbers like that don’t come without contributions from everybody in the rotation.",
+              "title": "Finals Film Study: Warriors' defense steps up in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-warriors-defense-steps-up-in-game-2",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100402",
+              "source_id": "gsw-g2-1",
+              "evidence_url": "/evidence/gsw-g2-1"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down Boston's wide-open attack from deep and the attention Jayson Tatum drew in Game 1.\nJohn Schuhmann\nAl Horford made the Warriors’ defense pay by having a career night from outside.\nThe Golden State Warriors were the No. 1 defensive team in the league when Draymond Green was healthy this season. With Green missing two months with a back issue, the Boston Celtics took (and kept) that No. 1 spot. But Golden State was so good when Green was healthy (they allowed 1.9 fewer points per 100 possessions through his last pre-injury game on Jan. 5), they didn’t fall to No. 2 until the final week of his two-month absence.\nShortly after Green returned, Stephen Curry was lost to a foot injury. But the Warriors’ two stars, along with an improving Klay Thompson and the other three guys in their top six, have been available throughout the playoffs. And with that, they’re in the NBA Finals for the sixth time in eight years.\n• Complete coverage: 2022 NBA Finals\nStill, the Warriors’ defense hasn’t been able to reach the level it was at through early January. And Game 1 of the Finals on Thursday was the team’s third worst defensive performance of the season, with the Celtics scoring 120 points on just 93 possessions (129.0 per 100). The only two games where a team scored more efficiently against the Warriors were a March visit to Dallas (without Green) and Game 5 of the conference semifinals in Memphis, a 39-point defeat. Game 1 was the first time in 51 home games that the Warriors allowed at least 120 points per 100 possessions, and they had allowed more than 130 per 100 before the Celtics let the clock run out on their final possession of the night.",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-1",
+              "evidence_url": "/evidence/gsw-g1-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244044.818348
+      },
+      {
+        "id": 3,
+        "agent": "Researcher 3 · amateur adaptation",
+        "name": "search_sources",
+        "args": {
+          "query": "split cut post",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 4",
+              "text": "With Wiggins anticipating a Tatum curl off a Smart cross-screen, Tatum cut back door, leaving his defender in the dust. But Thompson saw what was happening, switched off of Brown in the corner, and contested Tatum at the rim without fouling:\nTwo possessions later (clutch possession No. 1 for the Celtics), Brown rejected a screen, looking to beat Thompson off the dribble. But Thompson stayed with him and forced a tough runner that rimmed out:\nLater in the fourth (clutch possession No. 5), Thompson completely shut down a Brown isolation, keeping him in front and not giving him enough space for a step-back jumper. Brown kicked the ball out to Horford, but his 3-pointer was a little rushed with Looney closing out:\nWith the Celtics down six (not a clutch possession), Horford made a corner 3 the following trip down the floor. And after a Looney layup (when the Celtics got the ball out of Curry’s hands), the Celtics had their sixth and final clutch possession of Game 4.\nAgain, Thompson was most responsible for getting the stop. Brown cut back door and Smart was able to squeeze a pass through, but Thompson stayed with him and (with some help from Wiggins) forced a turnover:\nThere were more vulnerable defenders — Curry and (sometimes) Poole — on the floor when Thompson got those stops, and it seems the Celtics chose the wrong guy to attack.\n3. Help, recover and contest\nWhen Curry hit a runner from the elbow to put the Warriors up three with a little less than four minutes to go, the Celtics called timeout and drew up a play (clutch possession No. 3) to get Curry in an action against Tatum.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-4",
+              "evidence_url": "/evidence/gsw-g4-4"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244045.1690629
+      },
+      {
+        "id": 4,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "high post handoff cut man-to-man",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 232",
+              "text": "As x4 rotates to double team, x2 rotates down and is now defending 4 and must keep\nsight of them.\nSimilarly, x1 rotates to the top of the key and is responsible for both 1 and 2\n(and must keep vision of them).\nIf the post defender is standing on the baseline side of the post player, the help or\ndouble team comes from the high “split line” defender (x2).\nAgain, x1 rotates to the top of the key.\nIn order to prevent help coming from the split line, some offences will attempt to move\ndefenders from the “split line”.  Here 4 cuts to the high post.  If x4 stays at the basket,\n4 would be open to receive a pass and could shoot or pass to the low post player.\nTo combat this, x1 or x2 may move towards the keyway to be able to intercept any pass\nto 4, and x4 may make a small movement towards 4 so that they can still intercept a\npass to 5. They are also closer to 4 and can move to them quickly if they receive a pass.\nSimilarly, 1 & 2 may cut to the “strong side” in order to force x1 and x2 to move away\nfrom positions where they can help.\nTo combat this, x4 may play a “floating” position, staying in the keyway and leaving Player\n4 relatively open to receive a pass.  x2 also may stay closer to the foul line to pressure\nthe pass, but this will depend upon whether or not Player 2 is a perimeter shooter.\nAlternatively, where an offensive team is proficient at “clearing the split line”,\nthe defence may opt for a different defensive scheme than fronting the low post.\n1\n3\nx3\nx1\n2\n4\nx4 x25\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n230\nCoaching Manual\n1. Defensive tactics and strategies 1.1. Man to man defence 1.1.2. Help defence - help to defend low post",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=232",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p232-1",
+              "evidence_url": "/evidence/wabc-l2-p232-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 334",
+              "text": "332\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nBelow are some examples of situations, where it might look like the defence is playing\nzone, but the offence has not yet done enough to “prove” zone.\nWhen 3 has the ball, x5 can adopt a “split line” position in the middle of the key. If the\nball is passed to 4, x5 can maintain this split line position.\nIf the ball stays on one side and 5 stays still, X5 is adhering to man-to-man principles\neven though they are just staying in the middle of the key.\nHaving 5 cut from low to high can be a useful way to prove a zone. However, the timing\nof the cut is important. If 4 has already started to drive to the basket, x5 can rotate to\nhelp and not react to the cut by 5.\nSimilarly, moving the ball from one side of the court to another can be effective to\nestablish that it is a zone defence.\nHowever, if 5 also cuts from one side to another, x5 can maintain a “split line” position\nin the middle of the key although x5 should make some movement in reaction to the cut\n(e.g. bump the cutter).\n3\n4\n5 x5\n3\n4\n5 x5\n3\n4\n5 x5\n1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=334",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p334-1",
+              "evidence_url": "/evidence/wabc-l2-p334-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 294",
+              "text": "292\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.4. Post up cuts\nPost Up Cut – “4 Out , 1 In” – High post\nAs 2 dribbles to the wing, 5 lifts to the perimeter and 3 cuts to the basket.\nPOST UP CUT - “4 Out , 1 In” - Flash Cut\nPlayers may also perform a post-up cut after passing.  This may be done if the coach\nwants particular players to be exchanging in and out of the post.  Or it may be done,\nwhere a player “reads” that they have an advantage on the post over their defender.\nThe low post player (5) lifts to at least the elbow, as the basket cut is made.  From the\nfree throw line, 5 may be able to make a “high-low” pass to the posting player, or they\nmove to the perimeter and the exchange is complete.\nPost Up Cut “5 Out” – flash cut\nPlayer may also perform a post-up cut after making a pass, particularly when they\n“read” that they have an advantage on the post against their defender.\n2\n3\n5\n1\n4\n1 4\n5\n2 3\n3\n1\n2\n54",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=294",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p294-1",
+              "evidence_url": "/evidence/wabc-l2-p294-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244045.262253
+      },
+      {
+        "id": 5,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "DHO handoff Adebayo Butler Strus Robinson Vincent Martin",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 2",
+              "text": "The Heat shot 17-for-35 (48.6%) from 3-point range on Sunday and have now outscored the Nuggets by 35 points from 3-point range in the series. It’s a make-or-miss league and the Heat have worked hard to get their 3-point looks. They have really been moving the ball. But the Nuggets have also helped them by just not being very sharp defensively.\nHere’s a bit of film on how Miami made (at least) 17 3s for just the eighth time this season (104 total games)…\n1. Caught unawares\nThe Heat’s first 3-pointer of Game 2 came on their second possession, via a relatively simple out-of-bounds play. Max Strus inbounded the ball over the top to Bam Adebayo above the free throw line, then curled off two screens to a left-wing 3.\nThe issues for the Nuggets started with Jamal Murray, who seemed to be unaware that his man (Gabe Vincent) was setting the first screen. Kentavious Caldwell-Pope got caught in both screens, Murray wasn’t in position to switch the first one, and Michael Porter Jr. was late to switch out after the second one…\n2. Switch confusion\nTwo minutes later, Strus got his second 3, via an empty corner pick-and-pop where he set a screen for Vincent. Because it was a small-small screen, it should have been a simple switch for the Nuggets. But while Caldwell-Pope switched onto Vincent, Porter stayed there, and Strus was wide open when he popped to the corner…\nLater in the first quarter, Strus set an empty-corner screen for Jimmy Butler. Murray switched it, but Aaron Gordon stayed with Butler for just a beat, and Strus got another corner 3 .\nThe Heat were 6-for-9 on corner 3s in Game 2, just the fourth time in the Nuggets’ last 62 games (the first time since their Game 4 loss in the first round) that they’ve allowed more than five corner 3s.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-2",
+              "evidence_url": "/evidence/mia-g2-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244046.195266
+      },
+      {
+        "id": 6,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "handoff DHO high post cut",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 294",
+              "text": "292\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.4. Post up cuts\nPost Up Cut – “4 Out , 1 In” – High post\nAs 2 dribbles to the wing, 5 lifts to the perimeter and 3 cuts to the basket.\nPOST UP CUT - “4 Out , 1 In” - Flash Cut\nPlayers may also perform a post-up cut after passing.  This may be done if the coach\nwants particular players to be exchanging in and out of the post.  Or it may be done,\nwhere a player “reads” that they have an advantage on the post over their defender.\nThe low post player (5) lifts to at least the elbow, as the basket cut is made.  From the\nfree throw line, 5 may be able to make a “high-low” pass to the posting player, or they\nmove to the perimeter and the exchange is complete.\nPost Up Cut “5 Out” – flash cut\nPlayer may also perform a post-up cut after making a pass, particularly when they\n“read” that they have an advantage on the post against their defender.\n2\n3\n5\n1\n4\n1 4\n5\n2 3\n3\n1\n2\n54",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=294",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p294-1",
+              "evidence_url": "/evidence/wabc-l2-p294-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 284",
+              "text": "282\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.2. Receivers principles with post players\n“4 Out , I in” Principles cont ...\nIf the dribble penetration is opposite the low post player, the post steps into the top of\nthe “no charge” circle.\nOften the defending team will aggressively attempt to stop the offence from passing\nthe ball on the perimeter.  In this circumstance a pass into the post player can also be\nused to help break the pressure.\n“High Post Pressure Release”\nA pass to the high post can be effective where the perimeter player is denied.\nThe perimeter player can cut straight to the basket.\n“Low Post Pressure Release”\nThe low post player can step to the “short corner” to receive a pass if “ball reversal”\nis denied.\nThe Perimeter player can back cut to the basket.\n2 1\n5\n34\n1\n52\n2\n5\n1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p284-1",
+              "evidence_url": "/evidence/wabc-l2-p284-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 289",
+              "text": "287\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.3. Motion offence with post - 4 out, 1 in\nThe use of off-ball screens also provides many opportunities.  3 may move toward\nthe screen and if their defender is on the high side of the screen, 3 may cut straight\nto the basket.\nIn any screening situation, the screener must also look for opportunities to receive a\npass.  If the cutter goes high, the screener should go to the basket.  If the cutter goes to\nthe basket, the screener should “pop” and move high.\n1\n2\n5\n4\n3x3\n1\n2\n5\n4\n3",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=289",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p289-1",
+              "evidence_url": "/evidence/wabc-l2-p289-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244046.598885
+      },
+      {
+        "id": 7,
+        "agent": "Researcher 3 · amateur adaptation",
+        "name": "search_sources",
+        "args": {
+          "query": "handoff DHO post",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244047.113117
+      },
+      {
+        "id": 8,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "handoff DHO split cut screen",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 4",
+              "text": "With Wiggins anticipating a Tatum curl off a Smart cross-screen, Tatum cut back door, leaving his defender in the dust. But Thompson saw what was happening, switched off of Brown in the corner, and contested Tatum at the rim without fouling:\nTwo possessions later (clutch possession No. 1 for the Celtics), Brown rejected a screen, looking to beat Thompson off the dribble. But Thompson stayed with him and forced a tough runner that rimmed out:\nLater in the fourth (clutch possession No. 5), Thompson completely shut down a Brown isolation, keeping him in front and not giving him enough space for a step-back jumper. Brown kicked the ball out to Horford, but his 3-pointer was a little rushed with Looney closing out:\nWith the Celtics down six (not a clutch possession), Horford made a corner 3 the following trip down the floor. And after a Looney layup (when the Celtics got the ball out of Curry’s hands), the Celtics had their sixth and final clutch possession of Game 4.\nAgain, Thompson was most responsible for getting the stop. Brown cut back door and Smart was able to squeeze a pass through, but Thompson stayed with him and (with some help from Wiggins) forced a turnover:\nThere were more vulnerable defenders — Curry and (sometimes) Poole — on the floor when Thompson got those stops, and it seems the Celtics chose the wrong guy to attack.\n3. Help, recover and contest\nWhen Curry hit a runner from the elbow to put the Warriors up three with a little less than four minutes to go, the Celtics called timeout and drew up a play (clutch possession No. 3) to get Curry in an action against Tatum.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-4",
+              "evidence_url": "/evidence/gsw-g4-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244047.521299
+      },
+      {
+        "id": 9,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "hand off hand-off handoff DHO",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 282",
+              "text": "280\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nOften instead of a hand off, the player will throw a short pass to their team mate,\nhowever this should be discouraged.\nThe hand-off works best when the two offensive players come together, as this\nis similar to a screen, where the player passing the ball also gets in the path of\nthe defender.\nWhere the player making the hand off has not dribbled, they may also be able to fake\nthe hand off action.\nHere, x3 anticipates a hand off and moves to help to defend 1 as they start their\ndribble.  3 fakes the hand off and then spins to attack the basket, having x3 now on\ntheir back.\n5\n2\n3\n1\nx3",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p282-1",
+              "evidence_url": "/evidence/wabc-l2-p282-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 281",
+              "text": "2.1  Offensive Movement\n2.1.1 Motion Offence - 5 Out -\nDribble Entry - Hand-off\n279\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nDribble Hand Off\nDribble hand offs are increasingly part of a team’s offensive scheme both as a pressure\nrelease (e.g. when the ball cannot be passed to the wing, the player will dribble\ntowards the wing and “hand off”) and also as an aggressive offensive move.\nThe dribbler moves towards the defender and then executes a jump stop, holding the\nball on their hip.  They hold the ball with hands on the top and bottom of the ball, to\nmake it easier for their team mate to grab the ball.\nThe team mate takes the ball on the move and looks to attack off the dribble towards\nthe key.  They will often initially move away from the ball and then cut back towards\nthe ball.\nIncreasingly, the player passing the ball will pivot to obstruct the path of the defender.\nWhilst the hand off is often done dribbling from point to the wing, it can be executed\nanywhere on the court.\nAlternatively, a hand off can be executed from a player that is standing still, and this is\noften done when a post player has the ball.\nBefore the hand off, the post player (4) pivots so that their back is facing the player that\nwill take the ball, which will also make them “wider” and better able to obstruct the\npath of the defender.\n1\n2\n1\n4 2",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p281-1",
+              "evidence_url": "/evidence/wabc-l2-p281-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 340",
+              "text": "338\nCoaching manual\n2. Offensive tactics and strategies 2.5. Offence against full court pressure 2.5.1. Point guard inbound\nA tactic that can be used to relieve some of the pressure on the point guard is to have\nthe point guard make the inbound pass.  This may cause initial confusion amongst the\ndefenders if their defence was specifically attempting to pressure the point guard.\nIf x1 moves to immediately double team 4 as they catch the ball, the point guard (1) can\nstep into the court to receive a pass back and then immediately dribble away from the\narea of the double team.\nThis works best if 4 receives the pass 2-3 metres away from the baseline and\naccordingly, 4 initially cuts away from the passer.\nIf x1 denies one player from receiving the ball, 1 can pass to the player that is not being\ndenied and then run to receive a hand-off.  x1 is not in position to defend the hand off,\nas they were denying the pass on the other side of the court.\n1\n4 x4\nx1\n1\nx1\n2\nx2\n4\nx4",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=340",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p340-1",
+              "evidence_url": "/evidence/wabc-l2-p340-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244048.1108449
+      },
+      {
+        "id": 10,
+        "agent": "Researcher 3 · amateur adaptation",
+        "name": "search_sources",
+        "args": {
+          "query": "post split cut handoff",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 303",
+              "text": "301\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.7. Moving the help defender away from a help position\nHowever, if 4 cuts to the ball side corner, x4 needs to move with them or else 4 will\nbe open.  If x4 follows the cut, x3 would then need to move from the low split line to\ndefend a flash cut made by 3.\nBy reversing the ball from one side of the court to the other, the offence force the\ndefensive players to adjust position.  This can create a situation where help defence\nhas not got into position when the pass is made.\nSome teams will opt to move away from the split line to provide better coverage\nagainst good shooters.  If the offence know that this is part of the defensive scheme,\nthey can move the shooter so that the defence are no longer in a help position.\nHere, 2 is an excellent shooter and when they cut to the corner, x2 will not adopt a split\nline position but will hedge towards the corner.  1 cuts to the free throw line to draw\nx1, and then there is no split line defender behind 5.\nIf x1 stays then 1 is open at the free throw area.\nHaving a high post player (particularly if they are also ball side) creates an offensive\nalignment that does not have an easy low split line defender.\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3\n24\n1\nx4\nx1x5\nx3\nx2\n4\n5\n3\n21\nx5\nx2\nx4\nx1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p303-1",
+              "evidence_url": "/evidence/wabc-l2-p303-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 232",
+              "text": "As x4 rotates to double team, x2 rotates down and is now defending 4 and must keep\nsight of them.\nSimilarly, x1 rotates to the top of the key and is responsible for both 1 and 2\n(and must keep vision of them).\nIf the post defender is standing on the baseline side of the post player, the help or\ndouble team comes from the high “split line” defender (x2).\nAgain, x1 rotates to the top of the key.\nIn order to prevent help coming from the split line, some offences will attempt to move\ndefenders from the “split line”.  Here 4 cuts to the high post.  If x4 stays at the basket,\n4 would be open to receive a pass and could shoot or pass to the low post player.\nTo combat this, x1 or x2 may move towards the keyway to be able to intercept any pass\nto 4, and x4 may make a small movement towards 4 so that they can still intercept a\npass to 5. They are also closer to 4 and can move to them quickly if they receive a pass.\nSimilarly, 1 & 2 may cut to the “strong side” in order to force x1 and x2 to move away\nfrom positions where they can help.\nTo combat this, x4 may play a “floating” position, staying in the keyway and leaving Player\n4 relatively open to receive a pass.  x2 also may stay closer to the foul line to pressure\nthe pass, but this will depend upon whether or not Player 2 is a perimeter shooter.\nAlternatively, where an offensive team is proficient at “clearing the split line”,\nthe defence may opt for a different defensive scheme than fronting the low post.\n1\n3\nx3\nx1\n2\n4\nx4 x25\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n230\nCoaching Manual\n1. Defensive tactics and strategies 1.1. Man to man defence 1.1.2. Help defence - help to defend low post",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=232",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p232-1",
+              "evidence_url": "/evidence/wabc-l2-p232-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244048.454761
+      },
+      {
+        "id": 11,
+        "agent": "Researcher 3 · amateur adaptation",
+        "name": "search_sources",
+        "args": {
+          "query": "split cut post-split",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 303",
+              "text": "301\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.7. Moving the help defender away from a help position\nHowever, if 4 cuts to the ball side corner, x4 needs to move with them or else 4 will\nbe open.  If x4 follows the cut, x3 would then need to move from the low split line to\ndefend a flash cut made by 3.\nBy reversing the ball from one side of the court to the other, the offence force the\ndefensive players to adjust position.  This can create a situation where help defence\nhas not got into position when the pass is made.\nSome teams will opt to move away from the split line to provide better coverage\nagainst good shooters.  If the offence know that this is part of the defensive scheme,\nthey can move the shooter so that the defence are no longer in a help position.\nHere, 2 is an excellent shooter and when they cut to the corner, x2 will not adopt a split\nline position but will hedge towards the corner.  1 cuts to the free throw line to draw\nx1, and then there is no split line defender behind 5.\nIf x1 stays then 1 is open at the free throw area.\nHaving a high post player (particularly if they are also ball side) creates an offensive\nalignment that does not have an easy low split line defender.\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3\n24\n1\nx4\nx1x5\nx3\nx2\n4\n5\n3\n21\nx5\nx2\nx4\nx1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p303-1",
+              "evidence_url": "/evidence/wabc-l2-p303-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 232",
+              "text": "As x4 rotates to double team, x2 rotates down and is now defending 4 and must keep\nsight of them.\nSimilarly, x1 rotates to the top of the key and is responsible for both 1 and 2\n(and must keep vision of them).\nIf the post defender is standing on the baseline side of the post player, the help or\ndouble team comes from the high “split line” defender (x2).\nAgain, x1 rotates to the top of the key.\nIn order to prevent help coming from the split line, some offences will attempt to move\ndefenders from the “split line”.  Here 4 cuts to the high post.  If x4 stays at the basket,\n4 would be open to receive a pass and could shoot or pass to the low post player.\nTo combat this, x1 or x2 may move towards the keyway to be able to intercept any pass\nto 4, and x4 may make a small movement towards 4 so that they can still intercept a\npass to 5. They are also closer to 4 and can move to them quickly if they receive a pass.\nSimilarly, 1 & 2 may cut to the “strong side” in order to force x1 and x2 to move away\nfrom positions where they can help.\nTo combat this, x4 may play a “floating” position, staying in the keyway and leaving Player\n4 relatively open to receive a pass.  x2 also may stay closer to the foul line to pressure\nthe pass, but this will depend upon whether or not Player 2 is a perimeter shooter.\nAlternatively, where an offensive team is proficient at “clearing the split line”,\nthe defence may opt for a different defensive scheme than fronting the low post.\n1\n3\nx3\nx1\n2\n4\nx4 x25\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n230\nCoaching Manual\n1. Defensive tactics and strategies 1.1. Man to man defence 1.1.2. Help defence - help to defend low post",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=232",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p232-1",
+              "evidence_url": "/evidence/wabc-l2-p232-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244049.9564428
+      },
+      {
+        "id": 12,
+        "agent": "Researcher 3 · amateur adaptation",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g4-4",
+            "gsw-g4-5",
+            "gsw-g5-5",
+            "mia-nyk-3",
+            "mia-nyk-4",
+            "wabc-l2-p232-1",
+            "wabc-l2-p303-1",
+            "wabc-l2-p335-1"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794244049.957602
+      },
+      {
+        "id": 13,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "Draymond Adebayo handoff DHO cut high post",
+          "team": "",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-g4",
+              "locator": "extracted passage 3",
+              "text": "Game 4 was just the fourth time in his career (663 total games) that Jokic had (at least) three blocks and three steals. But he had other big defensive plays too. Late in the third quarter, Bruce Brown got beat back door by Cody Martin. But Jokic, who was guarding another pick-and-roll at the time, saw the cut in his peripheral vision, slid over, and forced Martin into a turnover .\nJokic isn’t Hakeem Olajuwon on that end of the floor, but he’s executing the game plan and not making mistakes.\n2. On high alert\nJokic wasn’t the only vigilant Nugget when a teammate needed help in Game 4. Caldwell-Pope had a steal in the first quarter, when he switched a back\nscreen and then helped Brown, who had been sealed on the high side of the screen by Strus.\nAnd the Nuggets’ biggest stop of the night was probably with a little more then seven minutes left in the fourth quarter. Jokic was on the bench with five fouls and Denver’s lead was just six, with the Heat having scored on their last three possessions. The Nuggets had some switch confusion, with both Brown and Jeff Green guarding Butler as Martin cut back door.\nAaron Gordon was on the other side of the lane with Adebayo, but he saw both his man and the ball, and he was able to get to the rim as Martin caught Kyle Lowry’s pass. Martin shoveled the ball to Adebayo, who missed a floater over Green.\nThat’s not a terrible shot for the Heat, and it’s probably one that Adebayo wishes he had over. But for the Nuggets, it’s a much better shot than a layup from Martin, which Gordon was able to prevent by being alert (and big).\nNo defense is ever going to have a perfect game, but the best ones clean up any mistakes quickly. And when one Nugget got beat in Game 4, there was often another to put out the fire.\n3. Seamless switching",
+              "title": "Finals Film Study: Nuggets' defense puts them one win away from a championship",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-defense-puts-them-one-win-away-from-a-championship",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200404",
+              "source_id": "mia-g4-3",
+              "evidence_url": "/evidence/mia-g4-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244052.2013361
+      },
+      {
+        "id": 14,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "mia-g4-3",
+            "mia-nyk-3",
+            "mia-nyk-4",
+            "wabc-l2-p232-1",
+            "wabc-l2-p281-1",
+            "wabc-l2-p282-1",
+            "wabc-l2-p284-1",
+            "wabc-l2-p289-1",
+            "wabc-l2-p294-1",
+            "wabc-l2-p334-1",
+            "wabc-l2-p340-1"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794244052.20241
+      },
+      {
+        "id": 15,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "split cut handoff post pass",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 303",
+              "text": "301\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.7. Moving the help defender away from a help position\nHowever, if 4 cuts to the ball side corner, x4 needs to move with them or else 4 will\nbe open.  If x4 follows the cut, x3 would then need to move from the low split line to\ndefend a flash cut made by 3.\nBy reversing the ball from one side of the court to the other, the offence force the\ndefensive players to adjust position.  This can create a situation where help defence\nhas not got into position when the pass is made.\nSome teams will opt to move away from the split line to provide better coverage\nagainst good shooters.  If the offence know that this is part of the defensive scheme,\nthey can move the shooter so that the defence are no longer in a help position.\nHere, 2 is an excellent shooter and when they cut to the corner, x2 will not adopt a split\nline position but will hedge towards the corner.  1 cuts to the free throw line to draw\nx1, and then there is no split line defender behind 5.\nIf x1 stays then 1 is open at the free throw area.\nHaving a high post player (particularly if they are also ball side) creates an offensive\nalignment that does not have an easy low split line defender.\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3\n24\n1\nx4\nx1x5\nx3\nx2\n4\n5\n3\n21\nx5\nx2\nx4\nx1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p303-1",
+              "evidence_url": "/evidence/wabc-l2-p303-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 232",
+              "text": "As x4 rotates to double team, x2 rotates down and is now defending 4 and must keep\nsight of them.\nSimilarly, x1 rotates to the top of the key and is responsible for both 1 and 2\n(and must keep vision of them).\nIf the post defender is standing on the baseline side of the post player, the help or\ndouble team comes from the high “split line” defender (x2).\nAgain, x1 rotates to the top of the key.\nIn order to prevent help coming from the split line, some offences will attempt to move\ndefenders from the “split line”.  Here 4 cuts to the high post.  If x4 stays at the basket,\n4 would be open to receive a pass and could shoot or pass to the low post player.\nTo combat this, x1 or x2 may move towards the keyway to be able to intercept any pass\nto 4, and x4 may make a small movement towards 4 so that they can still intercept a\npass to 5. They are also closer to 4 and can move to them quickly if they receive a pass.\nSimilarly, 1 & 2 may cut to the “strong side” in order to force x1 and x2 to move away\nfrom positions where they can help.\nTo combat this, x4 may play a “floating” position, staying in the keyway and leaving Player\n4 relatively open to receive a pass.  x2 also may stay closer to the foul line to pressure\nthe pass, but this will depend upon whether or not Player 2 is a perimeter shooter.\nAlternatively, where an offensive team is proficient at “clearing the split line”,\nthe defence may opt for a different defensive scheme than fronting the low post.\n1\n3\nx3\nx1\n2\n4\nx4 x25\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5\nx5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n1\n3 x3\nx1\n2\n4\nx4\nx2\n5x5\n230\nCoaching Manual\n1. Defensive tactics and strategies 1.1. Man to man defence 1.1.2. Help defence - help to defend low post",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=232",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p232-1",
+              "evidence_url": "/evidence/wabc-l2-p232-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794244053.197647
+      },
+      {
+        "id": 16,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g1-1",
+            "gsw-g2-1",
+            "gsw-g4-4",
+            "gsw-g4-5",
+            "gsw-g5-5",
+            "mia-g2-2",
+            "mia-nyk-3",
+            "mia-nyk-4",
+            "wabc-l2-p232-1",
+            "wabc-l2-p303-1",
+            "wabc-l2-p335-1"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794244053.1986282
+      },
+      {
+        "id": 17,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 2
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [],
+          "gaps": [],
+          "done": true
+        },
+        "at": 1794244081.711589
+      },
+      {
+        "id": 18,
+        "agent": "Writer",
+        "name": "retry_output_format",
+        "args": {},
+        "result": {
+          "reason": "Model output did not match its required JSON schema; retrying once without tools."
+        },
+        "at": 1794244110.289052
+      },
+      {
+        "id": 19,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "accepted": 3,
+          "withheld": [
+            "失败条件中提到的“持球超过3秒未发动导致停滞”存在虚构的数字限制。参考源gsw-g4-5仅提到塔图姆停顿了半秒（split second）以及凯尔特人在进攻时间还剩11秒时才开始发动战术，并未提及任何“持球超过3秒”的具体统计或规则限制。"
+          ]
+        },
+        "at": 1794244143.588434
+      },
+      {
+        "id": 1,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "final_comparison_audit": true,
+          "accepted": 1,
+          "withheld": [
+            "文献gsw-g5-5中仅提到将球传入post（'entered the ball into Looney in the post'），根据评估原则，'post'不等于'high post'（高位），不能将post touch直接确立为高位传球，因此该战术观察中关于勇士利用'高位传球'的表述是不支持的。",
+            "根据评估原则，除非用户或检索到的证据有明确说明，否则不得断言业余联赛的规则。声称'业余比赛中没有防守三秒限制'属于未经证实的业余联赛规则断言，因此该局限性说明是不支持的。"
+          ]
+        },
+        "at": 1794244240.85519
+      }
+    ],
+    "seconds": 138.32,
+    "pre_final_audit_answer": "# 业余五人制球队高位战术改编与研究简报\n\n## 简化版高位手递手与反切配合\n\n**Proposed adaptation / 改编建议**\n\n【改编建议】针对无高大中锋、有两名投手和一名传球内线的业余队，建议采用高位手递手与反切配合。执行步骤：1. 传球内线（5号位）在高位接球作为压力释放点；2. 侧翼投手向5号位跑动，5号位背对防守者持球以身体宽度做墙；3. 若防守正常跟随，投手接手递手球直接投篮或突破；若防守者采取前顶防守（Top-blocking）阻截，投手立即反切（Backdoor Cut）直插篮下接5号位传球。失败条件：1. 5号位未用身体背对防守者，无法形成有效掩护；2. 5号位与投手没有贴身交接球，而是采用中距离短传，易被抢断；3. 投手反切时防守收缩，而进攻方未能及时通过外弹拉开空间。 [1](/evidence/wabc-l2-p281-1) [2](/evidence/wabc-l2-p282-1) [3](/evidence/wabc-l2-p284-1) [4](/evidence/wabc-l2-p289-1) [5](/evidence/mia-nyk-3)\n\n## NBA高位策应与反制顶防的战术观察\n\n**Evidence / 证据**\n\n【战术观察】在2022年总决赛G5中，勇士利用高位传球配合无球掩护（Split Cuts）创造出空位三分和空切机会。在2023年季后赛中，热火面对尼克斯的顶防（Top-blocking）时，通过后门切入进行反制；若防守者收缩防后门，则掩护者外弹投三分（角色反转）；阿德巴约还利用手递手假动作直接切入。WABC Level 2手册也指出，高位站位能拉开空间，使防守方难以进行低位协防。 [6](/evidence/gsw-g5-5) [5](/evidence/mia-nyk-3) [7](/evidence/wabc-l2-p303-1)\n\n## 业余队执行高位配合的局限性\n\n**Limit / 边界**\n\n【局限性说明】本研究简报的战术改编基于2021-22赛季勇士季后赛、2022-23赛季热火季后赛及WABC二级教练员手册的特定案例。NBA战术依赖极高的个人基本功与战术素养，且PBP数据无法完整记录无球防守细节。此外，业余比赛中没有防守三秒限制，若对手不采取人盯人防守，而是收缩联防，该高位配合的效果将受到限制。目前也缺乏业余球队在每周仅60分钟训练下执行该战术的实际成功率数据。 [6](/evidence/gsw-g5-5) [5](/evidence/mia-nyk-3) [7](/evidence/wabc-l2-p303-1)\n\n## Limitations / 数据边界\n\n- 由于缺乏业余球队实际防守轮转速度的数据，无法确定防守方是否会采用换防（Switching）来应对此简化配合\n- 未获取热火队在高位策应配合中的具体跑位成功率统计\n- 未检索到当防守方不采取标准人盯人而是混合联防时，该高位配合的具体演变方案\n- 缺乏业余球队在每周仅60分钟训练时间下执行该配合的实际成功率统计\n\n\n1 draft claim(s) withheld after citation checks. / 已隐藏未通过证据核查的草稿结论。\n\n## Sources / 来源\n\n1. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281) — PDF page 281\n2. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282) — PDF page 282\n3. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284) — PDF page 284\n4. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=289) — PDF page 289\n5. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3\n6. [Finals Film Study: Warriors execute on both ends of the floor in Game 5](https://www.nba.com/news/finals-film-study-game-5) — extracted passage 5\n7. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303) — PDF page 303",
+    "final_audit": {
+      "verdicts": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "reason": "该配合方案明确标为【改编建议】，结合了WABC二级教练员手册中的高位压力释放、手递手配合原则以及热火队应对顶防的后门切入和外弹原则，并结合了用户无高大中锋、有投手和传球内线的约束条件，给出了具体的执行步骤和失败条件，且未承诺功效或错误归因于教练，符合改编建议的评估标准。"
+        },
+        {
+          "claim_index": 1,
+          "supported": false,
+          "reason": "文献gsw-g5-5中仅提到将球传入post（'entered the ball into Looney in the post'），根据评估原则，'post'不等于'high post'（高位），不能将post touch直接确立为高位传球，因此该战术观察中关于勇士利用'高位传球'的表述是不支持的。"
+        },
+        {
+          "claim_index": 2,
+          "supported": false,
+          "reason": "根据评估原则，除非用户或检索到的证据有明确说明，否则不得断言业余联赛的规则。声称'业余比赛中没有防守三秒限制'属于未经证实的业余联赛规则断言，因此该局限性说明是不支持的。"
+        },
+        {
+          "claim_index": 3,
+          "supported": true,
+          "reason": "该局限性说明准确反映了当前检索范围和工具的限制，即数据集中缺乏业余球队实际防守轮转速度的数据，无法确定其是否会采用换防，表述客观保守。"
+        },
+        {
+          "claim_index": 4,
+          "supported": true,
+          "reason": "该局限性说明准确反映了数据限制，文献中确实未提供热火队在高位策应配合中的具体跑位成功率统计数据。"
+        },
+        {
+          "claim_index": 5,
+          "supported": true,
+          "reason": "该局限性说明准确反映了检索结果，文献中确实未检索到防守方采取混合联防时该高位配合的具体演变方案。"
+        },
+        {
+          "claim_index": 6,
+          "supported": true,
+          "reason": "该局限性说明准确反映了数据限制，数据集中确实缺乏业余球队在每周仅60分钟训练时间下执行该配合的实际成功率统计。"
+        }
+      ]
+    }
   }
 ]
