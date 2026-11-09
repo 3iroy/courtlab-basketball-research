@@ -1,5 +1,5 @@
 {
-  "status": "deployed_initial_version_english_update_pending",
+  "status": "deployed_english",
   "project": "ieor-4570-f26-ts3733",
   "region": "us-east1",
   "service": "courtlab",
@@ -9,5 +9,12 @@
   "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
   "access": "IAP; domain:columbia.edu",
   "trigger_created": false,
-  "continuous_deployment_status": "GitHub App repository access requires 3iroy browser sign-in."
+  "continuous_deployment_status": "GitHub App repository access requires 3iroy browser sign-in.",
+  "latest_build_id": "28803e52-1940-4c7a-a87d-71a90afad8d5",
+  "local_validation": {
+    "automated_tests_passed": 13,
+    "english_live_examples": 3,
+    "english_response_to_chinese_input": true
+  },
+  "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in."
 }

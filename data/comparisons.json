@@ -1195,5 +1195,817 @@
       }
     ],
     "seconds": 74.24
+  },
+  {
+    "question": "We are an adult amateur five-on-five team with one 60-minute practice per week, no tall center, two reliable open shooters and one passing big. We mostly face man-to-man defense. Use Warriors and Heat evidence to propose one simplified action, with execution steps, failure conditions and citations. Clearly label it as a proposed adaptation.",
+    "model": "vertex_ai/gemini-3.5-flash",
+    "baseline_no_system_no_tools": "### Proposed Adaptation: The \"Miami-Golden State\" Elbow Split\n\nFor an adult amateur team with limited practice time (one 60-minute session per week), running complex, multi-option sets is unrealistic. Instead, you need a high-yield **conceptual trigger** that requires only one basic action but naturally creates three high-percentage options based on how the man-to-man defense reacts. \n\nThis adaptation merges the **Golden State Warriors' \"Post-Split\" action** (using a playmaker to facilitate for shooters screening for one another) with the **Miami Heat's \"Delay\" series** (utilizing a mobile, playmaking big at the top of the key to open up the paint).\n\n---\n\n### The Setup\n* **Alignment:** 5-Out or High-Post 1-4.\n* **The Hub (Player 5):** Your passing big. They start at the top of the key or the elbow.\n* **The Shooters (Players 2 & 3):** Positioned on the wings/corners.\n* **The Ball Handler (Player 1):** Starts at the top.\n\n```\n       [Basket]\n  \n  (3)            (4)\n  \n     (2)      [5] <--- (Passing Big at Elbow)\n          ^\n          | (Pass)\n         (1) <--- (Ball Handler)\n```\n\n---\n\n### Execution Steps\n\n#### Step 1: The Entry\nPlayer 1 passes to the Passing Big (5) at the elbow or top of the key. 5 catches the ball facing the basket, keeping their eyes on the floor (acting as the \"Hub\").\n\n#### Step 2: The Split Trigger\nImmediately after passing, Player 1 does not stand still. They sprint directly toward the nearest shooter (Player 2) on the wing and set an off-ball down-screen. \n\n#### Step 3: The Read (The \"Split\")\nPlayer 2 (Shooter) uses Player 1's screen. They have two options based on their defender:\n* **Option A (Curl):** If the defender fights over the top of the screen, Player 2 curls tight around the screen toward Player 5 for a handoff or quick pass, shooting a catch-and-shoot jumper or driving.\n* **Option B (Pop):** If the defender sags into the paint to prevent the drive, Player 2 flares out to the three-point line. Player 1 (the screener) then turns and seals their defender, or slips to the basket.\n\n#### Step 4: The Weakside Distraction\nTo prevent weakside help from collapsing on the action, the second shooter (Player 3) and the remaining player (Player 4) exchange positions on the opposite side of the court. This keeps their defenders occupied and prevents them from helping in the paint.\n\n---\n\n### Failure Conditions & Countermeasures\n\nBecause amateur defenders often play undisciplined man-to-man defense (over-aggressive denying, switching poorly, or grabbing), you must prepare for these three failure conditions:\n\n#### Failure 1: The defense overplays and denies the entry pass to the Passing Big (5).\n* **The Cheat:** The defender denies the pass to the top of the key.\n* **The Counter:** Player 5 immediately back-cuts to the rim for a layup. If that is guarded, Player 1 dribbles toward Shooter 2 to initiate a Dribble Hand-Off (DHO) instead, bypassing the big.\n\n#### Failure 2: The defender over-pursues (locks and trails) Shooter 2 over the screen.\n* **The Cheat:** The defender anticipates the screen and cheats to the high side to stop the three-pointer.\n* **The Counter (The \"Backcut\"):** Shooter 2 fake-steps toward the screen, then immediately plants their foot and cuts backdoor to the basket. Player 5 (the passing big) delivers a bounce pass for a layup. \n\n#### Failure 3: The defense switches the screen (Player 1's defender takes Shooter 2).\n* **The Cheat:** Amateur teams often yell \"Switch!\" to cover up poor off-ball defense.\n* **The Counter (The \"Slip\"):** The moment Player 1's defender commits to switching onto Shooter 2, Player 1 abandons the screen and dives directly to the rim (\"slips\" the screen). Player 5 delivers a quick pass to Player 1 for an easy layup.\n\n---\n\n### Evidence and Tactical Citations\n\n#### 1. The Golden State Warriors (The \"Split Action\")\nUnder Steve Kerr, the Warriors popularized the \"post-split\" or \"elbow-split.\" When Draymond Green (a non-traditional, passing big) catches the ball in the post or elbow, perimeter players do not stand still. Instead, the passer immediately screens away for a shooter (often Stephen Curry or Klay Thompson). \n\n* **Tactical Alignment:** According to basketball analyst Gibson Pyper (*Half Court Hoops*), the Warriors' split cuts exploit the natural urge of man-to-man defenders to watch the ball. By screening off the ball while the defender of the passer is relaxed, it creates defensive miscommunication, resulting in open layups or uncontested threes.\n\n#### 2. The Miami Heat (The \"Delay\" Series)\nErik",
+    "agent_answer": "# High-Post Split and Handoff Adaptation for Amateur Teams\n\n## Proposed Adaptation: High-Post Split and Handoff\n\n**Proposed adaptation**\n\nFor an amateur team with limited practice time, we propose a simplified High-Post Split and Handoff action. The passing big sets up at the high post or elbow, while two shooters occupy the wings or corners to stretch the defense. A shooter passes to the big and immediately runs to set an off-ball screen for the second shooter. The second shooter curls tight around the screen toward the big. The big pivots to face away from the cutter, widening their stance to obstruct the defender. The big then executes a close handoff to the curling shooter. If the defender overplays or top-blocks the handoff, the cutter rejects the screen and cuts backdoor to the basket. If the defender jumps out high to stop the shooter, the big fakes the handoff and drives to the rim. [1](/evidence/wabc-l2-p281-1) [2](/evidence/wabc-l2-p282-1) [3](/evidence/wabc-l2-p303-1) [4](/evidence/gsw-g5-5) [5](/evidence/mia-nyk-3)\n\n## Limitations of the Tactical Analysis\n\n**Evidence limit**\n\nThis tactical brief is limited to the selected playoff games of the Golden State Warriors (2021-22) and Miami Heat (2022-23), alongside the WABC Level 2 Coaches Manual. It does not analyze full-season tracking data, other playoff series, or different defensive coverages such as zone defenses. Furthermore, the proposed adaptation is a simplified model designed for amateur personnel and has not been tested under competitive amateur league rules or conditions. [4](/evidence/gsw-g5-5) [6](/evidence/mia-g2-3) [5](/evidence/mia-nyk-3) [7](/evidence/mia-nyk-4) [8](/evidence/wabc-l2-p334-1)\n\n## Limitations\n\n- Limited to selected GSW 2021-22 and MIA 2022-23 playoff games.\n- The proposed adaptation is untested in amateur league settings.\n\n\n4 draft claim(s) withheld after citation checks.\n\n## Sources\n\n1. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281) — PDF page 281\n2. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282) — PDF page 282\n3. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303) — PDF page 303\n4. [Finals Film Study: Warriors execute on both ends of the floor in Game 5](https://www.nba.com/news/finals-film-study-game-5) — extracted passage 5\n5. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3\n6. [Finals Film Study: Heat catch fire with help from the Nuggets in Game 2](https://www.nba.com/news/finals-film-study-nuggets-heat-game-2) — extracted passage 3\n7. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 4\n8. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=334) — PDF page 334",
+    "research": {
+      "status": "complete",
+      "rounds": 2,
+      "researchers": 3,
+      "citations": [
+        {
+          "number": 1,
+          "source_id": "wabc-l2-p281-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281",
+          "locator": "PDF page 281",
+          "evidence_url": "/evidence/wabc-l2-p281-1"
+        },
+        {
+          "number": 2,
+          "source_id": "wabc-l2-p282-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+          "locator": "PDF page 282",
+          "evidence_url": "/evidence/wabc-l2-p282-1"
+        },
+        {
+          "number": 3,
+          "source_id": "wabc-l2-p303-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303",
+          "locator": "PDF page 303",
+          "evidence_url": "/evidence/wabc-l2-p303-1"
+        },
+        {
+          "number": 4,
+          "source_id": "gsw-g5-5",
+          "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+          "url": "https://www.nba.com/news/finals-film-study-game-5",
+          "locator": "extracted passage 5",
+          "evidence_url": "/evidence/gsw-g5-5"
+        },
+        {
+          "number": 5,
+          "source_id": "mia-nyk-3",
+          "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+          "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+          "locator": "extracted passage 3",
+          "evidence_url": "/evidence/mia-nyk-3"
+        },
+        {
+          "number": 6,
+          "source_id": "mia-g2-3",
+          "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+          "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+          "locator": "extracted passage 3",
+          "evidence_url": "/evidence/mia-g2-3"
+        },
+        {
+          "number": 7,
+          "source_id": "mia-nyk-4",
+          "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+          "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+          "locator": "extracted passage 4",
+          "evidence_url": "/evidence/mia-nyk-4"
+        },
+        {
+          "number": 8,
+          "source_id": "wabc-l2-p334-1",
+          "title": "WABC Level 2 Coaches Manual",
+          "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=334",
+          "locator": "PDF page 334",
+          "evidence_url": "/evidence/wabc-l2-p334-1"
+        }
+      ],
+      "withheld_claims": 4
+    },
+    "tool_calls": [
+      {
+        "id": 1,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 1
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "Analyze GSW 2021-22 playoff film studies (gsw-g1, gsw-g2, gsw-g4, gsw-g5) and play-by-play (pbp-GSW) for offensive actions involving Draymond Green or other bigs acting as playmakers from the high post, elbow, or top of the key, specifically focusing on handoffs (DHOs), split cuts, and off-ball screens with shooters like Curry and Thompson.",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "Analyze MIA 2022-23 playoff film studies (mia-nyk, mia-g2, mia-g4) and play-by-play (pbp-MIA) for offensive actions involving Bam Adebayo as a passing hub at the elbow or high post, focusing on handoffs, split actions, and off-ball screening sequences with shooters like Duncan Robinson and Max Strus.",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "Examine the WABC Level 2 Coaches Manual (wabc-l2) for coaching principles regarding simple offensive spacing, handoffs, split cuts, or pass-and-cut actions, and how to structure these for teams with limited practice time.",
+              "focus": "coaching principles"
+            }
+          ],
+          "gaps": [],
+          "done": false
+        },
+        "at": 1794259513.964486
+      },
+      {
+        "id": 2,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "spacing handoff split cut pass and cut",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 303",
+              "text": "301\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.7. Moving the help defender away from a help position\nHowever, if 4 cuts to the ball side corner, x4 needs to move with them or else 4 will\nbe open.  If x4 follows the cut, x3 would then need to move from the low split line to\ndefend a flash cut made by 3.\nBy reversing the ball from one side of the court to the other, the offence force the\ndefensive players to adjust position.  This can create a situation where help defence\nhas not got into position when the pass is made.\nSome teams will opt to move away from the split line to provide better coverage\nagainst good shooters.  If the offence know that this is part of the defensive scheme,\nthey can move the shooter so that the defence are no longer in a help position.\nHere, 2 is an excellent shooter and when they cut to the corner, x2 will not adopt a split\nline position but will hedge towards the corner.  1 cuts to the free throw line to draw\nx1, and then there is no split line defender behind 5.\nIf x1 stays then 1 is open at the free throw area.\nHaving a high post player (particularly if they are also ball side) creates an offensive\nalignment that does not have an easy low split line defender.\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3 2\n4 1\nx4\nx1\nx5\nx3\nx2\n5\n3\n24\n1\nx4\nx1x5\nx3\nx2\n4\n5\n3\n21\nx5\nx2\nx4\nx1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p303-1",
+              "evidence_url": "/evidence/wabc-l2-p303-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 334",
+              "text": "332\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nBelow are some examples of situations, where it might look like the defence is playing\nzone, but the offence has not yet done enough to “prove” zone.\nWhen 3 has the ball, x5 can adopt a “split line” position in the middle of the key. If the\nball is passed to 4, x5 can maintain this split line position.\nIf the ball stays on one side and 5 stays still, X5 is adhering to man-to-man principles\neven though they are just staying in the middle of the key.\nHaving 5 cut from low to high can be a useful way to prove a zone. However, the timing\nof the cut is important. If 4 has already started to drive to the basket, x5 can rotate to\nhelp and not react to the cut by 5.\nSimilarly, moving the ball from one side of the court to another can be effective to\nestablish that it is a zone defence.\nHowever, if 5 also cuts from one side to another, x5 can maintain a “split line” position\nin the middle of the key although x5 should make some movement in reaction to the cut\n(e.g. bump the cutter).\n3\n4\n5 x5\n3\n4\n5 x5\n3\n4\n5 x5\n1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=334",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p334-1",
+              "evidence_url": "/evidence/wabc-l2-p334-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 235",
+              "text": "Alternatively, x5 and x1 may double team the ball handler.  Doing this will require help\nfrom the “split line” to guard 5’s cut to the basket.  This can come from either x4 or x2,\nwho must get between 5 and the ball handler.\n15\nx5\nx1\n4\n3\n2\nx3\nx4\nx2\n233\nCoaching Manual\n1. Defensive tactics and strategies 1.2. Defending screens 1.2.1. Defending on ball screens - push",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=235",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p235-1",
+              "evidence_url": "/evidence/wabc-l2-p235-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259515.6008499
+      },
+      {
+        "id": 3,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Adebayo handoff split elbow high post",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259515.6179452
+      },
+      {
+        "id": 4,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Draymond handoff DHO split screen",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            },
+            {
+              "document_id": "gsw-g2",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nDraymond Green was a beast on defense in Game 2, but he wasn't the only Warriors player who made a big impact against the Celtics.\nJohn Schuhmann\nFinals Film Room: How did the Warriors' defense throw Boston off balance?\n• Complete coverage: 2022 NBA Finals\nBOSTON — It was noted in this space after Game 1 of the NBA Finals that, since Draymond Green returned from a two-month absence, the Golden State Warriors’ defense hadn’t reached the level it was playing at before Green was lost to a back issue. Games 4 and 5 of the conference finals, along with Game 1 of this series, were the worst three-game stretch of defense ( 123.8 points allowed per 100 possessions ) that the Warriors have had with Green in uniform this season.\nAnd then came Game 2, when the Warriors held the Boston Celtics to just 88 points on 98 possessions (89.8 per 100), Golden State’s best defensive performance since mid-January. The Celtics actually had 30 points on their first 24 possessions of the game, but from late in the first quarter until they took their starters out of the game early in the fourth, they scored just 34 points on a stretch of 52 possessions (*65.4 per 100).\n* In the regular season (1,230 games x 2 teams x 2 halves), there were only 11 instances where a team had a less efficient first or second half than that. In these playoffs, the only time a team has scored less than 65.4 per 100 in a half was the Suns ( 58.7 per 100 ) in the first half of Game 7 vs. Dallas.\nDraymond Green seemingly set the tone when he forced a jump ball on the first possession of the game, and he was a menace defensively for nearly all of his 35 minutes on the floor in Game 2. But defensive numbers like that don’t come without contributions from everybody in the rotation.",
+              "title": "Finals Film Study: Warriors' defense steps up in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-warriors-defense-steps-up-in-game-2",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100402",
+              "source_id": "gsw-g2-1",
+              "evidence_url": "/evidence/gsw-g2-1"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 3",
+              "text": "It was a one-point game in the first minute of the fourth when Wiggins grabbed a rebound, saw he had White in front of him, and just attacked the basket , with White providing very little resistance.\nTwo possessions later, White switched a Klay Thompson screen for Poole, who blew right by White, drawing a foul as he got to the rim …\nWhite was immediately subbed out, but he was back as the Celtics went super-small (no Horford or Robert Williams) with three minutes to go. And the Warriors (aided by the lack of rim protection) immediately went right at White on the next two possessions, getting a layup from Curry and a dunk from Wiggins …\nWhite actually pre-switched that pick and roll (switching onto Kevon Looney before he set the ball screen) and then completely whiffed when it came to containing Wiggins’ drive.\nNeither team’s bench has been particularly good in this series, but among players who’ve averaged at least 10 minutes, the worst on-court marks for their team’s point differential per 100 possessions are Daniel Theis (who hasn’t played since Game 2), Grant Williams (minus-19.1) and White (minus-12.5).\n3. The 6-6 rim protector\nIn the Finals, the Celtics have shot just 51.1% in the paint, down from 58.8% in the regular season and 55.2% through the first three rounds of the playoffs. Their drives to the rim have often been met by multiple bodies and arms. And on Monday, Draymond Green was particularly strong in preventing Boston from converting at the basket.\nWhen Looney shut down a White drive midway through the first quarter, Thompson got caught ball-watching and was beat back door by Jaylen Brown. But Green saw the cut, slid down off Tatum, and kept Brown from getting off a clean shot at the basket …",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-3",
+              "evidence_url": "/evidence/gsw-g5-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259515.981496
+      },
+      {
+        "id": 5,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Adebayo delay action handoff screen",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259516.84039
+      },
+      {
+        "id": 6,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "handoff split cut pass and cut spacing limited practice",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 290",
+              "text": "288\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.4. Post up cuts\n2.1.4 Post Up Cuts\n“Post Up” Cuts\nToo often with junior teams one player steps into a post position and then stays there\nthroughout the offence, and this is repeated time and time again.\nAll players must be introduced to basic principles of post play and should be encouraged\nto look for opportunities to play in the post.  A guard that can play effectively in the post\nis particularly hard to defend.  Furthermore, players that may initially establish a post\nposition need to be able to step to the perimeter.\nA “post” player that can play on the perimeter is much harder to guard than one limited\nto only being able to play in a post position.\nPost Up at the Basket\nWhilst the low post position is on the side of the keyway, players on a post up cut\nshould cut to the basket – getting their head under the basket.  From here, they post in\nthe keyway.  Players do need to be conscious of the 3 second rule, however referees\nwill usually warn a player to vacate before calling a violation .  The 3 second period is\nalso longer than most players realise.\n4\n1\n2\n5\n3\nLow\nPost\nLow\nPost\nPost Position\non Post Cut",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=290",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p290-1",
+              "evidence_url": "/evidence/wabc-l2-p290-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 305",
+              "text": "303\nCoaching manual\n2. Offensive tactics and strategies  Follow-up\nFollow-up\n1. How do you vary Receivers Principles when the team is playing with a post player?\n2. Discuss with your players\na. What cues should a perimeter player consider when they have the ball;\nb. What cues should a perimeter player that does not have the ball consider?\nDid the players identify all relevant cues?\n3. Watch a colleague’s team play a game and assess their ability to pass the ball to create open shot\nopportunities.  Discuss with the coach:\na. How the team practices creating open shots;\nb. What changes could be made at practice to improve their passing;\nc. What understanding do the players have of how to create opportunities?\n4. At practice, set up a contested half court activity and instruct your offensive players to focus on moving\nsplit line defenders from the split line.  What methods did they use?",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=305",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p305-1",
+              "evidence_url": "/evidence/wabc-l2-p305-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 23",
+              "text": "time (e.g. the senior club coach taking a\nsession with a junior team);\n•  use “cross training”, where practice\ninvolves other sports.  This is particularly\ncommon when working on fitness,\nhowever can also work for technical skills\n(e.g. “pass and cut” and “screening” are\neffective in soccer as well as basketball);\n•  schedule a social event (e.g. team dinner)\ninstead of practice from time to time;\n•  have players lead activities in practice –\nthis could be them choosing activities that\nthey wish to do (from a list provided by\nthe coach) or a free choice of activities.",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=23",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p23-2",
+              "evidence_url": "/evidence/wabc-l2-p23-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259516.8447711
+      },
+      {
+        "id": 7,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "DHO handoff split post playmaker Green Curry Thompson",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 4",
+              "text": "With Wiggins anticipating a Tatum curl off a Smart cross-screen, Tatum cut back door, leaving his defender in the dust. But Thompson saw what was happening, switched off of Brown in the corner, and contested Tatum at the rim without fouling:\nTwo possessions later (clutch possession No. 1 for the Celtics), Brown rejected a screen, looking to beat Thompson off the dribble. But Thompson stayed with him and forced a tough runner that rimmed out:\nLater in the fourth (clutch possession No. 5), Thompson completely shut down a Brown isolation, keeping him in front and not giving him enough space for a step-back jumper. Brown kicked the ball out to Horford, but his 3-pointer was a little rushed with Looney closing out:\nWith the Celtics down six (not a clutch possession), Horford made a corner 3 the following trip down the floor. And after a Looney layup (when the Celtics got the ball out of Curry’s hands), the Celtics had their sixth and final clutch possession of Game 4.\nAgain, Thompson was most responsible for getting the stop. Brown cut back door and Smart was able to squeeze a pass through, but Thompson stayed with him and (with some help from Wiggins) forced a turnover:\nThere were more vulnerable defenders — Curry and (sometimes) Poole — on the floor when Thompson got those stops, and it seems the Celtics chose the wrong guy to attack.\n3. Help, recover and contest\nWhen Curry hit a runner from the elbow to put the Warriors up three with a little less than four minutes to go, the Celtics called timeout and drew up a play (clutch possession No. 3) to get Curry in an action against Tatum.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-4",
+              "evidence_url": "/evidence/gsw-g4-4"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259517.103091
+      },
+      {
+        "id": 8,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "handoff",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259517.9799418
+      },
+      {
+        "id": 9,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "delay action Adebayo Robinson Vincent",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            },
+            {
+              "document_id": "mia-g4",
+              "locator": "extracted passage 2",
+              "text": "Nikola Jokic is a two-time Kia MVP because he does it all offensively. But to get to this point, the Nuggets have needed him to play well on the other end of the floor too. Game 4, in which he and Murray combined to shoot just 13-for-36 from the field, was a great time for him to have a great defensive performance.\nAs noted after the game , Jokic had seven deflections ( three more than any other player ) on Friday. But his defensive success was as much about his feet as it was his hands.\nIt was also about his savvy. Late in the first quarter, Kentavious Caldwell-Pope gambled on a cross-court pass, giving Gabe Vincent a lane to the basket. Jokic was there to help, but there was nobody to help him with Bam Adebayo should he step in front of Vincent’s drive.\nFortunately, he’s a big dude with long arms and great instincts. And he was able to deter a drop-off pass with his right arm before stripping Vincent with his left, what went into the box score as his first of three blocks.\nJokic obviously isn’t the quickest defender, but he’s been asked to defend pick-and-rolls two different ways. When his man sets a screen for Jimmy Butler, Jokic is in “drop” coverage, focused on stopping the drive. When his man sets a screen for a shooter, Jokic is at the level of the screen, preventing a comfortable, pull-up 3 .\nMidway through the first quarter, Jokic played both coverages on the same possession, stopping a Butler drive in drop coverage, recovering back to Adebayo, preventing a Max Strus 3 in at-the-level coverage, and then recovering back to Adebayo to force a tough, turnaround jumper with just four seconds left on the shot clock.",
+              "title": "Finals Film Study: Nuggets' defense puts them one win away from a championship",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-defense-puts-them-one-win-away-from-a-championship",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200404",
+              "source_id": "mia-g4-2",
+              "evidence_url": "/evidence/mia-g4-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259518.2354891
+      },
+      {
+        "id": 10,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "split cut post screen",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 4",
+              "text": "With Wiggins anticipating a Tatum curl off a Smart cross-screen, Tatum cut back door, leaving his defender in the dust. But Thompson saw what was happening, switched off of Brown in the corner, and contested Tatum at the rim without fouling:\nTwo possessions later (clutch possession No. 1 for the Celtics), Brown rejected a screen, looking to beat Thompson off the dribble. But Thompson stayed with him and forced a tough runner that rimmed out:\nLater in the fourth (clutch possession No. 5), Thompson completely shut down a Brown isolation, keeping him in front and not giving him enough space for a step-back jumper. Brown kicked the ball out to Horford, but his 3-pointer was a little rushed with Looney closing out:\nWith the Celtics down six (not a clutch possession), Horford made a corner 3 the following trip down the floor. And after a Looney layup (when the Celtics got the ball out of Curry’s hands), the Celtics had their sixth and final clutch possession of Game 4.\nAgain, Thompson was most responsible for getting the stop. Brown cut back door and Smart was able to squeeze a pass through, but Thompson stayed with him and (with some help from Wiggins) forced a turnover:\nThere were more vulnerable defenders — Curry and (sometimes) Poole — on the floor when Thompson got those stops, and it seems the Celtics chose the wrong guy to attack.\n3. Help, recover and contest\nWhen Curry hit a runner from the elbow to put the Warriors up three with a little less than four minutes to go, the Celtics called timeout and drew up a play (clutch possession No. 3) to get Curry in an action against Tatum.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-4",
+              "evidence_url": "/evidence/gsw-g4-4"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259518.657013
+      },
+      {
+        "id": 11,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "hand off",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 282",
+              "text": "280\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nOften instead of a hand off, the player will throw a short pass to their team mate,\nhowever this should be discouraged.\nThe hand-off works best when the two offensive players come together, as this\nis similar to a screen, where the player passing the ball also gets in the path of\nthe defender.\nWhere the player making the hand off has not dribbled, they may also be able to fake\nthe hand off action.\nHere, x3 anticipates a hand off and moves to help to defend 1 as they start their\ndribble.  3 fakes the hand off and then spins to attack the basket, having x3 now on\ntheir back.\n5\n2\n3\n1\nx3",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p282-1",
+              "evidence_url": "/evidence/wabc-l2-p282-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 281",
+              "text": "2.1  Offensive Movement\n2.1.1 Motion Offence - 5 Out -\nDribble Entry - Hand-off\n279\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nDribble Hand Off\nDribble hand offs are increasingly part of a team’s offensive scheme both as a pressure\nrelease (e.g. when the ball cannot be passed to the wing, the player will dribble\ntowards the wing and “hand off”) and also as an aggressive offensive move.\nThe dribbler moves towards the defender and then executes a jump stop, holding the\nball on their hip.  They hold the ball with hands on the top and bottom of the ball, to\nmake it easier for their team mate to grab the ball.\nThe team mate takes the ball on the move and looks to attack off the dribble towards\nthe key.  They will often initially move away from the ball and then cut back towards\nthe ball.\nIncreasingly, the player passing the ball will pivot to obstruct the path of the defender.\nWhilst the hand off is often done dribbling from point to the wing, it can be executed\nanywhere on the court.\nAlternatively, a hand off can be executed from a player that is standing still, and this is\noften done when a post player has the ball.\nBefore the hand off, the post player (4) pivots so that their back is facing the player that\nwill take the ball, which will also make them “wider” and better able to obstruct the\npath of the defender.\n1\n2\n1\n4 2",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p281-1",
+              "evidence_url": "/evidence/wabc-l2-p281-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 340",
+              "text": "338\nCoaching manual\n2. Offensive tactics and strategies 2.5. Offence against full court pressure 2.5.1. Point guard inbound\nA tactic that can be used to relieve some of the pressure on the point guard is to have\nthe point guard make the inbound pass.  This may cause initial confusion amongst the\ndefenders if their defence was specifically attempting to pressure the point guard.\nIf x1 moves to immediately double team 4 as they catch the ball, the point guard (1) can\nstep into the court to receive a pass back and then immediately dribble away from the\narea of the double team.\nThis works best if 4 receives the pass 2-3 metres away from the baseline and\naccordingly, 4 initially cuts away from the passer.\nIf x1 denies one player from receiving the ball, 1 can pass to the player that is not being\ndenied and then run to receive a hand-off.  x1 is not in position to defend the hand off,\nas they were denying the pass on the other side of the court.\n1\n4 x4\nx1\n1\nx1\n2\nx2\n4\nx4",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=340",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p340-1",
+              "evidence_url": "/evidence/wabc-l2-p340-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259519.1077409
+      },
+      {
+        "id": 12,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "wabc-l2-p23-2",
+            "wabc-l2-p235-1",
+            "wabc-l2-p281-1",
+            "wabc-l2-p282-1",
+            "wabc-l2-p290-1",
+            "wabc-l2-p303-1",
+            "wabc-l2-p305-1",
+            "wabc-l2-p334-1",
+            "wabc-l2-p340-1"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794259519.108982
+      },
+      {
+        "id": 13,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "delay action Robinson Vincent Adebayo",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            },
+            {
+              "document_id": "mia-g4",
+              "locator": "extracted passage 2",
+              "text": "Nikola Jokic is a two-time Kia MVP because he does it all offensively. But to get to this point, the Nuggets have needed him to play well on the other end of the floor too. Game 4, in which he and Murray combined to shoot just 13-for-36 from the field, was a great time for him to have a great defensive performance.\nAs noted after the game , Jokic had seven deflections ( three more than any other player ) on Friday. But his defensive success was as much about his feet as it was his hands.\nIt was also about his savvy. Late in the first quarter, Kentavious Caldwell-Pope gambled on a cross-court pass, giving Gabe Vincent a lane to the basket. Jokic was there to help, but there was nobody to help him with Bam Adebayo should he step in front of Vincent’s drive.\nFortunately, he’s a big dude with long arms and great instincts. And he was able to deter a drop-off pass with his right arm before stripping Vincent with his left, what went into the box score as his first of three blocks.\nJokic obviously isn’t the quickest defender, but he’s been asked to defend pick-and-rolls two different ways. When his man sets a screen for Jimmy Butler, Jokic is in “drop” coverage, focused on stopping the drive. When his man sets a screen for a shooter, Jokic is at the level of the screen, preventing a comfortable, pull-up 3 .\nMidway through the first quarter, Jokic played both coverages on the same possession, stopping a Butler drive in drop coverage, recovering back to Adebayo, preventing a Max Strus 3 in at-the-level coverage, and then recovering back to Adebayo to force a tough, turnaround jumper with just four seconds left on the shot clock.",
+              "title": "Finals Film Study: Nuggets' defense puts them one win away from a championship",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-defense-puts-them-one-win-away-from-a-championship",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200404",
+              "source_id": "mia-g4-2",
+              "evidence_url": "/evidence/mia-g4-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259519.515538
+      },
+      {
+        "id": 14,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "mia-g2-3",
+            "mia-g4-2",
+            "mia-nyk-3",
+            "mia-nyk-4"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794259519.516577
+      },
+      {
+        "id": 15,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "split",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 5",
+              "text": "But as he took a handoff from Derrick White, Tatum paused for a split second. Wiggins got around White, and Draymond Green pinched off of Brown to prevent a Tatum drive. Wiggins then helped on a Brown drive and quickly recovered to contest Tatum’s 3-pointer:\nThe following possession (clutch possession No. 4), it was Green doing the same thing. Thompson (one possession prior to the iso above) stayed in front of a Brown isolation, but Green helped in the paint. Brown kicked out to Smart and Green made a huge effort to contest the shot as best he could:\nBrown got the offensive rebound, but Wiggins stayed in front of a Tatum spin move and Smart missed another 3 against another Green contest.\n4. Sometimes slow and stagnant\nThe Celtics’ clutch issues on Friday weren’t as self-inflicted as their issues in Game 6 of the conference finals . As noted above, there were good defensive plays/actions from all six Warriors (even Poole!) who played in clutch time.\nBut on their first clutch possession (Brown rejecting the screen and missing the runner), note that there were only 11 seconds left on the shot clock before the Celtics ran anything designed to gain an advantage, because they were so slow to get into their offense:\nCurry was incredible in Game 4, but the difference in these games has been almost entirely about the Boston offense, which has scored 125.5 points per 100 possessions in its two wins and just 95.4 in its two losses. Turnovers and rebounds have been a part of that, but shooting is the most important aspect of this game.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-5",
+              "evidence_url": "/evidence/gsw-g4-5"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794259519.6483579
+      },
+      {
+        "id": 16,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g2-1",
+            "gsw-g4-3",
+            "gsw-g4-4",
+            "gsw-g4-5",
+            "gsw-g5-3",
+            "gsw-g5-5"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794259519.649305
+      },
+      {
+        "id": 17,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 2
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [],
+          "gaps": [
+            "The gap regarding Heat-specific tactical evidence has been resolved with findings on MIA's 'Delay' handoff and backdoor counters (mia-g2-3, mia-nyk-3, mia-nyk-4).",
+            "The gap regarding Warriors-specific split actions has been resolved with findings on GSW's post-split actions (gsw-g5-5).",
+            "The gap regarding amateur coaching principles has been resolved with WABC Level 2 guidelines on high-post hand-offs and spacing (wabc-l2-p281-1, wabc-l2-p282-1, wabc-l2-p303-1)."
+          ],
+          "done": true
+        },
+        "at": 1794259537.320307
+      },
+      {
+        "id": 18,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "accepted": 2,
+          "withheld": [
+            "The source states Horford (Wiggins's defender) stepped up, not the big's defender, and Curry did not pass back to Wiggins.",
+            "The source states that opponents top-blocked shooters on pin-down screens, not the handoff path, to trigger backdoor cuts.",
+            "The sources describe post play and screens, but do not specify a high-post touch, violating the court-location uncertainty rule.",
+            "The database contains text documents and play-by-play data, not video clips."
+          ]
+        },
+        "at": 1794259576.233645
+      }
+    ],
+    "seconds": 84.25
   }
 ]
