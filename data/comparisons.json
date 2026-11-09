@@ -1,0 +1,2011 @@
+[
+  {
+    "question": "在 2022 年总决赛 G4（game_id=0042100404），勇士全场投篮、三分球和失误分别是多少？结合官方 G4 解析，解释一个可核实的进攻调整，注明比赛事件不能证明的内容。",
+    "model": "vertex_ai/gemini-3.5-flash",
+    "baseline_no_system_no_tools": "在 2022 年 NBA 总决赛第四场（Game 4，Game ID: 0042100404）中，金州勇士队在客场以 107-97 击败了波士顿凯尔特人队，将大比分扳为 2-2 平。\n\n以下是该场比赛中勇士队的具体数据、官方解析中的关键进攻调整，以及数据和事件本身无法证明的局限性。\n\n---\n\n### 一、 勇士队全场",
+    "agent_answer": "# 2022年总决赛G4勇士队数据及进攻调整分析简报\n\n## 勇士队在2022年总决赛G4的投篮与失误数据\n\n**Evidence / 证据**\n\n在2022年总决赛G4（game_id=0042100404）中，金州勇士队全场投篮为91投40中（40/91），三分球为43投15中（15/43），全队共出现了16次失误。 [1](/evidence/summary-0042100404-GSW-0)\n\n## 战术分析与数据获取的局限性\n\n**Limit / 边界**\n\n由于未检索到官方解析文档（gsw-g4）的完整内容（如第4段及之后的内容），无法全面获取和分析勇士队在G4中做出的其他系统性进攻战术调整（如具体的挡拆变化或空间拉开策略）。 [2](/evidence/gsw-g4-1) [3](/evidence/gsw-g4-2) [4](/evidence/gsw-g4-3)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2022年总决赛G4的特定片段数据，无法代表整个系列赛或勇士队在其他季后赛场次中的整体战术表现。\n- 由于缺乏完整的官方解析文本，无法对勇士队在G4中的所有进攻调整进行详尽的系统性梳理。\n\n\n3 draft claim(s) withheld after citation checks. / 已隐藏未通过证据核查的草稿结论。\n\n## Sources / 来源\n\n1. [GSW game 0042100404, period all: event summary](https://www.nba.com/game/0042100404/play-by-play) — game_id=0042100404, team=GSW, period=0\n2. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 1\n3. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 2\n4. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 3",
+    "research": {
+      "status": "complete",
+      "rounds": 3,
+      "researchers": 4,
+      "citations": [
+        {
+          "number": 1,
+          "source_id": "summary-0042100404-GSW-0",
+          "title": "GSW game 0042100404, period all: event summary",
+          "url": "https://www.nba.com/game/0042100404/play-by-play",
+          "locator": "game_id=0042100404, team=GSW, period=0",
+          "evidence_url": "/evidence/summary-0042100404-GSW-0"
+        },
+        {
+          "number": 2,
+          "source_id": "gsw-g4-1",
+          "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+          "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+          "locator": "extracted passage 1",
+          "evidence_url": "/evidence/gsw-g4-1"
+        },
+        {
+          "number": 3,
+          "source_id": "gsw-g4-2",
+          "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+          "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+          "locator": "extracted passage 2",
+          "evidence_url": "/evidence/gsw-g4-2"
+        },
+        {
+          "number": 4,
+          "source_id": "gsw-g4-3",
+          "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+          "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+          "locator": "extracted passage 3",
+          "evidence_url": "/evidence/gsw-g4-3"
+        }
+      ],
+      "withheld_claims": 3
+    },
+    "tool_calls": [
+      {
+        "id": 1,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 1
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "Analyze the play-by-play data for game_id 0042100404 in 'pbp-GSW' to calculate the Warriors' total field goals (made and attempted), three-point field goals (made and attempted), and total turnovers.",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "Examine the official Game 4 film study document 'gsw-g4' to identify and explain a verifiable offensive adjustment made by the Warriors, and detail what play-by-play records cannot prove regarding off-ball movement or defensive coverages.",
+              "focus": "coaching principles"
+            }
+          ],
+          "gaps": [],
+          "done": false
+        },
+        "at": 1794243629.735018
+      },
+      {
+        "id": 2,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "summarize_game",
+        "args": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0
+        },
+        "result": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0,
+          "field_goals": {
+            "made": 40,
+            "attempted": 91
+          },
+          "three_pointers": {
+            "made": 15,
+            "attempted": 43
+          },
+          "turnovers": 16,
+          "method": "EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.",
+          "source_id": "summary-0042100404-GSW-0",
+          "title": "GSW game 0042100404, period all: event summary",
+          "url": "https://www.nba.com/game/0042100404/play-by-play",
+          "locator": "game_id=0042100404, team=GSW, period=0",
+          "evidence_url": "/evidence/summary-0042100404-GSW-0",
+          "kind": "computed_summary",
+          "text": "{\"game_id\": \"0042100404\", \"team\": \"GSW\", \"period\": 0, \"field_goals\": {\"made\": 40, \"attempted\": 91}, \"three_pointers\": {\"made\": 15, \"attempted\": 43}, \"turnovers\": 16, \"method\": \"EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.\", \"source_id\": \"summary-0042100404-GSW-0\", \"title\": \"GSW game 0042100404, period all: event summary\", \"url\": \"https://www.nba.com/game/0042100404/play-by-play\", \"locator\": \"game_id=0042100404, team=GSW, period=0\", \"kind\": \"computed_summary\"}"
+        },
+        "at": 1794243631.4748769
+      },
+      {
+        "id": 3,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "summarize_game",
+        "args": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0
+        },
+        "result": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0,
+          "field_goals": {
+            "made": 40,
+            "attempted": 91
+          },
+          "three_pointers": {
+            "made": 15,
+            "attempted": 43
+          },
+          "turnovers": 16,
+          "method": "EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.",
+          "source_id": "summary-0042100404-GSW-0",
+          "title": "GSW game 0042100404, period all: event summary",
+          "url": "https://www.nba.com/game/0042100404/play-by-play",
+          "locator": "game_id=0042100404, team=GSW, period=0",
+          "evidence_url": "/evidence/summary-0042100404-GSW-0",
+          "kind": "computed_summary",
+          "text": "{\"game_id\": \"0042100404\", \"team\": \"GSW\", \"period\": 0, \"field_goals\": {\"made\": 40, \"attempted\": 91}, \"three_pointers\": {\"made\": 15, \"attempted\": 43}, \"turnovers\": 16, \"method\": \"EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.\", \"source_id\": \"summary-0042100404-GSW-0\", \"title\": \"GSW game 0042100404, period all: event summary\", \"url\": \"https://www.nba.com/game/0042100404/play-by-play\", \"locator\": \"game_id=0042100404, team=GSW, period=0\", \"kind\": \"computed_summary\"}"
+        },
+        "at": 1794243631.9377532
+      },
+      {
+        "id": 4,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Finals Film Study: How Warriors won Game 4 to even the series",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g2",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nDraymond Green was a beast on defense in Game 2, but he wasn't the only Warriors player who made a big impact against the Celtics.\nJohn Schuhmann\nFinals Film Room: How did the Warriors' defense throw Boston off balance?\n• Complete coverage: 2022 NBA Finals\nBOSTON — It was noted in this space after Game 1 of the NBA Finals that, since Draymond Green returned from a two-month absence, the Golden State Warriors’ defense hadn’t reached the level it was playing at before Green was lost to a back issue. Games 4 and 5 of the conference finals, along with Game 1 of this series, were the worst three-game stretch of defense ( 123.8 points allowed per 100 possessions ) that the Warriors have had with Green in uniform this season.\nAnd then came Game 2, when the Warriors held the Boston Celtics to just 88 points on 98 possessions (89.8 per 100), Golden State’s best defensive performance since mid-January. The Celtics actually had 30 points on their first 24 possessions of the game, but from late in the first quarter until they took their starters out of the game early in the fourth, they scored just 34 points on a stretch of 52 possessions (*65.4 per 100).\n* In the regular season (1,230 games x 2 teams x 2 halves), there were only 11 instances where a team had a less efficient first or second half than that. In these playoffs, the only time a team has scored less than 65.4 per 100 in a half was the Suns ( 58.7 per 100 ) in the first half of Game 7 vs. Dallas.\nDraymond Green seemingly set the tone when he forced a jump ball on the first possession of the game, and he was a menace defensively for nearly all of his 35 minutes on the floor in Game 2. But defensive numbers like that don’t come without contributions from everybody in the rotation.",
+              "title": "Finals Film Study: Warriors' defense steps up in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-warriors-defense-steps-up-in-game-2",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100402",
+              "source_id": "gsw-g2-1",
+              "evidence_url": "/evidence/gsw-g2-1"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nGolden State leans on its supporting cast in Game 5, cranks up its defensive intensity and moves to the doorstep of an NBA title.\nJohn Schuhmann\nWith Andrew Wiggins and Draymond Green leading the way, the Warriors force 18 turnovers and limit the Celtics to 41.3% shooting.\n• Complete coverage: 2022 NBA Finals\nSAN FRANCISCO — The Golden State Warriors have taken control of the NBA Finals and have a chance to win the franchise’s seventh championship in Game 6 on Thursday ( 9 ET, ABC ).\nAs noted in the wake of Game 5 , this series has been mostly about Boston’s end of the floor. And as ugly as the Eastern Conference finals were at times, Games 4 and 5 of the Finals were the first time since December that the Celtics have been held under 105 points per 100 possessions in consecutive games.\nStill, with Stephen Curry shooting 0-for-9 from 3-point range in Game 5, the Warriors had to find some offense from other sources.\nHere are some notes, numbers and film regarding Golden State’s success on both ends of the floor.\n1. Wiggins wants it\nLate in the first quarter on Monday, a Warriors’ possession stalled when Andre Iguodala chose not to shoot a wide-open 3-pointer created by a Curry drive. Jordan Poole went to set a screen for Curry, but Curry remained in the right corner, seeing what was happening under the basket.\nWith Iguodala looking for somebody to pass to, Andrew Wiggins went to get the ball and held off Derrick White to catch Iguodala’s entry pass. And from the left wing, he got into the paint and into a comfortable left-shoulder turnaround from just inside the free-throw line …",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-1",
+              "evidence_url": "/evidence/gsw-g5-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243633.0479438
+      },
+      {
+        "id": 5,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down key moments from clutch time during Golden State's Game 4 win in Boston.\nJohn Schuhmann\nJayson Tatum, Jaylen Brown and the Celtics have struggled to score in the clutch this season.\nWhen the Boston Celtics started destroying the league in the last few months of the regular season, their dominance hid what had been one of their biggest problem areas until that point: Clutch offense.\nOn January 22, the Celtics were 23-24, with a 9-17 record in games within five points in the last five minutes … and a 14-7 record otherwise. That’s when they turned their season around, going 28-7 over their final 35 games to climb from 10th place to 2nd in the Eastern Conference.\nThe Celtics had both the league’s No. 1 offense and its No. 1 defense over those 11 weeks, outscoring their opponents by an amazing 15.5 points per 100 possessions.\nBut by beating their opponents so decisively (20 of the 28 wins were by double-digits, 15 were by 20 points or more), the Celtics didn’t really resolve their clutch issues. They were just 4-5 in games that were within five in the last five over those last 11 weeks, scoring just 79 points on 90 clutch offensive possessions ( 87.8 per 100 ). Only the New York Knicks had a worse clutch offense over that stretch.\nSo the Celtics finished the season with a 38-9 record (.809, best in the league) in non-clutch games and a 13-22 record (.371, second-worst ) in clutch games. That was the third-biggest differential in that regard in the 26 years for which we have clutch data.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-1",
+              "evidence_url": "/evidence/gsw-g4-1"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243633.534123
+      },
+      {
+        "id": 6,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down key moments from clutch time during Golden State's Game 4 win in Boston.\nJohn Schuhmann\nJayson Tatum, Jaylen Brown and the Celtics have struggled to score in the clutch this season.\nWhen the Boston Celtics started destroying the league in the last few months of the regular season, their dominance hid what had been one of their biggest problem areas until that point: Clutch offense.\nOn January 22, the Celtics were 23-24, with a 9-17 record in games within five points in the last five minutes … and a 14-7 record otherwise. That’s when they turned their season around, going 28-7 over their final 35 games to climb from 10th place to 2nd in the Eastern Conference.\nThe Celtics had both the league’s No. 1 offense and its No. 1 defense over those 11 weeks, outscoring their opponents by an amazing 15.5 points per 100 possessions.\nBut by beating their opponents so decisively (20 of the 28 wins were by double-digits, 15 were by 20 points or more), the Celtics didn’t really resolve their clutch issues. They were just 4-5 in games that were within five in the last five over those last 11 weeks, scoring just 79 points on 90 clutch offensive possessions ( 87.8 per 100 ). Only the New York Knicks had a worse clutch offense over that stretch.\nSo the Celtics finished the season with a 38-9 record (.809, best in the league) in non-clutch games and a 13-22 record (.371, second-worst ) in clutch games. That was the third-biggest differential in that regard in the 26 years for which we have clutch data.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-1",
+              "evidence_url": "/evidence/gsw-g4-1"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243634.438473
+      },
+      {
+        "id": 7,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4 Warriors offensive adjustment",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down Boston's wide-open attack from deep and the attention Jayson Tatum drew in Game 1.\nJohn Schuhmann\nAl Horford made the Warriors’ defense pay by having a career night from outside.\nThe Golden State Warriors were the No. 1 defensive team in the league when Draymond Green was healthy this season. With Green missing two months with a back issue, the Boston Celtics took (and kept) that No. 1 spot. But Golden State was so good when Green was healthy (they allowed 1.9 fewer points per 100 possessions through his last pre-injury game on Jan. 5), they didn’t fall to No. 2 until the final week of his two-month absence.\nShortly after Green returned, Stephen Curry was lost to a foot injury. But the Warriors’ two stars, along with an improving Klay Thompson and the other three guys in their top six, have been available throughout the playoffs. And with that, they’re in the NBA Finals for the sixth time in eight years.\n• Complete coverage: 2022 NBA Finals\nStill, the Warriors’ defense hasn’t been able to reach the level it was at through early January. And Game 1 of the Finals on Thursday was the team’s third worst defensive performance of the season, with the Celtics scoring 120 points on just 93 possessions (129.0 per 100). The only two games where a team scored more efficiently against the Warriors were a March visit to Dallas (without Green) and Game 5 of the conference semifinals in Memphis, a 39-point defeat. Game 1 was the first time in 51 home games that the Warriors allowed at least 120 points per 100 possessions, and they had allowed more than 130 per 100 before the Celtics let the clock run out on their final possession of the night.",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-1",
+              "evidence_url": "/evidence/gsw-g1-1"
+            },
+            {
+              "document_id": "gsw-g2",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nDraymond Green was a beast on defense in Game 2, but he wasn't the only Warriors player who made a big impact against the Celtics.\nJohn Schuhmann\nFinals Film Room: How did the Warriors' defense throw Boston off balance?\n• Complete coverage: 2022 NBA Finals\nBOSTON — It was noted in this space after Game 1 of the NBA Finals that, since Draymond Green returned from a two-month absence, the Golden State Warriors’ defense hadn’t reached the level it was playing at before Green was lost to a back issue. Games 4 and 5 of the conference finals, along with Game 1 of this series, were the worst three-game stretch of defense ( 123.8 points allowed per 100 possessions ) that the Warriors have had with Green in uniform this season.\nAnd then came Game 2, when the Warriors held the Boston Celtics to just 88 points on 98 possessions (89.8 per 100), Golden State’s best defensive performance since mid-January. The Celtics actually had 30 points on their first 24 possessions of the game, but from late in the first quarter until they took their starters out of the game early in the fourth, they scored just 34 points on a stretch of 52 possessions (*65.4 per 100).\n* In the regular season (1,230 games x 2 teams x 2 halves), there were only 11 instances where a team had a less efficient first or second half than that. In these playoffs, the only time a team has scored less than 65.4 per 100 in a half was the Suns ( 58.7 per 100 ) in the first half of Game 7 vs. Dallas.\nDraymond Green seemingly set the tone when he forced a jump ball on the first possession of the game, and he was a menace defensively for nearly all of his 35 minutes on the floor in Game 2. But defensive numbers like that don’t come without contributions from everybody in the rotation.",
+              "title": "Finals Film Study: Warriors' defense steps up in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-warriors-defense-steps-up-in-game-2",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100402",
+              "source_id": "gsw-g2-1",
+              "evidence_url": "/evidence/gsw-g2-1"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 2",
+              "text": "The Warriors were in the bottom five in opponent free throw rate in the regular season, but free throws weren’t really an issue on Thursday. The Celtics’ free throw rate (16 free throw attempts; 85 field goal attempts) was both their third-lowest of the playoffs and the third-lowest the Warriors have allowed in the playoffs.\nThe Celtics also got themselves some second chances, but their offensive success was mostly about their shooting from the field, including an incredible effective field goal percentage of 88.6% in the fourth quarter . Boston certainly exceeded their expected effective field goal percentage (based on the quality of the shots they took) by a healthy margin. But while they made some tough shots, there was a lot more than that going on as the Warriors allowed them to score more efficiently than the Brooklyn Nets did in any game in the first round.\nHere are some numbers and film regarding the Celtics’ Game 1 offense:\n1. Five out\nAfter giving Curry too much space to shoot early on, Robert Williams III had a better second half defensively. He blocked a Curry step-back and then made a timely rotation to block the Warriors’ star at the rim .\nStill, the Celtics were better with Williams off the floor, and that was mostly about their offense. They scored just 32 points on 34 possessions ( 0.94 per ) with Williams and Al Horford on the floor together, but 48 on 34 ( 1.41 per ) with Horford on the floor without Williams.\nWith Horford at the 5, the Celtics had five guys who can shoot and could make the Warriors’ bigs pay for protecting the paint.",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-2",
+              "evidence_url": "/evidence/gsw-g1-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243634.7623549
+      },
+      {
+        "id": 8,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Curry",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 4",
+              "text": "Some of that is the Warriors allowing certain shooters (Horford and White accounted for 13 of those 23 wide-open attempts) to shoot. Even though White had already made a 3, Green didn’t close out with any urgency against him early in the second quarter:\nOver the first three rounds, White was just 13-for-44 (30%) on wide-open 3s , so you can understand the Warriors’ willingness to let him shoot.\n3. All eyes on Tatum\nTatum was just 3-for-17 (18%) in Game 1, his worst shooting performance in 69 career playoff games. And he definitely missed some good looks, going 0-for-3 on those wide-open 3s that the Warriors allowed. But the Warriors also showed him a crowd.\nThe Celtics tried to get Tatum matched up with Curry often. The guy Curry was guarding set seven ball-screens for Tatum, while Tatum set eight ball-screens for the guy Curry was guarding, according to Second Spectrum. But the Celtics scored only 10 points on those 15 chances.\nWhen Tatum isolated or posted up against Curry, the Warriors were ready with help. Heck, even when Tatum was isolated against Green (arguably the best defensive player in the league), Curry was creeping off of Payton Pritchard in the strong-side corner to provide help:\nAnd while Tatum did force some things , he generally made the right play, and the 13 assists on Thursday marked a career high (435 total games, including regular season and Play-In). He created 35 points from his assists, and also one of Horford’s wide-open 3s via a great across-the-body, cross-court kick-out and a swing pass from Smart:\nThe Celtics scored 108 points on 82 possessions ( 132 per 100 ) with Tatum on the floor, and (even if you discard that last possession of the game) just 12 points on 13 possessions with him off the floor.\n4. Mistakes",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-4",
+              "evidence_url": "/evidence/gsw-g1-4"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 4",
+              "text": "Late in the fourth quarter, Tatum was able to get a step on Wiggins, but he was met by Green, who forced him into a tough (and contested) turnaround .\nAt times, the Celtics have been able to punish Green for zoning up in the paint. They took their first lead of Game 5 when Green sunk deep into the paint to help against Tatum, leaving Horford wide open at the top of the arc …\nBut there hasn’t been enough of that from the Celtics’ perspective. And opponents have shot just 50% (37-for-74) at the rim when Green has been there to protect it in the playoffs. That’s tied for the third best mark (with Robert Williams, 30-for-60) among 30 players who’ve defended at least 35 postseason shots at the rim. The two guys ahead of the 6-6 Green and the 6-9 Williams are 7-0 Brook Lopez and 6-11 Deandre Ayton.\n4. Not giving up the switch\nLike the Warriors did with White on Monday, the Celtics have targeted Curry throughout the series. Through five games, there have been 114 ball screens where Curry was either defending the screener (66) or was the guy being screened (48). The latter scenario has been a little more successful in getting Curry switched onto Tatum.\nBut, whether he’s been the ballhandler’s defender or the screener’s defender, the Warriors have been more successful (allowing just 0.69 points per chance) when Curry hasn’t switched than when he has (0.96 points per chance).\nA lot went wrong for Golden State in the third quarter of Game 5. And one of those things was Curry switching too much. He was the screener’s defender on 17 ball screens on Monday and he switched eight of those. Six of those switches came in the third quarter, and the Celtics scored 14 points after those six switches.",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-4",
+              "evidence_url": "/evidence/gsw-g5-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243636.12918
+      },
+      {
+        "id": 9,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g1-4",
+            "gsw-g2-1",
+            "gsw-g4-1",
+            "gsw-g4-2",
+            "gsw-g4-3",
+            "gsw-g5-1",
+            "gsw-g5-4",
+            "gsw-g5-5",
+            "summary-0042100404-GSW-0"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243636.130444
+      },
+      {
+        "id": 10,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down key moments from clutch time during Golden State's Game 4 win in Boston.\nJohn Schuhmann\nJayson Tatum, Jaylen Brown and the Celtics have struggled to score in the clutch this season.\nWhen the Boston Celtics started destroying the league in the last few months of the regular season, their dominance hid what had been one of their biggest problem areas until that point: Clutch offense.\nOn January 22, the Celtics were 23-24, with a 9-17 record in games within five points in the last five minutes … and a 14-7 record otherwise. That’s when they turned their season around, going 28-7 over their final 35 games to climb from 10th place to 2nd in the Eastern Conference.\nThe Celtics had both the league’s No. 1 offense and its No. 1 defense over those 11 weeks, outscoring their opponents by an amazing 15.5 points per 100 possessions.\nBut by beating their opponents so decisively (20 of the 28 wins were by double-digits, 15 were by 20 points or more), the Celtics didn’t really resolve their clutch issues. They were just 4-5 in games that were within five in the last five over those last 11 weeks, scoring just 79 points on 90 clutch offensive possessions ( 87.8 per 100 ). Only the New York Knicks had a worse clutch offense over that stretch.\nSo the Celtics finished the season with a 38-9 record (.809, best in the league) in non-clutch games and a 13-22 record (.371, second-worst ) in clutch games. That was the third-biggest differential in that regard in the 26 years for which we have clutch data.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-1",
+              "evidence_url": "/evidence/gsw-g4-1"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243636.69524
+      },
+      {
+        "id": 11,
+        "agent": "Researcher 2 · coaching principles",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g1-1",
+            "gsw-g1-2",
+            "gsw-g2-1",
+            "gsw-g4-1",
+            "gsw-g4-2",
+            "gsw-g4-3",
+            "summary-0042100404-GSW-0"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243636.696298
+      },
+      {
+        "id": 12,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 2
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "Search the document 'gsw-g4' (Finals Film Study: How Warriors won Game 4 to even the series) to extract all details regarding the Warriors' offensive adjustments, specifically looking for tactical changes, pick-and-roll variations, spacing adjustments, or specific play types used in Game 4.",
+              "focus": "evidence gap"
+            }
+          ],
+          "gaps": [
+            "The current findings lack a comprehensive description of the Warriors' offensive adjustments in Game 4 from the official film study 'gsw-g4', as the retrieved segments mostly focused on Klay Thompson's individual scoring and defensive adjustments."
+          ],
+          "done": false
+        },
+        "at": 1794243653.951765
+      },
+      {
+        "id": 13,
+        "agent": "Researcher 3 · evidence gap",
+        "name": "summarize_game",
+        "args": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0
+        },
+        "result": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0,
+          "field_goals": {
+            "made": 40,
+            "attempted": 91
+          },
+          "three_pointers": {
+            "made": 15,
+            "attempted": 43
+          },
+          "turnovers": 16,
+          "method": "EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.",
+          "source_id": "summary-0042100404-GSW-0",
+          "title": "GSW game 0042100404, period all: event summary",
+          "url": "https://www.nba.com/game/0042100404/play-by-play",
+          "locator": "game_id=0042100404, team=GSW, period=0",
+          "evidence_url": "/evidence/summary-0042100404-GSW-0",
+          "kind": "computed_summary",
+          "text": "{\"game_id\": \"0042100404\", \"team\": \"GSW\", \"period\": 0, \"field_goals\": {\"made\": 40, \"attempted\": 91}, \"three_pointers\": {\"made\": 15, \"attempted\": 43}, \"turnovers\": 16, \"method\": \"EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.\", \"source_id\": \"summary-0042100404-GSW-0\", \"title\": \"GSW game 0042100404, period all: event summary\", \"url\": \"https://www.nba.com/game/0042100404/play-by-play\", \"locator\": \"game_id=0042100404, team=GSW, period=0\", \"kind\": \"computed_summary\"}"
+        },
+        "at": 1794243655.950212
+      },
+      {
+        "id": 14,
+        "agent": "Researcher 3 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down key moments from clutch time during Golden State's Game 4 win in Boston.\nJohn Schuhmann\nJayson Tatum, Jaylen Brown and the Celtics have struggled to score in the clutch this season.\nWhen the Boston Celtics started destroying the league in the last few months of the regular season, their dominance hid what had been one of their biggest problem areas until that point: Clutch offense.\nOn January 22, the Celtics were 23-24, with a 9-17 record in games within five points in the last five minutes … and a 14-7 record otherwise. That’s when they turned their season around, going 28-7 over their final 35 games to climb from 10th place to 2nd in the Eastern Conference.\nThe Celtics had both the league’s No. 1 offense and its No. 1 defense over those 11 weeks, outscoring their opponents by an amazing 15.5 points per 100 possessions.\nBut by beating their opponents so decisively (20 of the 28 wins were by double-digits, 15 were by 20 points or more), the Celtics didn’t really resolve their clutch issues. They were just 4-5 in games that were within five in the last five over those last 11 weeks, scoring just 79 points on 90 clutch offensive possessions ( 87.8 per 100 ). Only the New York Knicks had a worse clutch offense over that stretch.\nSo the Celtics finished the season with a 38-9 record (.809, best in the league) in non-clutch games and a 13-22 record (.371, second-worst ) in clutch games. That was the third-biggest differential in that regard in the 26 years for which we have clutch data.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-1",
+              "evidence_url": "/evidence/gsw-g4-1"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243658.25768
+      },
+      {
+        "id": 15,
+        "agent": "Researcher 3 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "Warriors offensive adjustments pick-and-roll spacing",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 3",
+              "text": "It was a one-point game in the first minute of the fourth when Wiggins grabbed a rebound, saw he had White in front of him, and just attacked the basket , with White providing very little resistance.\nTwo possessions later, White switched a Klay Thompson screen for Poole, who blew right by White, drawing a foul as he got to the rim …\nWhite was immediately subbed out, but he was back as the Celtics went super-small (no Horford or Robert Williams) with three minutes to go. And the Warriors (aided by the lack of rim protection) immediately went right at White on the next two possessions, getting a layup from Curry and a dunk from Wiggins …\nWhite actually pre-switched that pick and roll (switching onto Kevon Looney before he set the ball screen) and then completely whiffed when it came to containing Wiggins’ drive.\nNeither team’s bench has been particularly good in this series, but among players who’ve averaged at least 10 minutes, the worst on-court marks for their team’s point differential per 100 possessions are Daniel Theis (who hasn’t played since Game 2), Grant Williams (minus-19.1) and White (minus-12.5).\n3. The 6-6 rim protector\nIn the Finals, the Celtics have shot just 51.1% in the paint, down from 58.8% in the regular season and 55.2% through the first three rounds of the playoffs. Their drives to the rim have often been met by multiple bodies and arms. And on Monday, Draymond Green was particularly strong in preventing Boston from converting at the basket.\nWhen Looney shut down a White drive midway through the first quarter, Thompson got caught ball-watching and was beat back door by Jaylen Brown. But Green saw the cut, slid down off Tatum, and kept Brown from getting off a clean shot at the basket …",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-3",
+              "evidence_url": "/evidence/gsw-g5-3"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 3",
+              "text": "Late in the second quarter, Green was zoning up in the paint as the Celtics ran a pin-down action on the left side of the floor. Green’s presence kept Marcus Smart from passing to Derrick White under the basket when Curry got turned around, and it also allowed Andrew Wiggins to top-lock Jayson Tatum with Horford setting another screen, knowing that if Tatum went back door, Green was there.\nGiven Horford has the ability to shoot himself, Tatum took the screener’s role, setting a pick on Green in the paint as Horford popped out to the wing. Wiggins was a half-second late in recognizing what was happening and Horford drained the second of his career-high six 3-pointers:\nThe Warriors’ small-ball look, with Green at the five, has been hugely successful for them over the years. But Golden State’s small-ball look still has at least one guy (Green) who doesn’t shoot well (or often) from the perimeter. The Warriors were a minus-13 , (allowing 62 points on 43 possessions) in a little less than 22 minutes with Green at the 5 on Thursday, because the Celtics’ Horford-at-the-5 lineups were better.\n2. The 3s were open\nAccording to Second Spectrum tracking, 23 (56%) of the Celtics’ 41 3-point attempts were wide open*. That’s a higher rate than three of the Celtics’ four games against Brooklyn in the first round, and the Nets were not good at defending the 3-point line.\n* In the regular season, 48% of 3s league-wide were wide-open, according to Second Spectrum. That was the Celtics’ rate in both the first round (overall) and the conference semifinals against the Milwaukee Bucks (who’ve allowed the most 3s in each of the last four seasons). Only 32% of Boston’s 3-point attempts were wide open in the conference finals.",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-3",
+              "evidence_url": "/evidence/gsw-g1-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243659.839486
+      },
+      {
+        "id": 16,
+        "agent": "Researcher 3 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4 Curry offensive adjustment pick-and-roll spacing",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 3",
+              "text": "It was a one-point game in the first minute of the fourth when Wiggins grabbed a rebound, saw he had White in front of him, and just attacked the basket , with White providing very little resistance.\nTwo possessions later, White switched a Klay Thompson screen for Poole, who blew right by White, drawing a foul as he got to the rim …\nWhite was immediately subbed out, but he was back as the Celtics went super-small (no Horford or Robert Williams) with three minutes to go. And the Warriors (aided by the lack of rim protection) immediately went right at White on the next two possessions, getting a layup from Curry and a dunk from Wiggins …\nWhite actually pre-switched that pick and roll (switching onto Kevon Looney before he set the ball screen) and then completely whiffed when it came to containing Wiggins’ drive.\nNeither team’s bench has been particularly good in this series, but among players who’ve averaged at least 10 minutes, the worst on-court marks for their team’s point differential per 100 possessions are Daniel Theis (who hasn’t played since Game 2), Grant Williams (minus-19.1) and White (minus-12.5).\n3. The 6-6 rim protector\nIn the Finals, the Celtics have shot just 51.1% in the paint, down from 58.8% in the regular season and 55.2% through the first three rounds of the playoffs. Their drives to the rim have often been met by multiple bodies and arms. And on Monday, Draymond Green was particularly strong in preventing Boston from converting at the basket.\nWhen Looney shut down a White drive midway through the first quarter, Thompson got caught ball-watching and was beat back door by Jaylen Brown. But Green saw the cut, slid down off Tatum, and kept Brown from getting off a clean shot at the basket …",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-3",
+              "evidence_url": "/evidence/gsw-g5-3"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 4",
+              "text": "Some of that is the Warriors allowing certain shooters (Horford and White accounted for 13 of those 23 wide-open attempts) to shoot. Even though White had already made a 3, Green didn’t close out with any urgency against him early in the second quarter:\nOver the first three rounds, White was just 13-for-44 (30%) on wide-open 3s , so you can understand the Warriors’ willingness to let him shoot.\n3. All eyes on Tatum\nTatum was just 3-for-17 (18%) in Game 1, his worst shooting performance in 69 career playoff games. And he definitely missed some good looks, going 0-for-3 on those wide-open 3s that the Warriors allowed. But the Warriors also showed him a crowd.\nThe Celtics tried to get Tatum matched up with Curry often. The guy Curry was guarding set seven ball-screens for Tatum, while Tatum set eight ball-screens for the guy Curry was guarding, according to Second Spectrum. But the Celtics scored only 10 points on those 15 chances.\nWhen Tatum isolated or posted up against Curry, the Warriors were ready with help. Heck, even when Tatum was isolated against Green (arguably the best defensive player in the league), Curry was creeping off of Payton Pritchard in the strong-side corner to provide help:\nAnd while Tatum did force some things , he generally made the right play, and the 13 assists on Thursday marked a career high (435 total games, including regular season and Play-In). He created 35 points from his assists, and also one of Horford’s wide-open 3s via a great across-the-body, cross-court kick-out and a swing pass from Smart:\nThe Celtics scored 108 points on 82 possessions ( 132 per 100 ) with Tatum on the floor, and (even if you discard that last possession of the game) just 12 points on 13 possessions with him off the floor.\n4. Mistakes",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-4",
+              "evidence_url": "/evidence/gsw-g1-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243661.669869
+      },
+      {
+        "id": 17,
+        "agent": "Researcher 3 · evidence gap",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g1-3",
+            "gsw-g1-4",
+            "gsw-g4-1",
+            "gsw-g4-2",
+            "gsw-g4-3",
+            "gsw-g5-3",
+            "gsw-g5-5",
+            "summary-0042100404-GSW-0"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243661.6712132
+      },
+      {
+        "id": 18,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 3
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "Search the document 'gsw-g4' for any other passages (such as passages 1, 2, 4, 5, etc.) to find additional details on the Warriors' offensive adjustments in Game 4.",
+              "focus": "evidence gap"
+            }
+          ],
+          "gaps": [
+            "We need to verify if there are other specific offensive adjustments mentioned in the 'gsw-g4' document besides Klay Thompson's mid-range/paint scoring, such as pick-and-roll adjustments or spacing changes."
+          ],
+          "done": false
+        },
+        "at": 1794243676.728367
+      },
+      {
+        "id": 19,
+        "agent": "Researcher 4 · evidence gap",
+        "name": "summarize_game",
+        "args": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0
+        },
+        "result": {
+          "game_id": "0042100404",
+          "team": "GSW",
+          "period": 0,
+          "field_goals": {
+            "made": 40,
+            "attempted": 91
+          },
+          "three_pointers": {
+            "made": 15,
+            "attempted": 43
+          },
+          "turnovers": 16,
+          "method": "EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.",
+          "source_id": "summary-0042100404-GSW-0",
+          "title": "GSW game 0042100404, period all: event summary",
+          "url": "https://www.nba.com/game/0042100404/play-by-play",
+          "locator": "game_id=0042100404, team=GSW, period=0",
+          "evidence_url": "/evidence/summary-0042100404-GSW-0",
+          "kind": "computed_summary",
+          "text": "{\"game_id\": \"0042100404\", \"team\": \"GSW\", \"period\": 0, \"field_goals\": {\"made\": 40, \"attempted\": 91}, \"three_pointers\": {\"made\": 15, \"attempted\": 43}, \"turnovers\": 16, \"method\": \"EVENTMSGTYPE 1/2 = made/missed field goals; 5 = turnovers; 3PT text flags three-point attempts. Filter game_id, primary team, optional period. Not a possession or tactical-efficiency calculation.\", \"source_id\": \"summary-0042100404-GSW-0\", \"title\": \"GSW game 0042100404, period all: event summary\", \"url\": \"https://www.nba.com/game/0042100404/play-by-play\", \"locator\": \"game_id=0042100404, team=GSW, period=0\", \"kind\": \"computed_summary\"}"
+        },
+        "at": 1794243678.436136
+      },
+      {
+        "id": 20,
+        "agent": "Researcher 4 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "Warriors offensive adjustments Game 4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g2",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nDraymond Green was a beast on defense in Game 2, but he wasn't the only Warriors player who made a big impact against the Celtics.\nJohn Schuhmann\nFinals Film Room: How did the Warriors' defense throw Boston off balance?\n• Complete coverage: 2022 NBA Finals\nBOSTON — It was noted in this space after Game 1 of the NBA Finals that, since Draymond Green returned from a two-month absence, the Golden State Warriors’ defense hadn’t reached the level it was playing at before Green was lost to a back issue. Games 4 and 5 of the conference finals, along with Game 1 of this series, were the worst three-game stretch of defense ( 123.8 points allowed per 100 possessions ) that the Warriors have had with Green in uniform this season.\nAnd then came Game 2, when the Warriors held the Boston Celtics to just 88 points on 98 possessions (89.8 per 100), Golden State’s best defensive performance since mid-January. The Celtics actually had 30 points on their first 24 possessions of the game, but from late in the first quarter until they took their starters out of the game early in the fourth, they scored just 34 points on a stretch of 52 possessions (*65.4 per 100).\n* In the regular season (1,230 games x 2 teams x 2 halves), there were only 11 instances where a team had a less efficient first or second half than that. In these playoffs, the only time a team has scored less than 65.4 per 100 in a half was the Suns ( 58.7 per 100 ) in the first half of Game 7 vs. Dallas.\nDraymond Green seemingly set the tone when he forced a jump ball on the first possession of the game, and he was a menace defensively for nearly all of his 35 minutes on the floor in Game 2. But defensive numbers like that don’t come without contributions from everybody in the rotation.",
+              "title": "Finals Film Study: Warriors' defense steps up in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-warriors-defense-steps-up-in-game-2",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100402",
+              "source_id": "gsw-g2-1",
+              "evidence_url": "/evidence/gsw-g2-1"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down Boston's wide-open attack from deep and the attention Jayson Tatum drew in Game 1.\nJohn Schuhmann\nAl Horford made the Warriors’ defense pay by having a career night from outside.\nThe Golden State Warriors were the No. 1 defensive team in the league when Draymond Green was healthy this season. With Green missing two months with a back issue, the Boston Celtics took (and kept) that No. 1 spot. But Golden State was so good when Green was healthy (they allowed 1.9 fewer points per 100 possessions through his last pre-injury game on Jan. 5), they didn’t fall to No. 2 until the final week of his two-month absence.\nShortly after Green returned, Stephen Curry was lost to a foot injury. But the Warriors’ two stars, along with an improving Klay Thompson and the other three guys in their top six, have been available throughout the playoffs. And with that, they’re in the NBA Finals for the sixth time in eight years.\n• Complete coverage: 2022 NBA Finals\nStill, the Warriors’ defense hasn’t been able to reach the level it was at through early January. And Game 1 of the Finals on Thursday was the team’s third worst defensive performance of the season, with the Celtics scoring 120 points on just 93 possessions (129.0 per 100). The only two games where a team scored more efficiently against the Warriors were a March visit to Dallas (without Green) and Game 5 of the conference semifinals in Memphis, a 39-point defeat. Game 1 was the first time in 51 home games that the Warriors allowed at least 120 points per 100 possessions, and they had allowed more than 130 per 100 before the Celtics let the clock run out on their final possession of the night.",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-1",
+              "evidence_url": "/evidence/gsw-g1-1"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nGolden State leans on its supporting cast in Game 5, cranks up its defensive intensity and moves to the doorstep of an NBA title.\nJohn Schuhmann\nWith Andrew Wiggins and Draymond Green leading the way, the Warriors force 18 turnovers and limit the Celtics to 41.3% shooting.\n• Complete coverage: 2022 NBA Finals\nSAN FRANCISCO — The Golden State Warriors have taken control of the NBA Finals and have a chance to win the franchise’s seventh championship in Game 6 on Thursday ( 9 ET, ABC ).\nAs noted in the wake of Game 5 , this series has been mostly about Boston’s end of the floor. And as ugly as the Eastern Conference finals were at times, Games 4 and 5 of the Finals were the first time since December that the Celtics have been held under 105 points per 100 possessions in consecutive games.\nStill, with Stephen Curry shooting 0-for-9 from 3-point range in Game 5, the Warriors had to find some offense from other sources.\nHere are some notes, numbers and film regarding Golden State’s success on both ends of the floor.\n1. Wiggins wants it\nLate in the first quarter on Monday, a Warriors’ possession stalled when Andre Iguodala chose not to shoot a wide-open 3-pointer created by a Curry drive. Jordan Poole went to set a screen for Curry, but Curry remained in the right corner, seeing what was happening under the basket.\nWith Iguodala looking for somebody to pass to, Andrew Wiggins went to get the ball and held off Derrick White to catch Iguodala’s entry pass. And from the left wing, he got into the paint and into a comfortable left-shoulder turnaround from just inside the free-throw line …",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-1",
+              "evidence_url": "/evidence/gsw-g5-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243679.810909
+      },
+      {
+        "id": 21,
+        "agent": "Researcher 4 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 1",
+              "text": "2022 NBA Finals: Warriors vs. Celtics\nBreaking down key moments from clutch time during Golden State's Game 4 win in Boston.\nJohn Schuhmann\nJayson Tatum, Jaylen Brown and the Celtics have struggled to score in the clutch this season.\nWhen the Boston Celtics started destroying the league in the last few months of the regular season, their dominance hid what had been one of their biggest problem areas until that point: Clutch offense.\nOn January 22, the Celtics were 23-24, with a 9-17 record in games within five points in the last five minutes … and a 14-7 record otherwise. That’s when they turned their season around, going 28-7 over their final 35 games to climb from 10th place to 2nd in the Eastern Conference.\nThe Celtics had both the league’s No. 1 offense and its No. 1 defense over those 11 weeks, outscoring their opponents by an amazing 15.5 points per 100 possessions.\nBut by beating their opponents so decisively (20 of the 28 wins were by double-digits, 15 were by 20 points or more), the Celtics didn’t really resolve their clutch issues. They were just 4-5 in games that were within five in the last five over those last 11 weeks, scoring just 79 points on 90 clutch offensive possessions ( 87.8 per 100 ). Only the New York Knicks had a worse clutch offense over that stretch.\nSo the Celtics finished the season with a 38-9 record (.809, best in the league) in non-clutch games and a 13-22 record (.371, second-worst ) in clutch games. That was the third-biggest differential in that regard in the 26 years for which we have clutch data.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-1",
+              "evidence_url": "/evidence/gsw-g4-1"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 2",
+              "text": "The Celtics (plus-7.4) were 1.9 points per 100 possessions better than the Golden State Warriors (plus-5.5) in the regular season, but the Western Conference champs have home-court advantage in this series because they won two more games. Appropriately, the Warriors won the close regular-season meeting between the two teams, while the Celtics won the blowout .\nThings picked up in the first round of the playoffs. The Celtics swept the Brooklyn Nets, but all four games were within five points in the last five minutes. And over those four games, Boston scored 25 points on 21 clutch possessions ( 119 per 100 ), with Jayson Tatum’s Game 1 buzzer-beater being the highlight.\nBrooklyn, of course, had one of the worst defenses in the playoffs. Since that series, the Celtics’ clutch offense in the postseason has fallen below a point per possession ( 89.1 per 100 through Sunday ). Late-game offensive struggles at the ends of Games 6 and 7 of the Eastern Conference finals almost had them blowing a 3-2 series lead and heading into the offseason with a ton of regret.\nSuch regret remains a possibility, especially after Boston blew another fourth quarter lead in Game 4 of the NBA Finals on Friday. After taking a five-point lead with 7 1/2 minutes to go, the Celtics scored just twice (six points) on their final 12 possessions, and they went scoreless on all six possessions that qualified as “clutch” (because they came in the last five minutes with the score within five).\nIt’s not like the Celtics have an identity crisis. They know who they are and how they want to attack offensively, spacing the floor and putting weak defenders in actions against Tatum and Jaylen Brown. But for whatever reason, they’ve often struggled to execute down the stretch of close games.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-2",
+              "evidence_url": "/evidence/gsw-g4-2"
+            },
+            {
+              "document_id": "gsw-g4",
+              "locator": "extracted passage 3",
+              "text": "Here are how things went wrong for the Celtics (and right for the Warriors) late in Game 4.\n1. Defending the flare screen\nFlare screens (for multiple players) have become a big part of the Celtics’ offense in this series. Early in the fourth quarter, Tatum got an open 3 when Andrew Wiggins got caught under a flare screen and Jordan Poole was late to switch out.\nWith a chance to build on that five-point lead, midway through the fourth, Robert Williams III set a flare screen for Tatum that flattened Andrew Wiggins. But Tatum didn’t get an open shot, because Kevon Looney was there, switching off of Williams. Tatum drove baseline, Poole provided timely help, and Klay Thompson rotated down to Derrick White, forcing Tatum to back out and reset:\nMarcus Smart set a screen to get Stephen Curry defending Tatum, but Curry was able to stay in front of Tatum’s initial drive and force a tough step-back and a shot-clock violation:\nIt’s possible that Tatum could have attacked quicker after the catch or got off the ball quicker when Poole came to help, but the skip pass to Brown in the opposite corner would have been a tough one to make over Looney.\n2. The Thompson stops\nThompson struggled with his shot (10-for-33) through the first two games of the Finals. But he’s been better over the last two, and he had 13 points in the second half on Sunday, while making several big plays on the other end of the floor.\nThompson cut that five-point deficit down to three with a tough turnaround fadeaway in the paint. And he followed it up with a terrific defensive play.",
+              "title": "Finals Film Study: How Warriors won Game 4 to even the series",
+              "url": "https://www.nba.com/news/2022-finals-film-study-game-4",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100404",
+              "source_id": "gsw-g4-3",
+              "evidence_url": "/evidence/gsw-g4-3"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243681.535507
+      },
+      {
+        "id": 22,
+        "agent": "Researcher 4 · evidence gap",
+        "name": "search_sources",
+        "args": {
+          "query": "gsw-g4 Curry offensive adjustment",
+          "team": "GSW",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 5",
+              "text": "Late in the third, Curry switched the second half of a double-drag screen for Tatum. To provide help for Curry, Gary Payton II zoned up in the paint, leaving Grant Williams in the weak-side corner. Green rotated out after Tatum’s skip pass and one Williams fed another for a dunk …\nMidway through the fourth quarter, Tatum set a screen for Marcus Smart and got the Curry switch. But Smart’s pass to Brown allowed Wiggins to switch back. Smart then set a cross-screen for Tatum, but Wiggins fought through it and got back in front of Tatum …\nSmart then set a ball screen for Tatum and, instead of switching, Curry blitzed it. Wiggins’ high hands forced a tough pass to Smart, the Warriors rotated well, and Payton picked Brown on a late-clock drive …\nAfter that disastrous third quarter, the Warriors made a better effort to avoid the switch in the fourth. That effort was rewarded.\n5. The deadly split\nEverybody knows what the Warriors are doing when they enter the ball into the post. But in their eighth season under Steve Kerr, they’re still getting open 3s and layups from their “split” cuts.\nOn the possession before the Payton steal above, Wiggins entered the ball into Looney in the post and set the standard screen for Curry to curl toward the ball. Tatum chased Curry around the screen and Horford left Wiggins to prevent a catch-and-shoot 3. Curry quickly got the ball to Wiggins, who attacked the rim …\nFive possessions later, Smart tried to ice the same screen (this one from Payton), but Curry got another big bucket by going the other way and draining a floater in the paint .\nThis series has been more about the Celtics’ offense, but for the last two games, the Warriors have executed better on both ends of the floor. And with that, they’re 48 minutes from glory.\n* * *",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-5",
+              "evidence_url": "/evidence/gsw-g5-5"
+            },
+            {
+              "document_id": "gsw-g1",
+              "locator": "extracted passage 4",
+              "text": "Some of that is the Warriors allowing certain shooters (Horford and White accounted for 13 of those 23 wide-open attempts) to shoot. Even though White had already made a 3, Green didn’t close out with any urgency against him early in the second quarter:\nOver the first three rounds, White was just 13-for-44 (30%) on wide-open 3s , so you can understand the Warriors’ willingness to let him shoot.\n3. All eyes on Tatum\nTatum was just 3-for-17 (18%) in Game 1, his worst shooting performance in 69 career playoff games. And he definitely missed some good looks, going 0-for-3 on those wide-open 3s that the Warriors allowed. But the Warriors also showed him a crowd.\nThe Celtics tried to get Tatum matched up with Curry often. The guy Curry was guarding set seven ball-screens for Tatum, while Tatum set eight ball-screens for the guy Curry was guarding, according to Second Spectrum. But the Celtics scored only 10 points on those 15 chances.\nWhen Tatum isolated or posted up against Curry, the Warriors were ready with help. Heck, even when Tatum was isolated against Green (arguably the best defensive player in the league), Curry was creeping off of Payton Pritchard in the strong-side corner to provide help:\nAnd while Tatum did force some things , he generally made the right play, and the 13 assists on Thursday marked a career high (435 total games, including regular season and Play-In). He created 35 points from his assists, and also one of Horford’s wide-open 3s via a great across-the-body, cross-court kick-out and a swing pass from Smart:\nThe Celtics scored 108 points on 82 possessions ( 132 per 100 ) with Tatum on the floor, and (even if you discard that last possession of the game) just 12 points on 13 possessions with him off the floor.\n4. Mistakes",
+              "title": "Finals Film Study: How Celtics took control in Game 1",
+              "url": "https://www.nba.com/news/2022-nba-finals-film-study-game-1",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100401",
+              "source_id": "gsw-g1-4",
+              "evidence_url": "/evidence/gsw-g1-4"
+            },
+            {
+              "document_id": "gsw-g5",
+              "locator": "extracted passage 4",
+              "text": "Late in the fourth quarter, Tatum was able to get a step on Wiggins, but he was met by Green, who forced him into a tough (and contested) turnaround .\nAt times, the Celtics have been able to punish Green for zoning up in the paint. They took their first lead of Game 5 when Green sunk deep into the paint to help against Tatum, leaving Horford wide open at the top of the arc …\nBut there hasn’t been enough of that from the Celtics’ perspective. And opponents have shot just 50% (37-for-74) at the rim when Green has been there to protect it in the playoffs. That’s tied for the third best mark (with Robert Williams, 30-for-60) among 30 players who’ve defended at least 35 postseason shots at the rim. The two guys ahead of the 6-6 Green and the 6-9 Williams are 7-0 Brook Lopez and 6-11 Deandre Ayton.\n4. Not giving up the switch\nLike the Warriors did with White on Monday, the Celtics have targeted Curry throughout the series. Through five games, there have been 114 ball screens where Curry was either defending the screener (66) or was the guy being screened (48). The latter scenario has been a little more successful in getting Curry switched onto Tatum.\nBut, whether he’s been the ballhandler’s defender or the screener’s defender, the Warriors have been more successful (allowing just 0.69 points per chance) when Curry hasn’t switched than when he has (0.96 points per chance).\nA lot went wrong for Golden State in the third quarter of Game 5. And one of those things was Curry switching too much. He was the screener’s defender on 17 ball screens on Monday and he switched eight of those. Six of those switches came in the third quarter, and the Celtics scored 14 points after those six switches.",
+              "title": "Finals Film Study: Warriors execute on both ends of the floor in Game 5",
+              "url": "https://www.nba.com/news/finals-film-study-game-5",
+              "kind": "film_study",
+              "team": "GSW",
+              "season": "2021-22",
+              "game_id": "0042100405",
+              "source_id": "gsw-g5-4",
+              "evidence_url": "/evidence/gsw-g5-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243683.397669
+      },
+      {
+        "id": 23,
+        "agent": "Researcher 4 · evidence gap",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "gsw-g1-1",
+            "gsw-g1-4",
+            "gsw-g2-1",
+            "gsw-g4-1",
+            "gsw-g4-2",
+            "gsw-g4-3",
+            "gsw-g5-1",
+            "gsw-g5-4",
+            "gsw-g5-5",
+            "summary-0042100404-GSW-0"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243683.399206
+      },
+      {
+        "id": 24,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "accepted": 2,
+          "withheld": [
+            "文献中并未提及克莱·汤普森“做出了进攻调整”或“积极在内线寻找得分机会”，仅提到他投中了一个艰难的后仰转身跳投并得到13分，属于过度推断和无中生有。",
+            "该声明将关于比赛事件（PBP）记录局限性的表述归因于文献 gsw-g4-3，但该文献中完全没有提及PBP记录及其局限性，存在文献错配（misattribution）。",
+            "文献中并未指出勇士队“进行了调整”，且24秒违例是随后马库斯·斯马特掩护后库里防守塔图姆所迫使的，而非定位掩护防守和汤普森轮转直接迫使的，该表述与文献事实不符。"
+          ]
+        },
+        "at": 1794243721.482527
+      }
+    ],
+    "seconds": 107.87
+  },
+  {
+    "question": "根据 2023 年热火对尼克斯的官方比赛解析，尼克斯 top-block 射手时，热火有哪些反跑和假手递手应对？用资料中的具体案例解释，不推断赛季使用频率。",
+    "model": "vertex_ai/gemini-3.5-flash",
+    "baseline_no_system_no_tools": "在2023年季后赛东部半决赛迈阿密热火对阵纽约尼克斯的系列赛中，尼克斯主帅锡伯杜针对热火的外线射手（如麦克斯·斯特鲁斯、邓肯·罗宾逊）采取了极其激进的**“上线阻绝”（Top-locking/Top-blocking）**防守策略——防守者不走掩护下方，而是直接站在射手与三分线之间，切断射手借助无球掩护或手递手（DHO）接球兜出投三分的路线。\n\n根据联盟及热火官方的季后赛战术解析（如 Heat.com 的 Couper Moorhead 战术复盘及 NBA 官网 Film Session），热火主帅斯波尔斯特拉针对这一防守，利用以下具体的**反跑（Backcuts）**和**假手递手（Fake Hand-offs / Keeper）**进行了高效拆解。以下为战术解析中的具体案例：\n\n---\n\n### 一、 反跑应对（Backcuts / Backdoor Cuts）\n\n当尼克斯防守者（如昆汀·格莱姆斯、约什·哈特）全力封锁射手向上线移动的路线时，他们的身体重心会完全偏向外线。热火射手利用这一重心偏置，直接反方向空切篮下。\n\n#### 【具体案例 1：邓肯·罗宾逊的反跑（第三场/第四场）】\n*   **战术落位与防守态势**：巴姆·阿德巴约在肘区（Elbow）持球，邓肯·罗宾逊从底角借助无球掩护准备向上线移动接球。防守罗宾逊的昆汀·格莱姆斯（Quentin Grimes）采用“Top-lock”站位，整个人卡在罗宾逊与三分线之间，完全背对篮圈，张开双臂阻绝接球。\n*   **热火的应对行动**：罗宾逊并没有强行挤过掩护去接球，而是**顺应防守者的防守惯性，突然一个顿步，直接转朝底线和篮筐方向反跑（Backcut）**。\n*   **传球与终结**：由于格莱姆斯防得太靠上，身后留下了巨大的空档。阿德巴约心领神会，利用高位策应能力，送出一记精准的击地传球，穿过防守，罗宾逊轻松完成空切上篮。\n\n#### 【具体案例 2：麦克斯·斯特鲁斯的无球反跑（第一场）】\n*   **战术落位与防守态势**：斯特鲁斯在侧翼，尼克斯防守者RJ·巴雷特（RJ Barrett）对其进行贴身“Top-lock”防守，试图断绝其与弧顶持球人（吉米·巴特勒）的传球路线。\n*   **热火的应对行动**：斯特鲁斯做了一个虚晃向上线要球的假动作，引诱巴雷特重心进一步上提，随即**迅速向底线反跑**。巴特勒在高位直接将球吊向篮下，斯特鲁斯在防守人身后接球，并在尼克斯内线封盖不及前完成上篮或分球。\n\n---\n\n### 二、 假手递手应对（Fake Hand-offs / \"Keeper\" Plays）\n\n由于尼克斯的防守者在防范手递手配合（DHO）时，往往会极其激进地挤过掩护或直接扑向射手（防守人会“跳”向手递手的交接点），这导致持球的内线球员（主要是阿德巴约）身前出现巨大的突击通道。\n\n#### 【具体案例 1：阿德巴约的假手递手自留突破（第三场）】\n*   **战术落位与防守态势**：阿德巴约在弧顶运球，麦克斯·斯特鲁斯从侧翼跑向阿德巴约，准备进行标准的手递手配合。防守斯特鲁斯的约什·哈特（Josh Hart）为了防止斯特鲁斯借掩护投三分，疯狂地向球的方向“扑”（Hard hedge/Top-block），试图切断两人的交接路线。\n*   **热火的应对行动**：阿德巴约和斯特鲁斯上演了一出默契的“戏耍”。斯特鲁斯快速跑过阿德巴约身边，做出接球的假动作，吸引了哈特的防守注意力。**阿德巴约则做出了一个极其逼真的手递手假动作（Fake DHO），实际上将球扣在自己腰间（Keeper）**。\n*   **传球与终结**：哈特被斯特鲁斯带走，而防守阿德巴约的尼克斯中锋米切尔·罗宾逊（Mitchell Robinson）因为要兼顾防范斯特鲁斯接球后的投篮，站位偏向外侧。阿德",
+    "agent_answer": "# 2023年热火对阵尼克斯季后赛反跑与假手递手应对策略研究简报\n\n## 麦克斯·斯特鲁斯的后门反跑应对\n\n**Evidence / 证据**\n\n在2023年季后赛热火对阵尼克斯的第二场比赛（Game 2）第三节的第一次进攻中，尼克斯对热火射手进行 top-block（阻绝防守以阻止其绕过下掩护）。热火的第一个应对策略是后门反跑，麦克斯·斯特鲁斯（Max Strus）直接切入后门，在第三节11:43接阿德巴约（Bam Adebayo）助攻完成3英尺切入上篮得分。 [1](/evidence/mia-nyk-3) [2](/evidence/event-0042200202-344)\n\n## 角色反转与掩护人外弹应对\n\n**Evidence / 证据**\n\n为了防范热火的后门切入，掩护人的防守者通常会选择在内线收缩。在第二场比赛第二节的最后一次进攻中，杰伦·布伦森（Jalen Brunson）对斯特鲁斯进行 top-block，而凯文·乐福（Kevin Love）的防守者乔什·哈特（Josh Hart）为了防止斯特鲁斯切后门而选择收缩。热火随即进行“角色反转”，由原本的射手斯特鲁斯担任掩护人，而让具有投篮能力的乐福外弹出三分线。在第二节0:06，乐福接阿德巴约助攻外弹命中25英尺空位三分。 [1](/evidence/mia-nyk-3) [3](/evidence/event-0042200202-331)\n\n## 阿德巴约的假手递手应对\n\n**Evidence / 证据**\n\n在斯特鲁斯反跑切后门之后的几个回合中，热火利用防守者对射手接球投三分的警惕进行了假手递手应对。当时布伦森在后面追防未触球的射手，而米切尔·罗宾逊（Mitchell Robinson）扑得太高以防范三分球，阿德巴约虚晃手递手后直接突破，在第三节9:35完成扣篮得分。 [1](/evidence/mia-nyk-3) [4](/evidence/event-0042200202-362)\n\n## 斯特鲁斯拒绝掩护直接突袭\n\n**Evidence / 证据**\n\n在阿德巴约假手递手扣篮的紧接着下一个回合中，热火采用了拒绝掩护的应对策略。斯特鲁斯直接拒绝掩护，在两名防守队员反应过来并恢复防守位置之前直插篮下，在第三节9:06完成1英尺突破上篮得分。 [1](/evidence/mia-nyk-3) [5](/evidence/event-0042200202-365)\n\n## Limitations / 数据边界\n\n- 本分析仅基于2023年季后赛热火对阵尼克斯第二场比赛（Game 2）的特定案例，无法推断这些战术在整个系列赛或赛季中的具体使用频率。\n- 官方解析未指明阿德巴约假手递手扣篮回合中，具体是哪位热火射手充当了无球跑动吸引防守的诱饵。\n\n## Sources / 来源\n\n1. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3\n2. [0042200202, Q3 11:43, event 344](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=344\n3. [0042200202, Q2 0:06, event 331](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=331\n4. [0042200202, Q3 9:35, event 362](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=362\n5. [0042200202, Q3 9:06, event 365](https://www.nba.com/game/0042200202/play-by-play) — game_id=0042200202, event_id=365",
+    "research": {
+      "status": "complete",
+      "rounds": 2,
+      "researchers": 3,
+      "citations": [
+        {
+          "number": 1,
+          "source_id": "mia-nyk-3",
+          "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+          "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+          "locator": "extracted passage 3",
+          "evidence_url": "/evidence/mia-nyk-3"
+        },
+        {
+          "number": 2,
+          "source_id": "event-0042200202-344",
+          "title": "0042200202, Q3 11:43, event 344",
+          "url": "https://www.nba.com/game/0042200202/play-by-play",
+          "locator": "game_id=0042200202, event_id=344",
+          "evidence_url": "/evidence/event-0042200202-344"
+        },
+        {
+          "number": 3,
+          "source_id": "event-0042200202-331",
+          "title": "0042200202, Q2 0:06, event 331",
+          "url": "https://www.nba.com/game/0042200202/play-by-play",
+          "locator": "game_id=0042200202, event_id=331",
+          "evidence_url": "/evidence/event-0042200202-331"
+        },
+        {
+          "number": 4,
+          "source_id": "event-0042200202-362",
+          "title": "0042200202, Q3 9:35, event 362",
+          "url": "https://www.nba.com/game/0042200202/play-by-play",
+          "locator": "game_id=0042200202, event_id=362",
+          "evidence_url": "/evidence/event-0042200202-362"
+        },
+        {
+          "number": 5,
+          "source_id": "event-0042200202-365",
+          "title": "0042200202, Q3 9:06, event 365",
+          "url": "https://www.nba.com/game/0042200202/play-by-play",
+          "locator": "game_id=0042200202, event_id=365",
+          "evidence_url": "/evidence/event-0042200202-365"
+        }
+      ],
+      "withheld_claims": 0
+    },
+    "tool_calls": [
+      {
+        "id": 1,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 1
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [
+            {
+              "task": "分析官方季后赛录像解析文档 `mia-nyk`，查找热火队在面对尼克斯队对射手进行“top-block”（防接球/阻绝）时的应对策略，特别是反跑（back-cuts）和假手递手（fake handoffs）的具体案例、涉及球员及战术细节。",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "检索 `pbp-MIA` 中 2022-23 赛季热火对阵尼克斯系列赛（特别是 Game 2，ID: 0042200202）的比赛数据，结合 Task 1 发现的具体球员和时间点，核实并补充这些反跑和假手递手战术在实际比赛中的回合记录与结果。",
+              "focus": "NBA evidence"
+            },
+            {
+              "task": "检索 `wabc-l2`（WABC二级教练员手册），查找关于如何应对防守方“top-block”（或阻绝防守）的通用教练原则，特别是关于反跑（back-cut）和手递手配合（handoff/fake handoff）的技术教学与战术指导。",
+              "focus": "coaching principles"
+            }
+          ],
+          "gaps": [],
+          "done": false
+        },
+        "at": 1794243747.3841689
+      },
+      {
+        "id": 2,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "top-block back-cut fake handoff",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 4",
+              "text": "Even when they’re shorthanded, defending the Heat is hard. But the Knicks did well enough down the stretch of Game 2, and the third of three straight stops (a stretch in which New York took the lead for good) was particularly impressive.\nFirst, Hart slid out of the way, allowing Brunson to stay attached to Kyle Lowry on a handoff from Adebayo. Brunson did a good job of getting around a re-screen and Robinson hedged out, allowing Brunson to get back in front. Quentin Grimes tagged Adebayo’s roll and recovered back to the corner as Randle closed out on Kevin Love:\nRandle then blitzed a Lowry/Love pick-and-roll and Robinson switched out to Love when he flared out to the right wing. That left Adebayo open on a roll to the paint, but Grimes got there to deflect the pass. Hart couldn’t grab it and Caleb Martin had to force a near-impossible attempt at the shot-clock buzzer:\nA 24-second violation was called, but of course, the Knicks benefited from the officials not seeing that Martin’s shot grazed the rim. After nearly a full possession of great defense, Brunson didn’t find Gabe Vincent, who rebounded the miss and had an easy put-back … that didn’t count, with Brunson having been bailed out by the erroneous call.\n3. Can either team run?\nNeither team has gotten a lot in transition in this series. The Heat got three buckets off Love’s amazing outlet passes in the third quarter of Game 1, but they’re not a team that runs a lot. And in Game 2, the Knicks had just one live-ball turnover and Miami had just three transition points , their fewest in a game this season, according to Synergy tracking. The Knicks have run more, but have still averaged just 16.5 transition points in the two games, down from 21.2 ( 15th ) in the regular season and 19.2 in the first round.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-4",
+              "evidence_url": "/evidence/mia-nyk-4"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243749.173693
+      },
+      {
+        "id": 3,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "top-block",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 2",
+              "text": "The Heat shot 17-for-35 (48.6%) from 3-point range on Sunday and have now outscored the Nuggets by 35 points from 3-point range in the series. It’s a make-or-miss league and the Heat have worked hard to get their 3-point looks. They have really been moving the ball. But the Nuggets have also helped them by just not being very sharp defensively.\nHere’s a bit of film on how Miami made (at least) 17 3s for just the eighth time this season (104 total games)…\n1. Caught unawares\nThe Heat’s first 3-pointer of Game 2 came on their second possession, via a relatively simple out-of-bounds play. Max Strus inbounded the ball over the top to Bam Adebayo above the free throw line, then curled off two screens to a left-wing 3.\nThe issues for the Nuggets started with Jamal Murray, who seemed to be unaware that his man (Gabe Vincent) was setting the first screen. Kentavious Caldwell-Pope got caught in both screens, Murray wasn’t in position to switch the first one, and Michael Porter Jr. was late to switch out after the second one…\n2. Switch confusion\nTwo minutes later, Strus got his second 3, via an empty corner pick-and-pop where he set a screen for Vincent. Because it was a small-small screen, it should have been a simple switch for the Nuggets. But while Caldwell-Pope switched onto Vincent, Porter stayed there, and Strus was wide open when he popped to the corner…\nLater in the first quarter, Strus set an empty-corner screen for Jimmy Butler. Murray switched it, but Aaron Gordon stayed with Butler for just a beat, and Strus got another corner 3 .\nThe Heat were 6-for-9 on corner 3s in Game 2, just the fourth time in the Nuggets’ last 62 games (the first time since their Game 4 loss in the first round) that they’ve allowed more than five corner 3s.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-2",
+              "evidence_url": "/evidence/mia-g2-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243749.2791638
+      },
+      {
+        "id": 4,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "top-block",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 3",
+              "text": "“We were by far our least disciplined game of these 16 or 17 playoff games,” Nuggets coach Michael Malone said after Game 2. “So many breakdowns. They exploited every one of our breakdowns and scored.”\n3. Rebounding 101\nThe Nuggets out-rebounded the Heat in Game 2. But every possession counts, and another Miami 3 came early in the second quarter when Haywood Highsmith came from the weak-side corner to grab an offensive board. Gordon didn’t get a body on him, and the ball eventually found Vincent on the right wing…\nThe Heat had just 11 second-chance points in Game 2, with nine of those 11 coming from beyond the arc.\n4. 19 seconds of good defense is not enough\nThe first play of the fourth quarter started as a good defensive possession for the Nuggets. Christian Braun did a nice job of hedging a Duncan Robinson back-screen for Adebayo, closing out on Robinson, and then chasing him over a hand-off…\nBut an Adebayo screen dislodged Murray and a Vincent drive got the Denver defense scrambled. Murray was in decent position to contest a Robinson 3, but he overreacted to Robinson’s pump fake, allowing the Miami sharpshooter to step into another open look …\nAccording to Second Spectrum tracking, 27 of the Heat’s 78 field goal attempts, an abnormally high 35%, came in the last seven seconds of the shot clock on Sunday. But after shooting 3-for-17 in the last seven seconds of the clock in Game 1, they were 13-for-27 (including 7-for-16 from 3-point range) in Game 2.\n5. Same play, two breakdowns\nThat Robinson 3-pointer was followed by a possession where he scored five points. So the Nuggets were on high alert when the Heat ran a “delay” action on their third trip in the fourth quarter. With Adebayo handling the ball up top, Vincent set a screen for Robinson out of the left corner.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-3",
+              "evidence_url": "/evidence/mia-g2-3"
+            },
+            {
+              "document_id": "mia-g2",
+              "locator": "extracted passage 2",
+              "text": "The Heat shot 17-for-35 (48.6%) from 3-point range on Sunday and have now outscored the Nuggets by 35 points from 3-point range in the series. It’s a make-or-miss league and the Heat have worked hard to get their 3-point looks. They have really been moving the ball. But the Nuggets have also helped them by just not being very sharp defensively.\nHere’s a bit of film on how Miami made (at least) 17 3s for just the eighth time this season (104 total games)…\n1. Caught unawares\nThe Heat’s first 3-pointer of Game 2 came on their second possession, via a relatively simple out-of-bounds play. Max Strus inbounded the ball over the top to Bam Adebayo above the free throw line, then curled off two screens to a left-wing 3.\nThe issues for the Nuggets started with Jamal Murray, who seemed to be unaware that his man (Gabe Vincent) was setting the first screen. Kentavious Caldwell-Pope got caught in both screens, Murray wasn’t in position to switch the first one, and Michael Porter Jr. was late to switch out after the second one…\n2. Switch confusion\nTwo minutes later, Strus got his second 3, via an empty corner pick-and-pop where he set a screen for Vincent. Because it was a small-small screen, it should have been a simple switch for the Nuggets. But while Caldwell-Pope switched onto Vincent, Porter stayed there, and Strus was wide open when he popped to the corner…\nLater in the first quarter, Strus set an empty-corner screen for Jimmy Butler. Murray switched it, but Aaron Gordon stayed with Butler for just a beat, and Strus got another corner 3 .\nThe Heat were 6-for-9 on corner 3s in Game 2, just the fourth time in the Nuggets’ last 62 games (the first time since their Game 4 loss in the first round) that they’ve allowed more than five corner 3s.",
+              "title": "Finals Film Study: Heat catch fire with help from the Nuggets in Game 2",
+              "url": "https://www.nba.com/news/finals-film-study-nuggets-heat-game-2",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200402",
+              "source_id": "mia-g2-2",
+              "evidence_url": "/evidence/mia-g2-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243749.287454
+      },
+      {
+        "id": 5,
+        "agent": "Researcher 1 · NBA evidence",
+        "name": "search_sources",
+        "args": {
+          "query": "Knicks Heat top-blocking shooters",
+          "team": "MIA",
+          "kind": "film_study"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 3",
+              "text": "The Miami offense is more about movement. Among 117 players who’ve averaged at least 15 minutes per game in the playoffs, Caleb Martin (4.93 miles per hour), Duncan Robinson (4.84) and Max Strus (4.80) rank first, third and fourth in average speed on offense. And their movement is about a lot more than just getting shots for themselves.\nThe Knicks are trying to keep that movement contained, usually top-blocking the Miami shooters, so they can’t take the standard path around pin-down screens. The first counter to that, is cutting back door, which Strus did on the Heat’s first possession of the third quarter on Tuesday:\nTo protect against the back door, the screener’s defender can sit back in the paint. That’s when it helps to have a screener who can shoot. On the Heat’s last possession of the second quarter of Game 2, Brunson was top-blocking Strus and Josh Hart sagged off Kevin Love, who was setting the screen, to prevent the back-door. The simple counter was a role reversal, where Strus acted as the screener as Love popped out to an open 3 from the wing:\n(The Celtics might be the best at this action, with Al Horford as the screener-turned-shooter.)\nA few possessions after the Strus back-door above, Adebayo got a dunk with a fake handoff, with Brunson (who didn’t top-block) trailing the shooter (who never touched the ball) and Mitchell Robinson jumping out high to prevent a 3-pointer. And on the very next possession, Strus got a layup by rejecting a screen and getting to the rim before either defender could recover.\nThis is the playoffs, where both teams know what the other is going to run. But outside of San Francisco, the Heat might be the best team in the league at taking advantage of a defense that overplays the scripted action.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-3",
+              "evidence_url": "/evidence/mia-nyk-3"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 1",
+              "text": "2023 Playoffs: East Conf. Semifinal | Knicks vs. Heat\nThe Knicks tied the series behind Jalen Brunson and Julius Randle's offense, but the Heat have been taking every advantage since the playoffs tipped.\nJohn Schuhmann\nJalen Brunson bounces back on a sore ankle in Game 2, and his matchup with Jimmy Butler could decide the series.\nThough both were close, the first two games of the Eastern Conference semifinal series between the Knicks and Heat have been very different.\nIn Game 1, New York was without Julius Randle and shot 7-for-34 (21%) from 3-point range; Miami dominated the second half and got a road win. In Game 2, the Heat were without Jimmy Butler and played zone for the final 36 minutes; the Knicks shot much better, came back from a fourth-quarter deficit, and evened the series.\nBut for both games, one thing that’s been the same is a different approach to offense. And that is best illustrated by time of possession. Knicks guard Jalen Brunson has averaged 9.8 minutes of possession, most in the conference semis . And on the Heat’s end of the floor, nobody has controlled the ball for more 5.4 minutes per game.\nThe New York offense is more about creating advantages through Brunson (and Randle to a lesser extent). Because of the zone, the Knicks passed the ball a lot more in Game 2 than they did in Game 1. But they’ve still averaged just 286 passes per 24 minutes of possession, well below their average of 300 per 24 (which ranked 25th) in the regular season. And they’ve recorded assists on just 55.1% of their field goals.\nThe Heat, even when Butler plays, are more about creating advantages through movement and off-ball actions. They’ve averaged 315 passes per 24 minutes of possession, and they’ve assisted on more than two thirds of their buckets.",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-1",
+              "evidence_url": "/evidence/mia-nyk-1"
+            },
+            {
+              "document_id": "mia-nyk",
+              "locator": "extracted passage 2",
+              "text": "Here’s some notes, numbers and film from each end of the floor as the two teams head to Miami for Game 3 on Saturday (3:30 ET, ABC).\n1. The Jalen Brunson show\nThough the Heat have played zone for three of the eight quarters, the Knicks have set 92 ball-screens for Brunson over the two games. That’s 31 more than have been set for any other player in the series. We saw in the fourth quarter of Game 2 how the Knicks were able to free Brunson by flipping a ball-screen against the zone.\nAgainst man-to-man (and especially if Butler is his initial defender ), a ball-screen can get Brunson a different matchup. It can also be used just so he can gain a small advantage and burrow into the paint, where he can find just enough space (using his deft footwork if necessary) to get a shot off:\nAfter he scored 27 points in Game 1 of the first round, the Cleveland Cavaliers started to blitz Brunson pick-and-rolls to get the ball out of his hands. Bam Adebayo is an elite defender who will switch a lot of screens and smother opposing guards in isolation, but the Heat haven’t really employed that weapon in this series, likely because it takes their best rim protector (and a critical rebounder) away from the basket. One time when Adebayo did switch onto Brunson, the Knicks found the space behind him for a dunk.\nBrunson has shot 14-for-21 (67%) in the paint in this series, but just 1-for-4 from mid-range and 6-for-17 (35%) from 3-point range. If they’re not going to get the ball out of his hands, the Heat will surely hope to stay in front of him and force him to shoot from 15 feet and out.\n2. Counter to the overplay",
+              "title": "Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast",
+              "url": "https://www.nba.com/news/knicks-heat-game-3-offensive-contrast",
+              "kind": "film_study",
+              "team": "MIA",
+              "season": "2022-23",
+              "game_id": "0042200202",
+              "source_id": "mia-nyk-2",
+              "evidence_url": "/evidence/mia-nyk-2"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243750.5370822
+      },
+      {
+        "id": 6,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "top-block OR \"top block\" OR denial OR \"back-cut\" OR \"back cut\" OR handoff OR \"fake handoff\"",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 282",
+              "text": "280\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nOften instead of a hand off, the player will throw a short pass to their team mate,\nhowever this should be discouraged.\nThe hand-off works best when the two offensive players come together, as this\nis similar to a screen, where the player passing the ball also gets in the path of\nthe defender.\nWhere the player making the hand off has not dribbled, they may also be able to fake\nthe hand off action.\nHere, x3 anticipates a hand off and moves to help to defend 1 as they start their\ndribble.  3 fakes the hand off and then spins to attack the basket, having x3 now on\ntheir back.\n5\n2\n3\n1\nx3",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p282-1",
+              "evidence_url": "/evidence/wabc-l2-p282-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 284",
+              "text": "282\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.2. Receivers principles with post players\n“4 Out , I in” Principles cont ...\nIf the dribble penetration is opposite the low post player, the post steps into the top of\nthe “no charge” circle.\nOften the defending team will aggressively attempt to stop the offence from passing\nthe ball on the perimeter.  In this circumstance a pass into the post player can also be\nused to help break the pressure.\n“High Post Pressure Release”\nA pass to the high post can be effective where the perimeter player is denied.\nThe perimeter player can cut straight to the basket.\n“Low Post Pressure Release”\nThe low post player can step to the “short corner” to receive a pass if “ball reversal”\nis denied.\nThe Perimeter player can back cut to the basket.\n2 1\n5\n34\n1\n52\n2\n5\n1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p284-1",
+              "evidence_url": "/evidence/wabc-l2-p284-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243751.4858072
+      },
+      {
+        "id": 7,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "get_game_events",
+        "args": {
+          "game_id": "0042200202",
+          "period": 3,
+          "keyword": "Strus"
+        },
+        "result": {
+          "game": {
+            "id": "0042200202",
+            "team": "MIA",
+            "season": "2022-23",
+            "opponent": "NYK",
+            "event_count": 451
+          },
+          "events": [
+            {
+              "game_id": "0042200202",
+              "event_id": 344,
+              "period": 3,
+              "clock": "11:43",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 3' Cutting Layup Shot (8 PTS) (Adebayo 5 AST)",
+              "score": "56 - 51",
+              "source_id": "event-0042200202-344"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 353,
+              "period": 3,
+              "clock": "10:35",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 1' Driving Layup (10 PTS)",
+              "score": "58 - 56",
+              "source_id": "event-0042200202-353"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 365,
+              "period": 3,
+              "clock": "9:06",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 1' Driving Layup (12 PTS)",
+              "score": "62 - 56",
+              "source_id": "event-0042200202-365"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 371,
+              "period": 3,
+              "clock": "8:45",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 6,
+              "description": "Strus L.B.FOUL (P1.T1) (S.Foster)",
+              "score": "",
+              "source_id": "event-0042200202-371"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 378,
+              "period": 3,
+              "clock": "7:38",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 2,
+              "description": "MISS Strus 25' 3PT Jump Shot",
+              "score": "",
+              "source_id": "event-0042200202-378"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 382,
+              "period": 3,
+              "clock": "7:28",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 1' Cutting Layup Shot (14 PTS) (Adebayo 6 AST)",
+              "score": "64 - 58",
+              "source_id": "event-0042200202-382"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 386,
+              "period": 3,
+              "clock": "6:54",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 25' 3PT Jump Shot (17 PTS) (Love 1 AST)",
+              "score": "67 - 61",
+              "source_id": "event-0042200202-386"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 394,
+              "period": 3,
+              "clock": "6:04",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 6,
+              "description": "Strus S.FOUL (P2.T2) (M.Lindsay)",
+              "score": "",
+              "source_id": "event-0042200202-394"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 412,
+              "period": 3,
+              "clock": "4:36",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 4,
+              "description": "Strus REBOUND (Off:0 Def:1)",
+              "score": "",
+              "source_id": "event-0042200202-412"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 413,
+              "period": 3,
+              "clock": "4:19",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 2,
+              "description": "MISS Strus 30' 3PT Pullup Jump Shot",
+              "score": "",
+              "source_id": "event-0042200202-413"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 419,
+              "period": 3,
+              "clock": "4:16",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 8,
+              "description": "SUB: Lowry FOR Strus",
+              "score": "",
+              "source_id": "event-0042200202-419"
+            }
+          ],
+          "limit": 30,
+          "warning": "Truncated event search, not all possessions. Events do not identify full tactical actions."
+        },
+        "at": 1794243751.692367
+      },
+      {
+        "id": 8,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "\"back cut\" OR \"back-cut\" OR \"hand-off\" OR \"handoff\" OR \"fake\" OR \"deny\" OR \"denial\" OR \"top-block\" OR \"top block\"",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 282",
+              "text": "280\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nOften instead of a hand off, the player will throw a short pass to their team mate,\nhowever this should be discouraged.\nThe hand-off works best when the two offensive players come together, as this\nis similar to a screen, where the player passing the ball also gets in the path of\nthe defender.\nWhere the player making the hand off has not dribbled, they may also be able to fake\nthe hand off action.\nHere, x3 anticipates a hand off and moves to help to defend 1 as they start their\ndribble.  3 fakes the hand off and then spins to attack the basket, having x3 now on\ntheir back.\n5\n2\n3\n1\nx3",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p282-1",
+              "evidence_url": "/evidence/wabc-l2-p282-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 281",
+              "text": "2.1  Offensive Movement\n2.1.1 Motion Offence - 5 Out -\nDribble Entry - Hand-off\n279\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.1. Motion offence - 5 out - dribble entry - hand-off\nDribble Hand Off\nDribble hand offs are increasingly part of a team’s offensive scheme both as a pressure\nrelease (e.g. when the ball cannot be passed to the wing, the player will dribble\ntowards the wing and “hand off”) and also as an aggressive offensive move.\nThe dribbler moves towards the defender and then executes a jump stop, holding the\nball on their hip.  They hold the ball with hands on the top and bottom of the ball, to\nmake it easier for their team mate to grab the ball.\nThe team mate takes the ball on the move and looks to attack off the dribble towards\nthe key.  They will often initially move away from the ball and then cut back towards\nthe ball.\nIncreasingly, the player passing the ball will pivot to obstruct the path of the defender.\nWhilst the hand off is often done dribbling from point to the wing, it can be executed\nanywhere on the court.\nAlternatively, a hand off can be executed from a player that is standing still, and this is\noften done when a post player has the ball.\nBefore the hand off, the post player (4) pivots so that their back is facing the player that\nwill take the ball, which will also make them “wider” and better able to obstruct the\npath of the defender.\n1\n2\n1\n4 2",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p281-1",
+              "evidence_url": "/evidence/wabc-l2-p281-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243752.99056
+      },
+      {
+        "id": 9,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "get_game_events",
+        "args": {
+          "game_id": "0042200202",
+          "period": 2,
+          "keyword": "Love"
+        },
+        "result": {
+          "game": {
+            "id": "0042200202",
+            "team": "MIA",
+            "season": "2022-23",
+            "opponent": "NYK",
+            "event_count": 451
+          },
+          "events": [
+            {
+              "game_id": "0042200202",
+              "event_id": 281,
+              "period": 2,
+              "clock": "2:43",
+              "team": "MIA",
+              "player": "Kyle Lowry",
+              "event_type": 8,
+              "description": "SUB: Love FOR Lowry",
+              "score": "",
+              "source_id": "event-0042200202-281"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 314,
+              "period": 2,
+              "clock": "1:08",
+              "team": "MIA",
+              "player": "Kevin Love",
+              "event_type": 3,
+              "description": "Love Free Throw 1 of 2 (4 PTS)",
+              "score": "50 - 48",
+              "source_id": "event-0042200202-314"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 319,
+              "period": 2,
+              "clock": "1:08",
+              "team": "MIA",
+              "player": "Kevin Love",
+              "event_type": 3,
+              "description": "Love Free Throw 2 of 2 (5 PTS)",
+              "score": "51 - 48",
+              "source_id": "event-0042200202-319"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 323,
+              "period": 2,
+              "clock": "0:36",
+              "team": "MIA",
+              "player": "Kevin Love",
+              "event_type": 4,
+              "description": "Love REBOUND (Off:1 Def:2)",
+              "score": "",
+              "source_id": "event-0042200202-323"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 324,
+              "period": 2,
+              "clock": "0:36",
+              "team": "MIA",
+              "player": "Kevin Love",
+              "event_type": 2,
+              "description": "MISS Love Tip Layup Shot",
+              "score": "",
+              "source_id": "event-0042200202-324"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 331,
+              "period": 2,
+              "clock": "0:06",
+              "team": "MIA",
+              "player": "Kevin Love",
+              "event_type": 1,
+              "description": "Love 25' 3PT Jump Shot (8 PTS) (Adebayo 4 AST)",
+              "score": "54 - 51",
+              "source_id": "event-0042200202-331"
+            }
+          ],
+          "limit": 30,
+          "warning": "Truncated event search, not all possessions. Events do not identify full tactical actions."
+        },
+        "at": 1794243753.635486
+      },
+      {
+        "id": 10,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "search_sources",
+        "args": {
+          "query": "deny OR denied OR denial OR \"back cut\" OR \"back-cut\"",
+          "team": "",
+          "kind": "coaching_manual"
+        },
+        "result": {
+          "passages": [
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 284",
+              "text": "282\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.2. Receivers principles with post players\n“4 Out , I in” Principles cont ...\nIf the dribble penetration is opposite the low post player, the post steps into the top of\nthe “no charge” circle.\nOften the defending team will aggressively attempt to stop the offence from passing\nthe ball on the perimeter.  In this circumstance a pass into the post player can also be\nused to help break the pressure.\n“High Post Pressure Release”\nA pass to the high post can be effective where the perimeter player is denied.\nThe perimeter player can cut straight to the basket.\n“Low Post Pressure Release”\nThe low post player can step to the “short corner” to receive a pass if “ball reversal”\nis denied.\nThe Perimeter player can back cut to the basket.\n2 1\n5\n34\n1\n52\n2\n5\n1",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=284",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p284-1",
+              "evidence_url": "/evidence/wabc-l2-p284-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 291",
+              "text": "289\nCoaching manual\n2. Offensive tactics and strategies 2.1. Offensive movement 2.1.4. Post up cuts\nPost Up Cut – “4 Out , 1 In” from Dribble Entry\nOpen Side\n•  1 dribbles toward 4 because they are denied (and a pass cannot be made).\n•  4 back cuts, getting head under the basket and then posts in the keyway.\n• 5 lifts to at least the elbow.\n• 2 replaces 1.\n• 3 can move to the corner or can stay in the wing position.\n5 steps to the perimeter and 4 steps to the low post to return to “4 Out, 1 In”.\nPost Side\n•  2 dribbles at 3, because 3 is denied.\n•  3 initially moves towards the corner.\n• 5 lifts to the elbow or higher.\n•  3 then back cuts to the basket, getting their head under the basket before posting inside\nthe key way. This cut can also be effective if the ball is passed to 5 on the high post.\n• 4 moves to the corner and 5 can move to the perimeter.\n1\n4\n5\n3\n2\n1\n4\n5\n3\n2\n1\n4\n5\n3\n2\n1\n45\n3\n2",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=291",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p291-1",
+              "evidence_url": "/evidence/wabc-l2-p291-1"
+            },
+            {
+              "document_id": "wabc-l2",
+              "locator": "PDF page 335",
+              "text": "333\nCoaching manual\n2. Offensive tactics and strategies 2.4. Offence against zone defence 2.4.4. Proving an opponent is playing zone defence\nTo prove a defender is playing zone defence, specific movement from the offence is\nrequired. Here are some ways to do it:\nCut to the ballside\nWhen 5 cuts to the ballside, x5 should react and cannot stay on the split line.\nImportantly, x5 may adopt various defensive positions, depending upon the team:\n• Behind the post (blue);\n• Fronting the post (red);\n• “Side Front” (green).\nIf x5 stayed on the split (black line) it would appear that the defence is playing zone.\nMove to the perimeter – ballside\nIf the offensive player cuts to a post position, it may still be difficult to determine what\ndefence x5 is playing as many teams guard a post player from behind.\nBy moving to the perimeter, x5 must leave the key – they do not have to be in a denial\nposition, but they must be outside the key.\n3\n4\n5 x5\n4\n5x5 x5 x5x5\n3\n3\n4\n5 x5",
+              "title": "WABC Level 2 Coaches Manual",
+              "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=335",
+              "kind": "coaching_manual",
+              "team": "",
+              "season": "",
+              "game_id": "",
+              "source_id": "wabc-l2-p335-1",
+              "evidence_url": "/evidence/wabc-l2-p335-1"
+            }
+          ],
+          "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+        },
+        "at": 1794243754.249001
+      },
+      {
+        "id": 11,
+        "agent": "Researcher 3 · coaching principles",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "mia-g2-2",
+            "mia-g2-3",
+            "mia-nyk-3",
+            "wabc-l2-p281-1",
+            "wabc-l2-p282-1",
+            "wabc-l2-p284-1",
+            "wabc-l2-p291-1",
+            "wabc-l2-p335-1"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243754.250228
+      },
+      {
+        "id": 12,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "get_game_events",
+        "args": {
+          "game_id": "0042200202",
+          "period": 3,
+          "keyword": "Adebayo"
+        },
+        "result": {
+          "game": {
+            "id": "0042200202",
+            "team": "MIA",
+            "season": "2022-23",
+            "opponent": "NYK",
+            "event_count": 451
+          },
+          "events": [
+            {
+              "game_id": "0042200202",
+              "event_id": 344,
+              "period": 3,
+              "clock": "11:43",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 3' Cutting Layup Shot (8 PTS) (Adebayo 5 AST)",
+              "score": "56 - 51",
+              "source_id": "event-0042200202-344"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 346,
+              "period": 3,
+              "clock": "11:26",
+              "team": "NYK",
+              "player": "RJ Barrett",
+              "event_type": 2,
+              "description": "MISS Barrett 4' Driving Layup | Adebayo BLOCK (1 BLK)",
+              "score": "",
+              "source_id": "event-0042200202-346"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 362,
+              "period": 3,
+              "clock": "9:35",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 1,
+              "description": "Adebayo Driving Dunk (10 PTS)",
+              "score": "60 - 56",
+              "source_id": "event-0042200202-362"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 375,
+              "period": 3,
+              "clock": "8:11",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 2,
+              "description": "MISS Adebayo 10' Step Back Jump Shot",
+              "score": "",
+              "source_id": "event-0042200202-375"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 381,
+              "period": 3,
+              "clock": "7:32",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 4,
+              "description": "Adebayo REBOUND (Off:2 Def:3)",
+              "score": "",
+              "source_id": "event-0042200202-381"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 382,
+              "period": 3,
+              "clock": "7:28",
+              "team": "MIA",
+              "player": "Max Strus",
+              "event_type": 1,
+              "description": "Strus 1' Cutting Layup Shot (14 PTS) (Adebayo 6 AST)",
+              "score": "64 - 58",
+              "source_id": "event-0042200202-382"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 402,
+              "period": 3,
+              "clock": "5:38",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 3,
+              "description": "Adebayo Free Throw 1 of 2 (11 PTS)",
+              "score": "68 - 66",
+              "source_id": "event-0042200202-402"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 405,
+              "period": 3,
+              "clock": "5:38",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 3,
+              "description": "MISS Adebayo Free Throw 2 of 2",
+              "score": "",
+              "source_id": "event-0042200202-405"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 433,
+              "period": 3,
+              "clock": "3:05",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 2,
+              "description": "MISS Adebayo 7' Turnaround Fadeaway Shot",
+              "score": "",
+              "source_id": "event-0042200202-433"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 437,
+              "period": 3,
+              "clock": "2:55",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 6,
+              "description": "Adebayo L.B.FOUL (P2.T4) (S.Foster)",
+              "score": "",
+              "source_id": "event-0042200202-437"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 445,
+              "period": 3,
+              "clock": "2:26",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 1,
+              "description": "Adebayo 1' Alley Oop Dunk (13 PTS) (Lowry 3 AST)",
+              "score": "75 - 74",
+              "source_id": "event-0042200202-445"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 451,
+              "period": 3,
+              "clock": "1:22",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 4,
+              "description": "Adebayo REBOUND (Off:2 Def:4)",
+              "score": "",
+              "source_id": "event-0042200202-451"
+            },
+            {
+              "game_id": "0042200202",
+              "event_id": 460,
+              "period": 3,
+              "clock": "0:24",
+              "team": "MIA",
+              "player": "Bam Adebayo",
+              "event_type": 4,
+              "description": "Adebayo REBOUND (Off:2 Def:5)",
+              "score": "",
+              "source_id": "event-0042200202-460"
+            }
+          ],
+          "limit": 30,
+          "warning": "Truncated event search, not all possessions. Events do not identify full tactical actions."
+        },
+        "at": 1794243755.271639
+      },
+      {
+        "id": 13,
+        "agent": "Researcher 2 · NBA evidence",
+        "name": "finish_research",
+        "args": {
+          "exploration_turn_cap": 4
+        },
+        "result": {
+          "retrieved_ids": [
+            "event-0042200202-281",
+            "event-0042200202-314",
+            "event-0042200202-319",
+            "event-0042200202-323",
+            "event-0042200202-324",
+            "event-0042200202-331",
+            "event-0042200202-344",
+            "event-0042200202-346",
+            "event-0042200202-353",
+            "event-0042200202-362",
+            "event-0042200202-365",
+            "event-0042200202-371",
+            "event-0042200202-375",
+            "event-0042200202-378",
+            "event-0042200202-381",
+            "event-0042200202-382",
+            "event-0042200202-386",
+            "event-0042200202-394",
+            "event-0042200202-402",
+            "event-0042200202-405",
+            "event-0042200202-412",
+            "event-0042200202-413",
+            "event-0042200202-419",
+            "event-0042200202-433",
+            "event-0042200202-437",
+            "event-0042200202-445",
+            "event-0042200202-451",
+            "event-0042200202-460",
+            "mia-g2-2",
+            "mia-g2-3",
+            "mia-nyk-3"
+          ],
+          "reason": "Exploration cap reached; synthesize available evidence."
+        },
+        "at": 1794243755.272654
+      },
+      {
+        "id": 14,
+        "agent": "Lead",
+        "name": "plan_research",
+        "args": {
+          "round": 2
+        },
+        "result": {
+          "clarification": "",
+          "tasks": [],
+          "gaps": [],
+          "done": true
+        },
+        "at": 1794243778.8204072
+      },
+      {
+        "id": 15,
+        "agent": "Evidence audit",
+        "name": "check_citations",
+        "args": {},
+        "result": {
+          "accepted": 4,
+          "withheld": []
+        },
+        "at": 1794243810.0698571
+      }
+    ],
+    "seconds": 88.58
+  }
+]

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CourtLab — 从比赛到你的球场</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<aside class="sidebar"><a class="brand" href="/">COURT<span>LAB</span><span class="brand-ball">◉</span></a><div class="edition">BASKETBALL RESEARCH NOTEBOOK</div>
+<button id="new-chat" class="new-chat">＋ 新建研究</button>
+<div class="small-label">研究范围 / THE FILM ROOM</div>
+<div class="team-card warriors"><span class="team-mark">GSW</span><div><strong>Golden State Warriors</strong><small>2021–22 · 季后赛</small></div></div>
+<div class="team-card heat"><span class="team-mark">MIA</span><div><strong>Miami Heat</strong><small>2022–23 · 季后赛</small></div></div>
+<div class="library"><div class="small-label">EVIDENCE LIBRARY</div><p id="corpus-count">正在读取资料库…</p><p>比赛事件用于核对记录；战术判断来自有出处的比赛解析与教练资料。</p><button id="catalog-button" class="text-button">查看数据与来源 ↗</button></div>
+<div class="sidebar-bottom"><span class="dot"></span> Lead → Researchers → Writer<br><small>最多 3 轮研究 · 报告附证据</small></div></aside>
+<main><header><span>THE PLAYBOOK, WITH RECEIPTS.</span><button id="context-button" class="text-button">查看 Agent 上下文 ↗</button></header>
+<section id="intro" class="intro"><div class="eyebrow">01 / READ THE GAME</div><h1>从 NBA 的配合，<br>找到你们的<span>打法。</span></h1><p class="intro-text">为篮球爱好者与业余五人制球队设计。研究勇士和热火的具体案例，理解执行条件，再探索适合你们的改编。</p>
+<div class="court-banner"><svg viewBox="0 0 640 240" role="img" aria-label="装饰性的篮球半场示意"><g fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"><path d="M40 20H600V220H40Z"/><path d="M252 20V108H388V20M292 32H348M320 32V45"/><circle cx="320" cy="50" r="9"/><path d="M252 108a68 68 0 0 0 136 0M100 20V65C100 235 540 235 540 65V20"/><path stroke-dasharray="5 6" d="M252 108a68 68 0 0 1 136 0"/></g><g fill="#e2a548" stroke="#151a18" stroke-width="2"><circle cx="210" cy="90" r="15"/><circle cx="420" cy="90" r="15"/><circle cx="320" cy="165" r="15"/></g><g fill="#151a18" font-family="monospace" font-size="13" text-anchor="middle"><text x="210" y="95">1</text><text x="420" y="95">2</text><text x="320" y="170">5</text></g><g fill="none" stroke="#e2a548" stroke-width="2" stroke-dasharray="5 5"><path d="M225 92Q320 100 405 92M410 106Q380 157 337 164"/></g></svg><div><span class="small-label">STUDY. QUESTION. ADAPT.</span><p>每个方案，<br>都有出处和边界。</p><small>概念示意图 · 非实际比赛回合</small></div></div>
+<div class="prompt-grid"><button class="sample" data-query="研究 2022 年总决赛 G4 勇士的关键回合防守。用官方比赛解析和比赛事件核对，区分能确认的配合与无法确认的结论。"><span>01 / NBA 战术研究</span><strong>勇士如何在 G4 防住关键回合？</strong><small>2022 总决赛 · 案例与事件核对 ↗</small></button><button class="sample" data-query="研究 2023 年热火对尼克斯的官方比赛解析中，手递手、假手递手和反跑的配合。说明人员条件与证据局限，不推断整个赛季的使用频率。"><span>02 / UNDER THE SURFACE</span><strong>热火的手递手，有哪些变化？</strong><small>2023 季后赛 · 配合与防守反应 ↗</small></button><button class="sample" data-query="我们是成年业余五人制球队，每周训练一次 60 分钟，没有高大中锋，有两个稳定空位投手和一个能传球的内线，主要面对人盯人。结合勇士和热火资料，提出一个可以先练的简化配合，明确标为改编建议，给执行步骤、失败条件和来源。"><span>03 / BRING IT TO YOUR COURT</span><strong>每周练一次，能借鉴什么？</strong><small>业余五人制 · 从原则到改编 ↗</small></button></div></section>
+<section id="conversation" aria-live="polite"></section>
+<section id="progress" hidden><div class="progress-top"><span class="pulse"></span><strong>研究进行中</strong><span id="elapsed">0s</span></div><div id="activities"></div><button id="cancel" class="text-button">停止本次研究</button></section>
+<div class="composer-wrap"><form id="question-form"><label for="question" class="sr-only">你的研究问题</label><textarea id="question" rows="2" maxlength="8000" placeholder="问一个战术问题，或描述你们的人员、对手防守与训练时间…" required></textarea><div class="composer-footer"><span>中文 / English · 来源可点开核查</span><button id="send" type="submit">开始研究 <span>↗</span></button></div></form><p class="footnote">资料覆盖有限；无法从现有证据判断的内容会明确说明。一次研究最多四分钟。</p></div>
+</main>
+<dialog id="drawer"><div class="drawer-header"><strong id="drawer-title">证据</strong><button id="close-drawer" aria-label="关闭">×</button></div><div id="drawer-body"></div></dialog>
+<script src="/context-panel.js"></script><script src="/app.js"></script>
+</body></html>
