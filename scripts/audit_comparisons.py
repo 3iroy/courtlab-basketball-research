@@ -26,7 +26,7 @@ async def audit_one(row):
  claims += [research.Claim(heading='Report limitation',text=x,kind='limitation',source_ids=[]) for x in limits]
  payload={'question':row['question'],'scope':store.catalog()['scope'],'catalog':store.catalog(),'claims':[
   {'index':i,**c.model_dump(),'evidence':{sid:ev[sid] for sid in c.source_ids if sid in ev}} for i,c in enumerate(claims)]}
- result=await research.call(research.verifier,json.dumps(payload,ensure_ascii=False),state)
+ result=await research.audit_claims(payload,state)
  verdicts={v.claim_index:v for v in result.verdicts};accepted=[];accepted_limits=[];rejected=[]
  for i,c in enumerate(claims):
   v=verdicts.get(i)

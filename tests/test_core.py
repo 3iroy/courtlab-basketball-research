@@ -161,3 +161,23 @@ def test_interface_and_report_labels_are_english():
     ev=store.read_passage('mia-nyk-3')
     text,_=research.render_report('Brief',[research.Claim(heading='Case',text='A supported example.',kind='observation',source_ids=['mia-nyk-3'])],['Selected cases only.'],[],{'mia-nyk-3':ev})
     assert '**Evidence**' in text and '## Sources' in text and not re.search(r'[\u4e00-\u9fff]',text)
+
+def test_malformed_audit_batch_does_not_crash_other_claims(monkeypatch):
+    async def fake_call(agent,prompt,state,turns=1,context=None):
+        items=json.loads(prompt)['claims']
+        if items[0]['index']==0:raise research.ModelBehaviorError('Invalid JSON')
+        return research.Audit(verdicts=[research.Verdict(claim_index=c['index'],supported=True,reason='Supported.') for c in items])
+    monkeypatch.setattr(research,'call',fake_call)
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    result=asyncio.run(research.audit_claims({'claims':[{'index':i} for i in range(4)]},state))
+    assert [v.supported for v in result.verdicts]==[False,False,False,True]
+    assert any(t['name']=='audit_batch_unavailable' for t in state.traces)
+
+def test_rate_limit_returns_actionable_english_response(monkeypatch):
+    async def busy_model(question,state):
+        raise app.RateLimitError(message='busy',llm_provider='vertex_ai',model='test')
+    monkeypatch.setattr(app,'deep_research',busy_model)
+    result=client.post('/chat',json={'message':'A precise question'})
+    assert result.status_code==429
+    assert result.json()['research']['status']=='rate_limited'
+    assert 'temporarily busy' in result.json()['response']

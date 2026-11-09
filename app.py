@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 from uuid import uuid4
 from dotenv import load_dotenv
+from litellm import RateLimitError
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -110,6 +111,9 @@ async def perform(data,sid,emit):
             chat['history'] += [{'role':'user','content':data.message.strip()},
                 {'role':'assistant','content':answer,'tool_calls':state.traces,'research':meta}]
             code=200
+        except RateLimitError:
+            result=reply('The research model is temporarily busy. Please wait a moment and retry. Your earlier conversation is preserved.',sid,state.traces,research={'status':'rate_limited'})
+            code=429
         except TimeoutError:
             result=reply('Research reached its four-minute limit. Narrow the question and retry. Partial tool results are preserved below.',sid,state.traces,research={'status':'timeout'})
             code=504

@@ -18,7 +18,8 @@ RESEARCH_MODEL_NAME = os.getenv('RESEARCHER_MODEL', MODEL_NAME)
 PROJECT = os.getenv('GOOGLE_CLOUD_PROJECT') or os.getenv('VERTEX_PROJECT')
 SETTINGS = ModelSettings(temperature=0.2, max_tokens=6500, extra_args={
     'vertex_location':os.getenv('VERTEX_LOCATION','global'),
-    **({'vertex_project':PROJECT} if PROJECT else {}), 'timeout':55, 'num_retries':0})
+    **({'vertex_project':PROJECT} if PROJECT else {}), 'timeout':55, 'num_retries':2})
+MODEL_SLOTS=asyncio.Semaphore(3)
 MAX_ROUNDS=3
 MAX_RESEARCHERS=7
 MAX_RESEARCHER_TURNS=4
@@ -170,7 +171,7 @@ Do not copy long source passages. Do not invent diagrams or suggest that text re
 ''')
 verifier=Agent(name='Evidence audit',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Audit,
  instructions=COMMON+'''
-For EVERY indexed claim return one verdict. The catalog contains complete PBP periods for each listed game. Reject claims that a listed game or quarter is absent merely because it was not retrieved. Distinguish not retrieved this run from not in dataset. Audit limitation statements as strictly as factual statements. Use ONLY the attached source text. Mark unsupported
+For EVERY indexed claim return one verdict. Preserve the supplied claim_index exactly. Keep each reason to one sentence of at most 25 words. The catalog contains complete PBP periods for each listed game. Reject claims that a listed game or quarter is absent merely because it was not retrieved. Distinguish not retrieved this run from not in dataset. Audit limitation statements as strictly as factual statements. Use ONLY the attached source text. Mark unsupported
 if any factual part is ungrounded, if a statistic/clock differs, if a source is misattributed,
 if a case is generalized to a whole season, or if a diagram/video is claimed to have been read.
 An explicitly labeled proposed adaptation may combine cited principles with user constraints;
@@ -180,12 +181,39 @@ Limitation claims can use the corpus scope and tool limitations. Be conservative
 
 async def call(agent,prompt,state,turns=1,context=None):
     try:
-        result=await Runner.run(agent,prompt,context=context,hooks=state.hooks,max_turns=turns)
+        async with MODEL_SLOTS:
+            result=await Runner.run(agent,prompt,context=context,hooks=state.hooks,max_turns=turns)
     except ModelBehaviorError:
         if agent.tools: raise
         state.trace(agent.name,'retry_output_format',{}, {'reason':'Model output did not match its required JSON schema; retrying once without tools.'})
-        result=await Runner.run(agent,prompt+'\nReturn only a COMPLETE JSON object matching your required output schema. Keep it concise. Do not use Markdown fences.',context=context,hooks=state.hooks,max_turns=1)
+        async with MODEL_SLOTS:
+            result=await Runner.run(agent,prompt+'\nReturn only a COMPLETE JSON object matching your required output schema. Keep it concise. Do not use Markdown fences.',context=context,hooks=state.hooks,max_turns=1)
     return result.final_output
+
+async def audit_claims(payload,state):
+    """Audit small batches so one malformed model response cannot fail an entire report."""
+    claims=payload['claims']
+    slots=asyncio.Semaphore(2)
+    async def batch(items):
+        async with slots:
+            try:
+                result=await call(verifier,json.dumps({**payload,'claims':items},ensure_ascii=False),state)
+                by_index={v.claim_index:v for v in result.verdicts}
+                return [by_index.get(c['index'],Verdict(claim_index=c['index'],supported=False,
+                    reason='No audit verdict was returned for this claim.')) for c in items]
+            except ModelBehaviorError:
+                state.trace('Evidence audit','audit_batch_unavailable',
+                    {'claim_indices':[c['index'] for c in items]},
+                    {'reason':'The model returned invalid audit JSON after one retry. These claims are withheld.'})
+                return [Verdict(claim_index=c['index'],supported=False,
+                    reason='Evidence audit was unavailable for this claim; retry a narrower question.') for c in items]
+    bounded=claims[:16]
+    groups=[bounded[i:i+3] for i in range(0,len(bounded),3)]
+    results=await asyncio.gather(*(batch(group) for group in groups))
+    verdicts=[item for group in results for item in group]
+    verdicts += [Verdict(claim_index=c['index'],supported=False,
+        reason='The draft exceeded the bounded audit size.') for c in claims[16:]]
+    return Audit(verdicts=verdicts)
 
 async def worker(task:Task,question:str,state:RunState,catalog:dict):
     state.researchers+=1
@@ -251,7 +279,7 @@ async def deep_research(question:str,state:RunState):
     audit_payload={'question':question,'scope':catalog['scope'],'catalog':catalog,'claims':[
         {'index':i,**c.model_dump(),'evidence':{sid:state.evidence[sid] for sid in c.source_ids}}
         for i,c in enumerate(valid)]}
-    audit=await call(verifier,json.dumps(audit_payload,ensure_ascii=False),state)
+    audit=await audit_claims(audit_payload,state)
     verdicts={v.claim_index:v for v in audit.verdicts}
     accepted=[]; accepted_limits=[]
     for i,claim in enumerate(valid):

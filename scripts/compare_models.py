@@ -23,7 +23,7 @@ async def main():
   if selected and i+1!=selected: continue
   start=time.monotonic()
   base=await acompletion(model=MODEL_NAME,messages=[{'role':'user','content':q}],
-    vertex_project=PROJECT,vertex_location=os.getenv('VERTEX_LOCATION','global'),timeout=70,num_retries=0,max_tokens=3000)
+    vertex_project=PROJECT,vertex_location=os.getenv('VERTEX_LOCATION','global'),timeout=70,num_retries=2,max_tokens=3000)
   print('BASELINE',i+1,flush=True)
   state=RunState(PanelHooks(AgentContexts(),lambda x:None))
   async with asyncio.timeout(240):answer,meta=await deep_research(q,state)
