@@ -50,7 +50,7 @@ which tactic is more effective, full team playbooks, whole-season frequency, cau
 | No-tools comparison | README and data/acb-comparison.json; original NBA examples retained as historical runs |
 | Submission configuration | submission.json uses path: research |
 | Cloud Run | Existing protected CourtLab service; release status in data/deployment.json |
-| GitHub continuous deployment | Configuration prepared; pending GitHub App access to this repository |
+| GitHub continuous deployment | Configuration prepared; repository linking, a trigger and push verification remain outstanding |
 
 Twenty-three automated tests pass. A real ACB run reproduced original-file counts of 1,520 picks
 and 417 handoffs, and identified the top season player-team pick row as Marcelinho Huertas,

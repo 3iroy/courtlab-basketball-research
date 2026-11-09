@@ -170,7 +170,7 @@ identity. No service account keys are committed.
 A **GitHub main-branch push trigger** must actually exist; the YAML alone is not continuous
 deployment. Deployment details and the verified URL belong in `submission.json` and
 `data/deployment.json`. `submission.json` uses `path: "research"` and inherits `ts3733` from Project 1;
-add any other team members before submission. The Cloud Run service is deployed. GitHub continuous deployment remains pending the Developer Connect app being granted access to this new repository; see data/deployment.json for the verified state.
+add any other team members before submission. The Cloud Run service is deployed. GitHub continuous deployment is not yet configured: repository linking, a main-branch trigger and a real push verification remain outstanding. See data/deployment.json for the current state.
 
 ## Research boundaries
 

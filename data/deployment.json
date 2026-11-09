@@ -1,5 +1,5 @@
 {
-  "status": "deployed_acb_wabc",
+  "status": "deployed_answer_coverage_fix",
   "project": "ieor-4570-f26-ts3733",
   "region": "us-east1",
   "service": "courtlab",
@@ -9,22 +9,24 @@
   "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
   "access": "IAP; domain:columbia.edu",
   "trigger_created": false,
-  "continuous_deployment_status": "Pending: Developer Connect GitHub App can access only your-fantasy-agent. Existing 3iroy CLI credentials can push CourtLab, but cannot manage GitHub App installation repository access.",
-  "latest_build_id": "6fbc1223-382c-4011-8de1-4fcf78ba647b",
+  "continuous_deployment_status": "Deferred at user request; resume repository-link, trigger configuration and main-branch push verification later.",
+  "latest_build_id": "1cd7e7ef-4e05-4566-8215-fe9726ca027c",
   "local_validation": {
-    "automated_tests_passed": 17,
+    "automated_tests_passed": 23,
     "english_live_examples": 3,
     "english_response_to_chinese_input": true,
     "acb_counts_match_original_files": true,
     "acb_no_tools_comparison_complete": true,
-    "coaching_browser_report_and_citation_drawer_verified": true
+    "coaching_browser_report_and_citation_drawer_verified": true,
+    "zone_attack_regression_complete": true,
+    "answer_coverage_and_bounded_rewrite_verified": true
   },
   "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in.",
   "latest_build_status": "SUCCESS",
-  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00004-bbd",
+  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00005-rch",
   "iap_enabled": true,
   "local_session_recovery_verified": true,
-  "deployed_source_commit": "a2506dba449288a1477e7b1264b248c56a97a82e",
+  "deployed_source_commit": "464e1bdaf7ecf508e522ddf47835e66e40ca37c0",
   "github_app_configuration_url": "https://github.com/settings/installations/168928091",
   "hosted_access_check": {
     "unauthenticated_status": 302,
