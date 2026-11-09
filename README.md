@@ -1,9 +1,10 @@
 # CourtLab — From Film to Your Court
 
-CourtLab helps basketball fans study selected Golden State Warriors (2021–22) and Miami Heat
-(2022–23) playoff cases, then develop **proposed adaptations for adult amateur five-on-five teams**.
-It combines actual game events, official film-study text, and WABC coaching guidance.
-It does not automatically watch video or infer tactical labels from box scores.
+CourtLab helps amateur players, student teams and developing coaches research basketball tactics,
+connect coaching principles to real game evidence, and develop a practical plan for their roster.
+Its core sources are **WABC Levels 1–3** and **SkillCorner ACB 2025–26 annotations and offensive aggregates**.
+Selected Warriors and Heat playoff cases provide additional examples. It does not watch video,
+reconstruct full team playbooks, or promise that an amateur adaptation will improve win rates.
 
 ## Run locally
 
@@ -29,11 +30,20 @@ and preserves the starter's per-agent context viewer behind a button.
 
 ## Data and provenance
 
-The shipped SQLite database contains 45 playoff games (22 GSW, 23 MIA), 20,372 PBP events,
-seven official film-study articles, and selected text pages from the WABC Level 2 manual.
-`data/manifest.json` records source URLs, retrieval time, SHA-256 checksums and indexed PDF pages.
-The exact passage count is in the manifest and displayed in the UI.
+The shipped SQLite database contains full extracted text from WABC Levels 1–3;
+10 ACB games with model-derived annotations for seven action families, plus shots, chances and possessions;
+and three player-team-season aggregate tables covering 293 of 327 ACB games. It also retains 45 NBA playoff games,
+20,372 PBP events and seven official film-study articles. Exact counts are in `data/manifest.json` and the UI.
+The manifest records source URLs, retrieval times, SHA-256 checksums and the pinned SkillCorner commit.
 
+- [SkillCorner basketball open data](https://github.com/SkillCorner/opendata-basketball):
+  pinned to `4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66`. Seven action families: picks,
+  handoffs, off-ball screens, drives, isolations, posts and closeouts. These are model-derived actions,
+  not human-verified full team systems. The app does not ingest raw tracking frames.
+  Season aggregates cover 293 games; detailed event files cover ten. Never treat these as the same population.
+  Picks aggregates count direct picks only. Traded players have team rows and extra total rows;
+  our season tool excludes total rows to prevent combining both. Publisher nulls remain null.
+  See `data/SKILLCORNER-LICENSE.txt`, the indexed data dictionary and known issues.
 - [shufinskiy/nba_data](https://github.com/shufinskiy/nba_data): archived stats.nba.com events.
   `nbastats_po_2021.tar.xz` is the **2021–22** season; `nbastats_po_2022.tar.xz` is **2022–23**.
   Archive years are season START years. Game IDs are restored to ten characters.
@@ -41,20 +51,22 @@ The exact passage count is in the manifest and displayed in the UI.
 - [NBA Film Study](https://www.nba.com/news/2022-finals-film-study-game-4): selected 2022 Finals
   G1/G2/G4/G5 and 2023 Heat–Knicks / Heat–Nuggets analyses. Exact URLs are in the manifest.
   Article text is chunked with stable passage IDs; author/footer recommendations are excluded.
-- [FIBA/WABC](https://about.fiba.basketball/en/wabc-documents): Level 2 coaching manual pages
-  mentioning relevant defensive/offensive tactics, screening, handoffs and motion. Locators use
-  **PDF viewer page numbers**, which may differ from the printed page. Text extraction does not
-  interpret diagrams. Cite the source PDF page and inspect it for diagram details.
+- [FIBA/WABC](https://about.fiba.basketball/en/wabc-documents): extracted text from all
+  substantive pages of Level 1, 2 and 3 manuals. Locators use **PDF viewer page numbers**,
+  which may differ from printed pages. Text extraction does not interpret diagrams.
 
-`store.py` opens SQLite read-only and uses parameterized queries and FTS5 search. It supplies:
-`list_catalog`, `search_sources` (retrieves full top passages), `read_source`, `get_game_events`,
-and `summarize_game`. A summary computes makes/attempts and turnovers from event types and
-3PT description tags. It does **not** calculate play-type efficiency or estimate possessions.
+`store.py` and `acb.py` open SQLite read-only with parameterized queries and allowlisted identifiers.
+Tools: `list_catalog`, `search_sources`, `read_source`, `get_game_events`, `summarize_game`,
+`count_acb_actions`, `get_acb_actions`, `get_acb_season`.
+Action count citations reproduce exact filters and coverage/location breakdowns; example searches are capped
+and never used as counts. Season citations identify original CSV lines and metric values.
+There is no arbitrary model-written SQL or claim of causal tactical efficiency.
 
 To rebuild from the actual upstream files:
 
 ```bash
 uv run scripts/build_data.py
+uv run scripts/expand_data.py
 ```
 
 Raw downloads stay in ignored `.downloads/`. The extracted SQLite database is committed and
@@ -70,8 +82,7 @@ never executes downloaded code or blindly extracts archive paths. See `data/NOTI
 3. Lead reviews findings and contradictions and requests targeted gap-driven follow-up research.
    Code caps the process at **3 planning rounds, 7 Researchers, 4 exploration turns plus at most 1 no-tool notes turn, and 10 data calls per
    Researcher**. An overall 240-second timeout also cancels in-flight work.
-4. **Writer** sees question, findings and retrieved evidence. Observations, proposed adaptations
-   and limitations have distinct labels. Adaptations are not claims of tested effectiveness.
+4. **Writer** sees question, findings and retrieved evidence. Reports default to 2–3 short sections (about 150–220 words), with explicit labels for proposed adaptations and evidence limits. Sources and tool traces are collapsed in the frontend; API reports retain the full bibliography. Adaptations are not claims of tested effectiveness.
 5. **Evidence audit** checks each draft claim against its attached passages. Unknown citations
    fail deterministic validation; unsupported or missing audit verdicts are withheld. This is a
    conservative model-assisted check, not a guarantee of correctness; source drawers permit review.
@@ -121,7 +132,23 @@ The final interface, clarification questions and reports are English. Transient 
 
 The baseline sends only the identical user question to the same model, with no system prompt and
 no tools. `data/comparisons.json` includes both full answers, model name, timing and agent traces.
-The following three samples include expected checks and actual results. Saved examples also receive a final evidence audit; their pre-audit answers and verdicts are retained for transparency. A format-only retry is bounded to one attempt when a no-tool agent returns invalid JSON.
+The three original NBA samples below are historical runs from the earlier NBA-focused corpus, not a validation of the new ACB tools. The ACB comparison is recorded separately in `data/acb-comparison.json`. Saved examples also receive a final evidence audit; their pre-audit answers and verdicts are retained for transparency. A format-only retry is bounded to one attempt when a no-tool agent returns invalid JSON.
+
+### Expanded ACB comparison
+
+The saved real run in `data/acb-comparison.json` asks for sample action counts and the season's
+highest player-team `handler_total_picks` row. Both paths use the same model and question.
+
+| Check | No-tools model | CourtLab with data tools |
+|---|---|---|
+| Ten-game picks and handoffs | Guessed a combined 1,200–1,500 range | 1,520 picks and 417 handoffs, each with a reproducible count citation |
+| Highest season row | Suggested Huertas or alternatives; guessed 750–950 | Marcelinho Huertas, Lenovo Tenerife: 664; original CSV line 174 |
+| Evidence | Generic source name, no exact records | Exact query filters, CSV row and retrieved dictionary citations |
+
+The agent used two Researchers in parallel and finished in about 55 seconds locally. This is
+one example, not an accuracy benchmark. The initial baseline exhausted a smaller output budget;
+the saved baseline was rerun to completion with 6,000 output tokens, as recorded in the JSON.
+The original three NBA comparisons below remain historical examples.
 
 ## Cloud Run and GitHub continuous deployment
 

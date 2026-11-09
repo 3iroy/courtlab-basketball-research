@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-11-09T16:54:23.678715+00:00",
+  "retrieved_at": "2026-11-09T21:59:42.977908+00:00",
   "sources": [
     {
       "id": "pbp-GSW",
@@ -56,153 +56,251 @@
       "sha256": "b3104ea11113eab13f8fee43dd30498a7c7ae04bd5dc7871c50e683b7185475d"
     },
     {
+      "id": "acb-game-114243",
+      "title": "ACB 114243: BAXI Manresa vs Coviran Granada",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/114243/114243_dynamic_events.json",
+      "sha256": "05189826c14f9d15b1a5ec5e21831ed1ad4c177785c108a4ea6fb3c2522ea60b",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-114234",
+      "title": "ACB 114234: Casademont Zaragoza vs Leche Rio Breogan",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/114234/114234_dynamic_events.json",
+      "sha256": "f65fc5567c3000ad4dc22433fa70065a699f081369d3eff476ed23738cb9f7ad",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-114169",
+      "title": "ACB 114169: CB UCAM Murcia vs Club Joventut Badalona",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/114169/114169_dynamic_events.json",
+      "sha256": "6378bf1c909fe6a0576400adf15e57c9fd52576972c1afe3f920d7f1241d78d6",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-114099",
+      "title": "ACB 114099: Basquet Girona vs San Pablo Burgos",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/114099/114099_dynamic_events.json",
+      "sha256": "6432dd25fae6f34a4f47d1e21fe605a8e05935f9e2cc9a11e70912a4b56d2f0d",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-114086",
+      "title": "ACB 114086: Dreamland Gran Canaria vs Bitci Baskonia",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/114086/114086_dynamic_events.json",
+      "sha256": "d2867d13bd877d315e2b98097328f8832e26272a4114e058280ae88c05175da4",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-178442",
+      "title": "ACB 178442: BC MoraBanc Andorra vs Bilbao Basket",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/178442/178442_dynamic_events.json",
+      "sha256": "ee731a0a4ad69ab43394b4097aa155b00d1f916d79994469ead1e2c81b877682",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-179612",
+      "title": "ACB 179612: Malaga vs Valencia BC",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/179612/179612_dynamic_events.json",
+      "sha256": "615c177ad7db45beb66690dbf4329c2e189d6c1f4178f4c77cac8231a69877ae",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-184439",
+      "title": "ACB 184439: Real Madrid vs Lenovo Tenerife",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/184439/184439_dynamic_events.json",
+      "sha256": "6d262edaedcf5b00b0554c3cfcbf63dba97968f61aa5979c751491ec3bc293ef",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-188630",
+      "title": "ACB 188630: BC Barcelona vs Dreamland Gran Canaria",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/188630/188630_dynamic_events.json",
+      "sha256": "93caf5a6a205e2ed9806f5569b415a62890ed4bb195c4a3a86d08d5776e39cac",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-game-191313",
+      "title": "ACB 191313: Leche Rio Breogan vs Casademont Zaragoza",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches/191313/191313_dynamic_events.json",
+      "sha256": "77f05d28ddbd52f516df8d3c08afe7c3d8ec8d3b2f5a9e28993d4b3b2d049c2e",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-season-shots",
+      "title": "ACB 2025-2026 shots: 293-game offensive aggregates",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_shotsaggregates_20252026.csv",
+      "sha256": "4de26752f1f0c49901b82581d6bc6a92acbf697f609da7c245cb63e215254e42",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-season-drives",
+      "title": "ACB 2025-2026 drives: 293-game offensive aggregates",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_drivesaggregates_20252026.csv",
+      "sha256": "a8001c3905d7013f276bb653215e5a4a21ac15e3de477acd9eacf9f3ebbf75e0",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-season-picks",
+      "title": "ACB 2025-2026 picks: 293-game offensive aggregates",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+      "sha256": "24f39b26bbdad7667f40ad73ddee1f576b173dd621ba5b21ce11ab0e12d21a5d",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-README",
+      "title": "SkillCorner: README.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+      "sha256": "75f6191fa82989b685c0852ec45b5596eadf51693009734cbfcb9a32c8c17eeb",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-PRIMER",
+      "title": "SkillCorner: docs/PRIMER.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/PRIMER.md",
+      "sha256": "a886ca0b7ebdc5eccc301715509a3c98fca4f9e1c70ed94c1b7f56602beaa9c2",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-KNOWN_ISSUES",
+      "title": "SkillCorner: docs/KNOWN_ISSUES.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/KNOWN_ISSUES.md",
+      "sha256": "b4c5da416c2dfff177af7ea186ce718fc1c3d5ab65587f72cc2cc69e69e11bcc",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-aggregates_columns",
+      "title": "SkillCorner: docs/aggregates_columns.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+      "sha256": "65fa8d5b84c263f033046e64b67b846112fd2febba3e9d3d1bd07cf9bdabf23c",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-README",
+      "title": "SkillCorner: docs/data_dictionary/README.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/README.md",
+      "sha256": "26374e591472855c5906fd1c4d04dbd9885e420ec8a8b9c42c823ba6756b7bbf",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-picks",
+      "title": "SkillCorner: docs/data_dictionary/picks.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/picks.md",
+      "sha256": "5451c3faa25c2eebdd87ce4bbbab7c006541c7006b1daff469d281d51e5e7076",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-handoffs",
+      "title": "SkillCorner: docs/data_dictionary/handoffs.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/handoffs.md",
+      "sha256": "3d835c85d6999099d4711d8b6e4cd59584592f5b58ad20de69afef86dae3af1f",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-off_ball_screens",
+      "title": "SkillCorner: docs/data_dictionary/off_ball_screens.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/off_ball_screens.md",
+      "sha256": "904ad401feb7f61d9807ecf9d144943f70aa82a74f8892d56d8a43a29658cd0e",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-drives",
+      "title": "SkillCorner: docs/data_dictionary/drives.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/drives.md",
+      "sha256": "e05172d02a3de984e0823b352e60ad769af2dd35d999138ce1042b57d193b733",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-isolations",
+      "title": "SkillCorner: docs/data_dictionary/isolations.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/isolations.md",
+      "sha256": "c9b3eaa271552d82f56a108319acf52560c056b1e7d0b949ee6ed70e93b2bddc",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-posts",
+      "title": "SkillCorner: docs/data_dictionary/posts.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/posts.md",
+      "sha256": "f1571b8d9212e454fcea67f35effec04a5380cf49be90599b8f5f2274515b0b0",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-closeouts",
+      "title": "SkillCorner: docs/data_dictionary/closeouts.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/closeouts.md",
+      "sha256": "52349c82299e4fcda657f297e25b04789cabf8c51d97628f25772b3379fcd1ab",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-shots",
+      "title": "SkillCorner: docs/data_dictionary/shots.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/shots.md",
+      "sha256": "3997f28a3274374997bcbbce87606ad0e1b3ead83a5b8922feb495a6ad509086",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-chances",
+      "title": "SkillCorner: docs/data_dictionary/chances.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/chances.md",
+      "sha256": "7b8a1c35d2225a1218720d261b9058b015cc5190aac418b6bbdf259c39bbc285",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "acb-doc-docs-data_dictionary-possessions",
+      "title": "SkillCorner: docs/data_dictionary/possessions.md",
+      "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/data_dictionary/possessions.md",
+      "sha256": "f382b71413a434e31cce1683910c4b240ad362424017bfe037375c00748af425",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "wabc-l1",
+      "title": "WABC Level 1 Coaches Manual",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+      "sha256": "a6064a31195af94351c8b868721b4fc06acd5138185d416e920b3d1bebd46d9f",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
       "id": "wabc-l2",
       "title": "WABC Level 2 Coaches Manual",
       "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf",
-      "sha256": "9b38dda49fb15b0b5948fa114cedbc907588e3d43541e9b17a9888b05e3d090f"
+      "sha256": "9b38dda49fb15b0b5948fa114cedbc907588e3d43541e9b17a9888b05e3d090f",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
+    },
+    {
+      "id": "wabc-l3",
+      "title": "WABC Level 3 Coaches Manual",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-3-eng.pdf",
+      "sha256": "890fe706c4884dd539290c2b29ca9b1650d3385b2f3562fe8a96a3e608867d45",
+      "retrieved_at": "2026-11-09T21:59:42.977908+00:00"
     }
   ],
   "errors": [],
-  "manual_pdf_pages": 368,
-  "indexed_manual_pages": [
-    4,
-    23,
-    35,
-    56,
-    67,
-    88,
-    96,
-    97,
-    98,
-    135,
-    165,
-    166,
-    223,
-    228,
-    229,
-    230,
-    231,
-    232,
-    233,
-    234,
-    235,
-    236,
-    237,
-    238,
-    239,
-    240,
-    241,
-    242,
-    243,
-    244,
-    245,
-    246,
-    247,
-    248,
-    249,
-    250,
-    251,
-    252,
-    253,
-    254,
-    255,
-    256,
-    257,
-    258,
-    259,
-    260,
-    261,
-    262,
-    263,
-    264,
-    265,
-    266,
-    267,
-    268,
-    269,
-    270,
-    271,
-    272,
-    273,
-    274,
-    275,
-    276,
-    277,
-    280,
-    281,
-    282,
-    283,
-    284,
-    285,
-    286,
-    287,
-    288,
-    289,
-    290,
-    291,
-    292,
-    293,
-    294,
-    295,
-    296,
-    297,
-    298,
-    299,
-    300,
-    301,
-    302,
-    303,
-    304,
-    305,
-    306,
-    307,
-    308,
-    309,
-    310,
-    311,
-    312,
-    313,
-    314,
-    315,
-    316,
-    317,
-    318,
-    319,
-    320,
-    321,
-    322,
-    323,
-    324,
-    325,
-    326,
-    327,
-    328,
-    329,
-    330,
-    331,
-    332,
-    333,
-    334,
-    335,
-    336,
-    337,
-    338,
-    339,
-    340,
-    341,
-    342,
-    343,
-    344,
-    345,
-    346
-  ],
   "game_count": 45,
   "event_count": 20372,
-  "passage_count": 179,
+  "passage_count": 1437,
   "limitations": [
-    "Play-by-play does not identify full off-ball actions or defensive coverages.",
-    "Film-study cases are selected examples, not an exhaustive tactical census.",
-    "No automatic video recognition or complete modern tracking data.",
-    "Amateur adaptations are proposals, not tested effectiveness claims."
-  ]
+    "ACB annotations are model-derived actions, not complete named team playbooks. Raw tracking frames are not shipped or analyzed.",
+    "Detailed ACB events cover 10 selected games. Offensive season aggregates cover 293 of 327 games and cannot be reproduced from those 10 files.",
+    "Pick aggregates count direct picks only; traded-player total rows must not be combined with team rows.",
+    "NBA PBP lacks full tactical labels. Film studies are selected cases. Amateur adaptations are proposals, not tested effectiveness claims."
+  ],
+  "skillcorner_commit": "4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66",
+  "wabc_manuals": {
+    "1": {
+      "pdf_pages": 399,
+      "indexed_pages": 379
+    },
+    "2": {
+      "pdf_pages": 368,
+      "indexed_pages": 346
+    },
+    "3": {
+      "pdf_pages": 280,
+      "indexed_pages": 258
+    }
+  },
+  "acb_game_count": 10,
+  "acb_event_count": 9664,
+  "acb_action_count": 4586,
+  "acb_aggregate_rows": 946,
+  "acb_aggregate_game_count": 293
 }

@@ -9,3 +9,8 @@ review source rights before broader distribution. No videos or full source PDFs 
 The database contains selected extracted passages for retrieval and citation, plus event records.
 Do not treat the corpus as a complete record of any team's tactics. Raw downloads are excluded
 from Git and container builds. Generated summaries and amateur proposals are labeled separately.
+
+SkillCorner basketball annotations and aggregates are pinned in the manifest. Copyright (c) 2026
+SkillCorner (https://skillcorner.com); the repository's MIT license is retained in
+SKILLCORNER-LICENSE.txt. No raw tracking frames or videos are redistributed.
+WABC Levels 1–3 contribute extracted text with original PDF page citations.

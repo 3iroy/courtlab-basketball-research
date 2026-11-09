@@ -20,8 +20,10 @@ def catalog():
     with connect() as conn:
         docs = [dict(r) for r in conn.execute('SELECT id,title,url,kind,team,season,game_id FROM documents')]
         games = [dict(r) for r in conn.execute('SELECT * FROM games ORDER BY id')]
-    return {'documents': docs, 'games': games, 'scope': 'GSW 2021-22 playoffs; MIA 2022-23 playoffs; selected WABC Level 2 pages',
-            'limits': 'No automatic film recognition, tactical frequency estimates, or tested amateur effectiveness.'}
+    import acb
+    return {'documents': docs, 'games': games, 'acb': acb.overview(),
+            'scope': 'WABC Levels 1-3 full text; 10 ACB 2025-2026 annotated games; 293-game ACB offensive aggregates; GSW 2021-22 and MIA 2022-23 playoff cases.',
+            'limits': 'ACB annotations are model-derived actions, not full team playbooks. No raw tracking analysis or tested amateur effectiveness.'}
 
 def search(query: str, team: str = '', limit: int = 6, kind: str = ''):
     with connect() as conn:
@@ -104,6 +106,9 @@ def game_summary(game_id: str, team: str, period: int = 0):
     return result
 
 def evidence(id: str):
+    if id.startswith(('acbevent-', 'acbcount-', 'acbseason-')):
+        import acb
+        return acb.evidence(id)
     if id.startswith('event-'):
         match=re.fullmatch(r'event-(\d{10})-(\d+)',id)
         return event_evidence(match[1],int(match[2])) if match else {'error':'Invalid event ID.'}

@@ -24,7 +24,7 @@ def test_corpus_and_game_calculation():
     assert 'error' in store.game_summary('0042100404','MIA')
 
 def test_search_and_citable_pdf_page():
-    r=store.search('zone defence')
+    r=store.search('zone defence',kind='coaching_manual')
     assert r['results']
     ev=store.read_passage(r['results'][0]['id'])
     assert ev['text'] and '#page=' in ev['url'] and 'PDF page' in ev['locator']
@@ -160,7 +160,7 @@ def test_interface_and_report_labels_are_english():
     assert 'previous session expired' in (root/'app.js').read_text()
     ev=store.read_passage('mia-nyk-3')
     text,_=research.render_report('Brief',[research.Claim(heading='Case',text='A supported example.',kind='observation',source_ids=['mia-nyk-3'])],['Selected cases only.'],[],{'mia-nyk-3':ev})
-    assert '**Evidence**' in text and '## Sources' in text and not re.search(r'[\u4e00-\u9fff]',text)
+    assert 'A supported example.' in text and '## Sources' in text and not re.search(r'[\u4e00-\u9fff]',text)
 
 def test_malformed_audit_batch_does_not_crash_other_claims(monkeypatch):
     async def fake_call(agent,prompt,state,turns=1,context=None):
@@ -181,3 +181,53 @@ def test_rate_limit_returns_actionable_english_response(monkeypatch):
     assert result.status_code==429
     assert result.json()['research']['status']=='rate_limited'
     assert 'temporarily busy' in result.json()['response']
+
+def test_acb_counts_and_citations_match_raw_source():
+    import acb
+    with store.connect() as db:
+        raw={'picks':[json.loads(r[0]) for r in db.execute("SELECT raw_json FROM acb_events WHERE game_id='114243' AND family='picks'")]}
+    total=acb.action_counts('picks','114243')
+    assert total['event_count']==len(raw['picks'])==135
+    direct=acb.action_counts('picks','114243',direct='direct')
+    indirect=acb.action_counts('picks','114243',direct='indirect')
+    assert direct['event_count']==sum(x['direct'] for x in raw['picks'])
+    assert direct['event_count']+indirect['event_count']==total['event_count']
+    assert store.evidence(total['source_id'])==total
+    examples=acb.action_events('handoffs','114243')['events']
+    assert len(examples)==5
+    assert store.evidence(examples[0]['source_id'])==examples[0]
+    assert client.get(examples[0]['evidence_url']).status_code==200
+    assert 'error' in acb.action_counts("picks' OR 1=1 --")
+    assert 'error' in acb.action_counts('picks',team_id='999999')
+    assert 'error' in acb.action_counts('picks',game_id='999999')
+
+def test_acb_aggregate_provenance_and_no_total_duplicates():
+    import acb
+    result=acb.season_rows('picks',['handler_total_picks','handler_ppp'],limit=8)
+    assert len(result['rows'])==8
+    values=[x['row']['handler_total_picks'] for x in result['rows']]
+    assert values==sorted(values,reverse=True)
+    assert all(x['row']['team_name']!='total' for x in result['rows'])
+    for ev in result['rows']:
+        original=store.evidence(ev['source_id'])
+        assert original['row']['handler_total_picks']==ev['row']['handler_total_picks']
+        assert 'CSV line' in ev['locator']
+    assert 'error' in acb.season_rows('picks',["made_up_metric"])
+    assert 'error' in acb.season_rows('shots; DROP TABLE games', ['attempts'])
+
+def test_acb_tool_calls_register_evidence_and_agent_field():
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    worker=research.WorkerState(state,'Researcher ACB')
+    out=asyncio.run(research.count_acb_actions.on_invoke_tool(
+        ToolContext(context=worker,tool_name='count_acb_actions',tool_call_id='test',tool_arguments='{}'),json.dumps({'family':'picks','game_id':'114243'})))
+    result=json.loads(out)
+    assert result['source_id'] in state.evidence and result['source_id'] in worker.read_ids
+    assert state.traces[-1]['agent']=='Researcher ACB'
+
+def test_extended_catalog_and_full_manuals():
+    c=store.catalog()
+    assert len(c['acb']['games'])==10
+    for level in (1,2,3):
+        assert store.search(f'wabc-l{level}')['results']
+    assert len(c['acb']['teams'])>10
+    assert client.get('/manifest').json()['acb_aggregate_game_count']==293

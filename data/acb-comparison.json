@@ -1,0 +1,1002 @@
+{
+  "question": "In SkillCorner's ten ACB 2025-2026 sample games, how many annotated picks and handoffs are there? Separately identify the player-team row with the highest handler_total_picks in the 293-game season aggregate and report its count. Explain why these populations cannot be combined. Cite the actual dataset and keep the answer concise.",
+  "model": "vertex_ai/gemini-3.5-flash",
+  "baseline_no_system_no_tools": "Based on the structure of the **SkillCorner Basketball Tracking/Tactical Sample Dataset** (which includes 10 raw tactical/event-annotated games and a 293-game season aggregate for the Spanish ACB league), here are the details:\n\n### 1. Annotated Picks and Handoffs (10 Sample Games)\nIn the 10-game sample raw tracking/event data, SkillCorner annotates every physical/tactical action. \n* Across these 10 games, there are approximately **1,200 to 1,500 annotated on-ball picks and handoffs** (averaging roughly 120\u2013150 total pick/handoff events per game, split between ball-screens and handoff actions). *Note: The exact integer requires executing a parser on the raw JSON/CSV tracking files for those 10 specific game IDs.*\n\n### 2. Highest `handler_total_picks` (293-Game Season Aggregate)\n* **Player-Team Row:** **Marcelinho Huertas (Lenovo Tenerife)** (or alternatively **Codi Miller-McIntyre / Jean Montero** depending on the specific season iteration of the sample release). Huertas and Lenovo Tenerife historically lead ACB pick-and-roll volume. \n* **Count:** The leading handler typically registers **between 750 and 950 total ball-screen actions (`handler_total_picks`)** across a full ACB season.\n\n---\n\n### Why These Populations Cannot Be Combined\nYou cannot mathematically or statistically combine these two data populations for three primary reasons:\n\n1. **Data Overlap (Double Counting):** The 10 sample games are a subset of the 293-game season aggregate. Directly adding them together would duplicate the actions of the players and teams featured in those 10 games.\n2. **Granularity/Unit of Analysis Mismatch:** The 10-game dataset consists of **event-level/frame-by-frame raw annotations** (individual instances with coordinate/timestamp data), whereas the 293-game dataset consists of **aggregated, player-level season totals**. You cannot sum raw temporal events directly with pre-aggregated season summaries.\n3. **Missing Raw Data:** You cannot reconstruct or append the 10-game event-level details to the other 283 games because the raw, frame-by-frame tracking data is not provided for the rest of the season\u2014only the final aggregated totals are.\n\n---\n\n### Dataset Citation\n* **Dataset:** *SkillCorner Basketball Tactical & Physical Tracking Open/Sample Dataset (Spanish ACB League)*. \n* **Source:** SkillCorner (Data made available via official SkillCorner research/open-data repositories).",
+  "agent_answer": "# SkillCorner ACB 2025-2026 Action Counts and Season Aggregates Analysis\n\n## Action Counts in Sample Games\n\nIn SkillCorner's ten ACB 2025-2026 sample games, there are 1,520 annotated picks and 417 annotated handoffs. [1](/evidence/acbcount-picks-all-all-all) [2](/evidence/acbcount-handoffs-all-all-all)\n\n## Top Season Aggregate Pick Handler\n\nIn the 293-game season aggregate, the player-team row with the highest handler_total_picks is Marcelinho Huertas of Lenovo Tenerife, who recorded 664.0 picks. [3](/evidence/acbseason-picks-174)\n\n## Population Incompatibility\n\nThese populations cannot be combined because the 10 sample games are a subset of the 293 games in the season aggregates, meaning combining them would double-count events. Additionally, the season aggregates only count direct picks (where the handler or screener shot, was assisted, or was fouled directly after the pick, representing about 52% of total picks), whereas the raw event counts include all annotated picks. Finally, the season aggregates are offense-only player-season roll-ups, while the sample games consist of raw play-by-play event annotations. [4](/evidence/acb-doc-README-5) [5](/evidence/acb-doc-README-2) [6](/evidence/acb-doc-docs-PRIMER-4) [7](/evidence/acb-doc-docs-aggregates_columns-1) [8](/evidence/acb-doc-docs-aggregates_columns-7)\n\n## Sources\n\n1. [ACB picks: 1520 annotated actions](https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches) \u2014 family=picks; game=all; offTeamId=all; direct=all\n2. [ACB handoffs: 417 annotated actions](https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches) \u2014 family=handoffs; game=all; offTeamId=all; direct=all\n3. [ACB picks: Marcelinho Huertas, Lenovo Tenerife](https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv) \u2014 CSV line 174 (header line 1); player_id=59122; team_id=1333\n4. [SkillCorner: README.md](https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md) \u2014 document passage 5\n5. [SkillCorner: README.md](https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md) \u2014 document passage 2\n6. [SkillCorner: docs/PRIMER.md](https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/PRIMER.md) \u2014 document passage 4\n7. [SkillCorner: docs/aggregates_columns.md](https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md) \u2014 document passage 1\n8. [SkillCorner: docs/aggregates_columns.md](https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md) \u2014 document passage 7",
+  "research": {
+    "status": "complete",
+    "rounds": 2,
+    "researchers": 2,
+    "citations": [
+      {
+        "number": 1,
+        "source_id": "acbcount-picks-all-all-all",
+        "title": "ACB picks: 1520 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=picks; game=all; offTeamId=all; direct=all",
+        "evidence_url": "/evidence/acbcount-picks-all-all-all"
+      },
+      {
+        "number": 2,
+        "source_id": "acbcount-handoffs-all-all-all",
+        "title": "ACB handoffs: 417 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=handoffs; game=all; offTeamId=all; direct=all",
+        "evidence_url": "/evidence/acbcount-handoffs-all-all-all"
+      },
+      {
+        "number": 3,
+        "source_id": "acbseason-picks-174",
+        "title": "ACB picks: Marcelinho Huertas, Lenovo Tenerife",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+        "locator": "CSV line 174 (header line 1); player_id=59122; team_id=1333",
+        "evidence_url": "/evidence/acbseason-picks-174"
+      },
+      {
+        "number": 4,
+        "source_id": "acb-doc-README-5",
+        "title": "SkillCorner: README.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+        "locator": "document passage 5",
+        "evidence_url": "/evidence/acb-doc-README-5"
+      },
+      {
+        "number": 5,
+        "source_id": "acb-doc-README-2",
+        "title": "SkillCorner: README.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+        "locator": "document passage 2",
+        "evidence_url": "/evidence/acb-doc-README-2"
+      },
+      {
+        "number": 6,
+        "source_id": "acb-doc-docs-PRIMER-4",
+        "title": "SkillCorner: docs/PRIMER.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/PRIMER.md",
+        "locator": "document passage 4",
+        "evidence_url": "/evidence/acb-doc-docs-PRIMER-4"
+      },
+      {
+        "number": 7,
+        "source_id": "acb-doc-docs-aggregates_columns-1",
+        "title": "SkillCorner: docs/aggregates_columns.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+        "locator": "document passage 1",
+        "evidence_url": "/evidence/acb-doc-docs-aggregates_columns-1"
+      },
+      {
+        "number": 8,
+        "source_id": "acb-doc-docs-aggregates_columns-7",
+        "title": "SkillCorner: docs/aggregates_columns.md",
+        "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+        "locator": "document passage 7",
+        "evidence_url": "/evidence/acb-doc-docs-aggregates_columns-7"
+      }
+    ],
+    "withheld_claims": 1
+  },
+  "tool_calls": [
+    {
+      "id": 1,
+      "agent": "Lead",
+      "name": "plan_research",
+      "args": {
+        "round": 1
+      },
+      "result": {
+        "clarification": "",
+        "tasks": [
+          {
+            "task": "Retrieve the total counts of annotated picks and handoffs across the ten ACB 2025-2026 sample games using the action counts or by querying the event files.",
+            "focus": "ACB data"
+          },
+          {
+            "task": "Query the 293-game season aggregate dataset for picks (acb-season-picks) to identify the player-team row with the highest handler_total_picks and retrieve its count.",
+            "focus": "ACB data"
+          }
+        ],
+        "gaps": [
+          "Exact player-team row with the highest handler_total_picks and its count from the 293-game season aggregate",
+          "Verification of the exact counts of picks and handoffs in the 10 sample games"
+        ],
+        "done": false
+      },
+      "at": 1794261890.241745
+    },
+    {
+      "id": 2,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "count_acb_actions",
+      "args": {
+        "family": "handoffs",
+        "game_id": "all",
+        "team_id": "all",
+        "direct": "all"
+      },
+      "result": {
+        "source_id": "acbcount-handoffs-all-all-all",
+        "title": "ACB handoffs: 417 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=handoffs; game=all; offTeamId=all; direct=all",
+        "kind": "acb_data",
+        "evidence_url": "/evidence/acbcount-handoffs-all-all-all",
+        "text": "{\"data\": {\"family\": \"handoffs\", \"game_id\": \"all\", \"offensive_team_id\": \"all\", \"direct_filter\": \"all\", \"event_count\": 417, \"by_game\": {\"114086\": 49, \"114099\": 26, \"114169\": 38, \"114234\": 46, \"114243\": 56, \"178442\": 44, \"179612\": 47, \"184439\": 45, \"188630\": 37, \"191313\": 29}, \"by_offensive_team\": {\"1326\": 26, \"1328\": 47, \"1315\": 18, \"1316\": 8, \"1334\": 20, \"1336\": 18, \"1322\": 20, \"1331\": 55, \"1319\": 31, \"1330\": 25, \"1332\": 17, \"1335\": 27, \"1325\": 21, \"1339\": 26, \"1333\": 24, \"1338\": 21, \"1340\": 13}, \"breakdowns\": {\"receiverDefType\": {\"switch\": 51, \"under\": 243, \"over\": 123}, \"setterDefType\": {\"switch\": 51, \"soft\": 261, \"show\": 105}, \"locationType\": {\"wing\": 187, \"middle\": 171, \"stepUp\": 59}}, \"method\": \"COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.\"}, \"limitations\": \"SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance.\"}",
+        "family": "handoffs",
+        "game_id": "all",
+        "offensive_team_id": "all",
+        "direct_filter": "all",
+        "event_count": 417,
+        "by_game": {
+          "114086": 49,
+          "114099": 26,
+          "114169": 38,
+          "114234": 46,
+          "114243": 56,
+          "178442": 44,
+          "179612": 47,
+          "184439": 45,
+          "188630": 37,
+          "191313": 29
+        },
+        "by_offensive_team": {
+          "1326": 26,
+          "1328": 47,
+          "1315": 18,
+          "1316": 8,
+          "1334": 20,
+          "1336": 18,
+          "1322": 20,
+          "1331": 55,
+          "1319": 31,
+          "1330": 25,
+          "1332": 17,
+          "1335": 27,
+          "1325": 21,
+          "1339": 26,
+          "1333": 24,
+          "1338": 21,
+          "1340": 13
+        },
+        "breakdowns": {
+          "receiverDefType": {
+            "switch": 51,
+            "under": 243,
+            "over": 123
+          },
+          "setterDefType": {
+            "switch": 51,
+            "soft": 261,
+            "show": 105
+          },
+          "locationType": {
+            "wing": 187,
+            "middle": 171,
+            "stepUp": 59
+          }
+        },
+        "method": "COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.",
+        "limitations": "SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance."
+      },
+      "at": 1794261893.2183712
+    },
+    {
+      "id": 3,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "count_acb_actions",
+      "args": {
+        "family": "picks",
+        "game_id": "all",
+        "team_id": "all",
+        "direct": "all"
+      },
+      "result": {
+        "source_id": "acbcount-picks-all-all-all",
+        "title": "ACB picks: 1520 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=picks; game=all; offTeamId=all; direct=all",
+        "kind": "acb_data",
+        "evidence_url": "/evidence/acbcount-picks-all-all-all",
+        "text": "{\"data\": {\"family\": \"picks\", \"game_id\": \"all\", \"offensive_team_id\": \"all\", \"direct_filter\": \"all\", \"event_count\": 1520, \"by_game\": {\"114086\": 145, \"114099\": 139, \"114169\": 175, \"114234\": 142, \"114243\": 135, \"178442\": 165, \"179612\": 153, \"184439\": 177, \"188630\": 141, \"191313\": 148}, \"by_offensive_team\": {\"1326\": 67, \"1328\": 147, \"1315\": 87, \"1316\": 52, \"1334\": 92, \"1336\": 83, \"1322\": 156, \"1331\": 134, \"1319\": 76, \"1330\": 59, \"1332\": 82, \"1335\": 83, \"1325\": 79, \"1339\": 74, \"1333\": 108, \"1338\": 69, \"1340\": 72}, \"breakdowns\": {\"bhrDefType\": {\"over\": 1004, \"under\": 280, \"switch\": 218, \"ice\": 14, \"blitz\": 4}, \"scrDefType\": {\"show\": 615, \"soft\": 663, \"switch\": 218, \"ice\": 14, \"none\": 6, \"blitz\": 4}, \"locationType\": {\"middle\": 979, \"wing\": 359, \"stepUp\": 182}}, \"method\": \"COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.\"}, \"limitations\": \"SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance.\"}",
+        "family": "picks",
+        "game_id": "all",
+        "offensive_team_id": "all",
+        "direct_filter": "all",
+        "event_count": 1520,
+        "by_game": {
+          "114086": 145,
+          "114099": 139,
+          "114169": 175,
+          "114234": 142,
+          "114243": 135,
+          "178442": 165,
+          "179612": 153,
+          "184439": 177,
+          "188630": 141,
+          "191313": 148
+        },
+        "by_offensive_team": {
+          "1326": 67,
+          "1328": 147,
+          "1315": 87,
+          "1316": 52,
+          "1334": 92,
+          "1336": 83,
+          "1322": 156,
+          "1331": 134,
+          "1319": 76,
+          "1330": 59,
+          "1332": 82,
+          "1335": 83,
+          "1325": 79,
+          "1339": 74,
+          "1333": 108,
+          "1338": 69,
+          "1340": 72
+        },
+        "breakdowns": {
+          "bhrDefType": {
+            "over": 1004,
+            "under": 280,
+            "switch": 218,
+            "ice": 14,
+            "blitz": 4
+          },
+          "scrDefType": {
+            "show": 615,
+            "soft": 663,
+            "switch": 218,
+            "ice": 14,
+            "none": 6,
+            "blitz": 4
+          },
+          "locationType": {
+            "middle": 979,
+            "wing": 359,
+            "stepUp": 182
+          }
+        },
+        "method": "COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.",
+        "limitations": "SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance."
+      },
+      "at": 1794261893.243528
+    },
+    {
+      "id": 4,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "get_acb_season",
+      "args": {
+        "family": "picks",
+        "metrics": [
+          "handler_total_picks"
+        ],
+        "team": "",
+        "player": ""
+      },
+      "result": {
+        "rows": [
+          {
+            "source_id": "acbseason-picks-174",
+            "title": "ACB picks: Marcelinho Huertas, Lenovo Tenerife",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 174 (header line 1); player_id=59122; team_id=1333",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-174",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"59122\", \"player_name\": \"Marcelinho Huertas\", \"team_id\": \"1333\", \"team_name\": \"Lenovo Tenerife\", \"games_played\": 27.0, \"handler_total_picks\": 664.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "59122",
+              "player_name": "Marcelinho Huertas",
+              "team_id": "1333",
+              "team_name": "Lenovo Tenerife",
+              "games_played": 27.0,
+              "handler_total_picks": 664.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-157",
+            "title": "ACB picks: Dominik Mavra, Leche Rio Breogan",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 157 (header line 1); player_id=59104; team_id=1322",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-157",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"59104\", \"player_name\": \"Dominik Mavra\", \"team_id\": \"1322\", \"team_name\": \"Leche Rio Breogan\", \"games_played\": 34.0, \"handler_total_picks\": 602.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "59104",
+              "player_name": "Dominik Mavra",
+              "team_id": "1322",
+              "team_name": "Leche Rio Breogan",
+              "games_played": 34.0,
+              "handler_total_picks": 602.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-131",
+            "title": "ACB picks: DeWayne Russell, Leche Rio Breogan",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 131 (header line 1); player_id=58474; team_id=1322",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-131",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"58474\", \"player_name\": \"DeWayne Russell\", \"team_id\": \"1322\", \"team_name\": \"Leche Rio Breogan\", \"games_played\": 31.0, \"handler_total_picks\": 573.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "58474",
+              "player_name": "DeWayne Russell",
+              "team_id": "1322",
+              "team_name": "Leche Rio Breogan",
+              "games_played": 31.0,
+              "handler_total_picks": 573.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-79",
+            "title": "ACB picks: Shannon Evans, BC MoraBanc Andorra",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 79 (header line 1); player_id=31457; team_id=1332",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-79",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"31457\", \"player_name\": \"Shannon Evans\", \"team_id\": \"1332\", \"team_name\": \"BC MoraBanc Andorra\", \"games_played\": 30.0, \"handler_total_picks\": 572.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "31457",
+              "player_name": "Shannon Evans",
+              "team_id": "1332",
+              "team_name": "BC MoraBanc Andorra",
+              "games_played": 30.0,
+              "handler_total_picks": 572.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-66",
+            "title": "ACB picks: Otis Livingston II, Basquet Girona",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 66 (header line 1); player_id=28336; team_id=1315",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-66",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"28336\", \"player_name\": \"Otis Livingston II\", \"team_id\": \"1315\", \"team_name\": \"Basquet Girona\", \"games_played\": 34.0, \"handler_total_picks\": 567.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "28336",
+              "player_name": "Otis Livingston II",
+              "team_id": "1315",
+              "team_name": "Basquet Girona",
+              "games_played": 34.0,
+              "handler_total_picks": 567.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          }
+        ],
+        "matching_rows": 314,
+        "ranked_by": "handler_total_picks",
+        "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.",
+        "warning": "Ranking is descriptive; no minimum opportunity threshold is applied. Low-volume rates do not establish superior skill."
+      },
+      "at": 1794261893.279545
+    },
+    {
+      "id": 5,
+      "agent": "Researcher 1 \u00b7 ACB data",
+      "name": "count_acb_actions",
+      "args": {
+        "family": "picks",
+        "game_id": "all",
+        "team_id": "all",
+        "direct": "all"
+      },
+      "result": {
+        "source_id": "acbcount-picks-all-all-all",
+        "title": "ACB picks: 1520 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=picks; game=all; offTeamId=all; direct=all",
+        "kind": "acb_data",
+        "evidence_url": "/evidence/acbcount-picks-all-all-all",
+        "text": "{\"data\": {\"family\": \"picks\", \"game_id\": \"all\", \"offensive_team_id\": \"all\", \"direct_filter\": \"all\", \"event_count\": 1520, \"by_game\": {\"114086\": 145, \"114099\": 139, \"114169\": 175, \"114234\": 142, \"114243\": 135, \"178442\": 165, \"179612\": 153, \"184439\": 177, \"188630\": 141, \"191313\": 148}, \"by_offensive_team\": {\"1326\": 67, \"1328\": 147, \"1315\": 87, \"1316\": 52, \"1334\": 92, \"1336\": 83, \"1322\": 156, \"1331\": 134, \"1319\": 76, \"1330\": 59, \"1332\": 82, \"1335\": 83, \"1325\": 79, \"1339\": 74, \"1333\": 108, \"1338\": 69, \"1340\": 72}, \"breakdowns\": {\"bhrDefType\": {\"over\": 1004, \"under\": 280, \"switch\": 218, \"ice\": 14, \"blitz\": 4}, \"scrDefType\": {\"show\": 615, \"soft\": 663, \"switch\": 218, \"ice\": 14, \"none\": 6, \"blitz\": 4}, \"locationType\": {\"middle\": 979, \"wing\": 359, \"stepUp\": 182}}, \"method\": \"COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.\"}, \"limitations\": \"SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance.\"}",
+        "family": "picks",
+        "game_id": "all",
+        "offensive_team_id": "all",
+        "direct_filter": "all",
+        "event_count": 1520,
+        "by_game": {
+          "114086": 145,
+          "114099": 139,
+          "114169": 175,
+          "114234": 142,
+          "114243": 135,
+          "178442": 165,
+          "179612": 153,
+          "184439": 177,
+          "188630": 141,
+          "191313": 148
+        },
+        "by_offensive_team": {
+          "1326": 67,
+          "1328": 147,
+          "1315": 87,
+          "1316": 52,
+          "1334": 92,
+          "1336": 83,
+          "1322": 156,
+          "1331": 134,
+          "1319": 76,
+          "1330": 59,
+          "1332": 82,
+          "1335": 83,
+          "1325": 79,
+          "1339": 74,
+          "1333": 108,
+          "1338": 69,
+          "1340": 72
+        },
+        "breakdowns": {
+          "bhrDefType": {
+            "over": 1004,
+            "under": 280,
+            "switch": 218,
+            "ice": 14,
+            "blitz": 4
+          },
+          "scrDefType": {
+            "show": 615,
+            "soft": 663,
+            "switch": 218,
+            "ice": 14,
+            "none": 6,
+            "blitz": 4
+          },
+          "locationType": {
+            "middle": 979,
+            "wing": 359,
+            "stepUp": 182
+          }
+        },
+        "method": "COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.",
+        "limitations": "SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance."
+      },
+      "at": 1794261893.7350888
+    },
+    {
+      "id": 6,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "search_sources",
+      "args": {
+        "query": "aggregates games 293 10 sample",
+        "team": "",
+        "kind": "data_dictionary"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 5",
+            "text": "* The season aggregates are offense-only; there is no defensive-side data in this release.\n* 293 of the 327 games of the 2025-2026 season (regular season and playoffs) are included; the missing games are mostly the playoffs plus a few regular-season fixtures. The 10 sample games are part of those 293, but the aggregates cannot be reproduced from the 10 per-game event files alone.\n* Rows are per player-team-season; traded players also get a season-total row (`team_name` = \"total\"). See [`docs/aggregates_columns.md`](docs/aggregates_columns.md).\n### Known data issues\nShort version; details in [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md).\n* A few players carry two `player_id` values across the season. Use `data/player_id_aliases.csv` to merge them.\n* Compute team scores from `shots` and `free_throws`, not from `chances.ptsScored`.\n* `shots` includes fouled misses (not counted as attempts in box scores); picks aggregates count direct picks only.\n* Some event fields are noisy (e.g. `passes.toReceiverId` holds the intercepting defender). Scores are unaffected.\n## \ud83c\udfd7\ufe0f Repository Structure & Contributing\n* **`data/`**: strictly for datasets. `data/matches/` for raw per-game tracking and event data, `data/aggregates/` for the season-level aggregate CSVs.\n* **`docs/`**: the primer, the data dictionary, and the aggregate column reference.\n## Contact us\n* If you have feedback or research you'd like to conduct with this data, reach us on [our website](https://skillcorner.com/#contact-section) or on [Twitter](https://twitter.com/skillcorner).\n* If you're interested in our product and want commercial information, contact us on [our website](https://skillcorner.com/#contact-section).",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-5",
+            "evidence_url": "/evidence/acb-doc-README-5"
+          },
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 2",
+            "text": "There are no tutorial notebooks in this repo \u2014 the primer and data dictionary are written to be read directly by both analysts and LLMs; most people will get further asking an LLM to work with the data using these docs as context than following a fixed notebook.\n### Data Structure\nThe `data` directory contains:\n* `aggregates/` \u2014 three CSVs with season-level, offense-only aggregated Dynamic Events for 293 of the 327 games of ACB 2025-2026 (regular season and playoffs); the missing games are mostly the playoffs plus a few regular-season fixtures:\n* `acb_shotsaggregates_20252026.csv`\n* `acb_drivesaggregates_20252026.csv`\n* `acb_picksaggregates_20252026.csv`\n* See [`docs/aggregates_columns.md`](docs/aggregates_columns.md) for the full column reference.\n* `player_id_aliases.csv` \u2014 maps the few duplicate `player_id` values to one canonical id per player (see [Known data issues](#known-data-issues)).\n* `matches/` \u2014 one folder per game (named with its `gameId`), for the 10 sample games. Each folder has exactly three files:\n* `{gameId}_game_data.json` \u2014 game metadata and both team rosters. See [`docs/data_dictionary/game_data.md`](docs/data_dictionary/game_data.md).\n* `{gameId}_dynamic_events.json` \u2014 a single JSON object with one array per event family (chances, possessions, shots, picks, drives, passes, touches, dribbles, free_throws, fouls, rebounds, turnovers, timeouts, isolations, handoffs, posts, off_ball_screens, closeouts, chance_players, matchups \u2014 see the exact key names in [`docs/data_dictionary/README.md`](docs/data_dictionary/README.md)). Every record carries `id`, `gameId`, `season`, `period` and the `chanceId`/`possessionId` it belongs to, so the file is a relational bundle you can load and join in one pass.",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-2",
+            "evidence_url": "/evidence/acb-doc-README-2"
+          },
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 1",
+            "text": "# SkillCorner Open Data \u2014 Basketball\n## About this repo\n### Description\nThis repo contains broadcast tracking data collected by [SkillCorner](https://skillcorner.com) for 10 games of the Spanish Liga ACB 2025-2026 season, the derived Dynamic Events (Game Intelligence) for those same games, and season-level offensive aggregates (shots, drives, picks) for 293 ACB 2025-2026 games.\nBroadcast tracking data is tracking data collected through computer vision and machine learning out of the broadcast video, with no on-court hardware and no dependency on a venue's own camera system.\n### Motivation\nThis data is open sourced to:\n* Provide access to basketball tracking data to researchers and the sports analytics community.\n* Increase awareness of broadcast tracking data and how it can benefit clubs, media and the betting industry.\n* Allow SkillCorner prospects to access data easily, parse our data format and get started building on top of it.\n* Offer two entry points: full-season aggregates for quick analysis, and raw tracking plus events for those who want to build from the ground up.\nIf you use the data, we kindly ask that you credit SkillCorner and notify us on [Twitter](https://twitter.com/skillcorner) so we can follow the work being done with it.\n## Documentation\nStart with the [primer](docs/PRIMER.md) for an overview of what this data is, the coordinate system, units, frame rate and clock conventions, and how the aggregates are computed. Field-by-field reference for every table lives in [`docs/data_dictionary/`](docs/data_dictionary/README.md); the aggregate CSV columns are documented separately in [`docs/aggregates_columns.md`](docs/aggregates_columns.md).",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-1",
+            "evidence_url": "/evidence/acb-doc-README-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794261895.262997
+    },
+    {
+      "id": 7,
+      "agent": "Researcher 1 \u00b7 ACB data",
+      "name": "count_acb_actions",
+      "args": {
+        "family": "handoffs",
+        "game_id": "all",
+        "team_id": "all",
+        "direct": "all"
+      },
+      "result": {
+        "source_id": "acbcount-handoffs-all-all-all",
+        "title": "ACB handoffs: 417 annotated actions",
+        "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches",
+        "locator": "family=handoffs; game=all; offTeamId=all; direct=all",
+        "kind": "acb_data",
+        "evidence_url": "/evidence/acbcount-handoffs-all-all-all",
+        "text": "{\"data\": {\"family\": \"handoffs\", \"game_id\": \"all\", \"offensive_team_id\": \"all\", \"direct_filter\": \"all\", \"event_count\": 417, \"by_game\": {\"114086\": 49, \"114099\": 26, \"114169\": 38, \"114234\": 46, \"114243\": 56, \"178442\": 44, \"179612\": 47, \"184439\": 45, \"188630\": 37, \"191313\": 29}, \"by_offensive_team\": {\"1326\": 26, \"1328\": 47, \"1315\": 18, \"1316\": 8, \"1334\": 20, \"1336\": 18, \"1322\": 20, \"1331\": 55, \"1319\": 31, \"1330\": 25, \"1332\": 17, \"1335\": 27, \"1325\": 21, \"1339\": 26, \"1333\": 24, \"1338\": 21, \"1340\": 13}, \"breakdowns\": {\"receiverDefType\": {\"switch\": 51, \"under\": 243, \"over\": 123}, \"setterDefType\": {\"switch\": 51, \"soft\": 261, \"show\": 105}, \"locationType\": {\"wing\": 187, \"middle\": 171, \"stepUp\": 59}}, \"method\": \"COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.\"}, \"limitations\": \"SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance.\"}",
+        "family": "handoffs",
+        "game_id": "all",
+        "offensive_team_id": "all",
+        "direct_filter": "all",
+        "event_count": 417,
+        "by_game": {
+          "114086": 49,
+          "114099": 26,
+          "114169": 38,
+          "114234": 46,
+          "114243": 56,
+          "178442": 44,
+          "179612": 47,
+          "184439": 45,
+          "188630": 37,
+          "191313": 29
+        },
+        "by_offensive_team": {
+          "1326": 26,
+          "1328": 47,
+          "1315": 18,
+          "1316": 8,
+          "1334": 20,
+          "1336": 18,
+          "1322": 20,
+          "1331": 55,
+          "1319": 31,
+          "1330": 25,
+          "1332": 17,
+          "1335": 27,
+          "1325": 21,
+          "1339": 26,
+          "1333": 24,
+          "1338": 21,
+          "1340": 13
+        },
+        "breakdowns": {
+          "receiverDefType": {
+            "switch": 51,
+            "under": 243,
+            "over": 123
+          },
+          "setterDefType": {
+            "switch": 51,
+            "soft": 261,
+            "show": 105
+          },
+          "locationType": {
+            "wing": 187,
+            "middle": 171,
+            "stepUp": 59
+          }
+        },
+        "method": "COUNT event rows after exact family/game/offTeamId/direct filters; each breakdown counts the same filtered rows, omitting absent fields. No shot outcomes are attributed to an action.",
+        "limitations": "SkillCorner model-derived annotations. Ten selected ACB 2025-2026 games; action counts are not possession efficiency or causal evidence. Actions may overlap within a chance."
+      },
+      "at": 1794261895.5481758
+    },
+    {
+      "id": 8,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "search_sources",
+      "args": {
+        "query": "aggregates computed primer",
+        "team": "",
+        "kind": "data_dictionary"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 4",
+            "text": "Player and ball positions at 25 frames per second, in feet, origin at the center of the court. See [`docs/data_dictionary/tracking_data.md`](docs/data_dictionary/tracking_data.md) for the full field list and [`docs/PRIMER.md`](docs/PRIMER.md#coordinate-system-and-units) for the coordinate system.\n### \u26a1 Dynamic Events (Game Intelligence)\nEvery touch, pass, dribble, shot, foul, rebound, turnover, timeout, and named action (pick-and-roll, hand-off, off-ball screen, drive, isolation, post-up, closeout) SkillCorner's Game Intelligence models detect from the tracking data, each carrying both play-by-play facts (who, what, outcome) and tracking-derived context (defender identity and distance, coverage type, exact location) that a manually scored feed does not have. See [`docs/data_dictionary/README.md`](docs/data_dictionary/README.md) for the full event catalog, how the tables join, and which columns carry tracking context.\n### \ud83d\udcca Season Aggregates (Shots, Drives, Picks)\nPlayer-season, offense-only roll-ups of the shot, drive and pick events across 293 ACB 2025-2026 games, pivoted by court zone, contest level, shot type, defensive coverage and more. See [`docs/aggregates_columns.md`](docs/aggregates_columns.md) for the full column reference and [`docs/PRIMER.md`](docs/PRIMER.md#how-the-season-aggregates-are-computed) for how they're built.\n## \u26a0\ufe0f Limitations\nTRACKING\n* ~76-83% of player positions per game are directly detected on screen (`isDetected`); the remainder are extrapolated. Mean `predError` across all positions is ~1.5-1.9 ft per game (95th percentile ~4.9-6.3 ft); extrapolated positions alone average ~4.4-5.2 ft.\n* Some speed or acceleration smoothing and control should be applied to the raw tracking data before use.\nAGGREGATES",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-4",
+            "evidence_url": "/evidence/acb-doc-README-4"
+          },
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 1",
+            "text": "# SkillCorner Open Data \u2014 Basketball\n## About this repo\n### Description\nThis repo contains broadcast tracking data collected by [SkillCorner](https://skillcorner.com) for 10 games of the Spanish Liga ACB 2025-2026 season, the derived Dynamic Events (Game Intelligence) for those same games, and season-level offensive aggregates (shots, drives, picks) for 293 ACB 2025-2026 games.\nBroadcast tracking data is tracking data collected through computer vision and machine learning out of the broadcast video, with no on-court hardware and no dependency on a venue's own camera system.\n### Motivation\nThis data is open sourced to:\n* Provide access to basketball tracking data to researchers and the sports analytics community.\n* Increase awareness of broadcast tracking data and how it can benefit clubs, media and the betting industry.\n* Allow SkillCorner prospects to access data easily, parse our data format and get started building on top of it.\n* Offer two entry points: full-season aggregates for quick analysis, and raw tracking plus events for those who want to build from the ground up.\nIf you use the data, we kindly ask that you credit SkillCorner and notify us on [Twitter](https://twitter.com/skillcorner) so we can follow the work being done with it.\n## Documentation\nStart with the [primer](docs/PRIMER.md) for an overview of what this data is, the coordinate system, units, frame rate and clock conventions, and how the aggregates are computed. Field-by-field reference for every table lives in [`docs/data_dictionary/`](docs/data_dictionary/README.md); the aggregate CSV columns are documented separately in [`docs/aggregates_columns.md`](docs/aggregates_columns.md).",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-1",
+            "evidence_url": "/evidence/acb-doc-README-1"
+          },
+          {
+            "document_id": "acb-doc-docs-aggregates_columns",
+            "locator": "document passage 1",
+            "text": "# Aggregate table column reference\nColumn reference for the three season-level aggregate files in `data/aggregates/`: `acb_shotsaggregates_20252026.csv`, `acb_drivesaggregates_20252026.csv`, `acb_picksaggregates_20252026.csv`. Each is a player-season roll-up, offense only, built from the `shots`, `drives` and `picks` Dynamic Events tables described in the [data dictionary](data_dictionary/README.md). See the [primer](PRIMER.md#how-the-season-aggregates-are-computed) for how these fit into the wider pipeline.\nEvery column family below has been checked against the published CSVs; column counts and bucket values are as delivered.\n## Grain and identity columns (all three tables)\n**Grain: one row per player, per team, per season.** A player who was traded mid-season gets one row per team they played for, PLUS an extra season-total row with `team_id` empty and `team_name` = `\"total\"` that aggregates across all their teams. Summing a metric column straight down the file double-counts anyone who has a total row \u2014 filter to either the per-team rows or the total rows before aggregating across players, don't mix both for the same player.\nRow counts for ACB 2025-2026 (18 teams): `acb_shotsaggregates_20252026.csv` has 326 rows / 316 distinct players, `acb_drivesaggregates_20252026.csv` has 301 rows, `acb_picksaggregates_20252026.csv` has 319 rows. Row counts differ across the three files because a player only gets a row in a given file if they recorded at least one event of that type (e.g. a player with zero tracked picks has no row in the picks file).",
+            "title": "SkillCorner: docs/aggregates_columns.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-docs-aggregates_columns-1",
+            "evidence_url": "/evidence/acb-doc-docs-aggregates_columns-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794261896.878842
+    },
+    {
+      "id": 9,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "search_sources",
+      "args": {
+        "query": "PRIMER.md how the season aggregates are computed",
+        "team": "",
+        "kind": "data_dictionary"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 4",
+            "text": "Player and ball positions at 25 frames per second, in feet, origin at the center of the court. See [`docs/data_dictionary/tracking_data.md`](docs/data_dictionary/tracking_data.md) for the full field list and [`docs/PRIMER.md`](docs/PRIMER.md#coordinate-system-and-units) for the coordinate system.\n### \u26a1 Dynamic Events (Game Intelligence)\nEvery touch, pass, dribble, shot, foul, rebound, turnover, timeout, and named action (pick-and-roll, hand-off, off-ball screen, drive, isolation, post-up, closeout) SkillCorner's Game Intelligence models detect from the tracking data, each carrying both play-by-play facts (who, what, outcome) and tracking-derived context (defender identity and distance, coverage type, exact location) that a manually scored feed does not have. See [`docs/data_dictionary/README.md`](docs/data_dictionary/README.md) for the full event catalog, how the tables join, and which columns carry tracking context.\n### \ud83d\udcca Season Aggregates (Shots, Drives, Picks)\nPlayer-season, offense-only roll-ups of the shot, drive and pick events across 293 ACB 2025-2026 games, pivoted by court zone, contest level, shot type, defensive coverage and more. See [`docs/aggregates_columns.md`](docs/aggregates_columns.md) for the full column reference and [`docs/PRIMER.md`](docs/PRIMER.md#how-the-season-aggregates-are-computed) for how they're built.\n## \u26a0\ufe0f Limitations\nTRACKING\n* ~76-83% of player positions per game are directly detected on screen (`isDetected`); the remainder are extrapolated. Mean `predError` across all positions is ~1.5-1.9 ft per game (95th percentile ~4.9-6.3 ft); extrapolated positions alone average ~4.4-5.2 ft.\n* Some speed or acceleration smoothing and control should be applied to the raw tracking data before use.\nAGGREGATES",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-4",
+            "evidence_url": "/evidence/acb-doc-README-4"
+          },
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 1",
+            "text": "# SkillCorner Open Data \u2014 Basketball\n## About this repo\n### Description\nThis repo contains broadcast tracking data collected by [SkillCorner](https://skillcorner.com) for 10 games of the Spanish Liga ACB 2025-2026 season, the derived Dynamic Events (Game Intelligence) for those same games, and season-level offensive aggregates (shots, drives, picks) for 293 ACB 2025-2026 games.\nBroadcast tracking data is tracking data collected through computer vision and machine learning out of the broadcast video, with no on-court hardware and no dependency on a venue's own camera system.\n### Motivation\nThis data is open sourced to:\n* Provide access to basketball tracking data to researchers and the sports analytics community.\n* Increase awareness of broadcast tracking data and how it can benefit clubs, media and the betting industry.\n* Allow SkillCorner prospects to access data easily, parse our data format and get started building on top of it.\n* Offer two entry points: full-season aggregates for quick analysis, and raw tracking plus events for those who want to build from the ground up.\nIf you use the data, we kindly ask that you credit SkillCorner and notify us on [Twitter](https://twitter.com/skillcorner) so we can follow the work being done with it.\n## Documentation\nStart with the [primer](docs/PRIMER.md) for an overview of what this data is, the coordinate system, units, frame rate and clock conventions, and how the aggregates are computed. Field-by-field reference for every table lives in [`docs/data_dictionary/`](docs/data_dictionary/README.md); the aggregate CSV columns are documented separately in [`docs/aggregates_columns.md`](docs/aggregates_columns.md).",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-1",
+            "evidence_url": "/evidence/acb-doc-README-1"
+          },
+          {
+            "document_id": "acb-doc-docs-aggregates_columns",
+            "locator": "document passage 1",
+            "text": "# Aggregate table column reference\nColumn reference for the three season-level aggregate files in `data/aggregates/`: `acb_shotsaggregates_20252026.csv`, `acb_drivesaggregates_20252026.csv`, `acb_picksaggregates_20252026.csv`. Each is a player-season roll-up, offense only, built from the `shots`, `drives` and `picks` Dynamic Events tables described in the [data dictionary](data_dictionary/README.md). See the [primer](PRIMER.md#how-the-season-aggregates-are-computed) for how these fit into the wider pipeline.\nEvery column family below has been checked against the published CSVs; column counts and bucket values are as delivered.\n## Grain and identity columns (all three tables)\n**Grain: one row per player, per team, per season.** A player who was traded mid-season gets one row per team they played for, PLUS an extra season-total row with `team_id` empty and `team_name` = `\"total\"` that aggregates across all their teams. Summing a metric column straight down the file double-counts anyone who has a total row \u2014 filter to either the per-team rows or the total rows before aggregating across players, don't mix both for the same player.\nRow counts for ACB 2025-2026 (18 teams): `acb_shotsaggregates_20252026.csv` has 326 rows / 316 distinct players, `acb_drivesaggregates_20252026.csv` has 301 rows, `acb_picksaggregates_20252026.csv` has 319 rows. Row counts differ across the three files because a player only gets a row in a given file if they recorded at least one event of that type (e.g. a player with zero tracked picks has no row in the picks file).",
+            "title": "SkillCorner: docs/aggregates_columns.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-docs-aggregates_columns-1",
+            "evidence_url": "/evidence/acb-doc-docs-aggregates_columns-1"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794261898.650829
+    },
+    {
+      "id": 10,
+      "agent": "Researcher 2 \u00b7 ACB data",
+      "name": "finish_research",
+      "args": {
+        "exploration_turn_cap": 4
+      },
+      "result": {
+        "retrieved_ids": [
+          "acb-doc-README-1",
+          "acb-doc-README-2",
+          "acb-doc-README-4",
+          "acb-doc-README-5",
+          "acb-doc-docs-aggregates_columns-1",
+          "acbcount-handoffs-all-all-all",
+          "acbcount-picks-all-all-all",
+          "acbseason-picks-131",
+          "acbseason-picks-157",
+          "acbseason-picks-174",
+          "acbseason-picks-66",
+          "acbseason-picks-79"
+        ],
+        "reason": "Exploration cap reached; synthesize available evidence."
+      },
+      "at": 1794261898.654925
+    },
+    {
+      "id": 11,
+      "agent": "Researcher 1 \u00b7 ACB data",
+      "name": "get_acb_season",
+      "args": {
+        "family": "picks",
+        "metrics": [
+          "handler_total_picks"
+        ],
+        "team": "",
+        "player": ""
+      },
+      "result": {
+        "rows": [
+          {
+            "source_id": "acbseason-picks-174",
+            "title": "ACB picks: Marcelinho Huertas, Lenovo Tenerife",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 174 (header line 1); player_id=59122; team_id=1333",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-174",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"59122\", \"player_name\": \"Marcelinho Huertas\", \"team_id\": \"1333\", \"team_name\": \"Lenovo Tenerife\", \"games_played\": 27.0, \"handler_total_picks\": 664.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "59122",
+              "player_name": "Marcelinho Huertas",
+              "team_id": "1333",
+              "team_name": "Lenovo Tenerife",
+              "games_played": 27.0,
+              "handler_total_picks": 664.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-157",
+            "title": "ACB picks: Dominik Mavra, Leche Rio Breogan",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 157 (header line 1); player_id=59104; team_id=1322",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-157",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"59104\", \"player_name\": \"Dominik Mavra\", \"team_id\": \"1322\", \"team_name\": \"Leche Rio Breogan\", \"games_played\": 34.0, \"handler_total_picks\": 602.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "59104",
+              "player_name": "Dominik Mavra",
+              "team_id": "1322",
+              "team_name": "Leche Rio Breogan",
+              "games_played": 34.0,
+              "handler_total_picks": 602.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-131",
+            "title": "ACB picks: DeWayne Russell, Leche Rio Breogan",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 131 (header line 1); player_id=58474; team_id=1322",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-131",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"58474\", \"player_name\": \"DeWayne Russell\", \"team_id\": \"1322\", \"team_name\": \"Leche Rio Breogan\", \"games_played\": 31.0, \"handler_total_picks\": 573.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "58474",
+              "player_name": "DeWayne Russell",
+              "team_id": "1322",
+              "team_name": "Leche Rio Breogan",
+              "games_played": 31.0,
+              "handler_total_picks": 573.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-79",
+            "title": "ACB picks: Shannon Evans, BC MoraBanc Andorra",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 79 (header line 1); player_id=31457; team_id=1332",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-79",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"31457\", \"player_name\": \"Shannon Evans\", \"team_id\": \"1332\", \"team_name\": \"BC MoraBanc Andorra\", \"games_played\": 30.0, \"handler_total_picks\": 572.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "31457",
+              "player_name": "Shannon Evans",
+              "team_id": "1332",
+              "team_name": "BC MoraBanc Andorra",
+              "games_played": 30.0,
+              "handler_total_picks": 572.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          },
+          {
+            "source_id": "acbseason-picks-66",
+            "title": "ACB picks: Otis Livingston II, Basquet Girona",
+            "url": "https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv",
+            "locator": "CSV line 66 (header line 1); player_id=28336; team_id=1315",
+            "kind": "acb_data",
+            "evidence_url": "/evidence/acbseason-picks-66",
+            "text": "{\"data\": {\"row\": {\"competition_id\": \"8\", \"competition_name\": \"Liga ACB\", \"season_id\": \"51\", \"season_name\": \"2025-2026\", \"player_id\": \"28336\", \"player_name\": \"Otis Livingston II\", \"team_id\": \"1315\", \"team_name\": \"Basquet Girona\", \"games_played\": 34.0, \"handler_total_picks\": 567.0}}, \"limitations\": \"Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.\"}",
+            "row": {
+              "competition_id": "8",
+              "competition_name": "Liga ACB",
+              "season_id": "51",
+              "season_name": "2025-2026",
+              "player_id": "28336",
+              "player_name": "Otis Livingston II",
+              "team_id": "1315",
+              "team_name": "Basquet Girona",
+              "games_played": 34.0,
+              "handler_total_picks": 567.0
+            },
+            "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero."
+          }
+        ],
+        "matching_rows": 314,
+        "ranked_by": "handler_total_picks",
+        "limitations": "Offense only, 293 of 327 ACB 2025-2026 games. Rows are player-team-season; all-teams total rows are excluded. Traded players can appear for multiple teams. Pick metrics count direct picks only. Points on drives/picks exclude free throws. Rates retain publisher units; consult the data dictionary. Missing values are not zero.",
+        "warning": "Ranking is descriptive; no minimum opportunity threshold is applied. Low-volume rates do not establish superior skill."
+      },
+      "at": 1794261898.6998131
+    },
+    {
+      "id": 12,
+      "agent": "Researcher 1 \u00b7 ACB data",
+      "name": "search_sources",
+      "args": {
+        "query": "aggregates picks handoffs",
+        "team": "",
+        "kind": "data_dictionary"
+      },
+      "result": {
+        "passages": [
+          {
+            "document_id": "acb-doc-README",
+            "locator": "document passage 2",
+            "text": "There are no tutorial notebooks in this repo \u2014 the primer and data dictionary are written to be read directly by both analysts and LLMs; most people will get further asking an LLM to work with the data using these docs as context than following a fixed notebook.\n### Data Structure\nThe `data` directory contains:\n* `aggregates/` \u2014 three CSVs with season-level, offense-only aggregated Dynamic Events for 293 of the 327 games of ACB 2025-2026 (regular season and playoffs); the missing games are mostly the playoffs plus a few regular-season fixtures:\n* `acb_shotsaggregates_20252026.csv`\n* `acb_drivesaggregates_20252026.csv`\n* `acb_picksaggregates_20252026.csv`\n* See [`docs/aggregates_columns.md`](docs/aggregates_columns.md) for the full column reference.\n* `player_id_aliases.csv` \u2014 maps the few duplicate `player_id` values to one canonical id per player (see [Known data issues](#known-data-issues)).\n* `matches/` \u2014 one folder per game (named with its `gameId`), for the 10 sample games. Each folder has exactly three files:\n* `{gameId}_game_data.json` \u2014 game metadata and both team rosters. See [`docs/data_dictionary/game_data.md`](docs/data_dictionary/game_data.md).\n* `{gameId}_dynamic_events.json` \u2014 a single JSON object with one array per event family (chances, possessions, shots, picks, drives, passes, touches, dribbles, free_throws, fouls, rebounds, turnovers, timeouts, isolations, handoffs, posts, off_ball_screens, closeouts, chance_players, matchups \u2014 see the exact key names in [`docs/data_dictionary/README.md`](docs/data_dictionary/README.md)). Every record carries `id`, `gameId`, `season`, `period` and the `chanceId`/`possessionId` it belongs to, so the file is a relational bundle you can load and join in one pass.",
+            "title": "SkillCorner: README.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/README.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-README-2",
+            "evidence_url": "/evidence/acb-doc-README-2"
+          },
+          {
+            "document_id": "acb-doc-docs-PRIMER",
+            "locator": "document passage 4",
+            "text": "* **Two clocks measure different things.** `gameClock` counts down within a period and stops on every whistle; `wallClock` is elapsed video time from the start of the game and never stops. Use `wallClock` (or `frame`) to line events up with tracking frames, and `gameClock` + `period` for anything that should ignore dead time.\n* **Region and location both describe position but at different resolution.** `location` is exact feet; `region` is a coarse, discrete label. They can disagree slightly at zone boundaries.\n* **Not every field is present for every table.** `pbp_derived` fields (see the \"PBP derived\" column in the data dictionary, where present) come from official play-by-play rather than tracking \u2014 most fields do not carry that flag and are computed purely from tracking data.\n* **`touchId` is the connective tissue.** Many action markings (picks, drives, handoffs, ...) reference a `touchId`; go to `touches` for duration, dribble count and the assigned defender if the marking table itself doesn't have the field you need.\n* **Aggregates cover the full season; raw events cover 10 games.** The season aggregate totals are built over 293 games, so they cannot be reproduced from the 10 per-game event files. The 10 published games are part of those 293, and their shot, drive and pick events are the same events the aggregates were computed from, so a player's events in these games are a strict subset of their season row.",
+            "title": "SkillCorner: docs/PRIMER.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/PRIMER.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-docs-PRIMER-4",
+            "evidence_url": "/evidence/acb-doc-docs-PRIMER-4"
+          },
+          {
+            "document_id": "acb-doc-docs-aggregates_columns",
+            "locator": "document passage 7",
+            "text": "**Direct picks only.** The picks aggregates count only picks where the raw event's `direct` field is true (the ball handler or screener shot, was assisted, or was fouled directly after the pick \u2014 see `direct` on the [`picks`](data_dictionary/picks.md) event table). In ACB 2025-2026 that's 22,080 of 42,156 total pick events (~52%). Counting rows in the raw `picks` event table therefore gives roughly double `handler_total_picks`; filter on `direct = true` before comparing raw event counts to these aggregates.\n* **Shared identity/totals** \u2014 the common identity block plus `possessions_played`, `team_id`, `team_name` (one set, not duplicated per role).\n* **Role totals** (`handler_*` / `screener_*`, 35 columns per role) \u2014 `_total_picks`, `_successful_pick` / `_unsuccessful_pick` (successful = score, assist, or foul drawn), `_score` (own make, split `_score_2pt`/`_score_3pt`), `_miss` (own miss, split 2pt/3pt), `_assist` (assisted a teammate, split `_to_screener` vs `_to_other`), `_assist_opportunity` (pass created a scoring chance whether converted or not, same to_screener/to_other split), `_pass` (split `_pass_to_screener`/`_pass_to_other`), `_only_pass_pick` (passed with no shot/assist), `_no_outcome_pick`, `_turnover`, `_foul` (drew a foul), `_block` (shot blocked), `_shot_taken`, `_fga_in_pick`, `_field_points_in_pick`, `_ft_attempts_in_pick`/`_ft_mades_in_pick`, `_points`, `_points_per_shot_in_pick`, `_ppp` (points per pick).\n* **Role derived rates** (20-21 columns per role) \u2014 the totals above as a share of `_total_picks` (`_pct` or `_rate` suffix; both are used inconsistently in the schema \u2014 treat them as synonyms), plus `_fg2_pct` / `_fg3_pct` (make percentage conditional on a 2pt/3pt attempt being taken, not a share of total picks).",
+            "title": "SkillCorner: docs/aggregates_columns.md",
+            "url": "https://raw.githubusercontent.com/SkillCorner/opendata-basketball/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/docs/aggregates_columns.md",
+            "kind": "data_dictionary",
+            "team": "",
+            "season": "2025-2026",
+            "game_id": "",
+            "source_id": "acb-doc-docs-aggregates_columns-7",
+            "evidence_url": "/evidence/acb-doc-docs-aggregates_columns-7"
+          }
+        ],
+        "notice": "These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap."
+      },
+      "at": 1794261901.647766
+    },
+    {
+      "id": 13,
+      "agent": "Researcher 1 \u00b7 ACB data",
+      "name": "finish_research",
+      "args": {
+        "exploration_turn_cap": 4
+      },
+      "result": {
+        "retrieved_ids": [
+          "acb-doc-README-2",
+          "acb-doc-docs-PRIMER-4",
+          "acb-doc-docs-aggregates_columns-7",
+          "acbcount-handoffs-all-all-all",
+          "acbcount-picks-all-all-all",
+          "acbseason-picks-131",
+          "acbseason-picks-157",
+          "acbseason-picks-174",
+          "acbseason-picks-66",
+          "acbseason-picks-79"
+        ],
+        "reason": "Exploration cap reached; synthesize available evidence."
+      },
+      "at": 1794261901.649073
+    },
+    {
+      "id": 14,
+      "agent": "Lead",
+      "name": "plan_research",
+      "args": {
+        "round": 2
+      },
+      "result": {
+        "clarification": "",
+        "tasks": [],
+        "gaps": [],
+        "done": true
+      },
+      "at": 1794261912.498775
+    },
+    {
+      "id": 15,
+      "agent": "Evidence audit",
+      "name": "check_citations",
+      "args": {},
+      "result": {
+        "accepted": 3,
+        "withheld": [
+          "The text states that aggregates cover 293 of 327 games but does not specify that playoff or regular-season fixtures are missing."
+        ]
+      },
+      "at": 1794261932.4659479
+    }
+  ],
+  "expected_from_data_tools": {
+    "picks": 1520,
+    "handoffs": 417,
+    "season_leader": {
+      "competition_id": "8",
+      "competition_name": "Liga ACB",
+      "season_id": "51",
+      "season_name": "2025-2026",
+      "player_id": "59122",
+      "player_name": "Marcelinho Huertas",
+      "team_id": "1333",
+      "team_name": "Lenovo Tenerife",
+      "games_played": 27.0,
+      "handler_total_picks": 664.0
+    }
+  },
+  "seconds": 55.26,
+  "baseline_finish_reason": "stop",
+  "baseline_rerun_note": "The initial baseline hit its 1500-token output budget. This saved baseline rerun uses 6000 tokens; the agent answer and traces are unchanged."
+}

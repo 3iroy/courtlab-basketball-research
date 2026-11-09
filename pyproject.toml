@@ -1,7 +1,7 @@
 [project]
 name = "courtlab"
 version = "0.1.0"
-description = "Evidence-based Warriors and Heat tactics research for amateur five-on-five teams"
+description = "Basketball tactics research using WABC coaching principles and annotated ACB game data"
 requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.109.0",
