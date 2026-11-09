@@ -1,5 +1,5 @@
 {
-  "status": "deployed_english",
+  "status": "deployed_acb_wabc",
   "project": "ieor-4570-f26-ts3733",
   "region": "us-east1",
   "service": "courtlab",
@@ -9,16 +9,25 @@
   "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
   "access": "IAP; domain:columbia.edu",
   "trigger_created": false,
-  "continuous_deployment_status": "GitHub App repository access requires 3iroy browser sign-in.",
-  "latest_build_id": "28803e52-1940-4c7a-a87d-71a90afad8d5",
+  "continuous_deployment_status": "Pending: Developer Connect GitHub App can access only your-fantasy-agent. Existing 3iroy CLI credentials can push CourtLab, but cannot manage GitHub App installation repository access.",
+  "latest_build_id": "6fbc1223-382c-4011-8de1-4fcf78ba647b",
   "local_validation": {
-    "automated_tests_passed": 13,
+    "automated_tests_passed": 17,
     "english_live_examples": 3,
-    "english_response_to_chinese_input": true
+    "english_response_to_chinese_input": true,
+    "acb_counts_match_original_files": true,
+    "acb_no_tools_comparison_complete": true,
+    "coaching_browser_report_and_citation_drawer_verified": true
   },
   "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in.",
   "latest_build_status": "SUCCESS",
-  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00003-z6f",
+  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00004-bbd",
   "iap_enabled": true,
-  "local_session_recovery_verified": true
+  "local_session_recovery_verified": true,
+  "deployed_source_commit": "a2506dba449288a1477e7b1264b248c56a97a82e",
+  "github_app_configuration_url": "https://github.com/settings/installations/168928091",
+  "hosted_access_check": {
+    "unauthenticated_status": 302,
+    "redirect_host": "accounts.google.com"
+  }
 }
