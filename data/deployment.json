@@ -16,5 +16,9 @@
     "english_live_examples": 3,
     "english_response_to_chinese_input": true
   },
-  "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in."
+  "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in.",
+  "latest_build_status": "SUCCESS",
+  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00003-z6f",
+  "iap_enabled": true,
+  "local_session_recovery_verified": true
 }
