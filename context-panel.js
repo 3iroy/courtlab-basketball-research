@@ -76,7 +76,7 @@ contextPanel.id = "context-panel";
 contextPanel.hidden = true;
 document.body.appendChild(contextPanel);
 const contextClose = document.createElement("button");
-contextClose.textContent = "关闭上下文 ×";
+contextClose.textContent = "Close contexts ×";
 contextClose.hidden = true;
 contextClose.style.cssText = "position:fixed;right:25px;bottom:20px;z-index:21;padding:10px 16px;background:#202821;color:#fff;border:0;border-radius:4px";
 contextClose.onclick = () => { contextPanel.hidden=true; contextClose.hidden=true; };

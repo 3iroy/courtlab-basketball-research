@@ -1,10 +1,13 @@
 {
-  "status": "awaiting_specific_access_approval",
+  "status": "deployed_initial_version_english_update_pending",
   "project": "ieor-4570-f26-ts3733",
   "region": "us-east1",
   "service": "courtlab",
   "repository": "https://github.com/3iroy/courtlab-basketball-research",
+  "deploy_url": "https://courtlab-avomiaf4aq-ue.a.run.app",
+  "initial_build_id": "af895465-a074-4d03-acb1-171b7d286897",
+  "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
+  "access": "IAP; domain:columbia.edu",
   "trigger_created": false,
-  "deploy_url": null,
-  "reason": "Automatic approval review rejected persistent service account, IAM grants, repository link and build trigger creation pending specific user approval."
+  "continuous_deployment_status": "GitHub App repository access requires 3iroy browser sign-in."
 }

@@ -149,3 +149,15 @@ def test_unretrieved_citation_and_unverified_limit_are_withheld(monkeypatch):
     text,meta=asyncio.run(research.deep_research('specific question',state))
     assert 'This must never display' not in text and 'The available quarter is missing' not in text
     assert meta['withheld_claims']==2 and len(meta['citations'])==1
+
+def test_interface_and_report_labels_are_english():
+    import re
+    from pathlib import Path
+    root=Path(__file__).resolve().parents[1]
+    for filename in ['index.html','app.js','context-panel.js','app.py','research.py']:
+        assert not re.search(r'[\u4e00-\u9fff]',(root/filename).read_text()),filename
+    assert 'Always write in English' in research.COMMON
+    assert 'previous session expired' in (root/'app.js').read_text()
+    ev=store.read_passage('mia-nyk-3')
+    text,_=research.render_report('Brief',[research.Claim(heading='Case',text='A supported example.',kind='observation',source_ids=['mia-nyk-3'])],['Selected cases only.'],[],{'mia-nyk-3':ev})
+    assert '**Evidence**' in text and '## Sources' in text and not re.search(r'[\u4e00-\u9fff]',text)

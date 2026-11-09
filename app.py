@@ -46,9 +46,9 @@ async def invalid_input(request,exc):
 @app.get('/')
 def index(): return FileResponse(HERE/'index.html',headers={'Cache-Control':'no-cache'})
 @app.get('/app.js')
-def script(): return FileResponse(HERE/'app.js',media_type='application/javascript')
+def script(): return FileResponse(HERE/'app.js',media_type='application/javascript',headers={'Cache-Control':'no-cache'})
 @app.get('/style.css')
-def style(): return FileResponse(HERE/'style.css',media_type='text/css')
+def style(): return FileResponse(HERE/'style.css',media_type='text/css',headers={'Cache-Control':'no-cache'})
 @app.get('/health')
 def health(): return {'ok':store.DB.exists(),'service':'courtlab','database_ready':store.DB.exists()}
 @app.get('/catalog')
@@ -111,11 +111,11 @@ async def perform(data,sid,emit):
                 {'role':'assistant','content':answer,'tool_calls':state.traces,'research':meta}]
             code=200
         except TimeoutError:
-            result=reply('Research reached its four-minute limit. Narrow the question and retry. Partial tool results are preserved below. / 研究已达到四分钟上限，请缩小问题后重试。',sid,state.traces,research={'status':'timeout'})
+            result=reply('Research reached its four-minute limit. Narrow the question and retry. Partial tool results are preserved below.',sid,state.traces,research={'status':'timeout'})
             code=504
         except Exception:
             logging.exception('Research run failed')
-            result=reply('Research could not finish. Check model access, Google Cloud credentials and quota, then retry. / 研究未能完成，请检查模型权限、Google Cloud 登录和额度后重试。',sid,state.traces,research={'status':'error'})
+            result=reply('Research could not finish. Check model access, Google Cloud credentials and quota, then retry.',sid,state.traces,research={'status':'error'})
             code=502
         chat['updated']=time.time()
         return result,code

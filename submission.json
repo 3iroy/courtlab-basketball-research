@@ -1,5 +1,7 @@
 {
-  "deploy_url": "",
-  "authors": ["ts3733"],
+  "deploy_url": "https://courtlab-avomiaf4aq-ue.a.run.app",
+  "authors": [
+    "ts3733"
+  ],
   "path": "research"
 }

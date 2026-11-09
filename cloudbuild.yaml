@@ -19,6 +19,7 @@ steps:
       - --concurrency=3
       - --max-instances=1
       - --timeout=300
+      - --iap
       - --quiet
 images:
   - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_SERVICE}:$COMMIT_SHA'

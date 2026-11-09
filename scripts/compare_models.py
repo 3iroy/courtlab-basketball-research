@@ -9,9 +9,9 @@ from context_panel import AgentContexts,PanelHooks
 from research import MODEL_NAME,PROJECT,RunState,deep_research
 ROOT=Path(__file__).resolve().parents[1]
 QUERIES=[
- '在 2022 年总决赛 G4（game_id=0042100404），勇士全场投篮、三分球和失误分别是多少？结合官方 G4 解析，解释一个可核实的进攻调整，注明比赛事件不能证明的内容。',
- '根据 2023 年热火对尼克斯的官方比赛解析，尼克斯 top-block 射手时，热火有哪些反跑和假手递手应对？用资料中的具体案例解释，不推断赛季使用频率。',
- '我们是成年业余五人制球队，每周训练一次 60 分钟，没有高大中锋，有两个稳定空位投手和一个能传球的内线，主要面对人盯人。结合勇士和热火资料，提出一个可以先练的简化配合，明确标为改编建议，给执行步骤、失败条件和来源。'
+ 'In Game 4 of the 2022 NBA Finals (game_id=0042100404), what were the Warriors’ field goals, three-pointers and turnovers? Use the official G4 film study to explain one supported late-game defensive sequence. Explain what play-by-play cannot establish.',
+ 'According to the official 2023 Heat–Knicks film study, how did Miami counter top-blocking with backdoor cuts and fake handoffs? Explain specific sourced cases without inferring season-wide frequency.',
+ 'We are an adult amateur five-on-five team with one 60-minute practice per week, no tall center, two reliable open shooters and one passing big. We mostly face man-to-man defense. Use Warriors and Heat evidence to propose one simplified action, with execution steps, failure conditions and citations. Clearly label it as a proposed adaptation.'
 ]
 async def main():
  args=argparse.ArgumentParser()

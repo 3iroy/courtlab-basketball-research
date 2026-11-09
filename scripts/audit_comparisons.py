@@ -14,10 +14,10 @@ async def audit_one(row):
   if heading.startswith('Sources'):continue
   if heading.startswith('Limitations'):
    limits=[x[2:] for x in body.splitlines() if x.startswith('- ')];continue
-  kind='adaptation' if '**Proposed adaptation' in body else 'limitation' if '**Limit /' in body else 'observation'
+  kind='adaptation' if '**Proposed adaptation' in body else 'limitation' if '**Evidence limit' in body else 'observation'
   ids=list(dict.fromkeys(re.findall(r'\[\d+\]\(/evidence/([A-Za-z0-9-]+)\)',body)))
   text=re.sub(r'\[\d+\]\(/evidence/[A-Za-z0-9-]+\)','',body)
-  text=re.sub(r'\*\*(?:Evidence / 证据|Proposed adaptation / 改编建议|Limit / 边界)\*\*','',text).strip()
+  text=re.sub(r'\*\*(?:Evidence|Proposed adaptation|Evidence limit)\*\*','',text).strip()
   claims.append(research.Claim(heading=heading,text=text,kind=kind,source_ids=ids))
  known={c['source_id'] for c in row['research']['citations']}
  ev={sid:store.evidence(sid) for sid in known}

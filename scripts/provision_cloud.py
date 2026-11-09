@@ -35,13 +35,14 @@ except RuntimeError as e:
  if '404:' not in str(e):raise
  result=request('POST',base+connection+'/gitRepositoryLinks?gitRepositoryLinkId=3iroy-courtlab-basketball-research',{'cloneUri':'https://github.com/3iroy/courtlab-basketball-research.git'})
 print('GitHub link operation:',json.dumps(result),flush=True)
-if 'done' not in result and '/operations/' in result.get('name',''):
+if not result.get('done') and '/operations/' in result.get('name',''):
  operation=result['name']
  for _ in range(12):
   result=request('GET',base+operation)
   if result.get('done'):break
   time.sleep(3)
- if result.get('error'):raise RuntimeError(json.dumps(result['error']))
+ if not result.get('done'):raise RuntimeError('Repository link is still provisioning; rerun after it completes.')
+if result.get('error'):raise RuntimeError(json.dumps(result['error']))
 print('GitHub link ready',flush=True)
 trigger={'name':'courtlab-main','filename':'cloudbuild.yaml',
  'serviceAccount':f'projects/{p}/serviceAccounts/176221542819-compute@developer.gserviceaccount.com',
