@@ -91,11 +91,23 @@ Questions are tagged with an explicit answer goal. After citation checks, a sepa
 checks direct responsiveness, preserved constraints and every explicit requested part. Practical advice
 must retain a supported proposed adaptation. A missing part triggers one bounded Writer rewrite
 with audit and coverage feedback; a remaining incomplete answer is marked `partial`.
-Uncited assertions that an entire WABC manual lacks guidance are rejected deterministically.
+Sweeping assertions that an entire WABC manual lacks guidance are rejected deterministically; adding a citation to a selective passage does not prove absence across the manual.
 Zone-attack searches require zone/offense content and bridge British/American spelling.
 
 The initial dispatch, follow-up plans and every sub-agent data call appear in `tool_calls` with
 `agent`, `name`, `args`, `result`. Contexts show actual model messages, not private reasoning.
+
+## Static tactic diagrams
+
+Tactical answers can include one static SVG half-court diagram beneath the text. The Writer emits
+bounded player positions and pass/run/screen arrows; it never emits SVG or HTML. Server validation
+rejects duplicate/overlapping markers, absent arrow origins and unaccepted claim links. A separate
+bounded evidence check compares the diagram with its accepted claim; a failed check omits only
+the optional image. The frontend renders typed data with SVG DOM elements and textContent.
+Every figure is labeled as a concept or proposed adaptation, links its underlying principles,
+and states that positions are illustrative rather than measured tracking. Statistics-only answers
+and clarification questions need no diagram. The optional data lives in `research.diagram`;
+Project 1's response/session_id/tool_calls fields remain unchanged. There is no animation or video.
 
 ## API compatibility
 

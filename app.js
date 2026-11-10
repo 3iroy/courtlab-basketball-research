@@ -16,8 +16,50 @@ function markdown(text){let out='',list=false;for(const line of text.split('\n')
  out+=heading?`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`:line.trim()?'<p>'+inline(line)+'</p>':'';
  }return out+(list?'</ul>':'');}
 function userMessage(text){const el=document.createElement('article');el.className='message';el.innerHTML='<div class="message-label">YOUR QUESTION</div><div class="user-message"></div>';el.lastElementChild.textContent=text;$('#conversation').append(el);}
+let diagramSequence=0;
+function renderTacticsDiagram(d,parent,citations=[]){
+ if(!d||!Array.isArray(d.players)||!Array.isArray(d.motions))return;
+ const citationNumbers=new Map(citations.map(c=>[c.source_id,c.number]));
+ const ns='http://www.w3.org/2000/svg',uid='court-diagram-'+(++diagramSequence);
+ const svgNode=(tag,attrs={},text)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));if(text!==undefined)e.textContent=text;return e;};
+ const point=(x,y)=>[30+Number(x)*5.4,20+Number(y)*5.04];
+ const fig=document.createElement('figure');fig.className='tactics-diagram';
+ const title=document.createElement('h3');title.textContent=d.title;fig.append(title);
+ const badge=document.createElement('p');badge.className='diagram-badge';badge.textContent=d.kind==='proposed_adaptation'?'PROPOSED ADAPTATION · STATIC DIAGRAM':'CONCEPT ILLUSTRATION · STATIC DIAGRAM';fig.append(badge);
+ const svg=svgNode('svg',{viewBox:'0 0 600 560',role:'img','aria-labelledby':uid+'-title '+uid+'-desc'});
+ svg.append(svgNode('title',{id:uid+'-title'},d.title),svgNode('desc',{id:uid+'-desc'},d.caption+' '+d.disclaimer));
+ const defs=svgNode('defs');
+ for(const [key,color] of [['pass','#b56329'],['cut','#274d3a'],['screen','#274d3a']]){
+  const m=svgNode('marker',{id:uid+'-'+key,viewBox:'0 0 12 12',refX:10,refY:6,markerWidth:7,markerHeight:7,orient:'auto',markerUnits:'strokeWidth'});
+  m.append(svgNode('path',{d:key==='screen'?'M9 1V11':'M1 1L11 6L1 11',fill:'none',stroke:color,'stroke-width':2}));defs.append(m);
+ }
+ svg.append(defs,svgNode('rect',{x:0,y:0,width:600,height:560,rx:12,fill:'#f7f1e5'}));
+ const court=svgNode('g',{fill:'none',stroke:'#9b9c86','stroke-width':1.5});
+ for(const dpath of ['M30 524V20H570V524Z','M210 20V207H390V20','M210 207A90 90 0 0 0 390 207','M58 20V78C58 358 542 358 542 78V20','M255 50H345','M300 50V64','M230 524A70 70 0 0 1 370 524'])court.append(svgNode('path',{d:dpath}));
+ court.append(svgNode('circle',{cx:300,cy:74,r:10}));svg.append(court);
+ const positions=new Map(d.players.map(p=>[p.id,p]));
+ d.motions.forEach((m,i)=>{
+  const from=positions.get(m.start);if(!from)return;
+  const a=point(from.x,from.y),b=point(m.end_x,m.end_y),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy);if(len<32)return;
+  const endsAtPlayer=d.players.some(p=>Math.hypot(p.x-m.end_x,p.y-m.end_y)<3);
+  const start=[a[0]+dx/len*19,a[1]+dy/len*19],end=[b[0]-dx/len*(endsAtPlayer?20:0),b[1]-dy/len*(endsAtPlayer?20:0)];
+  svg.append(svgNode('path',{d:`M${start[0]} ${start[1]}L${end[0]} ${end[1]}`,fill:'none',stroke:m.kind==='pass'?'#b56329':'#274d3a','stroke-width':3,'stroke-dasharray':m.kind==='pass'?'8 6':'none','marker-end':`url(#${uid}-${m.kind})`}));
+  svg.append(svgNode('text',{x:(start[0]+end[0])/2-dy/len*13,y:(start[1]+end[1])/2+dx/len*13,'text-anchor':'middle','dominant-baseline':'central',fill:'#26342b',stroke:'#f7f1e5','stroke-width':5,'paint-order':'stroke','font-family':'sans-serif','font-size':13,'font-weight':700},String.fromCharCode(65+i)));
+ });
+ for(const p of d.players){const [x,y]=point(p.x,p.y),off=p.id.startsWith('O');svg.append(svgNode('circle',{cx:x,cy:y,r:17,fill:off?'#e4ae58':'#f7f1e5',stroke:off?'#26342b':'#7a8076','stroke-width':2}));svg.append(svgNode('text',{x,y:y+1,'text-anchor':'middle','dominant-baseline':'central',fill:'#26342b','font-family':'sans-serif','font-size':off?15:12,'font-weight':700},off?p.id.slice(1):p.id));}
+ fig.append(svg);
+ const caption=document.createElement('figcaption');
+ const description=document.createElement('p');description.textContent=d.caption;caption.append(description);
+ const key=document.createElement('p');key.className='diagram-key';key.textContent='1–5: Offense · X1–X5: Defense · Dashed arrow: Pass · Solid arrow: Run · End bar: Screen';caption.append(key);
+ const steps=document.createElement('ul');steps.className='diagram-steps';d.motions.forEach((m,i)=>{const li=document.createElement('li');li.textContent=String.fromCharCode(65+i)+'. '+m.label;steps.append(li);});caption.append(steps);
+ const limit=document.createElement('p');limit.className='diagram-limit';limit.textContent=d.disclaimer;caption.append(limit);
+ const sources=document.createElement('p');sources.className='diagram-sources';sources.append(document.createTextNode('Principles: '));for(const [i,sid] of (d.source_ids||[]).entries()){const a=document.createElement('a');a.href='/evidence/'+encodeURIComponent(sid);a.textContent='['+(citationNumbers.get(sid)||(i+1))+']';sources.append(a,document.createTextNode(' '));}caption.append(sources);
+ fig.append(caption);parent.append(fig);
+}
+
 function answerMessage(data){const el=document.createElement('article');el.className='message';const label=document.createElement('div');label.className='message-label';label.textContent=data.research?.status==='clarification'?'BEFORE WE RESEARCH / CLARIFY THE QUESTION':'COURTLAB / RESEARCH BRIEF';el.append(label);
  const report=document.createElement('div');report.className='report';const [body,sources]=String(data.response||'No response.').split('\n\n## Sources\n\n');report.innerHTML=markdown(body);el.append(report);
+ if(data.research?.diagram){try{renderTacticsDiagram(data.research.diagram,el,data.research.citations||[]);}catch{console.warn('The optional diagram could not be rendered.');}}
  if(sources){const details=document.createElement('details');details.className='trace';const summary=document.createElement('summary');summary.textContent='Sources';const content=document.createElement('div');content.innerHTML=markdown(sources);details.append(summary,content);el.append(details);}
  if(data.research){const meta=document.createElement('div');meta.className='report-meta';for(const t of [data.research.status,`${data.research.rounds||0} research rounds`,`${data.research.researchers||0} researchers`,`${data.research.citations?.length||0} citations`]){const span=document.createElement('span');span.textContent=t;meta.append(span);}el.append(meta);}
  if(data.tool_calls?.length){const details=document.createElement('details');details.className='trace';const summary=document.createElement('summary');summary.textContent=`Research trace · ${data.tool_calls.length} calls, including sub-agents`;details.append(summary);

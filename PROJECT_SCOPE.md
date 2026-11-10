@@ -29,7 +29,7 @@ No raw tracking frames or automated video analysis are supplied by this app.
   rounds and seven Researchers, with per-worker exploration/tool limits and an overall timeout.
 - Writer defaults to 2–3 concise sections with accurate inline citations. Proposals are labeled.
 - An evidence audit withholds unsupported claims. A separate coverage review checks that requested parts survive; one bounded rewrite is allowed and remaining incomplete answers are labeled partial. Citation drawers expose the original passage,
-  event or reproducible computation. Sources and tool traces are collapsed by default.
+  event or reproducible computation. Sources and tool traces are collapsed by default. Tactical answers can include an evidence-checked static half-court SVG illustration, with schematic positions and cited principles.
 
 If the data cannot establish an answer, the report says so. Ten-game action counts cannot prove
 which tactic is more effective, full team playbooks, whole-season frequency, causality or amateur win-rate benefits.
@@ -52,7 +52,7 @@ which tactic is more effective, full team playbooks, whole-season frequency, cau
 | Cloud Run | Existing protected CourtLab service; release status in data/deployment.json |
 | GitHub continuous deployment | Configuration prepared; repository linking, a trigger and push verification remain outstanding |
 
-Twenty-three automated tests pass. A real ACB run reproduced original-file counts of 1,520 picks
+Twenty-eight automated tests pass. A real ACB run reproduced original-file counts of 1,520 picks
 and 417 handoffs, and identified the top season player-team pick row as Marcelinho Huertas,
 Lenovo Tenerife, 664. The no-tools model guessed ranges and alternatives. A separate browser run
 combined WABC instructions with a concrete ACB off-ball screen, including clickable record evidence.

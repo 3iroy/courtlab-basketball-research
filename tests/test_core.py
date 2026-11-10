@@ -239,13 +239,16 @@ def test_zone_attack_search_prioritizes_zone_offence_pages():
     assert texts and all('zone' in t for t in texts)
     assert any('offence against zone' in t or 'offenceagainstzone' in t.replace(' ','') for t in texts)
 
-def test_uncited_manual_absence_cannot_pass_a_permissive_model_audit(monkeypatch):
+@pytest.mark.parametrize('cited',[False,True])
+def test_sweeping_manual_absence_cannot_pass_a_permissive_model_audit(monkeypatch,cited):
     async def fake_call(agent,prompt,state,turns=1,context=None):
         items=json.loads(prompt)['claims']
         return research.Audit(verdicts=[research.Verdict(claim_index=x['index'],supported=True,reason='accepted') for x in items])
     monkeypatch.setattr(research,'call',fake_call)
-    report=research.Report(title='Zone attack',claims=[],limitations=['The WABC manuals do not provide specific adjustments for poor shooters against a zone.'])
-    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    absence='The WABC manuals do not provide specific adjustments for poor shooters against a zone.'
+    ev=store.read_passage('wabc-l3-p217-1')
+    report=research.Report(title='Zone attack',claims=[research.Claim(heading='Limit',text=absence,kind='limitation',source_ids=[ev['source_id']])] if cited else [],limitations=[] if cited else [absence])
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None));state.register(ev)
     accepted,limits,rejected=asyncio.run(research.validate_report(report,'zone attack',store.catalog(),state))
     assert not accepted and not limits and 'entire manual' in rejected[0]
 
@@ -275,3 +278,63 @@ def test_advice_requires_audited_recommendation_and_only_one_rewrite(monkeypatch
     assert calls['writer']==2
     assert meta['status']==('complete' if repair_succeeds is True else 'partial')
     assert ('did not establish every requested part' in answer)==(repair_succeeds is not True)
+
+def diagram_fixture():
+    from diagrams import Diagram
+    return Diagram(claim_index=0,title='High-post entry',caption='Illustrative passing and cutting proposal.',
+        players=[{'id':'O1','x':50,'y':85},{'id':'O4','x':50,'y':40},{'id':'O5','x':85,'y':18}],
+        motions=[{'start':'O1','end_x':50,'end_y':40,'kind':'pass','label':'Entry pass'},
+                 {'start':'O5','end_x':50,'end_y':15,'kind':'cut','label':'Baseline cut'}])
+
+def test_static_diagram_links_only_to_accepted_claims_and_known_players():
+    from diagrams import prepare,Diagram
+    from pydantic import ValidationError
+    ev=store.read_passage('wabc-l3-p217-1')
+    claim=research.Claim(heading='Action',text='A proposed high-post entry and baseline cut.',kind='adaptation',source_ids=[ev['source_id']])
+    diagram=diagram_fixture()
+    result,reason=prepare(diagram,[claim],[claim],{ev['source_id']:ev})
+    assert not reason and result['kind']=='proposed_adaptation'
+    assert result['source_ids']==[ev['source_id']] and 'not measured tracking' in result['disclaimer']
+    assert prepare(diagram,[claim],[],{ev['source_id']:ev})[0] is None
+    data=diagram.model_dump();data['players'].append(data['players'][0])
+    assert prepare(Diagram(**data),[claim],[claim],{ev['source_id']:ev})[0] is None
+    data=diagram.model_dump();data['motions'][0]['start']='X1'
+    assert prepare(Diagram(**data),[claim],[claim],{ev['source_id']:ev})[0] is None
+    data=diagram.model_dump();data['players'][0]['x']=float('inf')
+    with pytest.raises(ValidationError):Diagram(**data)
+
+@pytest.mark.parametrize('supported',[True,False])
+def test_diagram_evidence_check_does_not_discard_text(monkeypatch,supported):
+    ev=store.read_passage('wabc-l3-p217-1')
+    claim=research.Claim(heading='Action',text='A proposed high-post entry and baseline cut.',kind='adaptation',source_ids=[ev['source_id']])
+    report=research.Report(title='Proposal',claims=[claim],limitations=[],diagram=diagram_fixture())
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None));state.register(ev)
+    async def fake_call(agent,prompt,state,turns=1,context=None):
+        payload=json.loads(prompt)
+        assert payload['claims'][0]['diagram']['source_ids']==[ev['source_id']]
+        return research.Audit(verdicts=[research.Verdict(claim_index=0,supported=supported,reason='checked')])
+    monkeypatch.setattr(research,'call',fake_call)
+    result=asyncio.run(research.check_diagram(report,[claim],state,'Explain the action'))
+    assert (result is not None)==supported
+    assert report.claims[0].text==claim.text
+    assert state.traces[-1]['agent']=='Evidence audit'
+
+def test_complete_answer_review_receives_the_verified_static_diagram(monkeypatch):
+    ev=store.read_passage('wabc-l3-p217-1');counts={'writer':0}
+    async def fake_worker(task,question,state,catalog):
+        state.researchers+=1;state.register(ev);state.findings.append({'findings':'Supported principles','source_ids':[ev['source_id']],'gaps':[]})
+    async def fake_call(agent,prompt,state,turns=1,context=None):
+        if agent.name=='Lead':return research.Plan(answer_goal='practical_advice',tasks=[research.Task(task='principles',focus='coaching principles'),research.Task(task='adapt',focus='amateur adaptation')]) if state.rounds==1 else research.Plan(done=True)
+        if agent.name=='Writer':
+            counts['writer']+=1
+            return research.Report(title='Proposal',claims=[research.Claim(heading='Action',text='Proposed high-post entry and baseline cut.',kind='adaptation',source_ids=[ev['source_id']])],limitations=[],diagram=diagram_fixture())
+        data=json.loads(prompt)
+        if agent.name=='Answer review':
+            assert data['diagram'] is not None and len(data['diagram']['players'])==3
+            assert 'WABC' in data['citation_titles'][ev['source_id']]
+            return research.AnswerReview(adequate=True,missing_requirements=[])
+        return research.Audit(verdicts=[research.Verdict(claim_index=c['index'],supported=True,reason='supported') for c in data['claims']])
+    monkeypatch.setattr(research,'worker',fake_worker);monkeypatch.setattr(research,'call',fake_call)
+    state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
+    text,meta=asyncio.run(research.deep_research('Propose an action and include a static diagram.',state))
+    assert meta['status']=='complete' and meta['diagram'] is not None and counts['writer']==1
