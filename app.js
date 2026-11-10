@@ -83,7 +83,7 @@ async function submitQuestion(text){if(busy)return;busy=true;$('#intro').hidden=
  }catch(err){$('#question').value=text;answerMessage({response:err.name==='AbortError'?'Research stopped.':err instanceof TypeError?'Cannot reach CourtLab. Check the server and retry. Your question has been kept in the input.':err.message});}
  finally{clearInterval(timer);busy=false;$('#send').disabled=false;$('#progress').hidden=true;$('#question').focus();}}
 $('#question-form').onsubmit=e=>{e.preventDefault();const text=$('#question').value.trim();if(text)submitQuestion(text);};
-$('#question').onkeydown=e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){$('#question-form').requestSubmit();}};
+$('#question').onkeydown=e=>{if(e.key!=='Enter'||e.shiftKey||e.isComposing||e.keyCode===229)return;e.preventDefault();if(!busy)$('#question-form').requestSubmit();};
 for(const b of document.querySelectorAll('.sample'))b.onclick=()=>{if(!busy){$('#question').value=b.dataset.query;$('#question').focus();}};
 $('#cancel').onclick=()=>controller?.abort();
 $('#new-chat').onclick=()=>{if(busy)return;if(typeof resetContext==='function')resetContext();sessionId=null;sessionStorage.removeItem('courtlab-session');$('#conversation').replaceChildren();$('#intro').hidden=false;$('#question').value='';window.scrollTo({top:0,behavior:'smooth'});};

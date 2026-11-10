@@ -25,6 +25,7 @@ The deployed site uses the same Columbia-only IAP login as Project 1.
 The landing page explains scope and offers three example questions. Reports and the interface are in English. Questions in other languages are accepted, with English responses.
 For amateur advice, describe personnel, shooting/passing abilities, opponent defense and practice
 time. The Lead asks questions when essential details are missing. Follow up in the same chat.
+Press Enter to send; Shift+Enter inserts a new line. Confirming an IME composition does not submit.
 The site streams research activity, shows tool records, opens citation evidence in a drawer,
 and preserves the starter's per-agent context viewer behind a button.
 
