@@ -15,10 +15,10 @@ def state():
     return research.RunState(PanelHooks(AgentContexts(), lambda event: None))
 
 
-async def search_as(worker, query):
+async def search_as(worker, query, domain=''):
     return json.loads(await research.search_web.on_invoke_tool(
         ToolContext(context=worker, tool_name='search_web', tool_call_id='test', tool_arguments='{}'),
-        json.dumps({'query': query}),
+        json.dumps({'query': query, 'domain': domain}),
     ))
 
 
@@ -30,6 +30,8 @@ def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
         'title': 'Test game analysis',
         'published_date': '2024-06-10',
         'content': 'In this game, Boston used a guard-to-guard screen to create a switch.',
+        'raw_content': 'Boston repeated the screen after the timeout, setting it between the defenders '
+                       'on the wing to clear a driving lane for the guard after the switch.',
     }
 
     def respond(request):
@@ -37,10 +39,13 @@ def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
         assert request.headers['Authorization'] == 'Bearer test-token'
         data = json.loads(request.content)
         assert data['include_answer'] is False
+        assert data['include_domains'] == ['nba.com']
+        assert data['include_raw_content'] == 'text'
         queries.append(data['query'])
         return httpx.Response(200, json={'results': [
             article,
             {'url': 'javascript:alert(1)', 'title': 'Invalid', 'content': 'Invalid'},
+            {'url': 'https://example.com/other', 'title': 'Other source', 'content': 'Outside the named publisher.'},
         ]})
 
     client_factory = httpx.AsyncClient
@@ -63,13 +68,14 @@ def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
                 assert not has_search
                 return research.Notes(findings='No relevant local case.', source_ids=[], gaps=[])
             assert has_search
-            result = await search_as(context, 'Boston Celtics guard to guard screen')
+            assert [tool.name for tool in agent.tools] == ['search_web']
+            result = await search_as(context, 'Boston Celtics guard to guard screen', 'nba.com')
             assert len(result['passages']) == 1
             return research.Notes(findings='A guard-to-guard screen in one game.',
                                   source_ids=[result['passages'][0]['source_id']], gaps=[])
         if agent.name == 'Writer':
             source_id, passage = next(iter(data['evidence'].items()))
-            assert passage['text'] == article['content']
+            assert passage['text'] == article['content'] + '\n\n[...]\n\n' + article['raw_content']
             return research.Report(title='Boston game example', claims=[research.Claim(
                 heading='Screen to create a switch', text='Boston used a guard-to-guard screen in this game.',
                 kind='observation', source_ids=[source_id],
@@ -78,12 +84,12 @@ def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
             return research.AnswerReview(adequate=True, missing_requirements=[])
         assert agent.name == 'Evidence audit'
         claim = data['claims'][0]
-        assert next(iter(claim['evidence'].values()))['text'] == article['content']
+        assert next(iter(claim['evidence'].values()))['text'].startswith(article['content'])
         return research.Audit(verdicts=[research.Verdict(claim_index=claim['index'],
                                                       supported=True, reason='Directly supported.')])
 
     monkeypatch.setattr(research, 'call', fake_call)
-    response = TestClient(app.app).post('/chat', json={'message': 'Search the web for a Celtics tactic example.'})
+    response = TestClient(app.app).post('/chat', json={'message': 'Search NBA.com for a Celtics tactic example.'})
     assert response.status_code == 200
     data = response.json()
     assert {'response', 'session_id', 'tool_calls'} <= data.keys()
@@ -102,7 +108,7 @@ def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
 def test_web_search_budget_is_shared_across_parallel_researchers(monkeypatch):
     queries = []
 
-    async def search(query):
+    async def search(query, domain):
         queries.append(query)
         await asyncio.sleep(0)
         return {'passages': []}
