@@ -4,7 +4,7 @@ import hashlib
 import os
 import re
 from datetime import date, datetime, timezone
-from urllib.parse import quote, urlsplit
+from urllib.parse import parse_qs, quote, urlsplit
 
 import httpx
 from bs4 import BeautifulSoup
@@ -45,6 +45,51 @@ def public_source_url(value):
     if url.scheme != 'https' or not DOMAIN.fullmatch(url.netloc):
         return None
     return quote(value, safe=':/?#@!$&*+,;=%')
+
+
+def public_video_url(value):
+    url = public_source_url(value)
+    if not url:
+        return None
+    parsed = urlsplit(url)
+    host = parsed.hostname.removeprefix('www.')
+    path = parsed.path.rstrip('/')
+    if host in {'youtube.com', 'm.youtube.com', 'youtu.be'}:
+        if host == 'youtu.be':
+            video_id = path.removeprefix('/')
+        elif path == '/watch':
+            video_id = parse_qs(parsed.query).get('v', [''])[0]
+        else:
+            return None
+        if re.fullmatch(r'[A-Za-z0-9_-]{11}', video_id):
+            return f'https://www.youtube.com/watch?v={video_id}'
+    elif (
+        (host == 'fiba.basketball' and re.search(r'/videos/[^/]+$', path))
+        or (host == 'nba.com' and path.startswith('/watch/video/'))
+        or (host == 'olympics.com' and re.search(r'/video/[^/]+$', path))
+    ):
+        return url
+    return None
+
+
+def video_candidates(results):
+    videos = {}
+    for result in results[:8]:
+        if not isinstance(result, dict):
+            continue
+        url = public_video_url(result.get('url'))
+        title = result.get('title')
+        if not url or url in videos or not isinstance(title, str):
+            continue
+        title = ' '.join(title.replace('[', '').replace(']', '').split())[:200]
+        if title:
+            videos[url] = {
+                'title': title,
+                'url': url,
+                'published_date': str(result.get('published_date') or '')[:80],
+                'context': str(result.get('content') or '')[:450],
+            }
+    return list(videos.values())
 
 
 def expand_excerpt(excerpt, raw_content, query, analysis=False):
@@ -106,7 +151,7 @@ def passages(results, query, domain, analysis=False):
         url = public_source_url(result.get('url'))
         title = result.get('title')
         excerpt = result.get('content')
-        if not url or not isinstance(title, str) or not isinstance(excerpt, str):
+        if not url or public_video_url(url) or not isinstance(title, str) or not isinstance(excerpt, str):
             continue
         parsed = urlsplit(url)
         hostname = parsed.hostname
@@ -146,7 +191,7 @@ def passages(results, query, domain, analysis=False):
     return found
 
 
-async def search(query, domain="", *, analysis=False):
+async def search(query, domain="", *, analysis=False, video=False):
     key = os.getenv('TAVILY_API_KEY', '').strip()
     if not key:
         return {'error': 'Web search is not configured.'}
@@ -159,11 +204,13 @@ async def search(query, domain="", *, analysis=False):
         'query': query,
         'search_depth': 'basic',
         'chunks_per_source': 2,
-        'max_results': 8 if analysis else 3,
+        'max_results': 8 if analysis or video else 3,
         'include_answer': False,
         'include_published_date': True,
     }
-    if domain:
+    if video:
+        payload['include_domains'] = ['youtube.com']
+    elif domain:
         payload['include_domains'] = [domain]
     if domain or analysis:
         payload['include_raw_content'] = 'text'
@@ -178,7 +225,12 @@ async def search(query, domain="", *, analysis=False):
         data = response.json()
         if not isinstance(data, dict) or not isinstance(data.get('results'), list):
             return {'error': 'Web search returned an invalid response.'}
-        return {'passages': passages(data['results'], query, domain, analysis)}
+        results = data['results']
+        output = {'passages': [] if video else passages(results, query, domain, analysis)}
+        videos = video_candidates(results)
+        if videos:
+            output['videos'] = videos
+        return output
     except (TimeoutError, httpx.HTTPError, ValueError):
         return {'error': 'Web search is temporarily unavailable.'}
 

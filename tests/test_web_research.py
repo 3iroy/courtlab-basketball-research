@@ -182,7 +182,8 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
         if agent.name == 'Lead':
             if run.rounds > 1:
                 return research.Plan(done=True)
-            return research.Plan(answer_goal='team_tactics', tactical_phases=['defense'], tasks=[
+            return research.Plan(answer_goal='team_tactics', tactical_phases=['defense'],
+                                 video_query='Germany Poland basketball match highlights', tasks=[
                 research.Task(task='Find Germany game actions', focus='DBB match reports'),
                 research.Task(task='Check official FIBA evidence', focus='web search'),
             ])
@@ -223,6 +224,7 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
     assert data['research']['status'] == 'complete'
     assert 'follow_up_question' not in data['research']
     assert '## Follow-up' not in data['response']
+    assert 'video_links' not in data['research']
     assert data['research']['citations'][0]['url'] == report_url
     assert 'switched to a zone in the second quarter' in data['response']
     trace, = [call for call in data['tool_calls'] if call['name'] == 'read_dbb_match_reports']
@@ -504,3 +506,73 @@ def test_tactical_analysis_search_preserves_assignment_details():
         'Find a breakdown of Germany’s transition offense against Finland in the 2025 EuroBasket semifinal.',
     )
     assert query=='Deutschland Finnland Basketball 2025 Halbfinale Analyse Tempo Schnellangriffe'
+
+
+def test_video_results_stay_separate_from_written_evidence(monkeypatch):
+    monkeypatch.setenv('TAVILY_API_KEY','test-token')
+    official_clip='https://www.youtube.com/watch?v=EQXRQXqofT0'
+    written='https://example.com/qualifiers/game-report'
+
+    def respond(request):
+        return httpx.Response(200,json={'results':[
+            {'url':'https://youtu.be/EQXRQXqofT0?si=tracking', 'title':'Germany vs Netherlands highlights',
+             'content':'Channel: FIBA Basketball', 'published_date':'2026-08-28'},
+            {'url':official_clip, 'title':'Germany vs Netherlands highlights', 'content':'Same video'},
+            {'url':written, 'title':'Written game report', 'content':'Germany used a zone.'},
+        ]})
+
+    factory=httpx.AsyncClient
+    monkeypatch.setattr(web_sources.httpx,'AsyncClient',lambda **kwargs:factory(
+        transport=httpx.MockTransport(respond),**kwargs,
+    ))
+    result=asyncio.run(web_sources.search('Germany Netherlands highlights'))
+    assert [source['url'] for source in result['passages']]==[written]
+    assert [item['url'] for item in result['videos']]==[official_clip]
+
+
+def test_missing_tactical_evidence_can_show_a_verified_video_link(monkeypatch):
+    monkeypatch.setenv('TAVILY_API_KEY','test-token')
+    url='https://www.youtube.com/watch?v=EQXRQXqofT0'
+    title='Germany v Netherlands | Extended Highlights | FIBA Qualifiers'
+    question='How did Germany set up the alley-oop against the Netherlands on August 27, 2026?'
+    query='Germany Netherlands FIBA qualifiers August 27 2026 basketball highlights'
+
+    def respond(request):
+        payload=json.loads(request.content)
+        assert payload['query']==query
+        assert payload['include_domains']==['youtube.com']
+        return httpx.Response(200,json={'results':[{
+            'url':url,'title':title,'content':'FIBA Basketball extended highlights.',
+            'published_date':'2026-08-28',
+        }]})
+
+    factory=httpx.AsyncClient
+    monkeypatch.setattr(web_sources.httpx,'AsyncClient',lambda **kwargs:factory(
+        transport=httpx.MockTransport(respond),**kwargs,
+    ))
+
+    async def worker(task, original, run, catalog):
+        run.researchers+=1
+
+    async def call(agent, prompt, run, turns=1, context=None):
+        if agent.name=='Lead':
+            return (research.Plan(answer_goal='team_tactics',video_query=query,tasks=[
+                research.Task(task='Find the tactical setup',focus='web search'),
+                research.Task(task='Read the match report',focus='DBB match reports'),
+            ]) if run.rounds==1 else research.Plan(done=True))
+        assert agent.name=='Video review'
+        data=json.loads(prompt)
+        assert question in data['question']
+        assert data['candidates'][0]['url']==url
+        return research.VideoSelection(indices=[0,0,12,-1])
+
+    monkeypatch.setattr(research,'worker',worker)
+    monkeypatch.setattr(research,'call',call)
+    result=TestClient(app.app).post('/chat',json={'message':question}).json()
+    assert result['research']['status']=='insufficient_evidence'
+    assert result['research']['video_links']==[{'title':title,'url':url}]
+    assert result['research']['citations']==[]
+    assert '## Video links' in result['response']
+    assert f'[{title}]({url})' in result['response']
+    assert result['tool_calls'][-2]['agent']=='Video research'
+    assert result['tool_calls'][-2]['name']=='search_videos'

@@ -78,7 +78,10 @@ For current Germany men's questions, the Lead can also dispatch a Researcher to 
 completed World Cup qualifiers on the German federation's senior men's team page. Team-tactic
 reports are audited for source-backed schemes and coordinated setups. Incomplete tactical answers retain
 verified observations, state the missing evidence, and ask one focused follow-up question in
-the same chat. The response includes that question in the optional research metadata field
+the same chat. If no tactic is verified, an optional video lookup can recommend up to two matching
+clips in a separate **Video links** section. These are viewing resources and remain separate from
+the textual citations and tactical claims. One video-focused search may supplement the evidence
+searches, subject to the same request deadline. The response includes that question in the optional research metadata field
 `follow_up_question`. A finish can illustrate a tactic when its source describes the setup. Observed examples and measured frequencies are reported separately.
 The Writer and evidence audit use the retrieved passages. Numbered web citations open the
 original page, and the Research trace shows the excerpt, URL, and Researcher that retrieved it.

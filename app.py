@@ -101,7 +101,7 @@ async def perform(data,sid,emit):
         # New contexts for every research run. Only bounded chat history reaches the Lead.
         sessions[sid]=AgentContexts()
         hooks=PanelHooks(sessions[sid],emit)
-        state=RunState(hooks)
+        state=RunState(hooks,deadline=time.monotonic()+TIMEOUT)
         context={'latest_question':data.message.strip(),'prior_conversation':[
             {'role':m['role'],'content':m['content']} for m in chat['history'][-8:]]}
         try:
