@@ -204,14 +204,16 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
             source_id, = data['evidence']
             return research.Report(title='Germany against Poland', claims=[research.Claim(
                 heading='Second-quarter zone', text='Germany switched to a zone in the second quarter against Poland.',
-                kind='observation', tactical_phase='defense', source_ids=[source_id],
+                kind='observation', tactical_phase='defense', tactical_setup='Switch to zone defense',
+                source_ids=[source_id],
             )], limitations=[])
         assert data['answer_goal'] == 'team_tactics'
         if agent.name == 'Answer review':
             return research.AnswerReview(adequate=True, missing_requirements=[])
         assert agent.name == 'Evidence audit'
         return research.Audit(verdicts=[research.Verdict(
-            claim_index=claim['index'], supported=True, reason='DBB match report confirms the tactic.',
+            claim_index=claim['index'], supported=True, tactical_supported=True,
+            reason='DBB match report confirms the tactic.',
         ) for claim in data['claims']])
 
     monkeypatch.setattr(research, 'call', fake_call)
@@ -237,3 +239,36 @@ def test_team_tactics_cannot_complete_with_a_missing_requested_phase():
     ))
     assert not result.adequate
     assert result.missing_requirements == ['An evidence-backed offense example from a relevant game is missing.']
+
+
+def test_tactical_audit_rejects_a_supported_finish_without_a_setup(monkeypatch):
+    run = state()
+    source_id = 'web-match-recap'
+    run.register({
+        'source_id': source_id,
+        'text': 'Schröder assisted da Silva on an alley-oop. Germany later switched to zone defense.',
+    })
+    finish = research.Claim(
+        heading='Alley-oop', text='Schröder passed to da Silva for an alley-oop.',
+        kind='observation', tactical_phase='offense', tactical_setup='Lob pass', source_ids=[source_id],
+    )
+    zone = research.Claim(
+        heading='Zone defense', text='Germany switched to a zone defense.',
+        kind='observation', tactical_phase='defense', tactical_setup='Switch to zone defense',
+        source_ids=[source_id],
+    )
+
+    async def audit(payload, _state):
+        return research.Audit(verdicts=[
+            research.Verdict(claim_index=claim['index'], supported=True,
+                             tactical_supported=claim['heading']=='Zone defense', reason='Verified event.')
+            for claim in payload['claims']
+        ])
+
+    monkeypatch.setattr(research, 'audit_claims', audit)
+    report = research.Report(title='Game tactics', claims=[finish, zone], limitations=[])
+    accepted, _, rejected = asyncio.run(research.validate_report(
+        report, 'What tactics did Germany use?', {'scope':'match recap'}, run, 'team_tactics',
+    ))
+    assert accepted == [zone]
+    assert rejected == ['The cited evidence does not establish a team scheme or coordinated setup for this claim.']

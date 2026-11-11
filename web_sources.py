@@ -16,7 +16,7 @@ DBB_GAME_SCORE = re.compile(r'\b\d{2,3}\s*[:–-]\s*\d{2,3}\b')
 DBB_RESULT = re.compile(r'\b(?:siegte|setzte|gewann|unterlag|verlor|endete|schlug|bezwingen)\b', re.I)
 DBB_ACTION = re.compile(
     r'pick[\s-]*(?:and|n)?[\s-]*roll|zonenverteidigung|fast[\s-]*break|'
-    r'umschalt\w*|offensiv\w* brett|alley[\s-]+oop|switch\w*|hand[\s-]*off',
+    r'umschalt\w*|switch\w*|hand[\s-]*off|blocks?stellung|back[\s-]*screen',
     re.I,
 )
 MAX_WEB_SEARCHES = 3
