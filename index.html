@@ -1,21 +1,150 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CourtLab — Basketball Tactics Research</title><link rel="stylesheet" href="/style.css"></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CourtLab — Basketball Tactics Manual</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
 <body>
-<aside class="sidebar"><a class="brand" href="/">COURT<span>LAB</span><span class="brand-ball">◉</span></a><div class="edition">BASKETBALL RESEARCH NOTEBOOK</div>
-<button id="new-chat" class="new-chat">+ New research</button>
-<div class="small-label">THE TACTICS LAB</div>
-<div class="team-card warriors"><span class="team-mark">ACB</span><div><strong>Spanish Liga ACB</strong><small>2025–26 · Annotated actions</small></div></div>
-<div class="team-card heat"><span class="team-mark">FIBA</span><div><strong>WABC Coaching Library</strong><small>Levels 1–3 · Principles & practice</small></div></div>
-<div class="library"><div class="small-label">EVIDENCE LIBRARY</div><p id="corpus-count">Loading evidence library…</p><p>Coaching principles, annotated ACB actions and selected Warriors and Heat cases.</p><button id="catalog-button" class="text-button">Explore data & sources ↗</button></div>
-<div class="sidebar-bottom"><span class="dot"></span> Lead → Researchers → Writer<br><small>Up to 3 research rounds · Cited reports</small></div></aside>
-<main><header><span>THE PLAYBOOK, WITH RECEIPTS.</span><button id="context-button" class="text-button">Agent contexts ↗</button></header>
-<section id="intro" class="intro"><div class="eyebrow">01 / READ THE GAME</div><h1>Study their game.<br>Build your <span>playbook.</span></h1><p class="intro-text">For amateur players, student teams and developing coaches. Research basketball tactics, examine real game evidence, and build a practical plan for your roster.</p>
-<div class="court-banner"><svg viewBox="0 0 640 240" role="img" aria-label="Illustrative basketball half-court"><g fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"><path d="M40 20H600V220H40Z"/><path d="M252 20V108H388V20M292 32H348M320 32V45"/><circle cx="320" cy="50" r="9"/><path d="M252 108a68 68 0 0 0 136 0M100 20V65C100 235 540 235 540 65V20"/><path stroke-dasharray="5 6" d="M252 108a68 68 0 0 1 136 0"/></g><g fill="#e2a548" stroke="#151a18" stroke-width="2"><circle cx="210" cy="90" r="15"/><circle cx="420" cy="90" r="15"/><circle cx="320" cy="165" r="15"/></g><g fill="#151a18" font-family="monospace" font-size="13" text-anchor="middle"><text x="210" y="95">1</text><text x="420" y="95">2</text><text x="320" y="170">5</text></g><g fill="none" stroke="#e2a548" stroke-width="2" stroke-dasharray="5 5"><path d="M225 92Q320 100 405 92M410 106Q380 157 337 164"/></g></svg><div><span class="small-label">STUDY. QUESTION. ADAPT.</span><p>Every idea.<br>Evidence behind it.</p><small>Concept diagram · Illustrative positions</small></div></div>
-<div class="prompt-grid"><button class="sample" data-query="Using the ten ACB sample games, compare the number of annotated picks and handoffs. Give one concrete handoff example and explain why action counts do not prove which tactic is more effective. Keep it concise."><span>01 / REAL GAME DATA</span><strong>Pick-and-roll or handoff: what does the sample show?</strong><small>ACB · Annotated actions & limits ↗</small></button><button class="sample" data-query="Use WABC coaching principles and one annotated ACB off-ball screen example to explain how an off-ball screen creates an advantage. Give execution steps and one common failure condition. Keep it concise."><span>02 / UNDERSTAND THE ACTION</span><strong>How do off-ball screens create an advantage?</strong><small>WABC + ACB · Principles & examples ↗</small></button><button class="sample" data-query="We are an adult amateur five-on-five team with one 60-minute practice per week, no tall center, two reliable open shooters and one passing big. We mostly face man-to-man defense. Use WABC principles to propose one simple action, execution steps and a short practice plan. Add a relevant ACB or NBA example if available. Label the adaptation as a proposal and keep it concise."><span>03 / BRING IT TO YOUR COURT</span><strong>One practice a week. What should we run?</strong><small>Amateur five-on-five · A practical plan ↗</small></button></div></section>
-<section id="conversation" aria-live="polite"></section>
-<section id="progress" hidden><div class="progress-top"><span class="pulse"></span><strong>Research in progress</strong><span id="elapsed">0s</span></div><div id="activities"></div><button id="cancel" class="text-button">Stop research</button></section>
-<div class="composer-wrap"><form id="question-form"><label for="question" class="sr-only">Your research question</label><textarea id="question" rows="2" maxlength="8000" placeholder="Ask a tactical question, or describe your roster, opponent’s defense and practice time…" required></textarea><div class="composer-footer"><span>Enter to send · Shift+Enter for a new line</span><button id="send" type="submit">Start research <span>↗</span></button></div></form><p class="footnote">Selected evidence, explicit limits. Research can take up to four minutes.</p></div>
-</main>
-<dialog id="drawer"><div class="drawer-header"><strong id="drawer-title">Evidence</strong><button id="close-drawer" aria-label="Close">×</button></div><div id="drawer-body"></div></dialog>
-<script src="/context-panel.js"></script><script src="/app.js"></script>
-</body></html>
+  <aside class="sidebar">
+    <a class="brand" href="/">CourtLab</a>
+    <button id="new-chat" class="new-chat" type="button">New research <span aria-hidden="true">+</span></button>
+
+    <nav class="manual-index" aria-label="Manual contents">
+      <h2>Contents</h2>
+      <a href="#chapter-data"><span>01</span> Game data</a>
+      <a href="#chapter-tactics"><span>02</span> Tactical principles</a>
+      <a href="#chapter-practice"><span>03</span> Practice plans</a>
+    </nav>
+
+    <section class="library" aria-labelledby="library-title">
+      <h2 id="library-title">Evidence library</h2>
+      <div class="library-source">
+        <strong>SkillCorner Open Data</strong>
+        <small>Spanish Liga ACB · 2025–26</small>
+      </div>
+      <div class="library-source">
+        <strong>FIBA / WABC Coaches Manuals</strong>
+        <small>Levels 1–3</small>
+      </div>
+      <p id="corpus-count">Loading sources…</p>
+    </section>
+  </aside>
+
+  <main>
+    <header class="manual-header">
+      <span>Coaching manual</span>
+      <div class="header-actions">
+        <button id="catalog-button" class="text-button" type="button">Source index</button>
+        <button id="context-button" class="text-button" type="button">Agent contexts</button>
+      </div>
+    </header>
+
+    <section id="intro" class="intro">
+      <div class="manual-cover">
+        <div class="cover-copy">
+          <h1>Basketball<br>Tactics Manual</h1>
+          <p>Research game actions, study coaching principles, and build a practice plan for your team.</p>
+        </div>
+
+        <figure class="cover-plate">
+          <svg viewBox="0 0 400 265" role="img" aria-label="A 1-3-1 offense with a high-post entry pass and a baseline cut behind a 2-3 zone">
+            <defs>
+              <marker id="cover-pass" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M1 1L9 5L1 9" fill="none" stroke="#9b422e" stroke-width="1.4"/>
+              </marker>
+              <marker id="cover-cut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M1 1L9 5L1 9" fill="none" stroke="#304b5a" stroke-width="1.4"/>
+              </marker>
+            </defs>
+            <g fill="none" stroke="#b9aa96" stroke-width="1">
+              <path d="M27 242V22H373V242Z M146 22V114H254V22 M146 114a54 47 0 0 0 108 0 M43 22V52C43 216 357 216 357 52V22 M175 35H225 M200 35V43 M159 242a41 35 0 0 1 82 0"/>
+              <circle cx="200" cy="49" r="7"/>
+            </g>
+            <g fill="none" stroke-width="2">
+              <path d="M200 212V123" stroke="#9b422e" stroke-dasharray="6 4" marker-end="url(#cover-pass)"/>
+              <path d="M279 50H215" stroke="#304b5a" marker-end="url(#cover-cut)"/>
+            </g>
+            <g fill="#fcf6e7" stroke="#69777c" stroke-width="1.1">
+              <circle cx="164" cy="156" r="12"/><circle cx="236" cy="156" r="12"/>
+              <circle cx="105" cy="81" r="12"/><circle cx="200" cy="81" r="12"/><circle cx="295" cy="81" r="12"/>
+            </g>
+            <g fill="#304b5a" font-family="sans-serif" font-size="9" font-weight="700" text-anchor="middle" dominant-baseline="central">
+              <text x="164" y="156">X1</text><text x="236" y="156">X2</text>
+              <text x="105" y="81">X3</text><text x="200" y="81">X4</text><text x="295" y="81">X5</text>
+            </g>
+            <g fill="#f0d1a1" stroke="#9b422e" stroke-width="1.2">
+              <circle cx="200" cy="225" r="12"/><circle cx="74" cy="132" r="12"/>
+              <circle cx="326" cy="132" r="12"/><circle cx="292" cy="50" r="12"/><circle cx="200" cy="109" r="12"/>
+            </g>
+            <g fill="#263643" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">
+              <text x="200" y="225">1</text><text x="74" y="132">2</text>
+              <text x="326" y="132">3</text><text x="292" y="50">4</text><text x="200" y="109">5</text>
+            </g>
+          </svg>
+          <figcaption><strong>1–3–1 vs. 2–3 zone</strong> High-post entry and baseline cut</figcaption>
+        </figure>
+      </div>
+
+      <section class="chapters" aria-labelledby="chapters-title">
+        <h2 id="chapters-title">Try a research question</h2>
+        <ol class="chapter-list">
+          <li id="chapter-data">
+            <button class="sample" type="button" data-query="Using the ten ACB sample games, compare the number of annotated picks and handoffs. Give one concrete handoff example and explain why action counts do not prove which tactic is more effective. Keep it concise.">
+              <span class="chapter-number" aria-hidden="true">01</span>
+              <span><strong>Game data</strong><small>Compare picks and handoffs in ACB games.</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </button>
+          </li>
+          <li id="chapter-tactics">
+            <button class="sample" type="button" data-query="Use WABC coaching principles and one annotated ACB off-ball screen example to explain how an off-ball screen creates an advantage. Give execution steps and one common failure condition. Keep it concise.">
+              <span class="chapter-number" aria-hidden="true">02</span>
+              <span><strong>Tactical principles</strong><small>Study how off-ball screens create an advantage.</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </button>
+          </li>
+          <li id="chapter-practice">
+            <button class="sample" type="button" data-query="We are an adult amateur five-on-five team with one 60-minute practice per week, no tall center, two reliable open shooters and one passing big. We mostly face man-to-man defense. Use WABC principles to propose one simple action, execution steps and a short practice plan. Add a relevant ACB or NBA example if available. Label the adaptation as a proposal and keep it concise.">
+              <span class="chapter-number" aria-hidden="true">03</span>
+              <span><strong>Practice plans</strong><small>Build an action for one practice a week.</small></span>
+              <span class="chapter-arrow" aria-hidden="true">↗</span>
+            </button>
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <section id="conversation" aria-live="polite" aria-label="Research notes"></section>
+
+    <section id="progress" hidden>
+      <div class="progress-top"><span class="pulse"></span><strong>Research in progress</strong><span id="elapsed">0s</span></div>
+      <div id="activities"></div>
+      <button id="cancel" class="text-button" type="button">Stop research</button>
+    </section>
+
+    <div class="composer-wrap">
+      <form id="question-form">
+        <label for="question">Your research question</label>
+        <textarea id="question" rows="2" maxlength="8000" placeholder="Ask about a tactic, a game, or your team's practice plan…" required></textarea>
+        <div class="composer-footer">
+          <span>Enter to send · Shift+Enter for a new line</span>
+          <button id="send" type="submit">Start research <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <p class="footnote">Research can take up to four minutes.</p>
+    </div>
+  </main>
+
+  <dialog id="drawer" aria-labelledby="drawer-title">
+    <div class="drawer-header">
+      <strong id="drawer-title">Evidence</strong>
+      <button id="close-drawer" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="drawer-body"></div>
+  </dialog>
+
+  <script src="/context-panel.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
