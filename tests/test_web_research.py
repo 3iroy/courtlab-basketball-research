@@ -206,7 +206,7 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
                 heading='Second-quarter zone', text='Germany switched to a zone in the second quarter against Poland.',
                 kind='observation', tactical_phase='defense', tactical_setup='Switch to zone defense',
                 source_ids=[source_id],
-            )], limitations=[])
+            )], limitations=[], follow_up_question='Which game would you like to examine next?')
         assert data['answer_goal'] == 'team_tactics'
         if agent.name == 'Answer review':
             return research.AnswerReview(adequate=True, missing_requirements=[])
@@ -221,6 +221,8 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
     assert response.status_code == 200
     data = response.json()
     assert data['research']['status'] == 'complete'
+    assert 'follow_up_question' not in data['research']
+    assert '## Follow-up' not in data['response']
     assert data['research']['citations'][0]['url'] == report_url
     assert 'switched to a zone in the second quarter' in data['response']
     trace, = [call for call in data['tool_calls'] if call['name'] == 'read_dbb_match_reports']
@@ -272,3 +274,78 @@ def test_tactical_audit_rejects_a_supported_finish_without_a_setup(monkeypatch):
     ))
     assert accepted == [zone]
     assert rejected == ['The cited evidence does not establish a team scheme or coordinated setup for this claim.']
+
+
+def test_incomplete_tactics_keeps_citations_and_asks_one_targeted_follow_up(monkeypatch):
+    source_id = 'web-match'
+    url = 'https://example.com/game-report'
+    cited = {
+        'source_id': source_id, 'title': 'Qualifying game report', 'text': 'Germany switched to a zone.',
+        'url': url, 'evidence_url': url, 'kind': 'official_match_report',
+    }
+    question = 'Can you share a written breakdown of the offensive setup in that game?'
+    tasks = [research.Task(task='Check game coverage', focus='web search'),
+             research.Task(task='Read the official report', focus='DBB match reports')]
+
+    async def worker(task, original, run, catalog):
+        run.researchers += 1
+        if task.focus == 'DBB match reports':
+            run.register(cited)
+        run.findings.append({'source_ids':[source_id], 'findings':'A zone is documented.', 'gaps':['Offense']})
+
+    async def call(agent, prompt, run, turns=1, context=None):
+        data = json.loads(prompt)
+        if agent.name == 'Lead':
+            return (research.Plan(answer_goal='team_tactics', tasks=tasks)
+                    if run.rounds == 1 else research.Plan(done=True))
+        if agent.name == 'Writer':
+            return research.Report(title='Germany tactics', claims=[research.Claim(
+                heading='Zone defense', text='Germany switched to a zone.', kind='observation',
+                tactical_phase='defense', tactical_setup='Zone coverage', source_ids=[source_id],
+            )], limitations=[], follow_up_question=question if 'missing_requirements' in data else '')
+        assert agent.name == 'Evidence audit'
+        return research.Audit(verdicts=[research.Verdict(
+            claim_index=0, supported=True, tactical_supported=True, reason='The report describes the scheme.',
+        )])
+
+    monkeypatch.setattr(research,'worker',worker)
+    monkeypatch.setattr(research,'call',call)
+    response=TestClient(app.app).post('/chat',json={'message':'How did Germany attack and defend against Poland?'})
+    data=response.json()
+    assert data['research']['status']=='partial'
+    assert data['research']['follow_up_question']==question
+    assert data['response'].count(question)==1
+    assert data['response'].index('## Follow-up') < data['response'].index('## Sources')
+    assert 'An evidence-backed offense example' in data['response']
+    assert f'[1]({url})' in data['response']
+
+
+def test_no_tactical_sources_asks_for_evidence_after_gap_research(monkeypatch):
+    searched=[]
+    tasks=[research.Task(task='Search the match report',focus='web search'),
+           research.Task(task='Search the competition archive',focus='web search')]
+    follow_up_task=research.Task(task='Find a breakdown of the exact possession',focus='web search')
+
+    async def worker(task, original, run, catalog):
+        run.researchers+=1
+        searched.append(task.task)
+        run.findings.append({'source_ids':[], 'findings':'No tactical evidence retrieved.', 'gaps':['Setup']})
+
+    async def call(agent, prompt, run, turns=1, context=None):
+        assert agent.name=='Lead'
+        if run.rounds==1:
+            return research.Plan(answer_goal='team_tactics',tactical_phases=['offense'],tasks=tasks)
+        if run.rounds==2:
+            assert len(json.loads(prompt)['findings'])==2
+            return research.Plan(tasks=[follow_up_task])
+        return research.Plan(done=True)
+
+    monkeypatch.setattr(research,'worker',worker)
+    monkeypatch.setattr(research,'call',call)
+    response=TestClient(app.app).post('/chat',json={'message':'How did Germany set up the first-quarter lob against the Netherlands?'})
+    data=response.json()
+    assert searched==[task.task for task in [*tasks,follow_up_task]]
+    assert data['research']['status']=='insufficient_evidence'
+    assert data['response'].endswith(data['research']['follow_up_question'])
+    assert data['response'].count('?')==1
+    assert 'written match report' in data['research']['follow_up_question']
