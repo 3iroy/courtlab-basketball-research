@@ -17,6 +17,7 @@ load_dotenv(HERE/'.env')
 import store
 from context_panel import AgentContexts, PanelHooks, add_context_panel
 from research import RunState, deep_research
+from web_sources import search_available
 
 app=FastAPI(title='CourtLab')
 sessions={}
@@ -53,7 +54,7 @@ def style(): return FileResponse(HERE/'style.css',media_type='text/css',headers=
 @app.get('/health')
 def health(): return {'ok':store.DB.exists(),'service':'courtlab','database_ready':store.DB.exists()}
 @app.get('/catalog')
-def catalog(): return store.catalog()
+def catalog(): return {**store.catalog(),'web_search_available':search_available()}
 @app.get('/manifest')
 def manifest(): return json.loads((HERE/'data/manifest.json').read_text())
 @app.get('/evidence/{source_id}')

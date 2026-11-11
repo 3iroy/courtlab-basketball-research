@@ -1,0 +1,139 @@
+import asyncio
+import json
+
+import httpx
+from agents.tool_context import ToolContext
+from fastapi.testclient import TestClient
+
+import app
+import research
+import web_sources
+from context_panel import AgentContexts, PanelHooks
+
+
+def state():
+    return research.RunState(PanelHooks(AgentContexts(), lambda event: None))
+
+
+async def search_as(worker, query):
+    return json.loads(await research.search_web.on_invoke_tool(
+        ToolContext(context=worker, tool_name='search_web', tool_call_id='test', tool_arguments='{}'),
+        json.dumps({'query': query}),
+    ))
+
+
+def test_chat_audits_and_cites_retrieved_web_passages(monkeypatch):
+    monkeypatch.setenv('TAVILY_API_KEY', 'test-token')
+    queries = []
+    article = {
+        'url': 'https://www.nba.com/news/test-(game)',
+        'title': 'Test game analysis',
+        'published_date': '2024-06-10',
+        'content': 'In this game, Boston used a guard-to-guard screen to create a switch.',
+    }
+
+    def respond(request):
+        assert str(request.url) == web_sources.SEARCH_URL
+        assert request.headers['Authorization'] == 'Bearer test-token'
+        data = json.loads(request.content)
+        assert data['include_answer'] is False
+        queries.append(data['query'])
+        return httpx.Response(200, json={'results': [
+            article,
+            {'url': 'javascript:alert(1)', 'title': 'Invalid', 'content': 'Invalid'},
+        ]})
+
+    client_factory = httpx.AsyncClient
+    monkeypatch.setattr(web_sources.httpx, 'AsyncClient',
+                        lambda **kwargs: client_factory(transport=httpx.MockTransport(respond), **kwargs))
+
+    async def fake_call(agent, prompt, run, turns=1, context=None):
+        data = json.loads(prompt)
+        if agent.name == 'Lead':
+            assert data['catalog']['web_search_available'] is True
+            if run.rounds > 1:
+                return research.Plan(done=True)
+            return research.Plan(web_requested=True, tasks=[
+                research.Task(task='Search for a specific Celtics example', focus='web search'),
+                research.Task(task='Look up coaching principles', focus='coaching principles'),
+            ])
+        if agent.name.startswith('Researcher'):
+            has_search = any(tool.name == 'search_web' for tool in agent.tools)
+            if data['assignment']['focus'] != 'web search':
+                assert not has_search
+                return research.Notes(findings='No relevant local case.', source_ids=[], gaps=[])
+            assert has_search
+            result = await search_as(context, 'Boston Celtics guard to guard screen')
+            assert len(result['passages']) == 1
+            return research.Notes(findings='A guard-to-guard screen in one game.',
+                                  source_ids=[result['passages'][0]['source_id']], gaps=[])
+        if agent.name == 'Writer':
+            source_id, passage = next(iter(data['evidence'].items()))
+            assert passage['text'] == article['content']
+            return research.Report(title='Boston game example', claims=[research.Claim(
+                heading='Screen to create a switch', text='Boston used a guard-to-guard screen in this game.',
+                kind='observation', source_ids=[source_id],
+            )], limitations=[])
+        if agent.name == 'Answer review':
+            return research.AnswerReview(adequate=True, missing_requirements=[])
+        assert agent.name == 'Evidence audit'
+        claim = data['claims'][0]
+        assert next(iter(claim['evidence'].values()))['text'] == article['content']
+        return research.Audit(verdicts=[research.Verdict(claim_index=claim['index'],
+                                                      supported=True, reason='Directly supported.')])
+
+    monkeypatch.setattr(research, 'call', fake_call)
+    response = TestClient(app.app).post('/chat', json={'message': 'Search the web for a Celtics tactic example.'})
+    assert response.status_code == 200
+    data = response.json()
+    assert {'response', 'session_id', 'tool_calls'} <= data.keys()
+    assert data['research']['status'] == 'complete'
+    citation, = data['research']['citations']
+    assert citation['url'] == citation['evidence_url'] == 'https://www.nba.com/news/test-%28game%29'
+    assert 'published 2024-06-10' in citation['locator']
+    assert f"[1]({citation['url']})" in data['response']
+    trace, = [call for call in data['tool_calls'] if call['name'] == 'search_web']
+    assert trace['agent'] == 'Researcher 1 · web search'
+    assert trace['result']['passages'][0]['source_id'] == citation['source_id']
+    assert queries == ['Boston Celtics guard to guard screen']
+    assert 'test-token' not in response.text
+
+
+def test_web_search_budget_is_shared_across_parallel_researchers(monkeypatch):
+    queries = []
+
+    async def search(query):
+        queries.append(query)
+        await asyncio.sleep(0)
+        return {'passages': []}
+
+    monkeypatch.setattr(web_sources, 'search', search)
+    run = state()
+
+    async def do_searches():
+        return await asyncio.gather(*(search_as(research.WorkerState(run, f'Researcher {index}'),
+                                                f'Public query {index}') for index in range(5)))
+
+    results = asyncio.run(do_searches())
+    assert len(queries) == web_sources.MAX_WEB_SEARCHES
+    assert sum('error' in result for result in results) == 2
+    assert len(run.traces) == 5
+
+
+def test_unconfigured_and_failed_web_search_have_safe_fallbacks(monkeypatch):
+    monkeypatch.delenv('TAVILY_API_KEY', raising=False)
+    assert not TestClient(app.app).get('/catalog').json()['web_search_available']
+    assert asyncio.run(web_sources.search('Celtics')) == {'error': 'Web search is not configured.'}
+    assert research.web_search_notice(state(), False) == 'Web search is not configured for this deployment.'
+
+    monkeypatch.setenv('TAVILY_API_KEY', 'test-token')
+    client_factory = httpx.AsyncClient
+    monkeypatch.setattr(web_sources.httpx, 'AsyncClient', lambda **kwargs: client_factory(
+        transport=httpx.MockTransport(lambda request: httpx.Response(429, text='test-token')),
+        **kwargs,
+    ))
+    run = state()
+    result = asyncio.run(search_as(research.WorkerState(run, 'Researcher 1'), 'Celtics'))
+    assert result == {'error': 'Web search is temporarily unavailable.'}
+    assert research.web_search_notice(run, True) == 'Web search was unavailable for this answer.'
+    assert 'test-token' not in json.dumps(run.traces)

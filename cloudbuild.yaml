@@ -13,7 +13,7 @@ steps:
       - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_SERVICE}:$COMMIT_SHA
       - --region=${_REGION}
       - --service-account=${_SERVICE}@$PROJECT_ID.iam.gserviceaccount.com
-      - --set-env-vars=GOOGLE_CLOUD_PROJECT=$PROJECT_ID,VERTEX_LOCATION=global
+      - --update-env-vars=GOOGLE_CLOUD_PROJECT=$PROJECT_ID,VERTEX_LOCATION=global
       - --memory=1Gi
       - --cpu=1
       - --concurrency=3

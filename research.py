@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 from context_panel import PanelHooks
 import store
 import acb
+import web_sources
 from diagrams import Diagram, is_short_diagram_request, prepare as prepare_diagram
 
 set_tracing_disabled(True)
@@ -29,10 +30,11 @@ MAX_RESEARCHER_TURNS=4
 
 class Task(BaseModel):
     task: str
-    focus: Literal['NBA evidence','ACB data','coaching principles','amateur adaptation','evidence gap']
+    focus: Literal['NBA evidence','ACB data','coaching principles','amateur adaptation','evidence gap','web search']
 class Plan(BaseModel):
     answer_goal: Literal['explanation','data','practical_advice'] = 'explanation'
     diagram_requested: bool = False
+    web_requested: bool = False
     clarification: str = ''
     tasks: list[Task] = Field(default_factory=list)
     gaps: list[str] = Field(default_factory=list)
@@ -71,6 +73,7 @@ class RunState:
     researchers: int = 0
     rounds: int = 0
     counter: int = 0
+    web_searches: int = 0
     def trace(self,agent,name,args,result):
         self.counter += 1
         entry={'id':self.counter,'agent':agent,'name':name,'args':args,'result':result,
@@ -94,6 +97,8 @@ class WorkerState:
         else:
             try: out=fn()
             except Exception as exc: out={'error':f'{type(exc).__name__}: data lookup failed'}
+        return self.record(name,args,out)
+    def record(self,name,args,out):
         if 'source_id' in out and 'error' not in out:
             self.read_ids.add(out['source_id']); self.run.register(out)
         self.run.trace(self.name,name,args,out)
@@ -114,6 +119,25 @@ def search_sources(ctx:RunContextWrapper[WorkerState],query:str,team:str='',kind
             ctx.context.run.register(ev);ctx.context.read_ids.add(ev['source_id']);items.append(ev)
         return {'passages':items,'notice':'These are retrieved source passages. Cite their source_id. Read additional passages only for a material gap.'}
     return ctx.context.execute('search_sources',{'query':query,'team':team,'kind':kind},lookup)
+@function_tool
+async def search_web(ctx:RunContextWrapper[WorkerState],query:str)->str:
+    """Retrieve up to three public web excerpts with original links. Send only public basketball terms in English, without personal details or conversation text. Cite returned source IDs and preserve the source's game and date scope."""
+    worker=ctx.context
+    query=' '.join(query.split())[:240]
+    args={'query':query}
+    if worker.calls>=10:
+        return worker.execute('search_web',args,lambda:{})
+    worker.calls+=1
+    if worker.run.web_searches>=web_sources.MAX_WEB_SEARCHES:
+        out={'error':'Web search budget exhausted for this answer.'}
+    else:
+        worker.run.web_searches+=1
+        out=await web_sources.search(query)
+        for passage in out.get('passages',[]):
+            worker.run.register(passage)
+            worker.read_ids.add(passage['source_id'])
+    return worker.record('search_web',args,out)
+
 @function_tool
 def read_source(ctx:RunContextWrapper[WorkerState],source_id:str)->str:
     """Read one passage by its exact search result ID, with its original URL and PDF page or passage locator."""
@@ -177,6 +201,8 @@ You plan and audit research; you do not write the final answer. Set answer_goal=
   and coaching principles for general tactics; NBA case evidence for NBA-specific questions.
   Add amateur adaptation only if relevant. Do not force NBA cases into unrelated questions. Give explicit scope/game IDs
   when the user asks about a game. Researchers get ONLY their assignment, question and catalog.
+Set web_requested=true if the user explicitly asks to search the internet or use online sources, including in another language.
+The catalog field web_search_available indicates whether web search is configured. If available, assign a task with focus=web search in the first batch for explicit web requests and for clearly out-of-corpus teams, current seasons, or recent developments. A vague request still needs clarification first. Keep independent local evidence tasks when relevant. In later rounds use focus=web search for specific gaps the local evidence cannot fill. Specify a public team, season, game or tactic. If web search is unavailable, plan from the local catalog and preserve the stated scope.
 On later rounds, inspect findings for gaps and contradictions. If more evidence can resolve a
 material gap, create 1 or 2 targeted follow-up tasks, focus=evidence gap, and explain gaps.
 Otherwise done=true, no tasks. Don't repeat failed searches indefinitely. At most three rounds
@@ -188,6 +214,7 @@ researcher=Agent(name='Researcher',model=LitellmModel(model=RESEARCH_MODEL_NAME)
 Investigate ONLY your assigned question in a FRESH context. For a zone-attack question, search coaching_manual with short keywords such as zone offence, not only the user's long sentence about poor shooting. When a relevant passage names a chapter, refine or read nearby passage IDs before concluding no guidance was retrieved. Never infer that a whole manual lacks guidance from keyword results. Use search_sources and read_source;
 read at least two relevant passages when possible. search_sources already returns full citable passages; do NOT keep searching instead of writing notes. For a task naming gsw-g4, search that exact document ID first. For game-number
 NBA claims use summarize_game/get_game_events. For ACB action frequencies query count_acb_actions, never count the limited examples returned by get_acb_actions. For season metrics query get_acb_season and retrieve data_dictionary definitions. Preserve denominators, units, direct filters and sample scopes. Never present rates as percentages without checking units. No causal or best-player conclusions from unadjusted rankings. Read the actual tool output before citing its source_id. Stop after 2-4 tool calls if the assigned question is answered. Do not invent extra gaps unrelated to the question.
+For a web search assignment use search_web, when available. Use short, targeted public basketball terms only. Never send the user message, chat history, personal information, or private team details. Prefer official league/team analysis, governing-body manuals, and game-specific reporting. A search result excerpt is limited to the actual statement, game and season it describes. Do not infer season frequency from examples or claim the search covered every source. If the provider fails, report the gap without repeating the failed query.
 At most 10 tool calls and 6 model turns. Return concise findings with exact source IDs next to
 claims, and list unresolved gaps. Distinguish source observations, source author interpretations,
 and your proposed adaptation. Explain source limitations. Negative evidence from a keyword
@@ -203,7 +230,7 @@ its underlying principles, not proven success. No raw Markdown links: the server
 Put source IDs only in source_ids, never in the claim text; the server renders citation links. Every factual sentence in a claim must be supported by that claim's evidence. Split unrelated claims. Keep each observation to one main factual point. Preserve exact court locations: do not turn an unspecified post touch into a high-post touch. Do not invent league rule differences.
 If insufficient evidence, state the specific gap. State limitations, including selected-case scope. Missing tool retrieval is not evidence of missing data. If a specific quarter was not queried, say this run did not retrieve it, never that the database lacks it.
 When diagram_required is true, include a STATIC half-court concept diagram in the diagram field and link it to one supported claim using zero-based claim_index. For a follow-up, draw the action from the prior exchange. Describing diagrams in a book or linking a book does not fulfill this request. For other tactical explanations or proposed actions, an illustration is optional. Return diagram=null for statistics-only questions or when a coherent drawing cannot be supported. Use normalized coordinates x=0 left to 100 right; y=0 at the attacking baseline/basket to 100 at half-court; basket at (50,10), free-throw line at y=37, top of the key near y=55. For an INITIAL 2-3 zone setup, draw the two top defenders around y=52-60 and the three low defenders around y=20-30; a high-post receiver is around (50,35-40), BETWEEN the defensive rows, and a baseline cutter around y=10-15 is behind the low row. The point guard is around y=75-85 and wings around y=45-60. Keep role-location relationships consistent with the text; a high-post receiver must not be drawn outside both top defenders. These are schematic anchors, not measured data. O1-O5 are offense, X1-X5 defense. Place players at least 7 coordinate units apart. Use at most five labeled pass/cut/screen arrows showing the same action described in the linked claim. Keep labels short and in English. Coordinates are illustrative design choices, NOT sourced measurements. Do not invent extra tactical actions, label frames as observed, or claim to reproduce a manual diagram/video. Do not put source IDs in title or caption.
-Do not copy long source passages or suggest that text retrieval analyzed video.
+For a web citation, make clear whether the evidence is a game example, an author's analysis, or a statistic with defined coverage. Keep publication and game dates distinct. Do not copy long source passages or suggest that text retrieval analyzed video.
 ''')
 verifier=Agent(name='Evidence audit',model=LitellmModel(model=MODEL_NAME),model_settings=SETTINGS,output_type=Audit,
  instructions=COMMON+'''
@@ -274,7 +301,10 @@ async def worker(task:Task,question:str,state:RunState,catalog:dict):
     prompt=json.dumps({'question':question,'assignment':task.model_dump(),'catalog':catalog},ensure_ascii=False)
     try:
         try:
-            notes=await call(researcher.clone(name=name),prompt,state,MAX_RESEARCHER_TURNS,own)
+            tools=researcher.tools
+            if task.focus=='web search' and catalog.get('web_search_available'):
+                tools=[*tools,search_web]
+            notes=await call(researcher.clone(name=name,tools=tools),prompt,state,MAX_RESEARCHER_TURNS,own)
         except (MaxTurnsExceeded, ModelBehaviorError):
             # A tool-capable model may keep searching. End exploration, then require a
             # single no-tool notes pass over ONLY this worker's retrieved evidence.
@@ -295,7 +325,8 @@ async def worker(task:Task,question:str,state:RunState,catalog:dict):
     return out
 
 async def deep_research(question:str,state:RunState):
-    catalog=store.catalog()
+    catalog={**store.catalog(),'web_search_available':web_sources.search_available()}
+    web_requested=False
     answer_goal='explanation'
     diagram_required = is_short_diagram_request(question)
     for round_no in range(MAX_ROUNDS):
@@ -307,6 +338,7 @@ async def deep_research(question:str,state:RunState):
         state.trace('Lead','plan_research',{'round':state.rounds},plan.model_dump())
         if round_no == 0:
             answer_goal = plan.answer_goal
+            web_requested = plan.web_requested
             diagram_required = diagram_required or plan.diagram_requested
         if plan.clarification and round_no==0:
             return plan.clarification, {'status':'clarification','rounds':0,'researchers':0,'citations':[]}
@@ -320,7 +352,10 @@ async def deep_research(question:str,state:RunState):
         await asyncio.gather(*(worker(task,question,state,catalog) for task in tasks))
         if state.researchers>=MAX_RESEARCHERS: break
     if not state.evidence:
-        return 'Insufficient retrieved evidence. Narrow the question to the teams, seasons or tactics covered by this corpus.', {
+        message='Insufficient retrieved evidence. Narrow the question to a specific team, season, game, or tactic.'
+        if web_requested:
+            message=web_search_notice(state,catalog['web_search_available'])+' '+message
+        return message, {
             'status':'insufficient_evidence','rounds':state.rounds,'researchers':state.researchers,'citations':[]}
     payload={'question':question,'answer_goal':answer_goal,'diagram_required':diagram_required,
              'findings':state.findings,'evidence':state.evidence}
@@ -350,6 +385,8 @@ async def deep_research(question:str,state:RunState):
     complete=bool(accepted) and review.adequate and (answer_goal!='practical_advice' or any(c.kind=='adaptation' for c in accepted))
     state.trace('Evidence audit','check_citations',{}, {'accepted':len(accepted),'withheld':rejected,'answers_requested_goal':complete})
     text,citations=render_report(report.title,accepted,accepted_limits,rejected,state.evidence)
+    if web_requested and not any(c['source_id'].startswith('web-') for c in citations):
+        text=web_search_notice(state,catalog['web_search_available'])+'\n\n'+text
     if accepted and not complete:
         text='This run did not establish every requested part: '+ ' '.join(review.missing_requirements or ['A practical plan for your stated constraints is missing.'])+'\n\n'+text
     return text,{'status':'complete' if complete else ('partial' if accepted else 'insufficient_evidence'),'rounds':state.rounds,
@@ -408,6 +445,19 @@ async def validate_report(report,question,catalog,state):
     return accepted,accepted_limits,rejected
 
 
+def web_search_notice(state,available):
+    if not available:
+        return 'Web search is not configured for this deployment.'
+    searches=[call['result'] for call in state.traces if call['name']=='search_web']
+    if any(result.get('passages') for result in searches):
+        return 'Web search ran, but no web passage supported a citation in this answer.'
+    if any('passages' in result for result in searches):
+        return 'Web search found no usable passages for this question.'
+    if searches:
+        return 'Web search was unavailable for this answer.'
+    return 'This answer did not run a web search.'
+
+
 def clean(text):
     # Model-generated external links cannot bypass the source registry.
     import re
@@ -424,7 +474,7 @@ def render_report(title,claims,limitations,rejected,evidence):
                 e=evidence[sid]
                 citations.append({'number':numbers[sid],'source_id':sid,'title':e['title'],
                     'url':e['url'],'locator':e.get('locator',''),'evidence_url':e['evidence_url']})
-            links.append(f'[{numbers[sid]}](/evidence/{sid})')
+            links.append(f"[{numbers[sid]}]({evidence[sid]['evidence_url']})")
         parts += ['## '+clean(claim.heading),(f'**{labels[claim.kind]}** '+clean(claim.text) if claim.kind!='observation' else clean(claim.text))+' '+ ' '.join(links)]
     if not claims: parts.append('No draft claim passed the evidence audit. Please narrow the question.')
     if limitations: parts+=['## Evidence limit','\n'.join('- '+clean(x) for x in limitations)]

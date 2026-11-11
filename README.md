@@ -63,6 +63,21 @@ Action count citations reproduce exact filters and coverage/location breakdowns;
 and never used as counts. Season citations identify original CSV lines and metric values.
 There is no arbitrary model-written SQL or claim of causal tactical efficiency.
 
+### Optional live web search
+
+Set `TAVILY_API_KEY` in the server environment to enable public web research. The Lead can
+assign a Researcher to search when explicitly requested, when a team or season is outside the
+local corpus, or when a follow-up finds a gap. The search tool sends short public basketball
+queries to Tavily, with up to three requests per answer and a 12-second deadline per request.
+The Writer and evidence audit use the retrieved passages. Numbered web citations open the
+original page, and the Research trace shows the excerpt, URL, and Researcher that retrieved it.
+Examples from articles do not establish season-wide play frequencies. Search failures leave the
+local tools available. The source index shows whether this deployment has search configured.
+
+For Cloud Run, store the key in Secret Manager, grant the CourtLab runtime account accessor
+permission on that secret, and map it to `TAVILY_API_KEY` on the service. GitHub builds preserve
+the service's secret binding. Keep the key out of Git and browser code.
+
 To rebuild from the actual upstream files:
 
 ```bash
