@@ -338,3 +338,66 @@ def test_complete_answer_review_receives_the_verified_static_diagram(monkeypatch
     state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
     text,meta=asyncio.run(research.deep_research('Propose an action and include a static diagram.',state))
     assert meta['status']=='complete' and meta['diagram'] is not None and counts['writer']==1
+
+
+@pytest.mark.parametrize('repair_has_diagram', [True, False])
+def test_diagram_followup_requires_a_verified_drawing(monkeypatch, repair_has_diagram):
+    evidence = store.read_passage('wabc-l3-p217-1')
+    source_id = evidence['source_id']
+    writer_calls = 0
+    context = json.dumps({
+        'latest_question': '有战术图吗',
+        'prior_conversation': [
+            {'role': 'user', 'content': 'How do we attack a 2-3 zone?'},
+            {'role': 'assistant', 'content': 'Use a 1-3-1 with a high-post entry and baseline cut.'},
+        ],
+    }, ensure_ascii=False)
+
+    async def fake_worker(task, question, state, catalog):
+        state.researchers += 1
+        state.register(evidence)
+
+    async def fake_call(agent, prompt, state, turns=1, context=None):
+        nonlocal writer_calls
+        payload = json.loads(prompt)
+        if agent.name == 'Lead':
+            assert payload['diagram_required']
+            if state.rounds > 1:
+                return research.Plan(done=True)
+            return research.Plan(tasks=[
+                research.Task(task='Read 1-3-1 principles', focus='coaching principles'),
+                research.Task(task='Verify the high-post entry', focus='coaching principles'),
+            ])
+        if agent.name == 'Writer':
+            writer_calls += 1
+            assert payload['diagram_required']
+            if writer_calls == 2:
+                assert any('diagram was requested' in item for item in payload['missing_requirements'])
+            return research.Report(
+                title='1-3-1 against a 2-3 zone',
+                claims=[research.Claim(
+                    heading='High-post entry', text='Use a proposed high-post entry and baseline cut.',
+                    kind='adaptation', source_ids=[source_id],
+                )],
+                limitations=[],
+                diagram=diagram_fixture() if writer_calls == 2 and repair_has_diagram else None,
+            )
+        if agent.name == 'Answer review':
+            # A permissive model review must not let prose stand in for an explicit image request.
+            return research.AnswerReview(adequate=True, missing_requirements=[])
+        return research.Audit(verdicts=[
+            research.Verdict(claim_index=claim['index'], supported=True, reason='supported')
+            for claim in payload['claims']
+        ])
+
+    monkeypatch.setattr(research, 'worker', fake_worker)
+    monkeypatch.setattr(research, 'call', fake_call)
+    state = research.RunState(PanelHooks(AgentContexts(), lambda event: None))
+    answer, metadata = asyncio.run(research.deep_research(context, state))
+    assert writer_calls == 2
+    assert metadata['status'] == ('complete' if repair_has_diagram else 'partial')
+    if repair_has_diagram:
+        assert metadata['diagram']['source_ids'] == [source_id]
+    else:
+        assert metadata['diagram'] is None
+        assert 'diagram was requested and is missing' in answer

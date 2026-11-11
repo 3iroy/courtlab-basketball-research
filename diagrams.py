@@ -1,4 +1,6 @@
 """Static concept diagrams: bounded drawing data, never model-authored SVG or measured tracking."""
+import json
+import re
 from typing import Literal
 from pydantic import BaseModel, Field
 
@@ -19,6 +21,24 @@ class Diagram(BaseModel):
     caption: str=Field(max_length=220)
     players: list[Player]=Field(min_length=2,max_length=10)
     motions: list[Motion]=Field(max_length=5)
+
+def is_short_diagram_request(question: str) -> bool:
+    """Recognize direct follow-ups that the planner could mistake for a source lookup."""
+    try:
+        context = json.loads(question)
+    except json.JSONDecodeError:
+        context = None
+    latest = context.get('latest_question', question) if isinstance(context, dict) else question
+    if not isinstance(latest, str):
+        return False
+    latest = latest.strip().rstrip('？?。！!').strip()
+    chinese = (
+        r'(?:请)?(?:有(?:没有)?|能(?:给我|画|显示)?|可以(?:给我|画|显示)?|给我|画|显示|来|发)?'
+        r'(?:一张|个)?(?:静态)?(?:战术图|跑位图|半场示意图|示意图)(?:吗|么|呢)?'
+    )
+    english = r'(?:(?:can|could) you )?(?:show(?: me)?|draw|add|include) (?:a |the )?(?:static |tactical |half-court )*diagram'
+    return bool(re.fullmatch(chinese, latest) or re.fullmatch(english, latest, re.IGNORECASE))
+
 
 def prepare(diagram,claims,accepted,evidence):
     if diagram is None: return None,'No diagram proposed.'

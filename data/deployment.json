@@ -1,5 +1,5 @@
 {
-  "status": "deployed_enter_to_send",
+  "status": "continuous_deployment_verified",
   "project": "ieor-4570-f26-ts3733",
   "region": "us-east1",
   "service": "courtlab",
@@ -9,10 +9,10 @@
   "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
   "access": "IAP; domain:columbia.edu",
   "trigger_created": true,
-  "continuous_deployment_status": "Enabled for GitHub main pushes via Developer Connect.",
-  "latest_build_id": "7c33ad76-eb7c-48f0-99a9-fd858ae667b1",
+  "continuous_deployment_status": "Verified end to end with a real GitHub main push via Developer Connect.",
+  "latest_build_id": "989dac07-7122-478a-a5f9-f26f6188596b",
   "local_validation": {
-    "automated_tests_passed": 28,
+    "automated_tests_passed": 30,
     "english_live_examples": 3,
     "english_response_to_chinese_input": true,
     "acb_counts_match_original_files": true,
@@ -24,14 +24,15 @@
     "static_diagram_source_drawer_verified": true,
     "static_diagram_layout_verified": true,
     "enter_shift_enter_browser_verified": true,
-    "ime_composition_guard_logic_verified": true
+    "ime_composition_guard_logic_verified": true,
+    "diagram_followup_live_model_verified": true
   },
   "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in.",
   "latest_build_status": "SUCCESS",
-  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00008-6mt",
+  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00009-lmp",
   "iap_enabled": true,
   "local_session_recovery_verified": true,
-  "deployed_source_commit": "2152298576158c47bf232028e74f76541f937050",
+  "deployed_source_commit": "8c18f96e6a42254d4bb049ec718640f6f6e58df9",
   "github_app_configuration_url": "https://github.com/settings/installations/168928091",
   "hosted_access_check": {
     "unauthenticated_status": 302,
