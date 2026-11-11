@@ -232,6 +232,23 @@ textarea {
 }
 textarea:focus-visible { outline: none; }
 textarea::placeholder { color: #716d62; font-size: 13px; }
+.composer-example {
+  margin: 5px 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.composer-example span { display: block; margin-bottom: 3px; }
+.composer-example button {
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--accent);
+  text-align: left;
+}
+.composer-example button:hover { background: #f3e8d7; }
+#conversation:not(:empty) ~ .composer-wrap .composer-example { display: none; }
 .composer-footer {
   display: flex;
   justify-content: space-between;

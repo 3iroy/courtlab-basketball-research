@@ -87,7 +87,14 @@ $('#question').onkeydown=e=>{if(e.key!=='Enter'||e.shiftKey||e.isComposing||e.ke
 for (const link of document.querySelectorAll('.manual-index a')) {
  link.addEventListener('click', () => { $('#intro').hidden = false; });
 }
-for(const b of document.querySelectorAll('.sample'))b.onclick=()=>{if(!busy){$('#question').value=b.dataset.query;$('#question').focus();}};
+for (const button of document.querySelectorAll('button[data-query]')) {
+ button.onclick = () => {
+  if (busy) return;
+  const question = $('#question');
+  question.value = button.dataset.query || button.textContent.trim();
+  question.focus();
+ };
+}
 $('#cancel').onclick=()=>controller?.abort();
 $('#new-chat').onclick=()=>{if(busy)return;if(typeof resetContext==='function')resetContext();sessionId=null;sessionStorage.removeItem('courtlab-session');$('#conversation').replaceChildren();$('#intro').hidden=false;$('#question').value='';window.scrollTo({top:0,behavior:'smooth'});};
 (async()=>{try{const m=await fetchJson('/manifest');$('#corpus-count').textContent=`${m.acb_game_count} ACB games · ${m.acb_action_count.toLocaleString()} labeled actions\n${m.acb_aggregate_game_count}-game season aggregates · WABC Levels 1–3\n${m.game_count} NBA games · ${m.passage_count} passages`;}catch{$('#corpus-count').textContent='Evidence library unavailable';}
