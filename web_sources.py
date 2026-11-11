@@ -19,6 +19,14 @@ DBB_ACTION = re.compile(
     r'umschalt\w*|switch\w*|hand[\s-]*off|blocks?stellung|back[\s-]*screen',
     re.I,
 )
+ANALYSIS_ACTION = re.compile(
+    r'pick[\s-]*(?:and|n)?[\s-]*roll|screen\w*|hand[\s-]*off|'
+    r'transition|fast[\s-]*break|switch\w*|zonenverteidigung|schnellangriff\w*|'
+    r'ballgewinn\w*|umschalt\w*|blockstellung\w*|close[\s-]*out',
+    re.I,
+)
+ANALYSIS_LABEL = re.compile(r'film[ -]study|analys|scout|tactic|taktik|breakdown', re.I)
+ANALYSIS_BYLINE = re.compile(r"(?:By|Von) [A-ZÄÖÜ][\w .,'’–-]{2,78}")
 MAX_WEB_SEARCHES = 3
 DOMAIN = re.compile(r'(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,63}', re.I)
 
@@ -39,44 +47,81 @@ def public_source_url(value):
     return quote(value, safe=':/?#@!$&*+,;=%')
 
 
-def expand_excerpt(excerpt, raw_content, query):
+def expand_excerpt(excerpt, raw_content, query, analysis=False):
     """Add relevant paragraphs from the publisher page to the search snippets."""
     if not isinstance(raw_content, str):
         return excerpt
     stop_words = {'about', 'from', 'game', 'film', 'study', 'what', 'when', 'where', 'with'}
-    terms = set(re.findall(r'[a-z0-9]{4,}', query.lower())) - stop_words
-    candidates = (' '.join(line.split()) for line in raw_content[:20000].splitlines())
-    candidates = [line for line in candidates if 100 <= len(line) <= 950 and line not in excerpt]
-    ranked = sorted(dict.fromkeys(candidates),
-                    key=lambda line: sum(term in line.lower() for term in terms), reverse=True)
-    for paragraph in ranked[:3]:
-        if len(excerpt) + len(paragraph) + 11 <= 2800 and any(term in paragraph.lower() for term in terms):
+    terms = set(re.findall(r'\w{4,}', query.casefold())) - stop_words
+    lines = [' '.join(line.split()) for line in raw_content[:60000 if analysis else 20000].splitlines()]
+    if analysis:
+        byline = next((line for line in lines if ANALYSIS_BYLINE.fullmatch(line)), '')
+        if byline and byline not in excerpt:
+            excerpt = byline + '\n\n' + excerpt
+
+    def relevance(line):
+        score = sum(term in line.casefold() for term in terms)
+        return score + (3 * len(set(ANALYSIS_ACTION.findall(line.casefold()))) if analysis else 0)
+
+    candidates = dict.fromkeys(line for line in lines if 100 <= len(line) <= 1100 and line not in excerpt)
+    for paragraph in sorted(candidates, key=relevance, reverse=True)[:3]:
+        if len(excerpt) + len(paragraph) + 11 <= 2800 and relevance(paragraph):
             excerpt += '\n\n[...]\n\n' + paragraph
     return excerpt
 
+def focused_analysis_query(query, domain, assignment):
+    """Carry the assignment's event scope and useful local-language terms into the search."""
+    if not query:
+        return query
+    hints = []
+    years = set(re.findall(r'\b20\d{2}\b', assignment))
+    if len(years) == 1:
+        hints.extend(years)
+    if domain.casefold().strip().endswith('.de'):
+        if re.search(r'semi[ -]?final|halbfinal', assignment, re.I):
+            hints.append('Halbfinale')
+        if re.search(r'transition|umschalt|fast[ -]?break|schnellangriff', f'{query} {assignment}', re.I):
+            hints.extend(('Analyse', 'Tempo', 'Schnellangriffe'))
+    return ' '.join([query, *(hint for hint in hints if hint.casefold() not in query.casefold())])
 
-def passages(results, query, domain):
+
+def analysis_priority(result):
+    if not isinstance(result, dict):
+        return False
+    url = public_source_url(result.get('url'))
+    if not url:
+        return False
+    label = f"{result.get('title','')} {urlsplit(url).path}"
+    return bool(ANALYSIS_LABEL.search(label))
+
+
+def passages(results, query, domain, analysis=False):
     retrieved = datetime.now(timezone.utc).date().isoformat()
     found = []
     seen = set()
-    for result in results[:3]:
+    ranked = sorted(results[:8], key=analysis_priority, reverse=True) if analysis else results[:3]
+    for result in ranked:
         if not isinstance(result, dict):
             continue
         url = public_source_url(result.get('url'))
         title = result.get('title')
         excerpt = result.get('content')
-        if not url or url in seen or not isinstance(title, str) or not isinstance(excerpt, str):
+        if not url or not isinstance(title, str) or not isinstance(excerpt, str):
             continue
-        hostname = urlsplit(url).hostname
+        parsed = urlsplit(url)
+        hostname = parsed.hostname
+        identity = (hostname.removeprefix('www.'), parsed.path.rstrip('/'), parsed.query)
+        if identity in seen:
+            continue
         if domain and hostname != domain and not hostname.endswith('.' + domain):
             continue
         title = ' '.join(title.replace('[', '').replace(']', '').split())[:200]
         excerpt = excerpt.strip()[:1300]
         if not title or not excerpt:
             continue
-        if domain:
-            excerpt = expand_excerpt(excerpt, result.get('raw_content'), query)
-        seen.add(url)
+        if domain or analysis:
+            excerpt = expand_excerpt(excerpt, result.get('raw_content'), query, analysis)
+        seen.add(identity)
         published = result.get('published_date')
         try:
             published = date.fromisoformat(str(published)[:10]).isoformat()
@@ -96,10 +141,12 @@ def passages(results, query, domain):
             'text': excerpt,
             'kind': 'web_article',
         })
+        if len(found) == 3:
+            break
     return found
 
 
-async def search(query, domain=""):
+async def search(query, domain="", *, analysis=False):
     key = os.getenv('TAVILY_API_KEY', '').strip()
     if not key:
         return {'error': 'Web search is not configured.'}
@@ -112,12 +159,14 @@ async def search(query, domain=""):
         'query': query,
         'search_depth': 'basic',
         'chunks_per_source': 2,
-        'max_results': 3,
+        'max_results': 8 if analysis else 3,
         'include_answer': False,
         'include_published_date': True,
     }
     if domain:
-        payload.update(include_domains=[domain], include_raw_content='text')
+        payload['include_domains'] = [domain]
+    if domain or analysis:
+        payload['include_raw_content'] = 'text'
     try:
         async with asyncio.timeout(12), httpx.AsyncClient(timeout=10) as client:
             response = await client.post(
@@ -129,7 +178,7 @@ async def search(query, domain=""):
         data = response.json()
         if not isinstance(data, dict) or not isinstance(data.get('results'), list):
             return {'error': 'Web search returned an invalid response.'}
-        return {'passages': passages(data['results'], query, domain)}
+        return {'passages': passages(data['results'], query, domain, analysis)}
     except (TimeoutError, httpx.HTTPError, ValueError):
         return {'error': 'Web search is temporarily unavailable.'}
 

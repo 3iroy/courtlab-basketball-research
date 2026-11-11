@@ -396,3 +396,111 @@ def test_specific_match_gap_withholds_other_match_and_only_requests_written_evid
     assert 'video' not in data['response']
     assert 'written match report' in data['research']['follow_up_question']
     assert data['response'].count('?')==1
+
+
+def test_published_analysis_survives_official_report_filter(monkeypatch):
+    monkeypatch.setenv('TAVILY_API_KEY', 'test-token')
+    analyst_url='https://analysis.example.com/germany-finland-film-study'
+    official_url='https://www.basketball-bund.de/test-match-report/'
+    official={
+        'source_id':'web-official', 'kind':'official_match_report', 'title':'Match report',
+        'url':official_url, 'evidence_url':official_url, 'text':'Germany used zone defense against Finland.',
+    }
+    analysis_body=(
+        'Germany turned ball recoveries into transition attacks against Finland by pushing the ball '
+        'up the middle while the outside players sprinted to the corners before the defense set up.'
+    )
+
+    async def dbb():
+        return {'passages':[official]}
+
+    def respond(request):
+        data=json.loads(request.content)
+        assert data['include_raw_content']=='text'
+        assert data['max_results']==8
+        recaps=[{'url':f'https://recap.example.com/game-{i}', 'title':'Final score',
+                 'content':'Germany faced Finland.'} for i in range(3)]
+        return httpx.Response(200,json={'results':[*recaps,{
+            'url':analyst_url, 'title':'Film study of Germany vs. Finland', 'content':'Germany faced Finland.',
+            'raw_content':'By Jane Analyst\n\n'+analysis_body,
+        }]})
+
+    factory=httpx.AsyncClient
+    monkeypatch.setattr(web_sources,'recent_dbb_qualifiers',dbb)
+    monkeypatch.setattr(web_sources.httpx,'AsyncClient',lambda **kwargs:factory(
+        transport=httpx.MockTransport(respond),**kwargs,
+    ))
+
+    async def call(agent,prompt,run,turns=1,context=None):
+        payload=json.loads(prompt)
+        if agent.name=='Lead':
+            if run.rounds>1:
+                return research.Plan(done=True)
+            return research.Plan(answer_goal='team_tactics',analysis_requested=True,tasks=[
+                research.Task(task='Read the match report',focus='DBB match reports'),
+                research.Task(task='Find a published film study',focus='tactical analysis'),
+            ])
+        if agent.name.startswith('Researcher'):
+            if payload['assignment']['focus']=='tactical analysis':
+                response=await search_as(context,'Germany Finland transition film study')
+                source=response['passages'][0]
+                assert source['url']==analyst_url
+                assert 'By Jane Analyst' in source['text']
+                assert analysis_body in source['text']
+                return research.Notes(findings='Film study documents transition lanes.',
+                                      source_ids=[source['source_id']],gaps=[],
+                                      analysis_source_ids=[source['source_id'],'not-retrieved'])
+            tool=agent.tools[0]
+            await tool.on_invoke_tool(ToolContext(
+                context=context,tool_name=tool.name,tool_call_id='test',tool_arguments='{}',
+            ),'{}')
+            return research.Notes(findings='The report documents zone defense.',source_ids=['web-official'],gaps=[])
+        if agent.name=='Writer':
+            analyst_id,=payload['analysis_source_ids']
+            assert set(payload['evidence'])=={'web-official',analyst_id}
+            assert payload['analysis_requested']
+            return research.Report(title='Germany against Finland',claims=[
+                research.Claim(heading='Early transition',text='Jane Analyst describes Germany filling the corners in transition against Finland.',
+                               kind='observation',tactical_phase='offense',tactical_setup='Fill the corners in transition',
+                               analysis_source_id=analyst_id,source_ids=[analyst_id]),
+                research.Claim(heading='Zone defense',text='Germany used zone defense against Finland.',
+                               kind='observation',tactical_phase='defense',tactical_setup='Zone defense',
+                               source_ids=['web-official']),
+            ],limitations=[])
+        if agent.name=='Answer review':
+            return research.AnswerReview(adequate=True,missing_requirements=[])
+        assert agent.name=='Evidence audit'
+        return research.Audit(verdicts=[research.Verdict(
+            claim_index=c['index'], supported=True, tactical_supported=True,
+            analysis_supported=bool(c['analysis_source_id']), reason='The cited text supports the claim.',
+        ) for c in payload['claims']])
+
+    monkeypatch.setattr(research,'call',call)
+    response=TestClient(app.app).post('/chat',json={'message':'How did Germany play, and has an analyst explained it?'})
+    data=response.json()
+    assert data['research']['status']=='complete'
+    assert {citation['url'] for citation in data['research']['citations']}=={analyst_url,official_url}
+    assert 'Jane Analyst describes' in data['response']
+    assert any(entry['agent']=='Researcher 2 · tactical analysis' and entry['args'].get('analysis')
+               for entry in data['tool_calls'])
+
+
+def test_official_observation_alone_cannot_satisfy_requested_analysis():
+    claim=research.Claim(heading='Zone defense',text='Germany used zone defense.',
+                         kind='observation',tactical_phase='defense',tactical_setup='Zone defense',
+                         source_ids=['web-match'])
+    review=asyncio.run(research.review_answer(
+        'How did a published analyst explain Germany’s defense?', [claim], state(),
+        answer_goal='team_tactics',tactical_phases=('defense',),analysis_requested=True,
+    ))
+    assert not review.adequate
+    assert review.missing_requirements==['No published tactical analysis of the requested scope was verified.']
+
+
+
+def test_tactical_analysis_search_preserves_assignment_details():
+    query=web_sources.focused_analysis_query(
+        'Deutschland Finnland Basketball', 'sportschau.de',
+        'Find a breakdown of Germany’s transition offense against Finland in the 2025 EuroBasket semifinal.',
+    )
+    assert query=='Deutschland Finnland Basketball 2025 Halbfinale Analyse Tempo Schnellangriffe'
