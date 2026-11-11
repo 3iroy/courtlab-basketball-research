@@ -7,8 +7,18 @@ from datetime import date, datetime, timezone
 from urllib.parse import quote, urlsplit
 
 import httpx
+from bs4 import BeautifulSoup
 
 SEARCH_URL = 'https://api.tavily.com/search'
+DBB_TEAM_URL = 'https://www.basketball-bund.de/team/a-herren/'
+DBB_QUALIFIER_TITLE = re.compile(r'^world cup qualifier herren\b', re.I)
+DBB_GAME_SCORE = re.compile(r'\b\d{2,3}\s*[:–-]\s*\d{2,3}\b')
+DBB_RESULT = re.compile(r'\b(?:siegte|setzte|gewann|unterlag|verlor|endete|schlug|bezwingen)\b', re.I)
+DBB_ACTION = re.compile(
+    r'pick[\s-]*(?:and|n)?[\s-]*roll|zonenverteidigung|fast[\s-]*break|'
+    r'umschalt\w*|offensiv\w* brett|alley[\s-]+oop|switch\w*|hand[\s-]*off',
+    re.I,
+)
 MAX_WEB_SEARCHES = 3
 DOMAIN = re.compile(r'(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,63}', re.I)
 
@@ -122,3 +132,65 @@ async def search(query, domain=""):
         return {'passages': passages(data['results'], query, domain)}
     except (TimeoutError, httpx.HTTPError, ValueError):
         return {'error': 'Web search is temporarily unavailable.'}
+
+
+def dbb_tactical_excerpt(text):
+    """Preserve the game summary and surrounding sentences for tactical references."""
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    windows = list(dict.fromkeys(
+        ' '.join(sentences[max(0, i - 1):i + 2])
+        for i, sentence in enumerate(sentences) if DBB_ACTION.search(sentence)
+    ))
+    if not windows:
+        return text[:6200].rsplit(' ', 1)[0] if len(text) > 6200 else text
+    if len(windows) > 8:
+        windows = windows[:4] + windows[-4:]
+    summary = ' '.join(sentences[:2])[:650]
+    return '\n\n[...]\n\n'.join([summary, *(window[:680] for window in windows)])
+
+
+def dbb_qualifier_passages(html):
+    """Read completed senior men's qualifiers from the official DBB team page."""
+    soup = BeautifulSoup(html, 'html.parser')
+    reports = []
+    for card in soup.select('.teaser-post[data-link]'):
+        heading = card.select_one('.teaser-post__title')
+        body = card.select_one('.teaser-post__excerpt')
+        day = card.select_one('.teaser-post__date')
+        if not heading or not body or not day:
+            continue
+        title = heading.get_text(' ', strip=True)
+        excerpt = body.get_text(' ', strip=True)
+        url = public_source_url(card['data-link'])
+        lead = excerpt[:550]
+        if (not url or urlsplit(url).hostname != 'www.basketball-bund.de'
+                or not DBB_QUALIFIER_TITLE.match(title) or not DBB_GAME_SCORE.search(lead)
+                or not DBB_RESULT.search(lead)):
+            continue
+        try:
+            published = datetime.strptime(day.get_text(' ', strip=True), '%d/%m/%Y').date()
+        except ValueError:
+            continue
+        excerpt = dbb_tactical_excerpt(excerpt)
+        digest = hashlib.sha256((url + '\n' + excerpt).encode()).hexdigest()[:24]
+        reports.append((published, {
+            'source_id': 'web-' + digest,
+            'title': title,
+            'url': url,
+            'evidence_url': url,
+            'locator': f'DBB match report · published {published.isoformat()}',
+            'text': excerpt,
+            'kind': 'official_match_report',
+        }))
+    reports.sort(key=lambda report: report[0], reverse=True)
+    return [passage for _, passage in reports[:2]]
+
+
+async def recent_dbb_qualifiers():
+    try:
+        async with asyncio.timeout(12), httpx.AsyncClient(timeout=10) as client:
+            response = await client.get(DBB_TEAM_URL)
+        response.raise_for_status()
+        return {'passages': dbb_qualifier_passages(response.content)}
+    except (TimeoutError, httpx.HTTPError):
+        return {'error': 'The official DBB match reports are temporarily unavailable.'}

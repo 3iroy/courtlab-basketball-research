@@ -70,6 +70,9 @@ assign a Researcher to search when explicitly requested, when a team or season i
 local corpus, or when a follow-up finds a gap. The search tool sends short public basketball
 queries to Tavily, with up to three requests per answer and a 12-second deadline per request.
 Named publishers can be used as a search filter. Bounded excerpts from those pages supplement the search snippets.
+For current Germany men's questions, the Lead can also dispatch a Researcher to read the latest
+completed World Cup qualifiers on the German federation's senior men's team page. Team-tactic
+reports are audited for concrete game actions and distinguish examples from measured frequencies.
 The Writer and evidence audit use the retrieved passages. Numbered web citations open the
 original page, and the Research trace shows the excerpt, URL, and Researcher that retrieved it.
 Examples from articles do not establish season-wide play frequencies. Search failures leave the
