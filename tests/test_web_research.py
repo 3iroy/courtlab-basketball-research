@@ -349,3 +349,50 @@ def test_no_tactical_sources_asks_for_evidence_after_gap_research(monkeypatch):
     assert data['response'].endswith(data['research']['follow_up_question'])
     assert data['response'].count('?')==1
     assert 'written match report' in data['research']['follow_up_question']
+
+
+def test_specific_match_gap_withholds_other_match_and_only_requests_written_evidence(monkeypatch):
+    source_id='web-poland'
+    report={
+        'source_id':source_id, 'title':'Germany vs. Poland', 'text':'Germany used pick-and-roll against Poland.',
+        'url':'https://example.com/poland', 'evidence_url':'https://example.com/poland',
+        'kind':'official_match_report',
+    }
+    tasks=[research.Task(task='Read German federation reports',focus='DBB match reports'),
+           research.Task(task='Search for a breakdown',focus='web search')]
+
+    async def worker(task, original, run, catalog):
+        run.researchers+=1
+        run.register(report)
+        run.findings.append({'source_ids':[source_id], 'findings':'Poland pick-and-roll is documented.', 'gaps':[]})
+
+    async def call(agent, prompt, run, turns=1, context=None):
+        if agent.name=='Lead':
+            return (research.Plan(answer_goal='team_tactics',tactical_phases=['offense'],tasks=tasks)
+                    if run.rounds==1 else research.Plan(done=True))
+        if agent.name=='Writer':
+            return research.Report(title='Germany tactics',claims=[research.Claim(
+                heading='Poland pick-and-roll', text=report['text'], kind='observation',
+                tactical_phase='offense', tactical_setup='Pick-and-roll', source_ids=[source_id],
+            )],limitations=[],follow_up_question='Can you share a video link or a report?')
+        if agent.name=='Answer review':
+            assert json.loads(prompt)['audited_answer'][0]['index']==0
+            return research.AnswerReview(adequate=False,missing_requirements=['The requested game was against the Netherlands.'],
+                                         out_of_scope_claim_indices=[0])
+        assert agent.name=='Evidence audit'
+        return research.Audit(verdicts=[research.Verdict(
+            claim_index=0,supported=True,tactical_supported=True,reason='The event is described by the source.',
+        )])
+
+    monkeypatch.setattr(research,'worker',worker)
+    monkeypatch.setattr(research,'call',call)
+    response=TestClient(app.app).post('/chat',json={
+        'message':'How did Germany set up its alley-oop against the Netherlands on August 27, 2026?',
+    })
+    data=response.json()
+    assert data['research']['status']=='insufficient_evidence'
+    assert data['research']['citations']==[]
+    assert 'Poland' not in data['response']
+    assert 'video' not in data['response']
+    assert 'written match report' in data['research']['follow_up_question']
+    assert data['response'].count('?')==1
