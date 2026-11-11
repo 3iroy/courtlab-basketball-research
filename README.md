@@ -103,6 +103,167 @@ Raw downloads stay in ignored `.downloads/`. The extracted SQLite database is co
 shipped with the deployment, so no external data download is needed at startup. The build script
 never executes downloaded code or blindly extracts archive paths. See `data/NOTICE.md` for attribution.
 
+## Three sample queries
+
+These are actual runs from 2026-11-11, using `vertex_ai/gemini-3.5-flash` in both columns. Each prompt went to a fresh `POST /chat` session and directly to the same Gemini model as a single user message with no tools or system prompt. The expected answers were checked against the tool data.
+
+### 1. Liga ACB picks and handoffs
+
+> Across the ten annotated 2025–26 Liga ACB games in SkillCorner's open dataset, how many picks and handoffs were logged? In the separate season aggregates, which player-team row led in direct picks as the ball handler and with how many? Use three short bullets.
+
+**Expected answer.** **1,520 picks** and **417 handoffs** across the ten annotated games. In the separate 293-game offensive season aggregates, **Marcelinho Huertas (Lenovo Tenerife)** leads player-team rows with **664 direct picks as the ball handler**.
+
+**Data.** `data/courtlab.sqlite` tables `acb_events` (count `picks` and `handoffs` across all ten games) and `acb_season` (rank the `picks` rows by `handler_total_picks`). Huertas is on line 174 of `data/aggregates/acb_picksaggregates_20252026.csv` in the pinned upstream repository. [Annotated matches](https://github.com/SkillCorner/opendata-basketball/tree/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches) · [Season CSV row](https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv#L174).
+
+<details>
+<summary>Actual answers side by side</summary>
+
+<table>
+<tr><th>CourtLab with tools</th><th>Same model with no tools or system prompt</th></tr>
+<tr>
+<td valign="top">
+<strong>SkillCorner 2025-26 Liga ACB Pick and Handoff Analysis</strong><br>
+<br>
+<strong>Annotated Picks Count</strong><br>
+<br>
+Across the ten annotated 2025-26 Liga ACB games in SkillCorner&#x27;s open dataset, a total of 1,520 picks were logged. <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/acbcount-picks-all-all-all">1</a><br>
+<br>
+<strong>Annotated Handoffs Count</strong><br>
+<br>
+Across the same ten annotated games, a total of 417 handoffs were logged. <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/acbcount-handoffs-all-all-all">2</a><br>
+<br>
+<strong>Season Leader in Direct Picks</strong><br>
+<br>
+In the separate 293-game offensive season aggregates, Marcelinho Huertas of Lenovo Tenerife led all player-team rows as the ball handler with 664 direct picks across 27 games played. <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/acbseason-picks-174">3</a><br>
+<br>
+<strong>Evidence limit</strong><br>
+<br>
+• The ten annotated games represent a small, selected sample of the season and do not reflect overall team playbook frequencies.<br>
+• The season aggregates cover 293 of 327 total games, meaning some games are missing from the season-long totals.<br>
+<br>
+<strong>Sources</strong><br>
+<br>
+1. <a href="https://github.com/SkillCorner/opendata-basketball/tree/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches">ACB picks: 1520 annotated actions</a> — family=picks; game=all; offTeamId=all; direct=all<br>
+2. <a href="https://github.com/SkillCorner/opendata-basketball/tree/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/matches">ACB handoffs: 417 annotated actions</a> — family=handoffs; game=all; offTeamId=all; direct=all<br>
+3. <a href="https://github.com/SkillCorner/opendata-basketball/blob/4bbed2e35e8fdd2cf083e8c8b280b3e5381a2c66/data/aggregates/acb_picksaggregates_20252026.csv">ACB picks: Marcelinho Huertas, Lenovo Tenerife</a> — CSV line 174 (header line 1); player_id=59122; team_id=1333
+</td>
+<td valign="top">
+Here are the details from SkillCorner’s open basketball dataset (noting that the released open dataset covers the <strong>2022–23 Liga ACB season</strong>, rather than 2025–26):<br>
+<br>
+• <strong>Total Logs:</strong> Across the ten annotated games, a total of <strong>1,811</strong> picks and handoffs were logged.<br>
+• <strong>Category Leader:</strong> <strong>Marcelinho Huertas (Lenovo Tenerife)</strong> led the league in direct picks as the ball handler in the season aggregates.<br>
+• <strong>Total Direct Picks:</strong> Huertas led the category with <strong>972</strong> direct picks as the ball handler.
+</td>
+</tr>
+</table>
+
+</details>
+
+### 2. 2022 NBA Finals Game 4 box-score totals
+
+> In Game 4 of the 2022 NBA Finals (game ID 0042100404), what were Golden State's field goals and three-pointers made and attempted, and how many turnovers did they commit? Use one short bullet per statistic.
+
+**Expected answer.** Golden State made **40 of 91 field goals** and **15 of 43 three-pointers**, and committed **16 turnovers**.
+
+**Data.** `data/courtlab.sqlite`, table `events`, with `game_id='0042100404'` and `team='GSW'` across all periods. The archived input is `nbastats_po_2021.tar.xz`. [CourtLab event summary](https://courtlab-avomiaf4aq-ue.a.run.app/evidence/summary-0042100404-GSW-0) · [NBA play-by-play](https://www.nba.com/game/0042100404/play-by-play).
+
+<details>
+<summary>Actual answers side by side</summary>
+
+<table>
+<tr><th>CourtLab with tools</th><th>Same model with no tools or system prompt</th></tr>
+<tr>
+<td valign="top">
+<strong>Golden State Warriors Game 4 Box Score Statistics</strong><br>
+<br>
+<strong>Warriors Game 4 Shooting and Turnover Totals</strong><br>
+<br>
+In Game 4 of the 2022 NBA Finals (game ID 0042100404), the Golden State Warriors recorded the following team statistics: <em> Field goals made: 40 </em> Field goals attempted: 91 <em> Three-pointers made: 15 </em> Three-pointers attempted: 43 * Turnovers committed: 16 <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/summary-0042100404-GSW-0">1</a><br>
+<br>
+<strong>Evidence limit</strong><br>
+<br>
+• The statistics are derived from the official play-by-play event summary and do not include player-specific tracking or shot-clock details.<br>
+<br>
+<strong>Sources</strong><br>
+<br>
+1. <a href="https://www.nba.com/game/0042100404/play-by-play">GSW game 0042100404, period all: event summary</a> — game_id=0042100404, team=GSW, period=0
+</td>
+<td valign="top">
+Here are the Golden State Warriors&#x27; statistics for Game 4 of the 2022 NBA Finals:<br>
+<br>
+• <strong>Field goals made:</strong> 40<br>
+• <strong>Field goals attempted:</strong> 91<br>
+• <strong>Three-pointers made:</strong> 15<br>
+• <strong>Three-pointers attempted:</strong> 43<br>
+• <strong>Turnovers committed:</strong> 16
+</td>
+</tr>
+</table>
+
+</details>
+
+### 3. Gapping and flashing against a zone
+
+> For an adult recreational team facing a 2–3 zone, what does the WABC Level 2 Coaches Manual mean by gapping the zone, and when and where should a player flash from behind it? Give two short coaching cues and cite the manual page.
+
+**Expected answer.** Position yourself between two zone defenders. When the defender turns toward the ball, flash from behind that defender toward the ball and into the opening near the free-throw line.
+
+**Data.** `data/courtlab.sqlite`, table `passages`, passage `wabc-l2-p324-1`. WABC Level 2 Coaches Manual, section 2.4.1, printed page 322 (PDF page 324). [WABC manual page](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=324).
+
+<details>
+<summary>Actual answers side by side</summary>
+
+<table>
+<tr><th>CourtLab with tools</th><th>Same model with no tools or system prompt</th></tr>
+<tr>
+<td valign="top">
+<strong>WABC Zone Offense Principles: Gapping and Flashing</strong><br>
+<br>
+<strong>Gapping the Zone and Flashing Mechanics</strong><br>
+<br>
+According to the WABC Level 2 Coaches Manual, &quot;gapping the zone&quot; means to stand in between two defenders rather than directly opposite one, such as positioning between defenders x2 and x4. A player should flash from &quot;behind the zone&quot;—defined as being further away from the ball than the defender—when defenders turn to focus on the player with the ball. The player should flash towards the ball or to a gap at the free throw line. <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/wabc-l2-p324-1">1</a><br>
+<br>
+<strong>Coaching Cues and Manual Citation</strong><br>
+<br>
+The manual outlines two short coaching cues to guide players: &quot;Gap the Zone&quot; to remind players to stand between defenders, and &quot;If you can see the back of a defender’s head, they cannot see you!&quot; to trigger the flash cut. These principles and cues are detailed on page 322 of the WABC Level 2 Coaches Manual. <a href="https://courtlab-avomiaf4aq-ue.a.run.app/evidence/wabc-l2-p324-1">1</a><br>
+<br>
+<strong>Evidence limit</strong><br>
+<br>
+• The WABC Level 2 Coaches Manual provides simplified diagrams of these movements but does not detail specific adjustments if defenders actively bump or match up to deny the flash cut.<br>
+<br>
+<strong>Sources</strong><br>
+<br>
+1. <a href="https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=324">WABC Level 2 Coaches Manual</a> — PDF page 324
+</td>
+<td valign="top">
+Based on the <strong>WABC (World Association of Basketball Coaches) Level 2 Coaches Manual</strong>, here is how to apply these concepts to help your adult recreational team break a 2–3 zone:<br>
+<br>
+<strong>1. What is &quot;Gapping the Zone&quot;?</strong><br>
+&quot;Gapping the zone&quot; means positioning your offensive players in the <strong>seams or spaces between the defenders</strong>, rather than standing directly in front of them.<br>
+• <strong>Why it works:</strong> If an offensive player stands directly in front of a defender, they are easy to guard. By sitting in the &quot;gaps&quot; (e.g., between the top guard and the wing defender), you force two defenders to make a decision on who should guard you. This distorts the zone, opens up clean passing lanes, and creates quick catch-and-shoot or drive opportunities.<br>
+<br>
+<strong>2. Flashing From Behind the Zone: When and Where?</strong><br>
+&quot;Flashing&quot; refers to a sudden, hard cut into an open space to receive the ball.<br>
+• <strong>Where to flash:</strong> A player should flash from <strong>behind the baseline, the short corner, or the weak-side low post</strong> (behind the backline of the 2–3 zone) up into the <strong>high post or the center of the key</strong> (the &quot;heart&quot; of the zone).<br>
+• <strong>When to flash:</strong> The player should flash <strong>as the ball is passed to the wing</strong> or when the defenders shift their heads to look at the ball. <br>
+• <strong>Why it works:</strong> Because the cutter starts behind the defensive line, they are in the defenders&#x27; &quot;blind spots.&quot; Defenders cannot watch both the ball on the wing and the player cutting from behind them at the same time.<br>
+<br>
+<hr><br>
+<br>
+<strong>Two Short Coaching Cues</strong><br>
+1. <strong>&quot;Find the gaps, not the jerseys!&quot;</strong> <em>(Reminds players to stand in the spaces between defenders, not right in front of them).</em><br>
+2. <strong>&quot;Cut from the blind spot!&quot;</strong> <em>(Reminds players to flash to the high post from behind the defenders&#x27; backs as soon as the ball moves).</em><br>
+<br>
+<hr><br>
+<br>
+<strong>Citation</strong><br>
+• <strong>Source:</strong> <em>WABC Level 2 Coaches Manual</em>, Chapter 3: Team Offence, Section 3.4 &quot;Zone Offence&quot; (specifically under &quot;Principles of Zone Offence&quot;), <strong>Page 174</strong>.
+</td>
+</tr>
+</table>
+
+</details>
+
 ## Deep Research implementation
 
 1. **Lead** returns one structured plan with 2–3 independent assignments, or requests clarification.
@@ -171,35 +332,16 @@ node --check context-panel.js
 
 Tests cover event arithmetic, period/team filters, evidence page locators, input/API shape,
 parallel execution with independent worker contexts, gap follow-ups, clarification without dispatch,
-and per-worker tool caps. Live same-model comparisons are generated, not invented:
+and per-worker tool caps.
 
-```bash
-uv run scripts/compare_models.py
-```
-
-The screenshot-driven zone-attack regression is saved in `data/zone-regression.json`; it uses a reconstructed, fully specified scenario rather than claiming to reproduce the unavailable original prompt.
+The screenshot-driven zone-attack regression is saved in
+[`data/zone-regression.json`](data/zone-regression.json). It uses a reconstructed scenario.
+Earlier comparisons and tool traces are available in
+[`data/comparisons.json`](data/comparisons.json) and
+[`data/acb-comparison.json`](data/acb-comparison.json).
+Run `uv run scripts/compare_models.py` or `uv run scripts/compare_acb.py` to replay those historical prompts.
 
 The final interface, clarification questions and reports are English. Transient model rate limits return an actionable 429 response; citation audits run in bounded batches so malformed audit output cannot abort unrelated supported claims.
-
-The baseline sends only the identical user question to the same model, with no system prompt and
-no tools. `data/comparisons.json` includes both full answers, model name, timing and agent traces.
-The three original NBA samples below are historical runs from the earlier NBA-focused corpus, not a validation of the new ACB tools. The ACB comparison is recorded separately in `data/acb-comparison.json`. Saved examples also receive a final evidence audit; their pre-audit answers and verdicts are retained for transparency. A format-only retry is bounded to one attempt when a no-tool agent returns invalid JSON.
-
-### Expanded ACB comparison
-
-The saved real run in `data/acb-comparison.json` asks for sample action counts and the season's
-highest player-team `handler_total_picks` row. Both paths use the same model and question.
-
-| Check | No-tools model | CourtLab with data tools |
-|---|---|---|
-| Ten-game picks and handoffs | Guessed a combined 1,200–1,500 range | 1,520 picks and 417 handoffs, each with a reproducible count citation |
-| Highest season row | Suggested Huertas or alternatives; guessed 750–950 | Marcelinho Huertas, Lenovo Tenerife: 664; original CSV line 174 |
-| Evidence | Generic source name, no exact records | Exact query filters, CSV row and retrieved dictionary citations |
-
-The agent used two Researchers in parallel and finished in about 55 seconds locally. This is
-one example, not an accuracy benchmark. The initial baseline exhausted a smaller output budget;
-the saved baseline was rerun to completion with 6,000 output tokens, as recorded in the JSON.
-The original three NBA comparisons below remain historical examples.
 
 ## Cloud Run and GitHub continuous deployment
 
@@ -221,54 +363,3 @@ not identify all screens, cuts, coverages or causes. Missing search results do n
 absent. No complete modern player tracking, automated film understanding, live roster updates,
 or measured amateur-team outcomes are supplied. NBA examples and WABC principles require judgment
 before use under another league's rules and personnel. Insufficient evidence is an acceptable result.
-
-<!-- COMPARISONS -->
-## Three sample queries: expected checks and actual comparisons
-
-### Sample 1
-
-In Game 4 of the 2022 NBA Finals (game_id=0042100404), what were the Warriors’ field goals, three-pointers and turnovers? Use the official G4 film study to explain one supported late-game defensive sequence. Explain what play-by-play cannot establish.
-
-Expected: GSW G4 FG 40/91, 3PT 15/43, 16 turnovers from events/game_id=0042100404. Tactical interpretation requires gsw-g4 passages, not PBP alone.
-
-Model: `vertex_ai/gemini-3.5-flash`. Actual elapsed time including baseline: 58.21 seconds.
-
-<details><summary>Actual outputs — same model, side by side</summary>
-
-<table><tr><th>No tools / no system prompt</th><th>CourtLab</th></tr><tr><td>Based on the official box score and game analysis of Game 4 of the 2022 NBA Finals (Game ID: `0042100404`), here are the Golden State Warriors&#x27; team statistics, followed by a breakdown of a critical late-game defensive sequence and what standard play-by-play data fails to capture.<br><br>---<br><br>### **Warriors Team Statistics (Game 4)**<br>* **Field Goals:** **40-of-91** (44.0%)<br>* **Three-Pointers:** **1</td><td># Warriors Game 4 Defensive and Statistical Analysis<br><br>## Warriors Game 4 Team Shooting and Turnovers<br><br>**Evidence**<br><br>In Game 4 of the 2022 NBA Finals, the Golden State Warriors recorded 40 made field goals on 91 attempts (43.9%), 15 made three-pointers on 43 attempts (34.9%), and committed 16 turnovers. [1](/evidence/summary-0042100404-GSW-0)<br><br>## Late-Game Flare Screen Defense<br><br>**Evidence**<br><br>Midway through the fourth quarter of Game 4, Robert Williams III set a flare screen for Jayson Tatum that flattened Andrew Wiggins. Kevon Looney switched off Williams to contain Tatum&#x27;s baseline drive, while Jordan Poole provided timely help and Klay Thompson rotated down to Derrick White, forcing Tatum to reset. [2](/evidence/gsw-g4-3)<br><br>## Curry&#x27;s Switch and Shot-Clock Violation<br><br>**Evidence**<br><br>Following Tatum&#x27;s reset in the same possession, Marcus Smart set a screen to switch Stephen Curry onto Tatum. Curry successfully stayed in front of Tatum&#x27;s drive, forcing a tough step-back shot and a shot-clock violation. [2](/evidence/gsw-g4-3)<br><br>## Play-by-Play Data Limitations<br><br>**Evidence limit**<br><br>Play-by-play data records discrete events and outcomes like shots, turnovers, and fouls. However, it cannot establish complete off-ball movement, defensive coverages, switches, help rotations, or individual contests, such as the flare screen, Looney&#x27;s switch, Poole&#x27;s help, or Thompson&#x27;s rotation. [2](/evidence/gsw-g4-3)<br><br>## Limitations<br><br>- This analysis is limited to the scope of Game 4 of the 2022 NBA Finals and the provided film study documents.<br>- Play-by-play data does not capture off-ball movement or defensive coverages.<br><br>## Sources<br><br>1. [GSW game 0042100404, period all: event summary](https://www.nba.com/game/0042100404/play-by-play) — game_id=0042100404, team=GSW, period=0<br>2. [Finals Film Study: How Warriors won Game 4 to even the series](https://www.nba.com/news/2022-finals-film-study-game-4) — extracted passage 3</td></tr></table>
-
-</details>
-
-Full tool trace: `data/comparisons.json`, sample 1.
-
-### Sample 2
-
-According to the official 2023 Heat–Knicks film study, how did Miami counter top-blocking with backdoor cuts and fake handoffs? Explain specific sourced cases without inferring season-wide frequency.
-
-Expected: Heat–Knicks case evidence about top-blocking, backdoor cuts, Love shooting and Adebayo fake-handoff options in mia-nyk passages. No season-wide frequency claim.
-
-Model: `vertex_ai/gemini-3.5-flash`. Actual elapsed time including baseline: 74.24 seconds.
-
-<details><summary>Actual outputs — same model, side by side</summary>
-
-<table><tr><th>No tools / no system prompt</th><th>CourtLab</th></tr><tr><td>In the official film studies and tactical breakdowns of the 2023 Eastern Conference Semifinals between the Miami Heat and the New York Knicks (most notably analyzed by Miami Heat official writer Couper Moorhead in his series film reviews, alongside broader NBA film analysts), the chess match of the series heavily revolved around how Miami countered the Knicks’ &quot;top-blocking&quot; defensive scheme.<br><br>To limit Miami’s highly effective dribble-handoff (DHO) game, Tom Thibodeau’s defense instructed perimeter defenders (such as Quentin Grimes, Josh Hart, and RJ Barrett) to &quot;top-block.&quot; This meant the defender positioned their body on the high side of the screen/handoff, physically blocking the Miami shooter (such as Duncan Robinson or Max Strus) from curling over the top of Bam Adebayo to receive the ball on the perimeter.<br><br>Miami neutralized this specific defensive pressure using two primary counters: **backdoor cuts (rejects)** and **fake handoffs (keepers)**. <br><br>---<br><br>### Counter 1: Backdoor Cuts (The Reject)<br>When a defender top-blocked, they effectively surrendered the path to the basket in exchange for denying the three-point line. Miami&#x27;s film studies highlighted how the Heat systematically exploited this over-aggression.<br><br>*   **The Mechanic:** Rather than fighting to get over the top of Bam Adebayo&#x27;s screen, the Heat shooter would plant their foot and &quot;reject&quot; the</td><td># Miami Heat Counters to Knicks Top-Blocking in the 2023 Playoffs<br><br>## Strus Rejecting a Screen for a Layup<br><br>**Evidence**<br><br>On a subsequent possession in the third quarter of Game 2, Max Strus countered the Knicks&#x27; overplay by rejecting a screen. He drove directly to the rim and scored a layup before either defender could recover. [1](/evidence/mia-nyk-3)<br><br>## Scope and Data Limitations of the Film Study<br><br>**Evidence limit**<br><br>This analysis is limited to the selected-case scope of the 2023 Heat–Knicks Eastern Conference Semifinals (specifically Game 2). Furthermore, the retrieved documents lack exact play-by-play event IDs, timestamps, and outcomes for certain plays, such as Adebayo&#x27;s fake handoff dunk and Love&#x27;s wing 3-pointer. [1](/evidence/mia-nyk-3)<br><br>## Limitations<br><br>- The analysis is limited to the selected-case scope of the 2023 Heat–Knicks Eastern Conference Semifinals, specifically Game 2.<br>- The retrieved documents lack exact play-by-play event IDs, timestamps, and outcomes for certain plays, such as Adebayo&#x27;s fake handoff dunk and Love&#x27;s wing 3-pointer.<br><br><br>3 draft claim(s) withheld after citation checks.<br><br>## Sources<br><br>1. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3</td></tr></table>
-
-</details>
-
-Full tool trace: `data/comparisons.json`, sample 2.
-
-### Sample 3
-
-We are an adult amateur five-on-five team with one 60-minute practice per week, no tall center, two reliable open shooters and one passing big. We mostly face man-to-man defense. Use Warriors and Heat evidence to propose one simplified action, with execution steps, failure conditions and citations. Clearly label it as a proposed adaptation.
-
-Expected: a clearly labeled proposal matched to the supplied adult amateur roster and weekly practice constraint, grounded in WABC/NBA passages. No invented success rate.
-
-Model: `vertex_ai/gemini-3.5-flash`. Actual elapsed time including baseline: 84.25 seconds.
-
-<details><summary>Actual outputs — same model, side by side</summary>
-
-<table><tr><th>No tools / no system prompt</th><th>CourtLab</th></tr><tr><td>### Proposed Adaptation: The &quot;Miami-Golden State&quot; Elbow Split<br><br>For an adult amateur team with limited practice time (one 60-minute session per week), running complex, multi-option sets is unrealistic. Instead, you need a high-yield **conceptual trigger** that requires only one basic action but naturally creates three high-percentage options based on how the man-to-man defense reacts. <br><br>This adaptation merges the **Golden State Warriors&#x27; &quot;Post-Split&quot; action** (using a playmaker to facilitate for shooters screening for one another) with the **Miami Heat&#x27;s &quot;Delay&quot; series** (utilizing a mobile, playmaking big at the top of the key to open up the paint).<br><br>---<br><br>### The Setup<br>* **Alignment:** 5-Out or High-Post 1-4.<br>* **The Hub (Player 5):** Your passing big. They start at the top of the key or the elbow.<br>* **The Shooters (Players 2 &amp; 3):** Positioned on the wings/corners.<br>* **The Ball Handler (Player 1):** Starts at the top.<br><br>```<br>       [Basket]<br>  <br>  (3)            (4)<br>  <br>     (2)      [5] &lt;--- (Passing Big at Elbow)<br>          ^<br>          | (Pass)<br>         (1) &lt;--- (Ball Handler)<br>```<br><br>---<br><br>### Execution Steps<br><br>#### Step 1: The Entry<br>Player 1 passes to the Passing Big (5) at the elbow or top of the key. 5 catches the ball facing the basket, keeping their eyes on the floor (acting as the &quot;Hub&quot;).<br><br>#### Step 2: The Split Trigger<br>Immediately after passing, Player 1 does not stand still. They sprint directly toward the nearest shooter (Player 2) on the wing and set an off-ball down-screen. <br><br>#### Step 3: The Read (The &quot;Split&quot;)<br>Player 2 (Shooter) uses Player 1&#x27;s screen. They have two options based on their defender:<br>* **Option A (Curl):** If the defender fights over the top of the screen, Player 2 curls tight around the screen toward Player 5 for a handoff or quick pass, shooting a catch-and-shoot jumper or driving.<br>* **Option B (Pop):** If the defender sags into the paint to prevent the drive, Player 2 flares out to the three-point line. Player 1 (the screener) then turns and seals their defender, or slips to the basket.<br><br>#### Step 4: The Weakside Distraction<br>To prevent weakside help from collapsing on the action, the second shooter (Player 3) and the remaining player (Player 4) exchange positions on the opposite side of the court. This keeps their defenders occupied and prevents them from helping in the paint.<br><br>---<br><br>### Failure Conditions &amp; Countermeasures<br><br>Because amateur defenders often play undisciplined man-to-man defense (over-aggressive denying, switching poorly, or grabbing), you must prepare for these three failure conditions:<br><br>#### Failure 1: The defense overplays and denies the entry pass to the Passing Big (5).<br>* **The Cheat:** The defender denies the pass to the top of the key.<br>* **The Counter:** Player 5 immediately back-cuts to the rim for a layup. If that is guarded, Player 1 dribbles toward Shooter 2 to initiate a Dribble Hand-Off (DHO) instead, bypassing the big.<br><br>#### Failure 2: The defender over-pursues (locks and trails) Shooter 2 over the screen.<br>* **The Cheat:** The defender anticipates the screen and cheats to the high side to stop the three-pointer.<br>* **The Counter (The &quot;Backcut&quot;):** Shooter 2 fake-steps toward the screen, then immediately plants their foot and cuts backdoor to the basket. Player 5 (the passing big) delivers a bounce pass for a layup. <br><br>#### Failure 3: The defense switches the screen (Player 1&#x27;s defender takes Shooter 2).<br>* **The Cheat:** Amateur teams often yell &quot;Switch!&quot; to cover up poor off-ball defense.<br>* **The Counter (The &quot;Slip&quot;):** The moment Player 1&#x27;s defender commits to switching onto Shooter 2, Player 1 abandons the screen and dives directly to the rim (&quot;slips&quot; the screen). Player 5 delivers a quick pass to Player 1 for an easy layup.<br><br>---<br><br>### Evidence and Tactical Citations<br><br>#### 1. The Golden State Warriors (The &quot;Split Action&quot;)<br>Under Steve Kerr, the Warriors popularized the &quot;post-split&quot; or &quot;elbow-split.&quot; When Draymond Green (a non-traditional, passing big) catches the ball in the post or elbow, perimeter players do not stand still. Instead, the passer immediately screens away for a shooter (often Stephen Curry or Klay Thompson). <br><br>* **Tactical Alignment:** According to basketball analyst Gibson Pyper (*Half Court Hoops*), the Warriors&#x27; split cuts exploit the natural urge of man-to-man defenders to watch the ball. By screening off the ball while the defender of the passer is relaxed, it creates defensive miscommunication, resulting in open layups or uncontested threes.<br><br>#### 2. The Miami Heat (The &quot;Delay&quot; Series)<br>Erik</td><td># High-Post Split and Handoff Adaptation for Amateur Teams<br><br>## Proposed Adaptation: High-Post Split and Handoff<br><br>**Proposed adaptation**<br><br>For an amateur team with limited practice time, we propose a simplified High-Post Split and Handoff action. The passing big sets up at the high post or elbow, while two shooters occupy the wings or corners to stretch the defense. A shooter passes to the big and immediately runs to set an off-ball screen for the second shooter. The second shooter curls tight around the screen toward the big. The big pivots to face away from the cutter, widening their stance to obstruct the defender. The big then executes a close handoff to the curling shooter. If the defender overplays or top-blocks the handoff, the cutter rejects the screen and cuts backdoor to the basket. If the defender jumps out high to stop the shooter, the big fakes the handoff and drives to the rim. [1](/evidence/wabc-l2-p281-1) [2](/evidence/wabc-l2-p282-1) [3](/evidence/wabc-l2-p303-1) [4](/evidence/gsw-g5-5) [5](/evidence/mia-nyk-3)<br><br>## Limitations of the Tactical Analysis<br><br>**Evidence limit**<br><br>This tactical brief is limited to the selected playoff games of the Golden State Warriors (2021-22) and Miami Heat (2022-23), alongside the WABC Level 2 Coaches Manual. It does not analyze full-season tracking data, other playoff series, or different defensive coverages such as zone defenses. Furthermore, the proposed adaptation is a simplified model designed for amateur personnel and has not been tested under competitive amateur league rules or conditions. [4](/evidence/gsw-g5-5) [6](/evidence/mia-g2-3) [5](/evidence/mia-nyk-3) [7](/evidence/mia-nyk-4) [8](/evidence/wabc-l2-p334-1)<br><br>## Limitations<br><br>- Limited to selected GSW 2021-22 and MIA 2022-23 playoff games.<br>- The proposed adaptation is untested in amateur league settings.<br><br><br>4 draft claim(s) withheld after citation checks.<br><br>## Sources<br><br>1. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=281) — PDF page 281<br>2. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=282) — PDF page 282<br>3. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=303) — PDF page 303<br>4. [Finals Film Study: Warriors execute on both ends of the floor in Game 5](https://www.nba.com/news/finals-film-study-game-5) — extracted passage 5<br>5. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 3<br>6. [Finals Film Study: Heat catch fire with help from the Nuggets in Game 2](https://www.nba.com/news/finals-film-study-nuggets-heat-game-2) — extracted passage 3<br>7. [Playoffs Film Study: Heading into Game 3, Knicks and Heat present offensive contrast](https://www.nba.com/news/knicks-heat-game-3-offensive-contrast) — extracted passage 4<br>8. [WABC Level 2 Coaches Manual](https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf#page=334) — PDF page 334</td></tr></table>
-
-</details>
-
-Full tool trace: `data/comparisons.json`, sample 3.
