@@ -183,7 +183,7 @@ identity. No service account keys are committed.
 A **GitHub main-branch push trigger** must actually exist; the YAML alone is not continuous
 deployment. Deployment details and the verified URL belong in `submission.json` and
 `data/deployment.json`. `submission.json` uses `path: "research"` and inherits `ts3733` from Project 1;
-add any other team members before submission. The Cloud Run service is deployed. GitHub continuous deployment is not yet configured: repository linking, a main-branch trigger and a real push verification remain outstanding. See data/deployment.json for the current state.
+add any other team members before submission. The Cloud Run service is deployed. Developer Connect links this repository to Cloud Build in `us-east1`. The `courtlab-main` trigger runs `cloudbuild.yaml` for pushes to `main` and deploys to the existing CourtLab service. See `data/deployment.json` for the trigger and service identifiers.
 
 ## Research boundaries
 

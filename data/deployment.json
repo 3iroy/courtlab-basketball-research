@@ -8,9 +8,9 @@
   "initial_build_id": "af895465-a074-4d03-acb1-171b7d286897",
   "runtime_service_account": "courtlab@ieor-4570-f26-ts3733.iam.gserviceaccount.com",
   "access": "IAP; domain:columbia.edu",
-  "trigger_created": false,
-  "continuous_deployment_status": "Deferred at user request; resume repository-link, trigger configuration and main-branch push verification later.",
-  "latest_build_id": "9593c5b1-95c7-4a19-ae64-561cae65e806",
+  "trigger_created": true,
+  "continuous_deployment_status": "Enabled for GitHub main pushes via Developer Connect.",
+  "latest_build_id": "7c33ad76-eb7c-48f0-99a9-fd858ae667b1",
   "local_validation": {
     "automated_tests_passed": 28,
     "english_live_examples": 3,
@@ -28,13 +28,15 @@
   },
   "hosted_browser_validation": "Columbia login redirect verified; full hosted report requires user sign-in.",
   "latest_build_status": "SUCCESS",
-  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00007-2kl",
+  "ready_revision": "projects/ieor-4570-f26-ts3733/locations/us-east1/services/courtlab/revisions/courtlab-00008-6mt",
   "iap_enabled": true,
   "local_session_recovery_verified": true,
-  "deployed_source_commit": "34ef018447aad9f3812fedd37fae9d5bbaad7b8c",
+  "deployed_source_commit": "2152298576158c47bf232028e74f76541f937050",
   "github_app_configuration_url": "https://github.com/settings/installations/168928091",
   "hosted_access_check": {
     "unauthenticated_status": 302,
     "redirect_host": "accounts.google.com"
-  }
+  },
+  "trigger_id": "e3c106ac-aae5-45e7-b774-3576899d122e",
+  "git_repository_link": "projects/ieor-4570-f26-ts3733/locations/us-east1/connections/nba-fantasy-github/gitRepositoryLinks/3iroy-courtlab-basketball-research"
 }
