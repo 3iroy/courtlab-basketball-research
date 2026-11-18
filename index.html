@@ -127,12 +127,16 @@
       <form id="question-form">
         <label for="question">Your research question</label>
         <textarea id="question" rows="2" maxlength="8000" placeholder="Ask about a tactic, a game, or your team's practice plan…" required></textarea>
-        <p class="composer-example">
-          <span>Try an example</span>
-          <button type="button" data-query>
-            What’s one simple play our adult rec team can run against man-to-man defense? We have two reliable shooters and a passing big.
-          </button>
-        </p>
+        <div class="composer-example">
+          <span id="example-label">Try a question</span>
+          <div class="example-questions" role="group" aria-labelledby="example-label">
+            <button type="button" data-query="Give our adult rec team one simple play against man-to-man defense. We have two reliable shooters, a passing big, and one 60-minute practice per week. Include execution steps and cite coaching principles.">Beat man-to-man</button>
+            <button type="button" data-query="How can our adult rec team attack a 2–3 zone with inconsistent outside shooting and a passing big? We practice for 60 minutes once a week. Recommend one simple action using WABC principles and explain the reads.">Attack a 2–3 zone</button>
+            <button type="button" data-query="How did Golden State create space with off-ball screens in the 2022 NBA Finals? Explain one documented action using the official film studies, with citations.">Warriors off-ball screens</button>
+            <button type="button" data-query="According to the official 2023 Heat–Knicks film study, how did Miami counter top-blocking with backdoor cuts and fake handoffs? Explain one documented action and cite the source.">Heat handoff counters</button>
+            <button type="button" data-query="Find published tactical analysis of the Boston Celtics&#x27; 2025–26 offense online. Explain one documented action with citations, and say if the available evidence is insufficient.">Research the Celtics</button>
+          </div>
+        </div>
         <div class="composer-footer">
           <span>Enter to send · Shift+Enter for a new line</span>
           <button id="send" type="submit">Start research <span aria-hidden="true">↗</span></button>

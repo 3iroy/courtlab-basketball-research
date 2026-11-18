@@ -237,7 +237,8 @@ textarea::placeholder { color: #716d62; font-size: 13px; }
   color: var(--muted);
   font-size: 12px;
 }
-.composer-example span { display: block; margin-bottom: 3px; }
+.composer-example > span { display: block; margin-bottom: 6px; }
+.example-questions { display: flex; flex-wrap: wrap; gap: 6px; }
 .composer-example button {
   max-width: 100%;
   padding: 5px 9px;
