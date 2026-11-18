@@ -221,9 +221,10 @@ def test_dbb_match_report_supports_concrete_tactics_through_chat(monkeypatch):
     response = TestClient(app.app).post('/chat', json={'message': 'What defensive adjustment did Germany use against Poland?'})
     assert response.status_code == 200
     data = response.json()
-    assert data['research']['status'] == 'complete'
-    assert 'follow_up_question' not in data['research']
-    assert '## Follow-up' not in data['response']
+    assert data['research']['status'] == 'partial'
+    assert data['research']['diagram'] is None
+    assert any('diagram is required' in item for item in data['research']['missing_requirements'])
+    assert 'follow_up_question' in data['research']
     assert 'video_links' not in data['research']
     assert data['research']['citations'][0]['url'] == report_url
     assert 'switched to a zone in the second quarter' in data['response']
@@ -480,7 +481,9 @@ def test_published_analysis_survives_official_report_filter(monkeypatch):
     monkeypatch.setattr(research,'call',call)
     response=TestClient(app.app).post('/chat',json={'message':'How did Germany play, and has an analyst explained it?'})
     data=response.json()
-    assert data['research']['status']=='complete'
+    assert data['research']['status']=='partial'
+    assert data['research']['diagram'] is None
+    assert any('diagram is required' in item for item in data['research']['missing_requirements'])
     assert {citation['url'] for citation in data['research']['citations']}=={analyst_url,official_url}
     assert 'Jane Analyst describes' in data['response']
     assert any(entry['agent']=='Researcher 2 · tactical analysis' and entry['args'].get('analysis')

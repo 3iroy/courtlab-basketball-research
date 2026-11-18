@@ -266,7 +266,7 @@ def test_advice_requires_audited_recommendation_and_only_one_rewrite(monkeypatch
             calls['writer']+=1
             if repair_succeeds=='unavailable' and calls['writer']==2: raise research.ModelBehaviorError('repair format failed')
             kind='adaptation' if repair_succeeds=='missing_plan' or (repair_succeeds is True and calls['writer']==2) else 'observation'
-            return research.Report(title='Zone attack',claims=[research.Claim(heading='Short corner',text='Use the short corner to stretch the zone.',kind=kind,source_ids=[ev['source_id']])],limitations=[])
+            return research.Report(title='Zone attack',claims=[research.Claim(heading='Short corner',text='Use the short corner to stretch the zone.',kind=kind,source_ids=[ev['source_id']])],limitations=[],diagram=diagram_fixture())
         data=json.loads(prompt)
         if agent.name=='Answer review':
             adequate=repair_succeeds!='missing_plan' and any(x['kind']=='adaptation' for x in data['audited_answer'])
@@ -319,7 +319,11 @@ def test_diagram_evidence_check_does_not_discard_text(monkeypatch,supported):
     assert report.claims[0].text==claim.text
     assert state.traces[-1]['agent']=='Evidence audit'
 
-def test_complete_answer_review_receives_the_verified_static_diagram(monkeypatch):
+@pytest.mark.parametrize('question', [
+    'Propose an action and include a static diagram.',
+    'What simple action can our adult team run against man-to-man defense?',
+])
+def test_complete_answer_review_receives_the_verified_static_diagram(monkeypatch, question):
     ev=store.read_passage('wabc-l3-p217-1');counts={'writer':0}
     async def fake_worker(task,question,state,catalog):
         state.researchers+=1;state.register(ev);state.findings.append({'findings':'Supported principles','source_ids':[ev['source_id']],'gaps':[]})
@@ -330,13 +334,14 @@ def test_complete_answer_review_receives_the_verified_static_diagram(monkeypatch
             return research.Report(title='Proposal',claims=[research.Claim(heading='Action',text='Proposed high-post entry and baseline cut.',kind='adaptation',source_ids=[ev['source_id']])],limitations=[],diagram=diagram_fixture())
         data=json.loads(prompt)
         if agent.name=='Answer review':
+            assert data['diagram_required']
             assert data['diagram'] is not None and len(data['diagram']['players'])==3
             assert 'WABC' in data['citation_titles'][ev['source_id']]
             return research.AnswerReview(adequate=True,missing_requirements=[])
         return research.Audit(verdicts=[research.Verdict(claim_index=c['index'],supported=True,reason='supported') for c in data['claims']])
     monkeypatch.setattr(research,'worker',fake_worker);monkeypatch.setattr(research,'call',fake_call)
     state=research.RunState(PanelHooks(AgentContexts(),lambda x:None))
-    text,meta=asyncio.run(research.deep_research('Propose an action and include a static diagram.',state))
+    text,meta=asyncio.run(research.deep_research(question,state))
     assert meta['status']=='complete' and meta['diagram'] is not None and counts['writer']==1
 
 
@@ -372,7 +377,7 @@ def test_diagram_followup_requires_a_verified_drawing(monkeypatch, repair_has_di
             writer_calls += 1
             assert payload['diagram_required']
             if writer_calls == 2:
-                assert any('diagram was requested' in item for item in payload['missing_requirements'])
+                assert any('diagram is required' in item for item in payload['missing_requirements'])
             return research.Report(
                 title='1-3-1 against a 2-3 zone',
                 claims=[research.Claim(
@@ -400,4 +405,4 @@ def test_diagram_followup_requires_a_verified_drawing(monkeypatch, repair_has_di
         assert metadata['diagram']['source_ids'] == [source_id]
     else:
         assert metadata['diagram'] is None
-        assert 'diagram was requested and is missing' in answer
+        assert 'diagram is required for this tactical answer and is missing' in answer

@@ -290,11 +290,14 @@ The initial dispatch, follow-up plans and every sub-agent data call appear in `t
 
 ## Static tactic diagrams
 
-Tactical answers can include one static SVG half-court diagram beneath the text. The Writer emits
+Tactical recommendations, concrete action explanations and documented team tactics include one
+static SVG half-court diagram beneath the text by default. The Writer emits
 bounded player positions and pass/run/screen arrows; it never emits SVG or HTML. Server validation
 rejects duplicate/overlapping markers, absent arrow origins and unaccepted claim links. A separate
 bounded evidence check compares the diagram with its accepted claim; a failed check omits only
-the optional image. The frontend renders typed data with SVG DOM elements and textContent.
+the drawing. The Writer gets one bounded repair attempt when a required diagram is missing.
+An answer with supported text and a missing required diagram is marked partial.
+The frontend renders typed data with SVG DOM elements and textContent.
 Every figure is labeled as a concept or proposed adaptation, links its underlying principles,
 and states that positions are illustrative rather than measured tracking. Statistics-only answers
 and clarification questions need no diagram. The optional data lives in `research.diagram`;
