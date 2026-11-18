@@ -1,5 +1,7 @@
 # CourtLab — From Film to Your Court
 
+[Open CourtLab](https://courtlab-avomiaf4aq-ue.a.run.app) — sign in with a Columbia account.
+
 CourtLab helps amateur players, student teams and developing coaches research basketball tactics,
 connect coaching principles to real game evidence, and develop a practical plan for their roster.
 Its core sources are **WABC Levels 1–3** and **SkillCorner ACB 2025–26 annotations and offensive aggregates**.
